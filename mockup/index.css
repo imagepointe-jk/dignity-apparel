@@ -1,0 +1,10 @@
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links,
+.nav-dropdown {
+  list-style-type: none;
+  padding: 0;
+}
