@@ -17,9 +17,7 @@ export type CompoundNavItem = NavItem & {
 export function NavBar() {
   const [expandedIndex, setExpandedIndex] = useState(null as number | null);
   const [mobileMenuExpanded, setMobileMenuExpanded] = useState(false);
-  const [atTopOfPage, setAtTopOfPage] = useState(
-    window.scrollY < topOfPageThreshold
-  );
+  const [atTopOfPage, setAtTopOfPage] = useState(true);
 
   function onFocusTopLevel(focusedIndex: number) {
     if (focusedIndex !== expandedIndex) setExpandedIndex(null);

@@ -107,6 +107,12 @@
   font-size: 35px;
   background: none;
   border: none;
+  transition: 0.2s;
+}
+
+.main.compressed .hamburger-button {
+  padding: 15px;
+  font-size: 26px;
 }
 
 .nav-menu-mobile-container {
