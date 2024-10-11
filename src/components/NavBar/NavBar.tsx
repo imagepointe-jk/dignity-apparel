@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { NavItemsDesktop } from "./NavItemsDesktop";
 import { NavBarMobile } from "./NavBarMobile";
 import throttle from "lodash.throttle";
+import { TopBanner } from "../TopBanner";
 
 const topOfPageThreshold = 200; //when the value of window.scrollY is less than this, we consider that to be the "top of the page"
 export type NavItem = {
@@ -112,6 +113,13 @@ export function NavBar() {
 
   return (
     <div className={styles["nav-container"]}>
+      <TopBanner
+        hidden={!atTopOfPage}
+        text="This is a test banner"
+        bgColorHexCode="ff0000"
+        textColorHexCode="ffffff"
+      />
+
       <nav
         aria-label="Main"
         className={`${styles["main"]} ${
