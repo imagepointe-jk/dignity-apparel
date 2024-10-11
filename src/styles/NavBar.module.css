@@ -54,6 +54,12 @@
 
 .nav-item > a {
   padding: 30px;
+  transition: 0.2s;
+}
+
+.main.compressed .nav-item > a {
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .nav-item > a:hover {

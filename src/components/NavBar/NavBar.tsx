@@ -1,9 +1,11 @@
 "use client";
 import styles from "@/styles/NavBar.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavItemsDesktop } from "./NavItemsDesktop";
 import { NavBarMobile } from "./NavBarMobile";
+import throttle from "lodash.throttle";
 
+const topOfPageThreshold = 200; //when the value of window.scrollY is less than this, we consider that to be the "top of the page"
 export type NavItem = {
   text: string;
   href: string;
@@ -14,6 +16,9 @@ export type CompoundNavItem = NavItem & {
 export function NavBar() {
   const [expandedIndex, setExpandedIndex] = useState(null as number | null);
   const [mobileMenuExpanded, setMobileMenuExpanded] = useState(false);
+  const [atTopOfPage, setAtTopOfPage] = useState(
+    window.scrollY < topOfPageThreshold
+  );
 
   function onFocusTopLevel(focusedIndex: number) {
     if (focusedIndex !== expandedIndex) setExpandedIndex(null);
@@ -94,9 +99,25 @@ export function NavBar() {
     },
   ];
 
+  useEffect(() => {
+    const handleScroll = throttle(() => {
+      const atTop = window.scrollY < topOfPageThreshold;
+      setAtTopOfPage(atTop);
+    }, 200);
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className={styles["nav-container"]}>
-      <nav aria-label="Main" className={styles["main"]}>
+      <nav
+        aria-label="Main"
+        className={`${styles["main"]} ${
+          !atTopOfPage ? styles["compressed"] : ""
+        }`}
+      >
         <NavItemsDesktop
           items={tempItems}
           expandedIndex={expandedIndex}
