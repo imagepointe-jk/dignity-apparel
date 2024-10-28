@@ -84,10 +84,6 @@ export function MegaMenuDesktop({
                       ...featured,
                       tabIndex: i === expandedIndex ? 0 : -1,
                     }}
-                    // caption={featured.caption}
-                    // href={featured.href}
-                    // imageUrl={featured.imageUrl}
-                    // tabIndex={i === expandedIndex ? 0 : -1}
                   />
                 </li>
               ))}

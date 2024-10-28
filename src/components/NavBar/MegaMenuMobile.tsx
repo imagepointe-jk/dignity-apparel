@@ -57,45 +57,7 @@ export function MegaMenuMobile({
                 </ul>
               </>
             )}
-            {/* {item.href && <a href={item.href}>{item.label}</a>}
-            {item.sections.length && (
-              <div>
-                <div>{item.label}</div>
-                <ul className={styles["mega-menu-dropdown-mobile"]}>
-                  {item.sections.map((section, i) => (
-                    <li key={section.title || i}>{section.title}</li>
-                  ))}
-                </ul>
-              </div>
-            )} */}
           </li>
-          //   <li
-          //     key={i}
-          //     className={`${styles["nav-item-mobile"]} ${
-          //       item.subItems ? styles["has-nav-dropdown"] : ""
-          //     }`}
-          //   >
-          //     {!item.subItems && <a href={item.href}>{item.text}</a>}
-          //     {item.subItems && (
-          //       <div
-          //         className={`${styles["nav-dropdown-mobile"]} ${
-          //           expandedIndex === i ? styles["expanded"] : ""
-          //         }`}
-          //         onClick={() => setExpandedIndex(expandedIndex === i ? null : i)}
-          //       >
-          //         <div className={styles["nav-dropdown-item-text"]}>
-          //           {item.text}
-          //         </div>
-          //         <ul className={styles["nav-dropdown-items-mobile"]}>
-          //           {item.subItems.map((sub, i) => (
-          //             <li key={i} className={styles["nav-dropdown-item-mobile"]}>
-          //               <a href={sub.href}>{sub.text}</a>
-          //             </li>
-          //           ))}
-          //         </ul>
-          //       </div>
-          //     )}
-          //   </li>
         ))}
       </ul>
     </div>

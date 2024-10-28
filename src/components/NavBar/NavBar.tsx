@@ -156,77 +156,6 @@ export function NavBar() {
     ],
   };
 
-  const tempItems: CompoundNavItem[] = [
-    {
-      text: "Page 1",
-      href: "",
-    },
-    {
-      text: "Page Group 1",
-      href: "",
-      subItems: [
-        {
-          text: "Subpage 1",
-          href: "",
-        },
-        {
-          text: "Subpage 2",
-          href: "",
-        },
-        {
-          text: "Subpage 3",
-          href: "",
-        },
-        {
-          text: "Subpage 4",
-          href: "",
-        },
-        {
-          text: "Subpage 5",
-          href: "",
-        },
-        {
-          text: "Subpage 6",
-          href: "",
-        },
-        {
-          text: "Subpage 7",
-          href: "",
-        },
-        {
-          text: "Subpage 8",
-          href: "",
-        },
-      ],
-    },
-    {
-      text: "Page 2",
-      href: "",
-    },
-    {
-      text: "Page Group 2",
-      href: "",
-      subItems: [
-        {
-          text: "Subpage 1",
-          href: "",
-        },
-        {
-          text: "Subpage 2",
-          href: "",
-        },
-        {
-          text: "Subpage 3",
-          href: "",
-        },
-      ],
-    },
-    {
-      text: "Page 3",
-      href: "",
-    },
-  ];
-
   useEffect(() => {
     const handleScroll = throttle(() => {
       const atTop = window.scrollY < topOfPageThreshold;
@@ -253,13 +182,6 @@ export function NavBar() {
           !atTopOfPage ? styles["compressed"] : ""
         }`}
       >
-        {/* <NavItemsDesktop
-          items={tempItems}
-          expandedIndex={expandedIndex}
-          onFocusTopLevel={onFocusTopLevel}
-          setExpandedIndex={setExpandedIndex}
-        /> */}
-
         <MegaMenuDesktop
           data={tempMega}
           expandedIndex={expandedIndex}
@@ -279,12 +201,6 @@ export function NavBar() {
         expandedIndex={expandedIndex}
         setExpandedIndex={setExpandedIndex}
       />
-      {/* <NavBarMobile
-        expandedIndex={expandedIndex}
-        items={tempItems}
-        menuExpanded={mobileMenuExpanded}
-        setExpandedIndex={setExpandedIndex}
-      /> */}
     </div>
   );
 }

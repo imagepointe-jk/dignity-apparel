@@ -1,10 +1,6 @@
 import styles from "@/styles/NavBar/desktop.module.css";
 
 type Props = {
-  // href: string;
-  // tabIndex: number;
-  // imageUrl: string;
-  // caption: string;
   data: {
     href: string;
     tabIndex: number;
