@@ -1,5 +1,6 @@
-import styles from "@/styles/NavBar.module.css";
+import styles from "@/styles/NavBar/desktop.module.css";
 import { MegaMenu } from "./NavBar";
+import { FeaturedCard } from "./FeaturedCard";
 
 type Props = {
   data: MegaMenu;
@@ -78,18 +79,16 @@ export function MegaMenuDesktop({
 
               {item.featured.map((featured) => (
                 <li key={featured.caption}>
-                  <a
-                    href={featured.href}
-                    className={styles["mega-menu-dropdown-featured-container"]}
-                    tabIndex={i === expandedIndex ? 0 : -1}
-                  >
-                    <img src={featured.imageUrl} style={{ height: "300px" }} />
-                    <div
-                      className={styles["mega-menu-dropdown-featured-caption"]}
-                    >
-                      {featured.caption}
-                    </div>
-                  </a>
+                  <FeaturedCard
+                    data={{
+                      ...featured,
+                      tabIndex: i === expandedIndex ? 0 : -1,
+                    }}
+                    // caption={featured.caption}
+                    // href={featured.href}
+                    // imageUrl={featured.imageUrl}
+                    // tabIndex={i === expandedIndex ? 0 : -1}
+                  />
                 </li>
               ))}
             </ul>

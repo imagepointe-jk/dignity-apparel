@@ -1,11 +1,10 @@
 "use client";
-import styles from "@/styles/NavBar.module.css";
+import styles from "@/styles/NavBar/desktop.module.css";
 import { useEffect, useState } from "react";
-import { NavItemsDesktop } from "./NavItemsDesktop";
-import { NavBarMobile } from "./NavBarMobile";
 import throttle from "lodash.throttle";
 import { TopBanner } from "../TopBanner";
 import { MegaMenuDesktop } from "./MegaMenuDesktop";
+import { MegaMenuMobile } from "./MegaMenuMobile";
 
 const topOfPageThreshold = 200; //when the value of window.scrollY is less than this, we consider that to be the "top of the page"
 export type MegaMenu = {
@@ -274,12 +273,18 @@ export function NavBar() {
           ☰
         </button>
       </nav>
-      <NavBarMobile
+      <MegaMenuMobile
+        data={tempMega}
+        menuExpanded={mobileMenuExpanded}
+        expandedIndex={expandedIndex}
+        setExpandedIndex={setExpandedIndex}
+      />
+      {/* <NavBarMobile
         expandedIndex={expandedIndex}
         items={tempItems}
         menuExpanded={mobileMenuExpanded}
         setExpandedIndex={setExpandedIndex}
-      />
+      /> */}
     </div>
   );
 }
