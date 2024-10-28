@@ -21,6 +21,7 @@ export type MegaMenu = {
     featured: {
       caption: string;
       imageUrl: string;
+      imageAlt: string;
       href: string;
     }[];
   }[];
@@ -91,12 +92,14 @@ export function NavBar() {
             href: "",
             imageUrl:
               "https://originusa.com/cdn/shop/files/kilo3_511e5237-5e8f-4e3d-9ffe-380fe54631b4_500x.webp?v=1727274561",
+            imageAlt: "",
           },
           {
             caption: "Shop T-shirts",
             href: "",
             imageUrl:
               "https://originusa.com/cdn/shop/files/coretee_copy_500x.webp?v=1727801072",
+            imageAlt: "",
           },
         ],
       },
@@ -144,12 +147,14 @@ export function NavBar() {
             href: "",
             imageUrl:
               "https://originusa.com/cdn/shop/files/kilo3_511e5237-5e8f-4e3d-9ffe-380fe54631b4_500x.webp?v=1727274561",
+            imageAlt: "",
           },
           {
             caption: "Pants",
             href: "",
             imageUrl:
               "https://originusa.com/cdn/shop/files/coretee_copy_500x.webp?v=1727801072",
+            imageAlt: "",
           },
         ],
       },

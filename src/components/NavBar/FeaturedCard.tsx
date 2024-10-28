@@ -5,11 +5,12 @@ type Props = {
     href: string;
     tabIndex: number;
     imageUrl: string;
+    imageAlt: string;
     caption: string;
   };
 };
 export function FeaturedCard({
-  data: { href, tabIndex, imageUrl, caption },
+  data: { href, tabIndex, imageUrl, imageAlt, caption },
 }: Props) {
   return (
     <a
@@ -17,7 +18,7 @@ export function FeaturedCard({
       className={styles["mega-menu-dropdown-featured-container"]}
       tabIndex={tabIndex}
     >
-      <img src={imageUrl} style={{ height: "300px" }} />
+      <img src={imageUrl} alt={imageAlt} style={{ height: "300px" }} />
       <div className={styles["mega-menu-dropdown-featured-caption"]}>
         {caption}
       </div>
