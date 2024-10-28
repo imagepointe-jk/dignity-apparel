@@ -5,6 +5,7 @@
   position: relative;
   opacity: 0;
   transition: 0.2s;
+  pointer-events: none;
 }
 
 .nav-items {
@@ -76,6 +77,7 @@
 
   .mobile-expanded.main {
     opacity: 1;
+    pointer-events: initial;
   }
 
   .mobile-expanded > .nav-items {

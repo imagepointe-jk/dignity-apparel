@@ -1,0 +1,13 @@
+.main {
+  display: inline-block;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: blue;
+  color: white;
+  text-decoration: none;
+}
+
+.minor {
+  background: none;
+  outline: 3px solid white;
+}
