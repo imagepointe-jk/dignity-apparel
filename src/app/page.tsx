@@ -3,7 +3,7 @@ import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import { PrivacyPolicy } from "@/components/PrivacyPolicy/PrivacyPolicy";
+import { AccordionContent } from "@/components/sections/AccordionContent/AccordionContent";
 
 export default async function Page() {
   const client = createClient();
@@ -11,41 +11,81 @@ export default async function Page() {
 
   return (
     <main>
-      <PrivacyPolicy
-        bodyNode={
+      <AccordionContent
+        heading="Lorem Ipsum"
+        subtextNode={
           <>
-            The Department’s Bureau of Global Public Affairs (GPA) uses the
-            GovDelivery service to deliver email bulletin messages to
-            self-subscribed users. GPA’s Office of Global Web Platforms serves
-            as the executive agent for the Department’s GovDelivery Service and
-            controls who at the Department has access to send email bulletins,
-            create or delete topics. GovDelivery is a web-based e-mail
-            subscription management system that allows a member of the public
-            (user) to subscribe to news and information on www.state.gov. The
-            GovDelivery user selects specific topics that interest them.
-            Whenever information on that topic is made available by the
-            Department, the user that has subscribed to that topic receives an
-            email. The user’s subscription profile consists of their email
-            address and the topics they wish to receive email updates for. The
-            user may customize and manage their subscription profile in order to
-            receive exactly the types of information they desire, and they may
-            cancel their subscriptions at any time. Users engaging the
-            Department’s GovDelivery system expect privacy protections while
-            interacting with the Department. We will only use the email
-            addresses provided by the users to send email messages related to
-            the topics selected by the user in the GovDelivery system. We will
-            not use the GovDelivery service to: 1) send email messages not
-            related to the topics selected by the user; 2) actively seek
-            personally identifiable information; and 3) search for or by
-            personally identifiable information without a waiver from our
-            Privacy Office. To the extent a user posts or sends personally
-            identifiable information to the Department’s GovDelivery system, we
-            will use the minimum amount necessary to accomplish a purpose
-            authorized by statute, executive order, or regulation. Neither the
-            Department nor GovDelivery may share a user’s subscription profile
-            (including email address) without a waiver from the Privacy Office.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda a
+            tempora rem? Maiores nisi, esse minima sunt perferendis beatae
+            aspernatur porro rem debitis fuga fugiat delectus dolore adipisci
+            totam eveniet!
           </>
         }
+        items={[
+          {
+            heading: "Assumenda a tempora rem",
+            bodyNode: (
+              <>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime
+                laboriosam non, vero quo consectetur adipisci, fugiat deserunt
+                earum porro rem sapiente libero distinctio, reprehenderit iure
+                quas recusandae vel tenetur hic? Lorem ipsum dolor sit amet,
+                consectetur adipisicing elit. Esse temporibus et ducimus
+                architecto ullam sequi voluptatem laborum dolorem sed qui. Animi
+                est eum aut molestias doloremque nesciunt, quasi modi dolorem!
+              </>
+            ),
+            link: {
+              href: "",
+              label: "View More",
+            },
+          },
+          {
+            heading: "Aspernatur distinctio quae asperiores",
+            bodyNode: (
+              <>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Aspernatur distinctio quae asperiores, blanditiis expedita ipsum
+                pariatur numquam consequuntur nisi quis dolorum, totam ratione!
+                Facere, quidem nesciunt alias hic odit vitae.
+              </>
+            ),
+            link: {
+              href: "",
+              label: "View More",
+            },
+          },
+          {
+            heading: "Sequi magni odio numquam nemo",
+            bodyNode: (
+              <>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                magni odio numquam nemo doloremque laboriosam hic illo adipisci
+                beatae ea minima consectetur recusandae mollitia molestias
+                inventore ratione, nobis voluptatem. Perferendis.
+              </>
+            ),
+            link: {
+              href: "",
+              label: "View More",
+            },
+          },
+          {
+            heading: "Maxime, culpa totam quia nostrum repudiandae",
+            bodyNode: (
+              <>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime,
+                culpa totam quia nostrum repudiandae, dolorum aperiam
+                perspiciatis dolorem id at, harum laboriosam ipsum quisquam vero
+                odit ullam. Aut, non inventore.
+              </>
+            ),
+            link: {
+              href: "",
+              label: "View More",
+            },
+          },
+        ]}
       />
     </main>
   );
