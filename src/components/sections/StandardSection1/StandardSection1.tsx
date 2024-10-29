@@ -1,7 +1,10 @@
 import { ReactNode } from "react";
-import { ContainedImage } from "../ContainedImage.tsx/ContainedImage";
-import styles from "@/styles/StandardSection1.module.css";
-import { LinkAsButton, LinkAsButtonProps } from "../LinkAsButton/LinkAsButton";
+import { ContainedImage } from "../../global/ContainedImage/ContainedImage";
+import styles from "@/styles/sections/StandardSection1.module.css";
+import {
+  LinkAsButton,
+  LinkAsButtonProps,
+} from "../../global/LinkAsButton/LinkAsButton";
 
 type Props = {
   heading: string;

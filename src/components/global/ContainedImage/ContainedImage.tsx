@@ -1,4 +1,4 @@
-import styles from "@/styles/ContainedImage.module.css";
+import styles from "@/styles/global/ContainedImage.module.css";
 import { CSSProperties, ReactNode } from "react";
 
 type Props = React.ImgHTMLAttributes<HTMLImageElement> & {

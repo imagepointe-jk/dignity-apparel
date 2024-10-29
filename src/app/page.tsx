@@ -3,7 +3,7 @@ import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import { VideoSection } from "@/components/VideoSection/VideoSection";
+import { VideoSection } from "@/components/sections/VideoSection/VideoSection";
 
 export default async function Page() {
   const client = createClient();

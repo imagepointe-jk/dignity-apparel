@@ -2,7 +2,7 @@
 import styles from "@/styles/NavBar/desktop.module.css";
 import { useEffect, useState } from "react";
 import throttle from "lodash.throttle";
-import { TopBanner } from "../TopBanner";
+import { TopBanner } from "./TopBanner";
 import { MegaMenuDesktop } from "./MegaMenuDesktop";
 import { MegaMenuMobile } from "./MegaMenuMobile";
 
@@ -25,13 +25,6 @@ export type MegaMenu = {
       href: string;
     }[];
   }[];
-};
-export type NavItem = {
-  text: string;
-  href: string;
-};
-export type CompoundNavItem = NavItem & {
-  subItems?: { text: string; href: string }[];
 };
 export function NavBar() {
   const [expandedIndex, setExpandedIndex] = useState(null as number | null);

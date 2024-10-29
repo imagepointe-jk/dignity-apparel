@@ -1,4 +1,4 @@
-import styles from "@/styles/VideoSection.module.css";
+import styles from "@/styles/sections/VideoSection.module.css";
 
 type Props = {
   src: string;

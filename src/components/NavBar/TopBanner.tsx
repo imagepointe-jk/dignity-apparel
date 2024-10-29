@@ -1,4 +1,4 @@
-import styles from "@/styles/TopBanner.module.css";
+import styles from "@/styles/NavBar/TopBanner.module.css";
 
 type Props = {
   text: string;

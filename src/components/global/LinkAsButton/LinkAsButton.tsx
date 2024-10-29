@@ -1,4 +1,4 @@
-import styles from "@/styles/LinkAsButton.module.css";
+import styles from "@/styles/global/LinkAsButton.module.css";
 
 export type LinkAsButtonProps = {
   href: string;
