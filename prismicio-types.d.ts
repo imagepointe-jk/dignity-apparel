@@ -70,28 +70,227 @@ export type HomePageDocument<Lang extends string = string> =
   >;
 
 /**
+ * Content for Mega Menu Featured Image documents
+ */
+interface MegaMenuFeaturedImageDocumentData {
+  /**
+   * Image field in *Mega Menu Featured Image*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: mega_menu_featured_image.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Caption field in *Mega Menu Featured Image*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: mega_menu_featured_image.caption
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  caption: prismic.KeyTextField;
+
+  /**
+   * Link field in *Mega Menu Featured Image*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: mega_menu_featured_image.link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Mega Menu Featured Image document from Prismic
+ *
+ * - **API ID**: `mega_menu_featured_image`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type MegaMenuFeaturedImageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<MegaMenuFeaturedImageDocumentData>,
+    "mega_menu_featured_image",
+    Lang
+  >;
+
+/**
+ * Item in *Mega Menu Item → Sections*
+ */
+export interface MegaMenuItemDocumentDataSectionsItem {
+  /**
+   * Section field in *Mega Menu Item → Sections*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: mega_menu_item.sections[].section
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  section: prismic.ContentRelationshipField<"mega_menu_section">;
+}
+
+/**
+ * Item in *Mega Menu Item → Featured Images*
+ */
+export interface MegaMenuItemDocumentDataFeaturedImagesItem {
+  /**
+   * Featured Image field in *Mega Menu Item → Featured Images*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: mega_menu_item.featured_images[].featured_image
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  featured_image: prismic.ContentRelationshipField<"mega_menu_featured_image">;
+}
+
+/**
+ * Content for Mega Menu Item documents
+ */
+interface MegaMenuItemDocumentData {
+  /**
+   * Label field in *Mega Menu Item*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: mega_menu_item.label
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+
+  /**
+   * URL field in *Mega Menu Item*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: mega_menu_item.url
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  url: prismic.KeyTextField;
+
+  /**
+   * Sections field in *Mega Menu Item*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: mega_menu_item.sections[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  sections: prismic.GroupField<Simplify<MegaMenuItemDocumentDataSectionsItem>>;
+
+  /**
+   * Featured Images field in *Mega Menu Item*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: mega_menu_item.featured_images[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  featured_images: prismic.GroupField<
+    Simplify<MegaMenuItemDocumentDataFeaturedImagesItem>
+  >;
+}
+
+/**
+ * Mega Menu Item document from Prismic
+ *
+ * - **API ID**: `mega_menu_item`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type MegaMenuItemDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<MegaMenuItemDocumentData>,
+    "mega_menu_item",
+    Lang
+  >;
+
+/**
+ * Item in *Mega Menu Section → Links*
+ */
+export interface MegaMenuSectionDocumentDataLinksItem {
+  /**
+   * Link field in *Mega Menu Section → Links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: mega_menu_section.links[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Content for Mega Menu Section documents
+ */
+interface MegaMenuSectionDocumentData {
+  /**
+   * Title field in *Mega Menu Section*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: mega_menu_section.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Links field in *Mega Menu Section*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: mega_menu_section.links[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  links: prismic.GroupField<Simplify<MegaMenuSectionDocumentDataLinksItem>>;
+}
+
+/**
+ * Mega Menu Section document from Prismic
+ *
+ * - **API ID**: `mega_menu_section`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type MegaMenuSectionDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<MegaMenuSectionDocumentData>,
+    "mega_menu_section",
+    Lang
+  >;
+
+/**
  * Item in *Settings → Navigation*
  */
 export interface SettingsDocumentDataNavigationItem {
   /**
-   * Link field in *Settings → Navigation*
+   * Mega Menu Item field in *Settings → Navigation*
    *
-   * - **Field Type**: Link
+   * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
-   * - **API ID Path**: settings.navigation[].link
+   * - **API ID Path**: settings.navigation[].mega_menu_item
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  link: prismic.LinkField;
-
-  /**
-   * Label field in *Settings → Navigation*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: settings.navigation[].label
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  label: prismic.KeyTextField;
+  mega_menu_item: prismic.ContentRelationshipField<"mega_menu_item">;
 }
 
 /**
@@ -159,7 +358,12 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = HomePageDocument | SettingsDocument;
+export type AllDocumentTypes =
+  | HomePageDocument
+  | MegaMenuFeaturedImageDocument
+  | MegaMenuItemDocument
+  | MegaMenuSectionDocument
+  | SettingsDocument;
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -257,6 +461,15 @@ declare module "@prismicio/client" {
       HomePageDocument,
       HomePageDocumentData,
       HomePageDocumentDataSlicesSlice,
+      MegaMenuFeaturedImageDocument,
+      MegaMenuFeaturedImageDocumentData,
+      MegaMenuItemDocument,
+      MegaMenuItemDocumentData,
+      MegaMenuItemDocumentDataSectionsItem,
+      MegaMenuItemDocumentDataFeaturedImagesItem,
+      MegaMenuSectionDocument,
+      MegaMenuSectionDocumentData,
+      MegaMenuSectionDocumentDataLinksItem,
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,

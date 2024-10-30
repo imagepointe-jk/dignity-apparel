@@ -3,87 +3,64 @@ import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import { AccordionContent } from "@/components/sections/AccordionContent/AccordionContent";
+import { inspect } from "util";
+import { getSettingsWithMegaMenu } from "@/fetch/prismic/prismic";
+import { CardsSection1 } from "@/components/sections/CardsSection1/CardsSection1";
 
 export default async function Page() {
   const client = createClient();
   const page = await client.getSingle("home_page");
+  await getSettingsWithMegaMenu();
 
   return (
     <main>
-      <AccordionContent
-        heading="Lorem Ipsum"
-        subtextNode={
-          <>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda a
-            tempora rem? Maiores nisi, esse minima sunt perferendis beatae
-            aspernatur porro rem debitis fuga fugiat delectus dolore adipisci
-            totam eveniet!
-          </>
-        }
-        items={[
+      <CardsSection1
+        cards={[
           {
-            heading: "Assumenda a tempora rem",
+            image: {
+              src: "//img1.wsimg.com/isteam/ip/666f7853-a571-4432-8fde-c4cc7fb8af77/20240530_DA_Lookbook_Mockup.jpg/:/cr=t:8.7%25,l:0%25,w:100%25,h:71.43%25/rs=w:600,h:300,cg:true",
+              alt: "",
+            },
+            heading: "View Our Exclusive Catalog",
+            button: {
+              label: "View Online Catalog",
+              href: "",
+              bgColor: "orange",
+              textColor: "white",
+            },
             bodyNode: (
               <>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime
-                laboriosam non, vero quo consectetur adipisci, fugiat deserunt
-                earum porro rem sapiente libero distinctio, reprehenderit iure
-                quas recusandae vel tenetur hic? Lorem ipsum dolor sit amet,
-                consectetur adipisicing elit. Esse temporibus et ducimus
-                architecto ullam sequi voluptatem laborum dolorem sed qui. Animi
-                est eum aut molestias doloremque nesciunt, quasi modi dolorem!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
+                architecto vero maxime, excepturi ipsam blanditiis expedita
+                placeat minus error et labore, neque saepe, dolor quo
+                dignissimos. Sed sint velit eligendi.
               </>
             ),
-            link: {
-              href: "",
-              label: "View More",
-            },
           },
           {
-            heading: "Aspernatur distinctio quae asperiores",
+            image: {
+              src: "//img1.wsimg.com/isteam/ip/666f7853-a571-4432-8fde-c4cc7fb8af77/20240530_DA_Lookbook_Mockup.jpg/:/cr=t:8.7%25,l:0%25,w:100%25,h:71.43%25/rs=w:600,h:300,cg:true",
+              alt: "",
+            },
+            heading: "Stories",
+            button: {
+              label: "View Online Catalog",
+              href: "",
+              bgColor: "orange",
+              textColor: "white",
+            },
             bodyNode: (
               <>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Aspernatur distinctio quae asperiores, blanditiis expedita ipsum
-                pariatur numquam consequuntur nisi quis dolorum, totam ratione!
-                Facere, quidem nesciunt alias hic odit vitae.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
+                architecto vero maxime, excepturi ipsam blanditiis expedita
+                placeat minus error et labore, neque saepe, dolor quo
+                dignissimos. Sed sint velit eligendi. Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Dignissimos quo quia numquam nobis
+                corporis maiores, minima quisquam odio quas eos ducimus?
+                Praesentium, illo? Vero ab accusamus dolorem, doloremque veniam
+                suscipit.
               </>
             ),
-            link: {
-              href: "",
-              label: "View More",
-            },
-          },
-          {
-            heading: "Sequi magni odio numquam nemo",
-            bodyNode: (
-              <>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi
-                magni odio numquam nemo doloremque laboriosam hic illo adipisci
-                beatae ea minima consectetur recusandae mollitia molestias
-                inventore ratione, nobis voluptatem. Perferendis.
-              </>
-            ),
-            link: {
-              href: "",
-              label: "View More",
-            },
-          },
-          {
-            heading: "Maxime, culpa totam quia nostrum repudiandae",
-            bodyNode: (
-              <>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime,
-                culpa totam quia nostrum repudiandae, dolorum aperiam
-                perspiciatis dolorem id at, harum laboriosam ipsum quisquam vero
-                odit ullam. Aut, non inventore.
-              </>
-            ),
-            link: {
-              href: "",
-              label: "View More",
-            },
           },
         ]}
       />

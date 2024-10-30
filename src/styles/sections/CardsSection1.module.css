@@ -1,0 +1,32 @@
+.main {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  max-width: 480px;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+}
+
+.card h2 {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.card .image-container {
+  width: 100%;
+}
+
+.card a {
+  text-transform: uppercase;
+}
