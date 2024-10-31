@@ -1,3 +1,6 @@
+import { BRAND_COLOR } from "@/constants";
+import { createClient } from "@/prismicio";
+
 export function getPrismicLinkUrl(link: any) {
   if (link === undefined) return "";
 
@@ -18,4 +21,17 @@ export function getPrismicObjId(obj: any) {
     return "";
   }
   return id;
+}
+
+//pass in the content relationship object representing the relationship with the "brand_color" document
+export async function getBrandColor(relationshipObj: any) {
+  if (!relationshipObj) return BRAND_COLOR;
+
+  const id = getPrismicObjId(relationshipObj);
+  const client = createClient();
+  const response = await client.getByType("brand_color");
+  const match = response.results.find((color) => color.id === id);
+  if (!match) return "";
+
+  return `${match.data.color}`;
 }

@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "cards_section1": {
+              "type": "SharedSlice"
+            },
             "hero": {
               "type": "SharedSlice"
             }

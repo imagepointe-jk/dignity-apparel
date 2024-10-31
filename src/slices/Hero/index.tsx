@@ -1,10 +1,9 @@
-import { Content, Query } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
 import { Hero as HeroComponent } from "@/components/Hero/Hero";
-import { getPrismicLinkUrl, getPrismicObjId } from "@/utility/prismic";
-import { createClient } from "@/prismicio";
-import { Simplify } from "../../../prismicio-types";
 import { BRAND_COLOR } from "@/constants";
+import { getBrandColor, getPrismicLinkUrl } from "@/utility/prismic";
+import { Content } from "@prismicio/client";
+import { SliceComponentProps } from "@prismicio/react";
+import { Simplify } from "../../../prismicio-types";
 
 /**
  * Props for `Hero`.
@@ -16,11 +15,9 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  */
 const Hero = async ({ slice }: HeroProps): Promise<JSX.Element> => {
   const { background_image, buttons, heading, subtext } = slice.primary;
-  const client = createClient();
-  const response = await client.getByType("brand_color");
-  const buttonPrimary = convertButton(buttons[0], response);
+  const buttonPrimary = await convertButton(buttons[0]);
   const buttonSecondary = buttons[1]
-    ? convertButton(buttons[1], response)
+    ? await convertButton(buttons[1])
     : undefined;
 
   return (
@@ -37,9 +34,8 @@ const Hero = async ({ slice }: HeroProps): Promise<JSX.Element> => {
 
 export default Hero;
 
-function convertButton(
-  button: Simplify<Content.HeroSliceDefaultPrimaryButtonsItem> | undefined,
-  brandColorsResponse: Query<Content.BrandColorDocument<string>>
+async function convertButton(
+  button: Simplify<Content.HeroSliceDefaultPrimaryButtonsItem> | undefined
 ) {
   if (!button) {
     return {
@@ -49,19 +45,13 @@ function convertButton(
     };
   }
 
-  const mainColorMatch = brandColorsResponse.results.find(
-    (color) => color.id === getPrismicObjId(button.primary_color)
-  );
-  const secondaryColorMatch = brandColorsResponse.results.find(
-    (color) => color.id === getPrismicObjId(button.secondary_color)
-  );
+  const mainColor = await getBrandColor(button.primary_color);
+  const secondaryColor = await getBrandColor(button.secondary_color);
 
   return {
     href: getPrismicLinkUrl(button.link),
     label: button.link.text || "Link",
-    mainColor: mainColorMatch ? `${mainColorMatch.data.color}` : "",
-    secondaryColor: secondaryColorMatch
-      ? `${secondaryColorMatch.data.color}`
-      : "",
+    mainColor,
+    secondaryColor,
   };
 }

@@ -36,7 +36,7 @@ export type BrandColorDocument<Lang extends string = string> =
     Lang
   >;
 
-type HomePageDocumentDataSlicesSlice = HeroSlice;
+type HomePageDocumentDataSlicesSlice = CardsSection1Slice | HeroSlice;
 
 /**
  * Content for Home Page documents
@@ -399,6 +399,118 @@ export type AllDocumentTypes =
   | SettingsDocument;
 
 /**
+ * Item in *CardsSection1 → Default → Primary → Cards*
+ */
+export interface CardsSection1SliceDefaultPrimaryCardsItem {
+  /**
+   * Image field in *CardsSection1 → Default → Primary → Cards*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cards_section1.default.primary.cards[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Heading field in *CardsSection1 → Default → Primary → Cards*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cards_section1.default.primary.cards[].heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Body field in *CardsSection1 → Default → Primary → Cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cards_section1.default.primary.cards[].body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Button field in *CardsSection1 → Default → Primary → Cards*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cards_section1.default.primary.cards[].button
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button: prismic.LinkField;
+
+  /**
+   * Button Primary Color field in *CardsSection1 → Default → Primary → Cards*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cards_section1.default.primary.cards[].button_primary_color
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_primary_color: prismic.ContentRelationshipField<"brand_color">;
+
+  /**
+   * Button Secondary Color field in *CardsSection1 → Default → Primary → Cards*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cards_section1.default.primary.cards[].button_secondary_color
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_secondary_color: prismic.ContentRelationshipField<"brand_color">;
+}
+
+/**
+ * Primary content in *CardsSection1 → Default → Primary*
+ */
+export interface CardsSection1SliceDefaultPrimary {
+  /**
+   * Cards field in *CardsSection1 → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cards_section1.default.primary.cards[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  cards: prismic.GroupField<
+    Simplify<CardsSection1SliceDefaultPrimaryCardsItem>
+  >;
+}
+
+/**
+ * Default variation for CardsSection1 Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardsSection1SliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CardsSection1SliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CardsSection1*
+ */
+type CardsSection1SliceVariation = CardsSection1SliceDefault;
+
+/**
+ * CardsSection1 Shared Slice
+ *
+ * - **API ID**: `cards_section1`
+ * - **Description**: CardsSection1
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardsSection1Slice = prismic.SharedSlice<
+  "cards_section1",
+  CardsSection1SliceVariation
+>;
+
+/**
  * Item in *Hero → Default → Primary → Buttons*
  */
 export interface HeroSliceDefaultPrimaryButtonsItem {
@@ -544,6 +656,11 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
       AllDocumentTypes,
+      CardsSection1Slice,
+      CardsSection1SliceDefaultPrimaryCardsItem,
+      CardsSection1SliceDefaultPrimary,
+      CardsSection1SliceVariation,
+      CardsSection1SliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimaryButtonsItem,
       HeroSliceDefaultPrimary,
