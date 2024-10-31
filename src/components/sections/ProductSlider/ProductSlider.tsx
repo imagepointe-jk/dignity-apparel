@@ -38,6 +38,7 @@ export function ProductSlider({ products, buttons }: Props) {
             <div className={styles["swatches-container"]}>
               {product.colors.map((color) => (
                 <div
+                  key={color}
                   className={styles["swatch"]}
                   style={{ backgroundColor: color }}
                 ></div>
