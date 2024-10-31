@@ -14,9 +14,7 @@ type Props = {
   alignment: "left" | "right" | "center";
 };
 export function Hero({
-  alignment,
   bgImageUrl,
-  bgVideoUrl,
   heading,
   subtext,
   buttonPrimary,

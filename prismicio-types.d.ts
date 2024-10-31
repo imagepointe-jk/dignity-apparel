@@ -4,6 +4,38 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+/**
+ * Content for Brand Color documents
+ */
+interface BrandColorDocumentData {
+  /**
+   * Color field in *Brand Color*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: brand_color.color
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  color: prismic.ColorField;
+}
+
+/**
+ * Brand Color document from Prismic
+ *
+ * - **API ID**: `brand_color`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BrandColorDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<BrandColorDocumentData>,
+    "brand_color",
+    Lang
+  >;
+
 type HomePageDocumentDataSlicesSlice = HeroSlice;
 
 /**
@@ -359,11 +391,47 @@ export type SettingsDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
+  | BrandColorDocument
   | HomePageDocument
   | MegaMenuFeaturedImageDocument
   | MegaMenuItemDocument
   | MegaMenuSectionDocument
   | SettingsDocument;
+
+/**
+ * Item in *Hero → Default → Primary → Buttons*
+ */
+export interface HeroSliceDefaultPrimaryButtonsItem {
+  /**
+   * Link field in *Hero → Default → Primary → Buttons*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.buttons[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * Primary Color field in *Hero → Default → Primary → Buttons*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.buttons[].primary_color
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  primary_color: prismic.ContentRelationshipField<"brand_color">;
+
+  /**
+   * Secondary Color field in *Hero → Default → Primary → Buttons*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.buttons[].secondary_color
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  secondary_color: prismic.ContentRelationshipField<"brand_color">;
+}
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -372,32 +440,22 @@ export interface HeroSliceDefaultPrimary {
   /**
    * Heading field in *Hero → Default → Primary*
    *
-   * - **Field Type**: Title
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: hero.default.primary.heading
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  heading: prismic.TitleField;
+  heading: prismic.KeyTextField;
 
   /**
-   * Body field in *Hero → Default → Primary*
+   * Subtext field in *Hero → Default → Primary*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.body
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **API ID Path**: hero.default.primary.subtext
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  body: prismic.RichTextField;
-
-  /**
-   * Button Link field in *Hero → Default → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.button_link
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  button_link: prismic.LinkField;
+  subtext: prismic.KeyTextField;
 
   /**
    * Background Image field in *Hero → Default → Primary*
@@ -408,6 +466,16 @@ export interface HeroSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   background_image: prismic.ImageField<never>;
+
+  /**
+   * Buttons field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.buttons[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  buttons: prismic.GroupField<Simplify<HeroSliceDefaultPrimaryButtonsItem>>;
 }
 
 /**
@@ -458,6 +526,8 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      BrandColorDocument,
+      BrandColorDocumentData,
       HomePageDocument,
       HomePageDocumentData,
       HomePageDocumentDataSlicesSlice,
@@ -475,6 +545,7 @@ declare module "@prismicio/client" {
       SettingsDocumentDataNavigationItem,
       AllDocumentTypes,
       HeroSlice,
+      HeroSliceDefaultPrimaryButtonsItem,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
