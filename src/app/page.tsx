@@ -3,7 +3,8 @@ import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import { Hero } from "@/components/Hero/Hero";
+import { CardSlider } from "@/components/global/CardSlider/CardSlider";
+import { ProductSlider } from "@/components/sections/ProductSlider/ProductSlider";
 
 export default async function Page() {
   const client = createClient();
@@ -11,22 +12,95 @@ export default async function Page() {
 
   return (
     <main>
-      <Hero
-        alignment={"center"}
-        heading="100% USA-Made Apparel Without Exception"
-        subtext="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus iure asperiores labore aut officia dignissimos ipsam distinctio cumque perspiciatis unde provident quis accusamus amet, quisquam eaque fuga, dolore laboriosam veritatis!"
-        buttonPrimary={{
-          href: "",
-          label: "View Our Products",
+      <ProductSlider
+        products={[
+          {
+            id: 0,
+            SKU: "AS123",
+            colors: ["red", "green", "blue"],
+            img: {
+              src: "https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg",
+              alt: "",
+            },
+            name: "Some Product",
+            url: "",
+          },
+          {
+            id: 1,
+            SKU: "AS123",
+            colors: [
+              "red",
+              "green",
+              "blue",
+              "red",
+              "green",
+              "blue",
+              "red",
+              "green",
+              "blue",
+              "red",
+              "green",
+              "blue",
+              "red",
+              "green",
+              "blue",
+            ],
+            img: {
+              src: "https://cdn.guidedogs.com.au/wp-content/uploads/2024/07/GD-Homepage-Manton-Mobile.jpg",
+              alt: "",
+            },
+            name: "Some Product",
+            url: "",
+          },
+          {
+            id: 2,
+            SKU: "AS123",
+            colors: ["red", "green", "blue"],
+            img: {
+              src: "https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg",
+              alt: "",
+            },
+            name: "Some Product",
+            url: "",
+          },
+          {
+            id: 3,
+            SKU: "AS123",
+            colors: ["red", "green", "blue"],
+            img: {
+              src: "https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg",
+              alt: "",
+            },
+            name: "Some Product",
+            url: "",
+          },
+          {
+            id: 4,
+            SKU: "AS123",
+            colors: ["red", "green", "blue"],
+            img: {
+              src: "https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg",
+              alt: "",
+            },
+            name: "Some Product",
+            url: "",
+          },
+          {
+            id: 5,
+            SKU: "AS123",
+            colors: ["red", "green", "blue"],
+            img: {
+              src: "https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg",
+              alt: "",
+            },
+            name: "Some Product",
+            url: "",
+          },
+        ]}
+        buttons={{
           mainColor: "orange",
           secondaryColor: "white",
         }}
-        buttonSecondary={{
-          href: "",
-          label: "Quote Request",
-          mainColor: "orange",
-        }}
-        bgImageUrl="https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg"
       />
     </main>
   );
