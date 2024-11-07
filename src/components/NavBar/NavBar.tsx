@@ -5,28 +5,13 @@ import throttle from "lodash.throttle";
 import { TopBanner } from "./TopBanner";
 import { MegaMenuDesktop } from "./MegaMenuDesktop";
 import { MegaMenuMobile } from "./MegaMenuMobile";
+import { MegaMenu } from "@/types/schema/schema";
 
 const topOfPageThreshold = 200; //when the value of window.scrollY is less than this, we consider that to be the "top of the page"
-export type MegaMenu = {
-  items: {
-    label: string;
-    href?: string;
-    sections: {
-      title?: string;
-      links: {
-        label: string;
-        href: string;
-      }[];
-    }[];
-    featured: {
-      caption: string;
-      imageUrl: string;
-      imageAlt: string;
-      href: string;
-    }[];
-  }[];
+type Props = {
+  data: MegaMenu;
 };
-export function NavBar() {
+export function NavBar({ data }: Props) {
   const [expandedIndex, setExpandedIndex] = useState(null as number | null);
   const [mobileMenuExpanded, setMobileMenuExpanded] = useState(false);
   const [atTopOfPage, setAtTopOfPage] = useState(true);
@@ -39,120 +24,120 @@ export function NavBar() {
     setMobileMenuExpanded(!mobileMenuExpanded);
   }
 
-  const tempMega: MegaMenu = {
-    items: [
-      {
-        label: "Tops",
-        sections: [
-          {
-            title: "Shop Category",
-            links: [
-              {
-                href: "",
-                label: "Link 1",
-              },
-              {
-                href: "",
-                label: "Link 2",
-              },
-              {
-                href: "",
-                label: "Link 3",
-              },
-            ],
-          },
-          {
-            title: "Featured",
-            links: [
-              {
-                href: "",
-                label: "Link 1",
-              },
-              {
-                href: "",
-                label: "Link 2",
-              },
-              {
-                href: "",
-                label: "Link 3",
-              },
-            ],
-          },
-        ],
-        featured: [
-          {
-            caption: "Shop Hoodies",
-            href: "",
-            imageUrl:
-              "https://originusa.com/cdn/shop/files/kilo3_511e5237-5e8f-4e3d-9ffe-380fe54631b4_500x.webp?v=1727274561",
-            imageAlt: "",
-          },
-          {
-            caption: "Shop T-shirts",
-            href: "",
-            imageUrl:
-              "https://originusa.com/cdn/shop/files/coretee_copy_500x.webp?v=1727801072",
-            imageAlt: "",
-          },
-        ],
-      },
-      {
-        label: "Bottoms",
-        sections: [
-          {
-            title: "Shop Category",
-            links: [
-              {
-                href: "",
-                label: "Link 1",
-              },
-              {
-                href: "",
-                label: "Link 2",
-              },
-              {
-                href: "",
-                label: "Link 3",
-              },
-            ],
-          },
-          {
-            title: "Featured",
-            links: [
-              {
-                href: "",
-                label: "Link 1",
-              },
-              {
-                href: "",
-                label: "Link 2",
-              },
-              {
-                href: "",
-                label: "Link 3",
-              },
-            ],
-          },
-        ],
-        featured: [
-          {
-            caption: "Britches",
-            href: "",
-            imageUrl:
-              "https://originusa.com/cdn/shop/files/kilo3_511e5237-5e8f-4e3d-9ffe-380fe54631b4_500x.webp?v=1727274561",
-            imageAlt: "",
-          },
-          {
-            caption: "Pants",
-            href: "",
-            imageUrl:
-              "https://originusa.com/cdn/shop/files/coretee_copy_500x.webp?v=1727801072",
-            imageAlt: "",
-          },
-        ],
-      },
-    ],
-  };
+  // const tempMega: MegaMenu = {
+  //   items: [
+  //     {
+  //       label: "Tops",
+  //       sections: [
+  //         {
+  //           title: "Shop Category",
+  //           links: [
+  //             {
+  //               href: "",
+  //               label: "Link 1",
+  //             },
+  //             {
+  //               href: "",
+  //               label: "Link 2",
+  //             },
+  //             {
+  //               href: "",
+  //               label: "Link 3",
+  //             },
+  //           ],
+  //         },
+  //         {
+  //           title: "Featured",
+  //           links: [
+  //             {
+  //               href: "",
+  //               label: "Link 1",
+  //             },
+  //             {
+  //               href: "",
+  //               label: "Link 2",
+  //             },
+  //             {
+  //               href: "",
+  //               label: "Link 3",
+  //             },
+  //           ],
+  //         },
+  //       ],
+  //       featured: [
+  //         {
+  //           caption: "Shop Hoodies",
+  //           href: "",
+  //           imageUrl:
+  //             "https://originusa.com/cdn/shop/files/kilo3_511e5237-5e8f-4e3d-9ffe-380fe54631b4_500x.webp?v=1727274561",
+  //           imageAlt: "",
+  //         },
+  //         {
+  //           caption: "Shop T-shirts",
+  //           href: "",
+  //           imageUrl:
+  //             "https://originusa.com/cdn/shop/files/coretee_copy_500x.webp?v=1727801072",
+  //           imageAlt: "",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       label: "Bottoms",
+  //       sections: [
+  //         {
+  //           title: "Shop Category",
+  //           links: [
+  //             {
+  //               href: "",
+  //               label: "Link 1",
+  //             },
+  //             {
+  //               href: "",
+  //               label: "Link 2",
+  //             },
+  //             {
+  //               href: "",
+  //               label: "Link 3",
+  //             },
+  //           ],
+  //         },
+  //         {
+  //           title: "Featured",
+  //           links: [
+  //             {
+  //               href: "",
+  //               label: "Link 1",
+  //             },
+  //             {
+  //               href: "",
+  //               label: "Link 2",
+  //             },
+  //             {
+  //               href: "",
+  //               label: "Link 3",
+  //             },
+  //           ],
+  //         },
+  //       ],
+  //       featured: [
+  //         {
+  //           caption: "Britches",
+  //           href: "",
+  //           imageUrl:
+  //             "https://originusa.com/cdn/shop/files/kilo3_511e5237-5e8f-4e3d-9ffe-380fe54631b4_500x.webp?v=1727274561",
+  //           imageAlt: "",
+  //         },
+  //         {
+  //           caption: "Pants",
+  //           href: "",
+  //           imageUrl:
+  //             "https://originusa.com/cdn/shop/files/coretee_copy_500x.webp?v=1727801072",
+  //           imageAlt: "",
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // };
 
   useEffect(() => {
     const handleScroll = throttle(() => {
@@ -181,7 +166,7 @@ export function NavBar() {
         }`}
       >
         <MegaMenuDesktop
-          data={tempMega}
+          data={data}
           expandedIndex={expandedIndex}
           onFocusTopLevel={onFocusTopLevel}
           setExpandedIndex={setExpandedIndex}
@@ -194,7 +179,7 @@ export function NavBar() {
         </button>
       </nav>
       <MegaMenuMobile
-        data={tempMega}
+        data={data}
         menuExpanded={mobileMenuExpanded}
         expandedIndex={expandedIndex}
         setExpandedIndex={setExpandedIndex}

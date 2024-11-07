@@ -1,6 +1,6 @@
 import styles from "@/styles/NavBar/desktop.module.css";
-import { MegaMenu } from "./NavBar";
 import { FeaturedCard } from "./FeaturedCard";
+import { MegaMenu } from "@/types/schema/schema";
 
 type Props = {
   data: MegaMenu;
