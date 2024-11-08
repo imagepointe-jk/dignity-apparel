@@ -5,7 +5,7 @@ import throttle from "lodash.throttle";
 import { TopBanner } from "./TopBanner";
 import { MegaMenuDesktop } from "./MegaMenuDesktop";
 import { MegaMenuMobile } from "./MegaMenuMobile";
-import { MegaMenu } from "@/types/schema/schema";
+import { MegaMenu } from "@/types/schema/navbar";
 
 const topOfPageThreshold = 200; //when the value of window.scrollY is less than this, we consider that to be the "top of the page"
 type Props = {

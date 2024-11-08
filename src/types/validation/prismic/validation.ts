@@ -1,4 +1,4 @@
-import { megaMenuSchema } from "@/types/schema/schema";
+import { megaMenuSchema } from "@/types/schema/navbar";
 
 export function validateMegaMenuResponse(response: any) {
   return megaMenuSchema.parse({
