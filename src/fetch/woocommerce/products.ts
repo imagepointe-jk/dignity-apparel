@@ -128,8 +128,6 @@ export async function getProducts() {
   }
 `;
 
-  // const variables = { id: productId };
-
   return fetch("https://dawholesale.unionwebstores.com/graphql", {
     method: "POST",
     headers: {
@@ -138,18 +136,8 @@ export async function getProducts() {
     },
     body: JSON.stringify({
       query,
-      // variables,
     }),
   });
-
-  // const result = await response.json();
-
-  // if (result.errors) {
-  //   console.error("GraphQL errors:", result.errors);
-  //   return null;
-  // }
-
-  // return result.data;
 }
 
 export async function searchProducts(search: string) {
