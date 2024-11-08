@@ -390,13 +390,79 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
+type StandardPageDocumentDataSlicesSlice = CardsSection1Slice | HeroSlice;
+
+/**
+ * Content for Standard Page documents
+ */
+interface StandardPageDocumentData {
+  /**
+   * Slice Zone field in *Standard Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: standard_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<StandardPageDocumentDataSlicesSlice> /**
+   * Meta Title field in *Standard Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: standard_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Standard Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: standard_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Standard Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: standard_page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Standard Page document from Prismic
+ *
+ * - **API ID**: `standard_page`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type StandardPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<StandardPageDocumentData>,
+    "standard_page",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | BrandColorDocument
   | HomePageDocument
   | MegaMenuFeaturedImageDocument
   | MegaMenuItemDocument
   | MegaMenuSectionDocument
-  | SettingsDocument;
+  | SettingsDocument
+  | StandardPageDocument;
 
 /**
  * Item in *CardsSection1 → Default → Primary → Cards*
@@ -655,6 +721,9 @@ declare module "@prismicio/client" {
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
+      StandardPageDocument,
+      StandardPageDocumentData,
+      StandardPageDocumentDataSlicesSlice,
       AllDocumentTypes,
       CardsSection1Slice,
       CardsSection1SliceDefaultPrimaryCardsItem,
