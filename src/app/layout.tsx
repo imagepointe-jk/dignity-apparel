@@ -4,9 +4,12 @@ import "./globals.css";
 import { NavBar } from "@/components/NavBar/NavBar";
 import { createClient } from "@/prismicio";
 import { NavBarPrismic } from "@/components/NavBar/NavBarPrismic";
-import { getProducts } from "@/fetch/woocommerce/products";
+import { getProductBySku, getProducts } from "@/fetch/woocommerce/products";
 import { inspect } from "util";
-import { validateWooCommerceProductsResponse } from "@/types/validation/woocommerce/woocommerce";
+import {
+  validateWooCommerceProductsResponse,
+  validateWooCommerceSingleProductResponse,
+} from "@/types/validation/woocommerce/woocommerce";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,9 +31,9 @@ export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
 
   const page = await client.getSingle("settings");
-  const test = await getProducts();
+  const test = await getProductBySku("DASST001");
   const json = await test.json();
-  const parsed = validateWooCommerceProductsResponse(json);
+  const parsed = validateWooCommerceSingleProductResponse(json.data.product);
   console.log(inspect(parsed, false, null));
   console.log("success");
 

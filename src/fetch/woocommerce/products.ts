@@ -18,6 +18,52 @@ export async function searchProductBySku(sku: string) {
   );
 }
 
+export async function getProductBySku(sku: string) {
+  const query = `
+  query GetProductBySku($sku: ID!) {
+    product(id: $sku, idType: SKU) {
+      id
+      databaseId
+      name
+      sku
+      image {
+        sourceUrl
+      }
+      ...on VariableProduct {
+        variations {
+          nodes {
+            id
+            databaseId
+            name
+            image {
+              sourceUrl
+            }
+            attributes {
+              nodes {
+                name
+                value
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+  return fetch("https://dawholesale.unionwebstores.com/graphql", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Basic ${btoa(`${env.WORDPRESS_APPLICATION_USERNAME}:${env.WORDPRESS_APPLICATION_PASSWORD}`)}`,
+    },
+    body: JSON.stringify({
+      query,
+      variables: { sku },
+    }),
+  });
+}
+
 export async function getProducts() {
   const query = `
   query GetProducts {
