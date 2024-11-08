@@ -1,0 +1,12 @@
+.main {
+  border: 0;
+}
+
+.x {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
