@@ -28,7 +28,10 @@ export function MegaMenuDesktop({
           <a
             href=""
             onClick={(e) => {
-              if (!item.href) {
+              if (
+                !item.href ||
+                (e.target as HTMLAnchorElement).href === window.location.href
+              ) {
                 e.preventDefault();
               }
               setExpandedIndex(i === expandedIndex ? null : i);
