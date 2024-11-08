@@ -1,4 +1,5 @@
 import { env } from "@/env";
+import { queryWpGraphQl } from "./wpgraphql";
 
 export async function getProductBySku(sku: string) {
   const query = `
@@ -80,17 +81,19 @@ export async function getProductBySlug(slug: string) {
   }
 `;
 
-  return fetch("https://dawholesale.unionwebstores.com/graphql", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Basic ${btoa(`${env.WORDPRESS_APPLICATION_USERNAME}:${env.WORDPRESS_APPLICATION_PASSWORD}`)}`,
-    },
-    body: JSON.stringify({
-      query,
-      variables: { slug },
-    }),
-  });
+  return queryWpGraphQl(() =>
+    fetch("https://dawholesale.unionwebstores.com/graphql", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Basic ${btoa(`${env.WORDPRESS_APPLICATION_USERNAME}:${env.WORDPRESS_APPLICATION_PASSWORD}`)}`,
+      },
+      body: JSON.stringify({
+        query,
+        variables: { slug },
+      }),
+    })
+  );
 }
 
 export async function getProducts() {
