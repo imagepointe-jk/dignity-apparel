@@ -1,23 +1,5 @@
 import { env } from "@/env";
 
-export async function searchProductBySku(sku: string) {
-  const headers = new Headers();
-  headers.append(
-    "Authorization",
-    `Basic ${btoa(`${env.WOOCOMMERCE_API_KEY}:${env.WOOCOMMERCE_API_SECRET}`)}`
-  );
-
-  const requestOptions = {
-    method: "GET",
-    headers: headers,
-  };
-
-  return await fetch(
-    `${env.WOOCOMMERCE_STORE_URL}/wp-json/wc/v3/products?search=${sku}`,
-    requestOptions
-  );
-}
-
 export async function getProductBySku(sku: string) {
   const query = `
   query GetProductBySku($sku: ID!) {
@@ -168,4 +150,52 @@ export async function getProducts() {
   // }
 
   // return result.data;
+}
+
+export async function searchProducts(search: string) {
+  const query = `
+  query SearchProducts($searchTerm: String!) {
+    products(where: { search: $searchTerm }) {
+      nodes {
+        id
+        databaseId
+        name
+        sku
+        image {
+          sourceUrl
+        }
+        ...on VariableProduct {
+          variations {
+            nodes {
+              id
+              databaseId
+              name
+              image {
+                sourceUrl
+              }
+              attributes {
+                nodes {
+                  name
+                  value
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+  return fetch("https://dawholesale.unionwebstores.com/graphql", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Basic ${btoa(`${env.WORDPRESS_APPLICATION_USERNAME}:${env.WORDPRESS_APPLICATION_PASSWORD}`)}`,
+    },
+    body: JSON.stringify({
+      query,
+      variables: { searchTerm: search },
+    }),
+  });
 }

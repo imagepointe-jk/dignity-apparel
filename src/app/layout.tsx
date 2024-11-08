@@ -8,6 +8,7 @@ import {
   getProductBySku,
   getProductBySlug,
   getProducts,
+  searchProducts,
 } from "@/fetch/woocommerce/products";
 import { inspect } from "util";
 import {
@@ -35,9 +36,9 @@ export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
 
   const page = await client.getSingle("settings");
-  const test = await getProductBySlug("dignity-everyday-tee");
+  const test = await searchProducts("dignity tee");
   const json = await test.json();
-  const parsed = validateWooCommerceSingleProductResponse(json.data.product);
+  const parsed = validateWooCommerceProductsResponse(json);
   console.log(inspect(parsed, false, null));
   console.log("success");
 
