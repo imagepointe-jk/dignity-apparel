@@ -4,7 +4,11 @@ import "./globals.css";
 import { NavBar } from "@/components/NavBar/NavBar";
 import { createClient } from "@/prismicio";
 import { NavBarPrismic } from "@/components/NavBar/NavBarPrismic";
-import { getProductBySku, getProducts } from "@/fetch/woocommerce/products";
+import {
+  getProductBySku,
+  getProductBySlug,
+  getProducts,
+} from "@/fetch/woocommerce/products";
 import { inspect } from "util";
 import {
   validateWooCommerceProductsResponse,
@@ -31,7 +35,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
 
   const page = await client.getSingle("settings");
-  const test = await getProductBySku("DASST001");
+  const test = await getProductBySlug("dignity-everyday-tee");
   const json = await test.json();
   const parsed = validateWooCommerceSingleProductResponse(json.data.product);
   console.log(inspect(parsed, false, null));
