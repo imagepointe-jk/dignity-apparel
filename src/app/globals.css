@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: var(--font-metropolis-regular);
 }
 
 body {
@@ -9,4 +10,8 @@ body {
 
 main {
   font-size: 1.25rem;
+}
+
+h1 {
+  font-family: var(--font-metropolis-extrabold);
 }

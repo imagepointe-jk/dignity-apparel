@@ -4,15 +4,21 @@ import "./globals.css";
 import { createClient } from "@/prismicio";
 import { NavBarPrismic } from "@/components/NavBar/NavBarPrismic";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const metropolisRegular = localFont({
+  src: "./fonts/Metropolis-Regular.woff",
+  variable: "--font-metropolis-regular",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const metropolisItalic = localFont({
+  src: "./fonts/Metropolis-RegularItalic.woff",
+  variable: "--font-metropolis-italic",
+});
+const metropolisSemiBold = localFont({
+  src: "./fonts/Metropolis-SemiBold.woff",
+  variable: "--font-metropolis-semibold",
+});
+const metropolisExtraBold = localFont({
+  src: "./fonts/Metropolis-ExtraBold.woff",
+  variable: "--font-metropolis-extrabold",
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -36,7 +42,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body
+        className={`${metropolisRegular.variable} ${metropolisItalic.variable} ${metropolisSemiBold.variable} ${metropolisExtraBold.variable}`}
+      >
         <NavBarPrismic />
         {children}
       </body>

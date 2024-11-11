@@ -205,7 +205,11 @@
 .mega-menu-dropdown-section ul {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
+}
+
+.mega-menu-dropdown-section a:hover {
+  text-decoration: underline;
 }
 
 .mega-menu-dropdown-section-title {
@@ -254,10 +258,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgb(0, 0, 0);
-  padding: 10px;
+  background-color: #131313;
+  padding: 13px;
   color: white;
   text-transform: uppercase;
+  font-size: 0.9rem;
 }
 
 .mega-menu-dropdown-featured-caption .mega-menu-dropdown-featured-arrow {
@@ -271,6 +276,10 @@
   cursor: pointer;
   background: none;
   border: none;
+}
+
+.button:hover {
+  opacity: 40%;
 }
 
 .search-dialog {
