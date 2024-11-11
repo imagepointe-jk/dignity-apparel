@@ -52,47 +52,61 @@ export function MegaMenuDesktop({
             >
               {/* The link sections */}
 
-              {item.sections.map((section, j) => (
-                <li key={section.title || `${j}`}>
-                  <ul>
-                    {section.title && (
-                      <li
-                        className={styles["mega-menu-dropdown-section-title"]}
-                        tabIndex={i === expandedIndex ? 0 : -1}
-                      >
-                        {section.title}
-                      </li>
-                    )}
-                    <li>
-                      <ul>
-                        {section.links.map((link) => (
-                          <li key={link.label}>
-                            <a
-                              href={link.href}
-                              tabIndex={i === expandedIndex ? 0 : -1}
-                            >
-                              {link.label}
-                            </a>
+              <li className={styles["mega-menu-dropdown-sections-container"]}>
+                <ul>
+                  {item.sections.map((section, j) => (
+                    <li key={section.title || `${j}`}>
+                      <ul className={styles["mega-menu-dropdown-section"]}>
+                        {section.title && (
+                          <li
+                            className={
+                              styles["mega-menu-dropdown-section-title"]
+                            }
+                            tabIndex={i === expandedIndex ? 0 : -1}
+                          >
+                            {section.title}
                           </li>
-                        ))}
+                        )}
+                        <li>
+                          <ul>
+                            {section.links.map((link) => (
+                              <li key={link.label}>
+                                <a
+                                  href={link.href}
+                                  tabIndex={i === expandedIndex ? 0 : -1}
+                                >
+                                  {link.label}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        </li>
                       </ul>
                     </li>
-                  </ul>
-                </li>
-              ))}
+                  ))}
+                </ul>
+              </li>
 
               {/* Featured images wrapped with links */}
 
-              {item.featured.map((featured) => (
-                <li key={featured.caption}>
-                  <FeaturedCard
-                    data={{
-                      ...featured,
-                      tabIndex: i === expandedIndex ? 0 : -1,
-                    }}
-                  />
-                </li>
-              ))}
+              <li>
+                <ul
+                  className={
+                    styles["mega-menu-dropdown-featured-items-container"]
+                  }
+                >
+                  {item.featured.map((featured, i) => (
+                    <li key={featured.caption}>
+                      <FeaturedCard
+                        data={{
+                          ...featured,
+                          tabIndex: i === expandedIndex ? 0 : -1,
+                        }}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </li>
             </ul>
           )}
         </li>

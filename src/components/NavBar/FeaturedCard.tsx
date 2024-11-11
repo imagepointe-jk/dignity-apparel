@@ -18,9 +18,13 @@ export function FeaturedCard({
       className={styles["mega-menu-dropdown-featured-container"]}
       tabIndex={tabIndex}
     >
-      <img src={imageUrl} alt={imageAlt} style={{ height: "300px" }} />
+      <img src={imageUrl} alt={imageAlt} />
       <div className={styles["mega-menu-dropdown-featured-caption"]}>
         {caption}
+        <img
+          src="/da-tri.png"
+          className={styles["mega-menu-dropdown-featured-arrow"]}
+        />
       </div>
     </a>
   );

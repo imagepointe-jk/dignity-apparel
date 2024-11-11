@@ -18,7 +18,7 @@
 }
 
 .da-logo-main {
-  height: 50px;
+  height: 47px;
   transition: 0.2s;
 }
 
@@ -172,26 +172,46 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 0;
   translate: 0 100%;
-  background-color: black;
-  color: white;
+  background-color: #d9d9d9;
   display: flex;
-  padding: 50px;
-  justify-content: center;
+  padding: 0 20px;
+  border-top: 1px solid #a5a5a5;
+  justify-content: space-between;
   gap: 20px;
   pointer-events: none;
   opacity: 0;
   transition: 0.2s;
+  height: 325px;
 }
 
 .mega-menu-dropdown a {
   text-decoration: none;
-  color: white;
+}
+
+.mega-menu-dropdown a:visited {
+  color: black;
+}
+
+.mega-menu-dropdown-sections-container {
+  padding: 30px 0;
+}
+
+.mega-menu-dropdown-sections-container > ul {
+  display: flex;
+  gap: 60px;
+}
+
+.mega-menu-dropdown-section,
+.mega-menu-dropdown-section ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .mega-menu-dropdown-section-title {
   font-weight: bold;
+  font-size: 1.125rem;
 }
 
 .mega-menu-dropdown ul {
@@ -203,9 +223,21 @@
   opacity: 1;
 }
 
+.mega-menu-dropdown-featured-items-container {
+  display: flex;
+  gap: 10px;
+  height: 100%;
+}
+
 .mega-menu-dropdown-featured-container {
   position: relative;
   text-align: left;
+  display: block;
+  height: 100%;
+}
+
+.mega-menu-dropdown-featured-container img {
+  height: 100%;
 }
 
 .mega-menu-dropdown-featured-caption {
@@ -213,8 +245,17 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgb(0, 0, 0);
   padding: 10px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.mega-menu-dropdown-featured-caption .mega-menu-dropdown-featured-arrow {
+  height: 6px;
+  filter: invert();
+  rotate: 90deg;
+  translate: 5px -2px;
 }
 
 .button {
