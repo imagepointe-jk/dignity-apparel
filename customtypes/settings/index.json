@@ -28,6 +28,22 @@
           "thumbnails": []
         }
       },
+      "logo_main_image": {
+        "type": "Image",
+        "config": {
+          "label": "Logo Main Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "logo_text_image": {
+        "type": "Image",
+        "config": {
+          "label": "Logo Text Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "navigation": {
         "type": "Group",
         "config": {

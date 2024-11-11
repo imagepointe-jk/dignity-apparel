@@ -10,6 +10,22 @@
   z-index: 100;
 }
 
+.da-home-link {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding-left: 15px;
+}
+
+.da-logo-main {
+  height: 50px;
+  transition: 0.2s;
+}
+
+.da-logo-text {
+  height: 35px;
+}
+
 .main {
   background-color: white;
   z-index: 100;
@@ -17,13 +33,18 @@
   -moz-box-shadow: 0px 6px 8px 0px rgba(0, 0, 0, 0.05);
   box-shadow: 0px 6px 8px 0px rgba(0, 0, 0, 0.05);
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   position: relative;
   pointer-events: initial;
 }
 
 .main ul {
   list-style-type: none;
+}
+
+.buttons-container-right {
+  display: flex;
 }
 
 .nav-items {
@@ -117,6 +138,14 @@
 .main.compressed .hamburger-button {
   padding: 15px;
   font-size: 26px;
+}
+
+.main.compressed .da-logo-text {
+  display: none;
+}
+
+.main.compressed .da-logo-main {
+  height: 30px;
 }
 
 .mega-menu-dropdown {

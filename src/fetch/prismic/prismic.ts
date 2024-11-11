@@ -6,6 +6,8 @@ export async function getMegaMenu() {
     graphQuery: `
       {
         settings {
+          logo_main_image
+          logo_text_image
           navigation {
             mega_menu_item {
               ...on mega_menu_item {

@@ -12,9 +12,13 @@ import { QuickSearch } from "../QuickSearch/QuickSearch";
 
 const topOfPageThreshold = 200; //when the value of window.scrollY is less than this, we consider that to be the "top of the page"
 type Props = {
-  data: MegaMenu;
+  megaMenu: MegaMenu;
+  logoImgUrls: {
+    logo: string;
+    text: string;
+  };
 };
-export function NavBar({ data }: Props) {
+export function NavBar({ megaMenu, logoImgUrls: { logo, text } }: Props) {
   const [expandedIndex, setExpandedIndex] = useState(null as number | null);
   const [mobileMenuExpanded, setMobileMenuExpanded] = useState(false);
   const [atTopOfPage, setAtTopOfPage] = useState(true);
@@ -64,24 +68,34 @@ export function NavBar({ data }: Props) {
             !atTopOfPage ? styles["compressed"] : ""
           }`}
         >
-          <MegaMenuDesktop
-            data={data}
-            expandedIndex={expandedIndex}
-            onFocusTopLevel={onFocusTopLevel}
-            setExpandedIndex={setExpandedIndex}
-          />
-          <button
-            className={styles["hamburger-button"]}
-            onClick={onClickHamburger}
-          >
-            ☰
-          </button>
-          <button className={styles["button"]} onClick={toggleDialog}>
-            <MagnifyingGlass />
-          </button>
+          <a href={window.location.origin} className={styles["da-home-link"]}>
+            <img
+              src={logo}
+              alt="Dignity Apparel Home"
+              className={styles["da-logo-main"]}
+            />
+            <img src={text} className={styles["da-logo-text"]} />
+          </a>
+          <div className={styles["buttons-container-right"]}>
+            <MegaMenuDesktop
+              data={megaMenu}
+              expandedIndex={expandedIndex}
+              onFocusTopLevel={onFocusTopLevel}
+              setExpandedIndex={setExpandedIndex}
+            />
+            <button
+              className={styles["hamburger-button"]}
+              onClick={onClickHamburger}
+            >
+              ☰
+            </button>
+            <button className={styles["button"]} onClick={toggleDialog}>
+              <MagnifyingGlass />
+            </button>
+          </div>
         </nav>
         <MegaMenuMobile
-          data={data}
+          data={megaMenu}
           menuExpanded={mobileMenuExpanded}
           expandedIndex={expandedIndex}
           setExpandedIndex={setExpandedIndex}
