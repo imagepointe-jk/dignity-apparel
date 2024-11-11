@@ -39,6 +39,9 @@ export function MegaMenuDesktop({
             onFocus={() => onFocusTopLevel(i)}
           >
             {item.label}
+            <div
+              className={`${styles["nav-item-underline"]} ${expandedIndex === i ? styles["expanded"] : ""}`}
+            ></div>
           </a>
 
           {/* Dropdown with sections, if any */}
