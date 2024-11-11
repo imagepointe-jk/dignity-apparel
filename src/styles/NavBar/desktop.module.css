@@ -182,7 +182,6 @@
   pointer-events: none;
   opacity: 0;
   transition: 0.2s;
-  height: 325px;
 }
 
 .mega-menu-dropdown a {
@@ -226,18 +225,28 @@
 .mega-menu-dropdown-featured-items-container {
   display: flex;
   gap: 10px;
-  height: 100%;
 }
 
 .mega-menu-dropdown-featured-container {
   position: relative;
   text-align: left;
   display: block;
-  height: 100%;
+  height: 325px;
+  overflow: hidden;
+}
+
+.mega-menu-dropdown-featured-container:hover
+  .mega-menu-dropdown-featured-caption {
+  text-decoration: underline;
 }
 
 .mega-menu-dropdown-featured-container img {
   height: 100%;
+  transition: 0.2s;
+}
+
+.mega-menu-dropdown-featured-container:hover img {
+  scale: 105%;
 }
 
 .mega-menu-dropdown-featured-caption {
