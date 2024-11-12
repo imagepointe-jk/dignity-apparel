@@ -14,11 +14,15 @@ const metropolisItalic = localFont({
 });
 const metropolisSemiBold = localFont({
   src: "./fonts/Metropolis-SemiBold.woff",
-  variable: "--font-metropolis-semibold",
+  variable: "--font-metropolis-semi-bold",
 });
 const metropolisExtraBold = localFont({
   src: "./fonts/Metropolis-ExtraBold.woff",
-  variable: "--font-metropolis-extrabold",
+  variable: "--font-metropolis-extra-bold",
+});
+const metropolisExtraBoldItalic = localFont({
+  src: "./fonts/Metropolis-ExtraBold.woff",
+  variable: "--font-metropolis-extra-bold-italic",
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -40,11 +44,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const fontClassNames = [
+    metropolisRegular.variable,
+    metropolisItalic.variable,
+    metropolisSemiBold.variable,
+    metropolisExtraBold.variable,
+    metropolisExtraBoldItalic.variable,
+  ].join(" ");
+
   return (
     <html lang="en">
-      <body
-        className={`${metropolisRegular.variable} ${metropolisItalic.variable} ${metropolisSemiBold.variable} ${metropolisExtraBold.variable}`}
-      >
+      <body className={fontClassNames}>
         <NavBarPrismic />
         {children}
       </body>
