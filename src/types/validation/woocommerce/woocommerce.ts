@@ -1,7 +1,7 @@
 import { productSchema } from "@/types/schema/woocommerce";
 
-export function validateWooCommerceSingleProductResponse(productJson: any) {
-  return productSchema.parse({
+function pullProductData(productJson: any) {
+  return {
     id: productJson.databaseId,
     name: productJson.name,
     sku: productJson.sku,
@@ -15,11 +15,15 @@ export function validateWooCommerceSingleProductResponse(productJson: any) {
         attributes: item.attributes.nodes,
       };
     }),
-  });
+  };
+}
+
+export function validateWooCommerceSingleProductResponse(productJson: any) {
+  return productSchema.parse(pullProductData(productJson));
 }
 
 export function validateWooCommerceProductsResponse(json: any) {
-  return (json.data.products.nodes as any[]).map((item: any) =>
-    validateWooCommerceSingleProductResponse(item)
-  );
+  return (json.data.products.nodes as any[])
+    .filter((item) => productSchema.safeParse(pullProductData(item)).success)
+    .map((item: any) => validateWooCommerceSingleProductResponse(item));
 }
