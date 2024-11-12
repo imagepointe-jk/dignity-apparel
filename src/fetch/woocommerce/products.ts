@@ -152,6 +152,7 @@ export async function searchProducts(search: string) {
         databaseId
         name
         sku
+        slug
         image {
           sourceUrl
         }

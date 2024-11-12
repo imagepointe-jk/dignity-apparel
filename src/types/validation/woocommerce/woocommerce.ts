@@ -5,6 +5,7 @@ export function validateWooCommerceSingleProductResponse(productJson: any) {
     id: productJson.databaseId,
     name: productJson.name,
     sku: productJson.sku,
+    slug: productJson.slug,
     imageUrl: productJson.image?.sourceUrl || "",
     variations: productJson.variations.nodes.map((item: any) => {
       return {
