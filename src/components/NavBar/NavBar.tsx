@@ -9,6 +9,7 @@ import { MegaMenu } from "@/types/schema/navbar";
 import { MagnifyingGlass } from "../icons/MagnifyingGlass";
 import Dialog from "../global/Dialog/Dialog";
 import { QuickSearch } from "../QuickSearch/QuickSearch";
+import { env } from "@/envClient";
 
 const topOfPageThreshold = 200; //when the value of window.scrollY is less than this, we consider that to be the "top of the page"
 type Props = {
@@ -68,7 +69,7 @@ export function NavBar({ megaMenu, logoImgUrls: { logo, text } }: Props) {
             !atTopOfPage ? styles["compressed"] : ""
           }`}
         >
-          <a href={window.location.origin} className={styles["da-home-link"]}>
+          <a href={env.NEXT_PUBLIC_BASE_URL} className={styles["da-home-link"]}>
             <img
               src={logo}
               alt="Dignity Apparel Home"
