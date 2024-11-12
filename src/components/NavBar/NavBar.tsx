@@ -1,5 +1,6 @@
 "use client";
 import styles from "@/styles/NavBar/desktop.module.css";
+import stylesSearch from "@/styles/QuickSearch/QuickSearch.module.css";
 import { useEffect, useRef, useState } from "react";
 import throttle from "lodash.throttle";
 import { TopBanner } from "./TopBanner";
@@ -105,7 +106,7 @@ export function NavBar({ megaMenu, logoImgUrls: { logo, text } }: Props) {
       <Dialog
         ref={dialogRef}
         toggleDialog={toggleDialog}
-        className={styles["search-dialog"]}
+        className={stylesSearch["dialog"]}
       >
         <QuickSearch />
       </Dialog>

@@ -282,13 +282,6 @@
   opacity: 40%;
 }
 
-.search-dialog {
-  margin-right: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 400px;
-}
-
 @media screen and (max-width: 768px) {
   .hamburger-button {
     display: block;
@@ -296,14 +289,5 @@
 
   .nav-items {
     display: none;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .search-dialog {
-    margin: 0;
-    width: 100%;
-    max-width: 100%;
-    max-height: 100%;
   }
 }

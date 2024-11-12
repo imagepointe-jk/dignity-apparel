@@ -1,0 +1,39 @@
+.main {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.image-container {
+  height: 100px;
+  width: 100px;
+}
+
+.image-container img {
+  height: 100%;
+  margin: auto;
+  display: block;
+}
+
+.swatches {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 3px;
+}
+
+.swatch {
+  display: block;
+  border: none;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  background-repeat: contain;
+  background-size: 100% 100%;
+  cursor: pointer;
+}
+
+.swatch.selected {
+  outline: 2px solid black;
+}

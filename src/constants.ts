@@ -7,3 +7,6 @@ export const easyCorsInit = {
     "Access-Control-Allow-Headers": "Content-Type, Authorization",
   },
 };
+
+export const IMAGE_NOT_FOUND_URL =
+  "https://placehold.co/300x300?text=Not+Found";

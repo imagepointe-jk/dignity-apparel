@@ -1,5 +1,5 @@
 import styles from "@/styles/QuickSearch/QuickSearch.module.css";
-import { SearchResult } from "./SearchResult";
+import { SearchResultVariableProduct } from "./SearchResultVariableProduct";
 import debounce from "lodash.debounce";
 import { useCallback, useState } from "react";
 import { searchProducts } from "@/fetch/client/products";
@@ -7,7 +7,6 @@ import { validateWooCommerceProductsResponse } from "@/types/validation/woocomme
 import { Product } from "@/types/schema/woocommerce";
 
 export function QuickSearch() {
-  // const [loading, setLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false); //whether the user has made any searches yet
   const [status, setStatus] = useState("idle" as "idle" | "loading" | "error");
   const [results, setResults] = useState([] as Product[]);
@@ -55,8 +54,11 @@ export function QuickSearch() {
         {hasSearched && (
           <>
             {status === "idle" &&
-              results.map((result, i) => (
-                <SearchResult key={i} name={result.name} />
+              results.map((product) => (
+                <SearchResultVariableProduct
+                  key={product.id}
+                  product={product}
+                />
               ))}
             {status === "idle" && results?.length === 0 && <>No results.</>}
             {status === "error" && <>Something went wrong.</>}
