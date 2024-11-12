@@ -19,3 +19,5 @@ export const productSchema = z.object({
   imageUrl: z.string(),
   variations: z.array(productVariationSchema),
 });
+
+export type Product = z.infer<typeof productSchema>;
