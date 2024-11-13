@@ -60,6 +60,57 @@
             }
           }
         }
+      },
+      "footer_sections": {
+        "type": "Group",
+        "config": {
+          "label": "Footer Sections",
+          "repeat": true,
+          "fields": {
+            "section": {
+              "type": "Link",
+              "config": {
+                "label": "Section",
+                "select": "document",
+                "customtypes": ["footer_section"]
+              }
+            }
+          }
+        }
+      },
+      "footer_icon_links": {
+        "type": "Group",
+        "config": {
+          "label": "Footer Icon Links",
+          "repeat": true,
+          "fields": {
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "select": null,
+                "allowText": true
+              }
+            },
+            "link_name": {
+              "type": "Text",
+              "config": {
+                "label": "Link Name",
+                "placeholder": ""
+              }
+            },
+            "icon": {
+              "type": "Image",
+              "config": {
+                "label": "Icon",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
+        }
       }
     }
   }

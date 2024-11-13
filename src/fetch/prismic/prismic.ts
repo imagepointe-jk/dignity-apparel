@@ -34,3 +34,24 @@ export async function getMegaMenu() {
       `,
   });
 }
+
+export async function getFooter() {
+  const client = createClient();
+  return client.getSingle("settings", {
+    graphQuery: `
+    {
+      settings {
+        footer_sections {
+          section {
+            ...on footer_section {
+              title
+              links
+            }
+          }
+        }
+        footer_icon_links
+      }
+    }
+    `,
+  });
+}

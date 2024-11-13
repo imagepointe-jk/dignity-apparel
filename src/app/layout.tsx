@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { createClient } from "@/prismicio";
 import { NavBarPrismic } from "@/components/NavBar/NavBarPrismic";
+import FooterPrismic from "@/components/Footer/FooterPrismic";
 
 const metropolisRegular = localFont({
   src: "./fonts/Metropolis-Regular.woff",
@@ -57,6 +58,7 @@ export default function RootLayout({
       <body className={fontClassNames}>
         <NavBarPrismic />
         {children}
+        <FooterPrismic />
       </body>
     </html>
   );

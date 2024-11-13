@@ -1,3 +1,7 @@
+:root {
+  --da-orange: #ff3301;
+}
+
 * {
   box-sizing: border-box;
   font-family: var(--font-metropolis-regular);

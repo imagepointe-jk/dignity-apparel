@@ -96,7 +96,7 @@
   right: 50%;
   bottom: 0;
   height: 5px;
-  background-color: red; /*TODO: THIS SHOULD COME FROM THE CMS*/
+  background-color: var(--da-orange);
   transition: 0.2s;
 }
 

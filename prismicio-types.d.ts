@@ -36,6 +36,64 @@ export type BrandColorDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Footer Section → Links*
+ */
+export interface FooterSectionDocumentDataLinksItem {
+  /**
+   * Link field in *Footer Section → Links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_section.links[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Content for Footer Section documents
+ */
+interface FooterSectionDocumentData {
+  /**
+   * Title field in *Footer Section*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_section.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Links field in *Footer Section*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_section.links[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  links: prismic.GroupField<Simplify<FooterSectionDocumentDataLinksItem>>;
+}
+
+/**
+ * Footer Section document from Prismic
+ *
+ * - **API ID**: `footer_section`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterSectionDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<FooterSectionDocumentData>,
+    "footer_section",
+    Lang
+  >;
+
 type HomePageDocumentDataSlicesSlice = CardsSection1Slice | HeroSlice;
 
 /**
@@ -326,6 +384,56 @@ export interface SettingsDocumentDataNavigationItem {
 }
 
 /**
+ * Item in *Settings → Footer Sections*
+ */
+export interface SettingsDocumentDataFooterSectionsItem {
+  /**
+   * Section field in *Settings → Footer Sections*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.footer_sections[].section
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  section: prismic.ContentRelationshipField<"footer_section">;
+}
+
+/**
+ * Item in *Settings → Footer Icon Links*
+ */
+export interface SettingsDocumentDataFooterIconLinksItem {
+  /**
+   * Link field in *Settings → Footer Icon Links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.footer_icon_links[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * Link Name field in *Settings → Footer Icon Links*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.footer_icon_links[].link_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_name: prismic.KeyTextField;
+
+  /**
+   * Icon field in *Settings → Footer Icon Links*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.footer_icon_links[].icon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  icon: prismic.ImageField<never>;
+}
+
+/**
  * Content for Settings documents
  */
 interface SettingsDocumentData {
@@ -394,6 +502,32 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   navigation: prismic.GroupField<Simplify<SettingsDocumentDataNavigationItem>>;
+
+  /**
+   * Footer Sections field in *Settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.footer_sections[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  footer_sections: prismic.GroupField<
+    Simplify<SettingsDocumentDataFooterSectionsItem>
+  >;
+
+  /**
+   * Footer Icon Links field in *Settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.footer_icon_links[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  footer_icon_links: prismic.GroupField<
+    Simplify<SettingsDocumentDataFooterIconLinksItem>
+  >;
 }
 
 /**
@@ -479,6 +613,7 @@ export type StandardPageDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | BrandColorDocument
+  | FooterSectionDocument
   | HomePageDocument
   | MegaMenuFeaturedImageDocument
   | MegaMenuItemDocument
@@ -728,6 +863,9 @@ declare module "@prismicio/client" {
     export type {
       BrandColorDocument,
       BrandColorDocumentData,
+      FooterSectionDocument,
+      FooterSectionDocumentData,
+      FooterSectionDocumentDataLinksItem,
       HomePageDocument,
       HomePageDocumentData,
       HomePageDocumentDataSlicesSlice,
@@ -743,6 +881,8 @@ declare module "@prismicio/client" {
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
+      SettingsDocumentDataFooterSectionsItem,
+      SettingsDocumentDataFooterIconLinksItem,
       StandardPageDocument,
       StandardPageDocumentData,
       StandardPageDocumentDataSlicesSlice,

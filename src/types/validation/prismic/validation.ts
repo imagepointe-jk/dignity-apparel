@@ -1,3 +1,4 @@
+import { footerSchema } from "@/types/schema/footer";
 import { megaMenuSchema } from "@/types/schema/navbar";
 
 export function validateMegaMenuResponse(response: any) {
@@ -21,6 +22,29 @@ export function validateMegaMenuResponse(response: any) {
           imageAlt: item.featured_image.data.image.alt || "image",
           href: item.featured_image.data.link.url,
         })),
+      };
+    }),
+  });
+}
+
+export function validateFooterResponse(response: any) {
+  return footerSchema.parse({
+    sections: response.data.footer_sections.map((item: any) => {
+      return {
+        title: item.section.data.title,
+        links: item.section.data.links.map((item: any) => {
+          return {
+            displayText: item.link.text || "Link",
+            href: item.link.url,
+          };
+        }),
+      };
+    }),
+    iconLinks: response.data.footer_icon_links.map((item: any) => {
+      return {
+        imageUrl: item.icon.url,
+        href: item.link.url,
+        name: item.link_name,
       };
     }),
   });
