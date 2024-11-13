@@ -5,7 +5,7 @@ type Props = {
   className?: string;
   style?: CSSProperties;
 };
-export function MagnifyingGlass({ size, className, style }: Props) {
+export function MagnifyingGlass({ size, className }: Props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
