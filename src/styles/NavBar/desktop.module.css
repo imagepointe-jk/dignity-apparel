@@ -117,7 +117,7 @@
   font-size: 1.25rem;
   padding: 4px;
   padding-left: 0;
-  translate: 0 -4px;
+  translate: 0 -6px;
   font-style: italic;
   text-transform: uppercase;
   position: relative;
@@ -306,6 +306,10 @@
   cursor: pointer;
   background: none;
   border: none;
+}
+
+.button svg {
+  translate: 0 -4px;
 }
 
 .button:hover {
