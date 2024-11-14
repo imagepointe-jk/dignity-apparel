@@ -19,6 +19,11 @@ export const productSchema = z.object({
   slug: z.string(),
   imageUrl: z.string(),
   descriptionSanitized: z.string(),
+  sizeUpcharges: z.object({
+    upcharge2x: z.number().optional().nullable(),
+    upcharge3x: z.number().optional().nullable(),
+    upcharge4x: z.number().optional().nullable(),
+  }),
   variations: z.array(productVariationSchema),
 });
 

@@ -59,6 +59,11 @@ export async function getProductBySlug(slug: string) {
       image {
         sourceUrl
       }
+      sizeCharges {
+        upcharge2x
+        upcharge3x
+        upcharge4x
+      }
       description
       ...on VariableProduct {
         variations {

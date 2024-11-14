@@ -9,6 +9,11 @@ function pullProductData(productJson: any) {
     slug: productJson.slug,
     imageUrl: productJson.image?.sourceUrl || "",
     descriptionSanitized: sanitizeHtml(productJson.description || ""),
+    sizeUpcharges: {
+      upcharge2x: productJson.sizeCharges?.upcharge2x,
+      upcharge3x: productJson.sizeCharges?.upcharge3x,
+      upcharge4x: productJson.sizeCharges?.upcharge4x,
+    },
     variations: productJson.variations.nodes.map((item: any) => {
       return {
         id: item.databaseId,

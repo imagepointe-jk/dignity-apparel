@@ -14,6 +14,8 @@ export function ProductPage({ product }: Props) {
   const [viewedIndex, setViewedIndex] = useState(0);
   const swatchesWithImages = getSwatchesWithImages(product);
   const viewedSwatch = swatchesWithImages[viewedIndex];
+  const { upcharge2x, upcharge3x, upcharge4x } = product.sizeUpcharges;
+  const anyUpcharges = upcharge2x || upcharge3x || upcharge4x;
 
   function onClickSwatch(clickedIndex: number) {
     setViewedIndex(clickedIndex);
@@ -79,6 +81,16 @@ export function ProductPage({ product }: Props) {
           </tr>
         </tbody>
       </table>
+      {anyUpcharges && (
+        <>
+          <h3>Size Upcharges</h3>
+          <ul>
+            {upcharge2x && <li>2X: ${upcharge2x}</li>}
+            {upcharge3x && <li>3X: ${upcharge3x}</li>}
+            {upcharge4x && <li>4X: ${upcharge4x}</li>}
+          </ul>
+        </>
+      )}
       <Link href={""} className={styles["purchase-link"]}>
         Purchase
       </Link>
