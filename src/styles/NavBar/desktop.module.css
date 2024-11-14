@@ -111,17 +111,19 @@
   padding-bottom: 15px;
 }
 
-.special-link {
+/* .special-link {
   background-color: var(--da-orange);
   color: white;
   font-weight: bold;
   font-size: 1.25rem;
   padding: 4px;
   padding-left: 0;
-  translate: 0 -6px;
+  translate: 0 -20%;
   font-style: italic;
   text-transform: uppercase;
-  position: relative;
+  position: absolute;
+  left: 0;
+  top: 50%;
 }
 
 .special-link::before,
@@ -143,6 +145,54 @@
 .special-link::after {
   right: -8px;
   clip-path: polygon(0 0, 100% 0, 40% 100%, 0% 100%);
+}
+
+.special-link-container {
+  min-width: 45px;
+} */
+
+.special-link-container {
+  display: flex;
+  align-items: center;
+}
+
+.special-link-container > a {
+  display: block;
+  background-color: var(--da-orange);
+  color: white;
+  font-weight: bold;
+  font-size: 1.25rem;
+  padding: 4px;
+  padding-left: 0;
+  font-style: italic;
+  text-transform: uppercase;
+  text-decoration: none;
+  position: relative;
+}
+
+.special-link-container > a::before,
+.special-link-container > a::after {
+  background-color: var(--da-orange);
+  width: 9px;
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.special-link-container > a::before {
+  left: -8px;
+  clip-path: polygon(60% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.special-link-container > a::after {
+  right: -8px;
+  clip-path: polygon(0 0, 100% 0, 40% 100%, 0% 100%);
+}
+
+.special-link-container > a:visited {
+  color: white;
 }
 
 .nav-item.has-nav-dropdown > a:hover {
@@ -178,7 +228,7 @@
 
 .hamburger-button {
   display: none;
-  padding: 20px;
+  padding: 20px 0;
   font-size: 35px;
   background: none;
   border: none;
@@ -309,10 +359,6 @@
   border: none;
 }
 
-.button svg {
-  translate: 0 -4px;
-}
-
 .button:hover {
   opacity: 40%;
 }
@@ -324,5 +370,9 @@
 
   .nav-items {
     display: none;
+  }
+
+  .buttons-container-right {
+    gap: 10px;
   }
 }

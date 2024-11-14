@@ -119,9 +119,10 @@ export function MegaMenuDesktop({
       ))}
 
       {specialLink && (
-        <li className={styles["nav-item"]}>
+        <li className={styles["special-link-container"]}>
           <Link href={specialLink.href}>
-            <span className={styles["special-link"]}>{specialLink.text}</span>
+            {/* <span className={styles["special-link"]}>testingtesting</span> */}
+            {specialLink.text}
           </Link>
         </li>
       )}
