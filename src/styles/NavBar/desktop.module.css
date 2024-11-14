@@ -45,12 +45,13 @@
 
 .buttons-container-right {
   display: flex;
-  gap: 30px;
+  gap: 80px;
+  padding-right: 10px;
 }
 
 .nav-items {
   display: flex;
-  gap: 30px;
+  gap: 80px;
 }
 
 .nav-items,
