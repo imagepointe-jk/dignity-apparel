@@ -7,6 +7,7 @@ function pullProductData(productJson: any) {
     sku: productJson.sku,
     slug: productJson.slug,
     imageUrl: productJson.image?.sourceUrl || "",
+    description: productJson.description,
     variations: productJson.variations.nodes.map((item: any) => {
       return {
         id: item.databaseId,

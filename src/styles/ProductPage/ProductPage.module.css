@@ -1,0 +1,55 @@
+.main {
+  margin-top: 150px;
+}
+
+.product-image {
+  display: block;
+  height: 600px;
+}
+
+.swatches {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 3px;
+}
+
+.swatch {
+  display: block;
+  border: none;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  background-repeat: contain;
+  background-size: 100% 100%;
+  cursor: pointer;
+}
+
+.swatch.selected {
+  outline: 2px solid black;
+}
+
+.pricing-table {
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.pricing-table thead {
+  font-weight: bold;
+  background-color: lightgray;
+}
+
+.pricing-table td {
+  padding: 10px;
+}
+
+.purchase-link {
+  color: white;
+  background-color: var(--da-orange);
+  padding: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: inline-block;
+  text-decoration: none;
+}

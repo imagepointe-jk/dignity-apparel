@@ -59,6 +59,7 @@ export async function getProductBySlug(slug: string) {
       image {
         sourceUrl
       }
+      description
       ...on VariableProduct {
         variations {
           nodes {

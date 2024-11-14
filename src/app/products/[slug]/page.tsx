@@ -1,3 +1,4 @@
+import { ProductPage } from "@/components/ProductPage/ProductPage";
 import { getProductBySlug } from "@/fetch/woocommerce/products";
 import { validateWooCommerceSingleProductResponse } from "@/types/validation/woocommerce/woocommerce";
 import { notFound } from "next/navigation";
@@ -9,12 +10,7 @@ export default async function Page({ params: { slug } }: Props) {
     const json = await productResponse.json();
     const parsed = validateWooCommerceSingleProductResponse(json.data.product);
 
-    return (
-      <>
-        <h1>{parsed.name}</h1>
-        <div>{parsed.sku}</div>
-      </>
-    );
+    return <ProductPage product={parsed} />;
   } catch (error) {
     console.error(error);
     notFound();

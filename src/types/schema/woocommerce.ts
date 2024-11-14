@@ -18,6 +18,7 @@ export const productSchema = z.object({
   sku: z.string(),
   slug: z.string(),
   imageUrl: z.string(),
+  description: z.string().optional(),
   variations: z.array(productVariationSchema),
 });
 
