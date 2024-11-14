@@ -53,7 +53,7 @@ export function ProductPage({ product }: Props) {
       <h3>Sizes</h3>
       <p>S-4XL</p>
       <h3>Product Description</h3>
-      <p>(Description Here)</p>
+      <p dangerouslySetInnerHTML={{ __html: product.descriptionSanitized }}></p>
       <h3>Pricing Table</h3>
       <table className={styles["pricing-table"]}>
         <thead>

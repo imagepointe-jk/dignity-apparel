@@ -1,4 +1,5 @@
 import { productSchema } from "@/types/schema/woocommerce";
+import sanitizeHtml from "sanitize-html";
 
 function pullProductData(productJson: any) {
   return {
@@ -7,7 +8,7 @@ function pullProductData(productJson: any) {
     sku: productJson.sku,
     slug: productJson.slug,
     imageUrl: productJson.image?.sourceUrl || "",
-    description: productJson.description,
+    descriptionSanitized: sanitizeHtml(productJson.description || ""),
     variations: productJson.variations.nodes.map((item: any) => {
       return {
         id: item.databaseId,
