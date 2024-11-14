@@ -8,6 +8,7 @@ export async function getMegaMenu() {
         settings {
           logo_main_image
           logo_text_image
+          special_link
           navigation {
             mega_menu_item {
               ...on mega_menu_item {

@@ -110,8 +110,38 @@
   padding-bottom: 15px;
 }
 
-.nav-item > a:hover {
-  background-color: rgb(228, 228, 228);
+.special-link {
+  background-color: var(--da-orange);
+  color: white;
+  font-weight: bold;
+  font-size: 1.25rem;
+  padding: 4px;
+  padding-left: 0;
+  translate: 0 -4px;
+  font-style: italic;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.special-link::before,
+.special-link::after {
+  background-color: var(--da-orange);
+  width: 9px;
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.special-link::before {
+  left: -8px;
+  clip-path: polygon(60% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.special-link::after {
+  right: -8px;
+  clip-path: polygon(0 0, 100% 0, 40% 100%, 0% 100%);
 }
 
 .nav-item.has-nav-dropdown > a:hover {

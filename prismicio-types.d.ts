@@ -504,6 +504,17 @@ interface SettingsDocumentData {
   navigation: prismic.GroupField<Simplify<SettingsDocumentDataNavigationItem>>;
 
   /**
+   * Special Link field in *Settings*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.special_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  special_link: prismic.LinkField;
+
+  /**
    * Footer Sections field in *Settings*
    *
    * - **Field Type**: Group

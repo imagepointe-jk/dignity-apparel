@@ -1,15 +1,21 @@
 import styles from "@/styles/NavBar/desktop.module.css";
 import { FeaturedCard } from "./FeaturedCard";
 import { MegaMenu } from "@/types/schema/navbar";
+import Link from "next/link";
 
 type Props = {
   data: MegaMenu;
+  specialLink?: {
+    text: string;
+    href: string;
+  };
   expandedIndex: number | null;
   setExpandedIndex: (i: number | null) => void;
   onFocusTopLevel: (focusedIndex: number) => void;
 };
 export function MegaMenuDesktop({
   data,
+  specialLink,
   expandedIndex,
   setExpandedIndex,
   onFocusTopLevel,
@@ -111,6 +117,14 @@ export function MegaMenuDesktop({
           )}
         </li>
       ))}
+
+      {specialLink && (
+        <li className={styles["nav-item"]}>
+          <Link href={specialLink.href}>
+            <span className={styles["special-link"]}>{specialLink.text}</span>
+          </Link>
+        </li>
+      )}
     </ul>
   );
 }

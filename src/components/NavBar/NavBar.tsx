@@ -15,12 +15,20 @@ import { env } from "@/envClient";
 const topOfPageThreshold = 200; //when the value of window.scrollY is less than this, we consider that to be the "top of the page"
 type Props = {
   megaMenu: MegaMenu;
+  specialLink?: {
+    text: string;
+    href: string;
+  };
   logoImgUrls: {
     logo: string;
     text: string;
   };
 };
-export function NavBar({ megaMenu, logoImgUrls: { logo, text } }: Props) {
+export function NavBar({
+  megaMenu,
+  logoImgUrls: { logo, text },
+  specialLink,
+}: Props) {
   const [expandedIndex, setExpandedIndex] = useState(null as number | null);
   const [mobileMenuExpanded, setMobileMenuExpanded] = useState(false);
   const [atTopOfPage, setAtTopOfPage] = useState(true);
@@ -84,6 +92,7 @@ export function NavBar({ megaMenu, logoImgUrls: { logo, text } }: Props) {
               expandedIndex={expandedIndex}
               onFocusTopLevel={onFocusTopLevel}
               setExpandedIndex={setExpandedIndex}
+              specialLink={specialLink}
             />
             <button
               className={styles["hamburger-button"]}

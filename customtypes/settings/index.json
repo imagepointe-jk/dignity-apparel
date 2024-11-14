@@ -61,6 +61,16 @@
           }
         }
       },
+      "special_link": {
+        "type": "Link",
+        "config": {
+          "label": "Special Link",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "select": null,
+          "allowText": true
+        }
+      },
       "footer_sections": {
         "type": "Group",
         "config": {
