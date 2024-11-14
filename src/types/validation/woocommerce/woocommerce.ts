@@ -14,14 +14,15 @@ function pullProductData(productJson: any) {
       upcharge3x: productJson.sizeCharges?.upcharge3x,
       upcharge4x: productJson.sizeCharges?.upcharge4x,
     },
-    variations: productJson.variations.nodes.map((item: any) => {
-      return {
-        id: item.databaseId,
-        name: item.name,
-        imageUrl: item.image?.sourceUrl || "",
-        attributes: item.attributes.nodes,
-      };
-    }),
+    variations:
+      productJson.variations?.nodes.map((item: any) => {
+        return {
+          id: item.databaseId,
+          name: item.name,
+          imageUrl: item.image?.sourceUrl || "",
+          attributes: item.attributes.nodes,
+        };
+      }) || [],
   };
 }
 

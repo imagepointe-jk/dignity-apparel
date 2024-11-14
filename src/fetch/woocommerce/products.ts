@@ -1,18 +1,35 @@
 import { env } from "@/env";
 import { queryWpGraphQl } from "./wpgraphql";
 
-export async function getProductBySku(sku: string) {
-  const query = `
-  query GetProductBySku($sku: ID!) {
-    product(id: $sku, idType: SKU) {
-      id
-      databaseId
-      name
-      sku
-      image {
-        sourceUrl
-      }
-      ...on VariableProduct {
+function conditionalStr(condition: boolean, str: string) {
+  return condition ? str : "";
+}
+
+function buildProductFields(params?: {
+  variations?: boolean;
+  sizeCharges?: boolean;
+}) {
+  return `
+    id
+    databaseId
+    name
+    sku
+    slug
+    image {
+      sourceUrl
+    }
+    ${conditionalStr(
+      params?.sizeCharges !== false,
+      `sizeCharges {
+        upcharge2x
+        upcharge3x
+        upcharge4x
+      }`
+    )}
+    description
+    ${conditionalStr(
+      params?.variations !== false,
+      `...on VariableProduct {
         variations {
           nodes {
             id
@@ -29,7 +46,16 @@ export async function getProductBySku(sku: string) {
             }
           }
         }
-      }
+      }`
+    )}
+`;
+}
+
+export async function getProductBySku(sku: string) {
+  const query = `
+  query GetProductBySku($sku: ID!) {
+    product(id: $sku, idType: SKU) {
+      ${buildProductFields()}
     }
   }
 `;
@@ -51,38 +77,7 @@ export async function getProductBySlug(slug: string) {
   const query = `
   query GetProductBySku($slug: ID!) {
     product(id: $slug, idType: SLUG) {
-      id
-      databaseId
-      name
-      sku
-      slug
-      image {
-        sourceUrl
-      }
-      sizeCharges {
-        upcharge2x
-        upcharge3x
-        upcharge4x
-      }
-      description
-      ...on VariableProduct {
-        variations {
-          nodes {
-            id
-            databaseId
-            name
-            image {
-              sourceUrl
-            }
-            attributes {
-              nodes {
-                name
-                value
-              }
-            }
-          }
-        }
-      }
+      ${buildProductFields()}
     }
   }
 `;
@@ -107,31 +102,7 @@ export async function getProducts() {
   query GetProducts {
     products {
       nodes {
-        id
-        databaseId
-        name
-        sku
-        image {
-          sourceUrl
-        }
-        ...on VariableProduct {
-          variations {
-            nodes {
-              id
-              databaseId
-              name
-              image {
-                sourceUrl
-              }
-              attributes {
-                nodes {
-                  name
-                  value
-                }
-              }
-            }
-          }
-        }
+        ${buildProductFields()}
       }
     }
   }
@@ -154,32 +125,7 @@ export async function searchProducts(search: string) {
   query SearchProducts($searchTerm: String!) {
     products(where: { search: $searchTerm }) {
       nodes {
-        id
-        databaseId
-        name
-        sku
-        slug
-        image {
-          sourceUrl
-        }
-        ...on VariableProduct {
-          variations {
-            nodes {
-              id
-              databaseId
-              name
-              image {
-                sourceUrl
-              }
-              attributes {
-                nodes {
-                  name
-                  value
-                }
-              }
-            }
-          }
-        }
+        ${buildProductFields({ sizeCharges: false })}
       }
     }
   }
