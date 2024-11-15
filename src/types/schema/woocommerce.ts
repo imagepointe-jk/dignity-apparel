@@ -30,10 +30,12 @@ export const productSchema = z.object({
 export const categorySchema = z.object({
   id: z.number(),
   name: z.string(),
+  slug: z.string(),
   subcategories: z.array(
     z.object({
       id: z.number(),
       name: z.string(),
+      slug: z.string(),
     })
   ),
 });

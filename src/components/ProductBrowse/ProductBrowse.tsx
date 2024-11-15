@@ -1,3 +1,5 @@
+"use client";
+
 import { Category } from "@/types/schema/woocommerce";
 import { Filters } from "./Filters";
 import styles from "@/styles/ProductBrowse/ProductBrowse.module.css";

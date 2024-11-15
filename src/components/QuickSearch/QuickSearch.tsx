@@ -2,7 +2,7 @@ import styles from "@/styles/QuickSearch/QuickSearch.module.css";
 import { SearchResultVariableProduct } from "./SearchResultVariableProduct";
 import debounce from "lodash.debounce";
 import { useCallback, useState } from "react";
-import { searchProducts } from "@/fetch/client/products";
+import { queryProducts } from "@/fetch/client/products";
 import { validateWooCommerceProductsResponse } from "@/types/validation/woocommerce/woocommerce";
 import { Product } from "@/types/schema/woocommerce";
 
@@ -19,7 +19,7 @@ export function QuickSearch() {
 
   async function doSearch(search: string) {
     try {
-      const response = await searchProducts(search);
+      const response = await queryProducts({ search, category: null });
       const json = await response.json();
       const parsed = validateWooCommerceProductsResponse(json);
       setResults(parsed);

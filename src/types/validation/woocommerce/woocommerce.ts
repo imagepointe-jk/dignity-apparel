@@ -54,8 +54,13 @@ export function validateCategoriesResponse(json: any) {
     const category: Category = {
       id: categoryJson.node.databaseId,
       name: categoryJson.node.name,
+      slug: categoryJson.node.slug,
       subcategories: (categoryJson.node.children.nodes as any[]).map(
-        (child) => ({ id: child.databaseId, name: child.name })
+        (child) => ({
+          id: child.databaseId,
+          name: child.name,
+          slug: child.slug,
+        })
       ),
     };
     categories.push(category);

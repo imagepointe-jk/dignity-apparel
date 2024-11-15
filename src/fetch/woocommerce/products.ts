@@ -120,10 +120,15 @@ export async function getProducts() {
   });
 }
 
-export async function searchProducts(search: string) {
+export async function queryProducts(params: {
+  search: string | null;
+  category: string | null;
+}) {
+  const { category, search } = params;
+
   const query = `
-  query SearchProducts($searchTerm: String!) {
-    products(where: { search: $searchTerm }) {
+  query QueryProducts($searchTerm: String, $category: String) {
+    products(where: { search: $searchTerm, category: $category }) {
       nodes {
         ${buildProductFields({ sizeCharges: false })}
       }
@@ -131,15 +136,17 @@ export async function searchProducts(search: string) {
   }
 `;
 
-  return fetch("https://dawholesale.unionwebstores.com/graphql", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Basic ${btoa(`${env.WORDPRESS_APPLICATION_USERNAME}:${env.WORDPRESS_APPLICATION_PASSWORD}`)}`,
-    },
-    body: JSON.stringify({
-      query,
-      variables: { searchTerm: search },
-    }),
-  });
+  return queryWpGraphQl(() =>
+    fetch("https://dawholesale.unionwebstores.com/graphql", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Basic ${btoa(`${env.WORDPRESS_APPLICATION_USERNAME}:${env.WORDPRESS_APPLICATION_PASSWORD}`)}`,
+      },
+      body: JSON.stringify({
+        query,
+        variables: { searchTerm: search, category },
+      }),
+    })
+  );
 }

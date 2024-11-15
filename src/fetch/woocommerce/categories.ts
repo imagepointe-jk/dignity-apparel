@@ -10,11 +10,13 @@ export function getCategories() {
                     id
                     databaseId
                     name
+                    slug
                     children {
                         nodes {
                             id
                             databaseId
                             name
+                            slug
                         }
                     }
                 }
