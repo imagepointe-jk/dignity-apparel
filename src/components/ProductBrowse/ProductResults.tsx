@@ -7,6 +7,7 @@ import { validateWooCommerceProductsResponse } from "@/types/validation/woocomme
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { ProductCard } from "./ProductCard";
 
 export function ProductResults() {
   const [results, setResults] = useState([] as Product[]);
@@ -81,9 +82,7 @@ export function ProductResults() {
       <div className={styles["cards-container"]}>
         {status === "idle" &&
           results.length > 0 &&
-          results.map((item) => (
-            <div className={styles["card"]}>{item.name}</div>
-          ))}
+          results.map((product) => <ProductCard product={product} />)}
         {status === "idle" && results.length === 0 && <>No results.</>}
         {status === "loading" && <>Loading...</>}
         {status === "error" && <>Something went wrong.</>}
