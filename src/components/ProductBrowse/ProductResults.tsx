@@ -82,7 +82,9 @@ export function ProductResults() {
       <div className={styles["cards-container"]}>
         {status === "idle" &&
           results.length > 0 &&
-          results.map((product) => <ProductCard product={product} />)}
+          results.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
         {status === "idle" && results.length === 0 && <>No results.</>}
         {status === "loading" && <>Loading...</>}
         {status === "error" && <>Something went wrong.</>}

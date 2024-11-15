@@ -36,6 +36,7 @@ export function ProductPage({ product }: Props) {
           {swatchesWithImages.map((item, i) => (
             <li key={item.name}>
               <button
+                key={item.name}
                 className={`${styles["swatch"]} ${viewedIndex === i ? styles["selected"] : ""}`}
                 onClick={() => onClickSwatch(i)}
                 style={{

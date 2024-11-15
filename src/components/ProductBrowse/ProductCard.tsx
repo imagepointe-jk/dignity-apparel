@@ -26,7 +26,7 @@ export function ProductCard({ product }: Props) {
       <div>Available Colors</div>
       <div>
         <ul className={styles["swatches"]}>
-          {swatchesWithImages.map((item, i) => (
+          {swatchesWithImages.map((item) => (
             <li key={item.name}>
               <button
                 //   className={`${styles["swatch"]} ${viewedIndex === i ? styles["selected"] : ""}`}
