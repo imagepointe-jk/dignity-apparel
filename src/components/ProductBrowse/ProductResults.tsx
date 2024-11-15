@@ -6,10 +6,18 @@ import { PageInfo, Product } from "@/types/schema/woocommerce";
 import { validateWooCommerceProductsResponse } from "@/types/validation/woocommerce/woocommerce";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { ProductCard } from "./ProductCard";
 
 export function ProductResults() {
+  return (
+    <Suspense>
+      <ProductResultsWrapped />
+    </Suspense>
+  );
+}
+
+export function ProductResultsWrapped() {
   const [results, setResults] = useState([] as Product[]);
   const [pageInfo, setPageInfo] = useState(null as PageInfo | null);
   const [status, setStatus] = useState(
