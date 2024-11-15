@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { createClient } from "@/prismicio";
+import { createClient, repositoryName } from "@/prismicio";
 import { NavBarPrismic } from "@/components/NavBar/NavBarPrismic";
 import FooterPrismic from "@/components/Footer/FooterPrismic";
+import { PrismicPreview } from "@prismicio/next";
 
 const metropolisRegular = localFont({
   src: "./fonts/Metropolis-Regular.woff",
@@ -59,6 +60,7 @@ export default function RootLayout({
         <NavBarPrismic />
         {children}
         <FooterPrismic />
+        <PrismicPreview repositoryName={repositoryName} />
       </body>
     </html>
   );
