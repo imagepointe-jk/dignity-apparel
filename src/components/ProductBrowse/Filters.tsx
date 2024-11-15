@@ -20,15 +20,25 @@ export function Filters({ categories }: Props) {
     <div>
       <ul>
         {categories.map((cat) => {
+          const isActive = searchParams.get("category") === cat.slug;
           return (
             <li key={cat.id}>
-              <Link href={createFilterLinkUrl(cat.slug)}>{cat.name}</Link>
+              <Link
+                href={createFilterLinkUrl(cat.slug)}
+                style={{ fontWeight: isActive ? "bold" : undefined }}
+              >
+                {cat.name}
+              </Link>
               {cat.subcategories.length > 0 && (
                 <ul>
                   {cat.subcategories.map((sub) => {
+                    const isActive = searchParams.get("category") === sub.slug;
                     return (
                       <li key={sub.id}>
-                        <Link href={createFilterLinkUrl(sub.slug)}>
+                        <Link
+                          href={createFilterLinkUrl(sub.slug)}
+                          style={{ fontWeight: isActive ? "bold" : undefined }}
+                        >
                           {sub.name}
                         </Link>
                       </li>

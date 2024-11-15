@@ -11,7 +11,9 @@ import { useEffect, useState } from "react";
 export function ProductResults() {
   const [results, setResults] = useState([] as Product[]);
   const [pageInfo, setPageInfo] = useState(null as PageInfo | null);
-  const [status, setStatus] = useState("idle" as "idle" | "loading" | "error");
+  const [status, setStatus] = useState(
+    "loading" as "idle" | "loading" | "error"
+  );
   const searchParams = useSearchParams();
 
   function createPageButtonUrl(type: "next" | "previous") {
@@ -41,6 +43,7 @@ export function ProductResults() {
 
   async function getResults() {
     setStatus("loading");
+    setPageInfo(null);
     try {
       const search = searchParams.get("search");
       const category = searchParams.get("category");
