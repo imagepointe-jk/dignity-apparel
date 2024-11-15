@@ -123,15 +123,25 @@ export async function getProducts() {
 export async function queryProducts(params: {
   search: string | null;
   category: string | null;
+  before: string | null;
+  after: string | null;
+  first: number | null;
+  last: number | null;
 }) {
-  const { category, search } = params;
+  const { category, search, before, after, first, last } = params;
 
   const query = `
-  query QueryProducts($searchTerm: String, $category: String) {
-    products(where: { search: $searchTerm, category: $category }) {
-      nodes {
-        ${buildProductFields({ sizeCharges: false })}
+  query QueryProducts($searchTerm: String, $category: String, $first: Int, $last: Int, $after: String, $before: String) {
+    products(first: $first, last: $last, after: $after, before: $before, where: { search: $searchTerm, category: $category }) {
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
       }
+        nodes {
+          ${buildProductFields({ sizeCharges: false })}
+        }
     }
   }
 `;
@@ -145,7 +155,7 @@ export async function queryProducts(params: {
       },
       body: JSON.stringify({
         query,
-        variables: { searchTerm: search, category },
+        variables: { searchTerm: search, category, before, after, first, last },
       }),
     })
   );

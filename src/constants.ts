@@ -10,3 +10,6 @@ export const easyCorsInit = {
 
 export const IMAGE_NOT_FOUND_URL =
   "https://placehold.co/300x300?text=Not+Found";
+
+export const DEFAULT_PRODUCTS_PAGE_SIZE = 2;
+export const MAX_PRODUCTS_PAGE_SIZE = 25;

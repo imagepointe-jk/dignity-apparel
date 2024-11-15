@@ -1,4 +1,13 @@
-import { Category, productSchema } from "@/types/schema/woocommerce";
+import {
+  DEFAULT_PRODUCTS_PAGE_SIZE,
+  MAX_PRODUCTS_PAGE_SIZE,
+} from "@/constants";
+import {
+  Category,
+  pageInfoSchema,
+  productSchema,
+} from "@/types/schema/woocommerce";
+import { clamp } from "@/utility/misc";
 import sanitizeHtml from "sanitize-html";
 
 function pullProductData(productJson: any) {
@@ -31,9 +40,17 @@ export function validateWooCommerceSingleProductResponse(productJson: any) {
 }
 
 export function validateWooCommerceProductsResponse(json: any) {
-  return (json.data.products.nodes as any[])
-    .filter((item) => productSchema.safeParse(pullProductData(item)).success)
-    .map((item: any) => validateWooCommerceSingleProductResponse(item));
+  return {
+    pageInfo: pageInfoSchema.parse({
+      hasNextPage: json.data.products.pageInfo.hasNextPage,
+      hasPreviousPage: json.data.products.pageInfo.hasPreviousPage,
+      startCursor: json.data.products.pageInfo.startCursor,
+      endCursor: json.data.products.pageInfo.endCursor,
+    }),
+    products: (json.data.products.nodes as any[])
+      .filter((item) => productSchema.safeParse(pullProductData(item)).success)
+      .map((item: any) => validateWooCommerceSingleProductResponse(item)),
+  };
 }
 
 export function validateCategoriesResponse(json: any) {
@@ -67,4 +84,53 @@ export function validateCategoriesResponse(json: any) {
   }
 
   return categories;
+}
+
+export function validatePagination(pagination: {
+  before: string | null;
+  after: string | null;
+  first: number | null;
+  last: number | null;
+}): {
+  before: string | null;
+  after: string | null;
+  first: number | null;
+  last: number | null;
+} {
+  const { after, before, first, last } = pagination;
+  //only allow "first after", "last before", or "first" as valid queries
+  if (typeof first === "number" && !isNaN(first)) {
+    const clampedFirst = clamp(first, 1, MAX_PRODUCTS_PAGE_SIZE);
+    if (after !== null) {
+      return {
+        first: clampedFirst,
+        after,
+        before: null,
+        last: null,
+      };
+    }
+    return {
+      first: clampedFirst,
+      after: null,
+      before: null,
+      last: null,
+    };
+  }
+  if (before !== null && typeof last === "number" && !isNaN(last)) {
+    const clampedLast = clamp(last, 1, MAX_PRODUCTS_PAGE_SIZE);
+    return {
+      last: clampedLast,
+      before,
+      first: null,
+      after: null,
+    };
+  }
+
+  //fallback if invalid query provided
+  return {
+    first: DEFAULT_PRODUCTS_PAGE_SIZE,
+    last: null,
+    before: null,
+    after: null,
+  };
 }

@@ -19,10 +19,17 @@ export function QuickSearch() {
 
   async function doSearch(search: string) {
     try {
-      const response = await queryProducts({ search, category: null });
+      const response = await queryProducts({
+        search,
+        category: null,
+        before: null,
+        after: null,
+        first: 25,
+        last: null,
+      });
       const json = await response.json();
       const parsed = validateWooCommerceProductsResponse(json);
-      setResults(parsed);
+      setResults(parsed.products);
       setStatus("idle");
     } catch (error) {
       setResults([]);
