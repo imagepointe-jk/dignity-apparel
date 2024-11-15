@@ -18,6 +18,17 @@ interface BrandColorDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#color
    */
   color: prismic.ColorField;
+
+  /**
+   * Preview Image field in *Brand Color*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: brand_color.preview_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  preview_image: prismic.ImageField<never>;
 }
 
 /**

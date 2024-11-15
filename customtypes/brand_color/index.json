@@ -18,6 +18,14 @@
           "label": "Color",
           "placeholder": ""
         }
+      },
+      "preview_image": {
+        "type": "Image",
+        "config": {
+          "label": "Preview Image",
+          "constraint": {},
+          "thumbnails": []
+        }
       }
     }
   }
