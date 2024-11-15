@@ -1,4 +1,4 @@
-import { productSchema } from "@/types/schema/woocommerce";
+import { Category, productSchema } from "@/types/schema/woocommerce";
 import sanitizeHtml from "sanitize-html";
 
 function pullProductData(productJson: any) {
@@ -34,4 +34,32 @@ export function validateWooCommerceProductsResponse(json: any) {
   return (json.data.products.nodes as any[])
     .filter((item) => productSchema.safeParse(pullProductData(item)).success)
     .map((item: any) => validateWooCommerceSingleProductResponse(item));
+}
+
+export function validateCategoriesResponse(json: any) {
+  //WooGraphQL returns duplicate subcategory results; they appear at the same level as categories in addition to nested within the categories.
+  //first look through to see which categories are actually children, then go back through and build the correct structure based on that.
+  const childIds: number[] = [];
+  for (const category of json.data.productCategories.edges) {
+    for (const child of category.node.children.nodes) {
+      childIds.push(child.databaseId);
+    }
+  }
+
+  const categories: Category[] = [];
+  for (const categoryJson of json.data.productCategories.edges) {
+    const isChild = childIds.includes(categoryJson.node.databaseId);
+    if (isChild) continue;
+
+    const category: Category = {
+      id: categoryJson.node.databaseId,
+      name: categoryJson.node.name,
+      subcategories: (categoryJson.node.children.nodes as any[]).map(
+        (child) => ({ id: child.databaseId, name: child.name })
+      ),
+    };
+    categories.push(category);
+  }
+
+  return categories;
 }

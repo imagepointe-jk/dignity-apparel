@@ -27,4 +27,16 @@ export const productSchema = z.object({
   variations: z.array(productVariationSchema),
 });
 
+export const categorySchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  subcategories: z.array(
+    z.object({
+      id: z.number(),
+      name: z.string(),
+    })
+  ),
+});
+
 export type Product = z.infer<typeof productSchema>;
+export type Category = z.infer<typeof categorySchema>;
