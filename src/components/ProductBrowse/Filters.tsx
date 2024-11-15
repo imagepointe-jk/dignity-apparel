@@ -2,11 +2,19 @@ import { env } from "@/envClient";
 import { Category } from "@/types/schema/woocommerce";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 type Props = {
   categories: Category[];
 };
 export function Filters({ categories }: Props) {
+  return (
+    <Suspense>
+      <FiltersWrapped categories={categories} />
+    </Suspense>
+  );
+}
+export function FiltersWrapped({ categories }: Props) {
   const searchParams = useSearchParams();
 
   function createFilterLinkUrl(slug: string) {
