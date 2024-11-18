@@ -19,6 +19,11 @@ export function FeaturedCard({
       tabIndex={tabIndex}
     >
       <img src={imageUrl} alt={imageAlt} />
+      <div className={styles["mega-menu-dropdown-featured-overlay"]}>
+        <div className={styles["mega-menu-dropdown-featured-hover-text"]}>
+          View Products
+        </div>
+      </div>
       <div className={styles["mega-menu-dropdown-featured-caption"]}>
         {caption}
         <img

@@ -155,6 +155,12 @@
   color: white;
 }
 
+.special-link-container:hover > a,
+.special-link-container:hover > a::before,
+.special-link-container:hover > a::after {
+  background-color: black;
+}
+
 .nav-item.has-nav-dropdown > a:hover {
   background: none;
 }
@@ -280,10 +286,10 @@
   overflow: hidden;
 }
 
-.mega-menu-dropdown-featured-container:hover
+/* .mega-menu-dropdown-featured-container:hover
   .mega-menu-dropdown-featured-caption {
   text-decoration: underline;
-}
+} */
 
 .mega-menu-dropdown-featured-container img {
   height: 100%;
@@ -299,11 +305,18 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #131313;
-  padding: 13px;
+  /* background-color: #131313; */
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.75) 25%,
+    rgba(0, 0, 0, 0) 95%
+  );
+  padding: 46px 13px 13px 13px;
   color: white;
   text-transform: uppercase;
   font-size: 0.9rem;
+  font-weight: bold;
+  font-size: 0.8rem;
 }
 
 .mega-menu-dropdown-featured-caption .mega-menu-dropdown-featured-arrow {
@@ -311,6 +324,61 @@
   filter: invert();
   rotate: 90deg;
   translate: 5px -2px;
+}
+
+.mega-menu-dropdown-featured-caption::after {
+  content: "";
+  position: absolute;
+  display: block;
+  background-color: var(--da-orange);
+  left: 0;
+  bottom: 0;
+  right: 100%;
+  height: 7px;
+  transition: 0.2s;
+}
+
+.mega-menu-dropdown-featured-container:hover
+  .mega-menu-dropdown-featured-caption::after {
+  right: 0;
+}
+
+.mega-menu-dropdown-featured-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: 0.2s;
+}
+
+.mega-menu-dropdown-featured-container:hover
+  .mega-menu-dropdown-featured-overlay {
+  opacity: 1;
+}
+
+/* .mega-menu-dropdown-featured-container:hover
+  .mega-menu-dropdown-featured-overlay {
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.75) 5%,
+    rgba(0, 0, 0, 0.5) 25%
+  );
+} */
+
+.mega-menu-dropdown-featured-hover-text {
+  color: white;
+  padding: 7px 12px;
+  border-radius: 5px;
+  border: 2px solid white;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.75rem;
 }
 
 .button {
