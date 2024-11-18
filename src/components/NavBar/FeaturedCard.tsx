@@ -7,10 +7,11 @@ type Props = {
     imageUrl: string;
     imageAlt: string;
     caption: string;
+    hoverText?: string;
   };
 };
 export function FeaturedCard({
-  data: { href, tabIndex, imageUrl, imageAlt, caption },
+  data: { href, tabIndex, imageUrl, imageAlt, caption, hoverText },
 }: Props) {
   return (
     <a
@@ -21,7 +22,7 @@ export function FeaturedCard({
       <img src={imageUrl} alt={imageAlt} />
       <div className={styles["mega-menu-dropdown-featured-overlay"]}>
         <div className={styles["mega-menu-dropdown-featured-hover-text"]}>
-          View Products
+          {hoverText || "View More"}
         </div>
       </div>
       <div className={styles["mega-menu-dropdown-featured-caption"]}>

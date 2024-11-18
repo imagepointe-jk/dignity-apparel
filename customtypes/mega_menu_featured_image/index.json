@@ -36,6 +36,13 @@
           "select": null,
           "allowText": false
         }
+      },
+      "hover_text": {
+        "type": "Text",
+        "config": {
+          "label": "Hover Text",
+          "placeholder": ""
+        }
       }
     }
   }

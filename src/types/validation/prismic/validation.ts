@@ -21,6 +21,7 @@ export function validateMegaMenuResponse(response: any) {
           imageUrl: item.featured_image.data.image.url,
           imageAlt: item.featured_image.data.image.alt || "image",
           href: item.featured_image.data.link.url,
+          hoverText: item.featured_image.data.hover_text,
         })),
       };
     }),

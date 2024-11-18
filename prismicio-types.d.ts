@@ -206,6 +206,17 @@ interface MegaMenuFeaturedImageDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   link: prismic.LinkField;
+
+  /**
+   * Hover Text field in *Mega Menu Featured Image*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: mega_menu_featured_image.hover_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  hover_text: prismic.KeyTextField;
 }
 
 /**

@@ -14,6 +14,7 @@ const megaMenuFeaturedSchema = z.object({
   imageUrl: z.string(),
   imageAlt: z.string(),
   href: z.string(),
+  hoverText: z.string().optional(),
 });
 const megaMenuItemSchema = z.object({
   label: z.string(),
