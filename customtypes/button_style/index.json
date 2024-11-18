@@ -1,0 +1,90 @@
+{
+  "format": "custom",
+  "id": "button_style",
+  "label": "Button Style",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID"
+        }
+      },
+      "primary_color": {
+        "type": "Link",
+        "config": {
+          "label": "Primary Color",
+          "select": "document",
+          "customtypes": ["brand_color"]
+        }
+      },
+      "secondary_color": {
+        "type": "Link",
+        "config": {
+          "label": "Secondary Color",
+          "select": "document",
+          "customtypes": ["brand_color"]
+        }
+      },
+      "hover_primary_color": {
+        "type": "Link",
+        "config": {
+          "label": "Hover Primary Color",
+          "select": "document"
+        }
+      },
+      "hover_secondary_color": {
+        "type": "Link",
+        "config": {
+          "label": "Hover Secondary Color",
+          "select": "document",
+          "customtypes": ["brand_color"]
+        }
+      },
+      "disabled_primary_color": {
+        "type": "Link",
+        "config": {
+          "label": "Disabled Primary Color",
+          "select": "document",
+          "customtypes": ["brand_color"]
+        }
+      },
+      "disabled_secondary_color": {
+        "type": "Link",
+        "config": {
+          "label": "Disabled Secondary Color",
+          "select": "document",
+          "customtypes": ["brand_color"]
+        }
+      },
+      "type": {
+        "type": "Select",
+        "config": {
+          "label": "Type",
+          "placeholder": "",
+          "options": ["Filled", "Outlined"],
+          "default_value": "Filled"
+        }
+      },
+      "full_width": {
+        "type": "Boolean",
+        "config": {
+          "label": "Full Width",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
+      "preview_image": {
+        "type": "Image",
+        "config": {
+          "label": "Preview Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}

@@ -33,14 +33,31 @@ export function Hero({
         <h1>{heading}</h1>
         <p>{subtext}</p>
         <div className={styles["buttons-container"]}>
+          {/* Temp values */}
           <LinkAsButton
             href={buttonPrimary.href}
             label={buttonPrimary.label}
             mainColor={buttonPrimary.mainColor}
             secondaryColor={buttonPrimary.secondaryColor}
+            states={{
+              hover: {
+                primaryColor: "",
+              },
+              normal: {
+                primaryColor: "",
+              },
+            }}
           />
           {buttonSecondary && (
             <LinkAsButton
+              states={{
+                hover: {
+                  primaryColor: "",
+                },
+                normal: {
+                  primaryColor: "",
+                },
+              }}
               href={buttonSecondary.href}
               label={buttonSecondary.label}
               mainColor={buttonSecondary.mainColor}

@@ -1,4 +1,4 @@
-.main {
+/* .main {
   display: inline-block;
   padding: 15px;
   border-radius: 5px;
@@ -11,4 +11,13 @@
 .minor {
   background: none;
   outline: 3px solid white;
+} */
+
+.main {
+  display: inline-block;
+  padding: 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: 0.2s;
+  font-weight: bold;
 }

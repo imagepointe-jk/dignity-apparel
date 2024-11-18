@@ -38,12 +38,21 @@ export function StandardSection1({
         <div className={styles["body-container"]}>{bodyTextNode}</div>
         {(buttonPrimary || buttonSecondary) && (
           <div className={styles["button-row"]}>
+            {/* Temp values */}
             {buttonPrimary && (
               <LinkAsButton
                 href={buttonPrimary.href}
                 label={buttonPrimary.label}
                 mainColor={buttonPrimary.mainColor}
                 secondaryColor={buttonPrimary.secondaryColor}
+                states={{
+                  hover: {
+                    primaryColor: "",
+                  },
+                  normal: {
+                    primaryColor: "",
+                  },
+                }}
               />
             )}
             {buttonSecondary && (
@@ -52,6 +61,14 @@ export function StandardSection1({
                 label={buttonSecondary.label}
                 mainColor={buttonSecondary.mainColor}
                 variant={"minor button"}
+                states={{
+                  hover: {
+                    primaryColor: "",
+                  },
+                  normal: {
+                    primaryColor: "",
+                  },
+                }}
               />
             )}
           </div>

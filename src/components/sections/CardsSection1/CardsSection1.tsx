@@ -28,11 +28,20 @@ export function CardsSection1({ cards, ...rest }: Props) {
           <div>{card.bodyNode}</div>
           {card.button && (
             <div>
+              {/* Temp values */}
               <LinkAsButton
                 href={card.button.href}
                 label={card.button.label}
                 mainColor={card.button.bgColor || "white"}
                 secondaryColor={card.button.textColor}
+                states={{
+                  hover: {
+                    primaryColor: "",
+                  },
+                  normal: {
+                    primaryColor: "",
+                  },
+                }}
               />
             </div>
           )}

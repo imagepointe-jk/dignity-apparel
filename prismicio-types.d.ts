@@ -48,6 +48,128 @@ export type BrandColorDocument<Lang extends string = string> =
   >;
 
 /**
+ * Content for Button Style documents
+ */
+interface ButtonStyleDocumentData {
+  /**
+   * Primary Color field in *Button Style*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: button_style.primary_color
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  primary_color: prismic.ContentRelationshipField<"brand_color">;
+
+  /**
+   * Secondary Color field in *Button Style*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: button_style.secondary_color
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  secondary_color: prismic.ContentRelationshipField<"brand_color">;
+
+  /**
+   * Hover Primary Color field in *Button Style*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: button_style.hover_primary_color
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  hover_primary_color: prismic.ContentRelationshipField;
+
+  /**
+   * Hover Secondary Color field in *Button Style*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: button_style.hover_secondary_color
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  hover_secondary_color: prismic.ContentRelationshipField<"brand_color">;
+
+  /**
+   * Disabled Primary Color field in *Button Style*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: button_style.disabled_primary_color
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  disabled_primary_color: prismic.ContentRelationshipField<"brand_color">;
+
+  /**
+   * Disabled Secondary Color field in *Button Style*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: button_style.disabled_secondary_color
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  disabled_secondary_color: prismic.ContentRelationshipField<"brand_color">;
+
+  /**
+   * Type field in *Button Style*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Filled
+   * - **API ID Path**: button_style.type
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  type: prismic.SelectField<"Filled" | "Outlined", "filled">;
+
+  /**
+   * Full Width field in *Button Style*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: button_style.full_width
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  full_width: prismic.BooleanField;
+
+  /**
+   * Preview Image field in *Button Style*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: button_style.preview_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  preview_image: prismic.ImageField<never>;
+}
+
+/**
+ * Button Style document from Prismic
+ *
+ * - **API ID**: `button_style`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ButtonStyleDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ButtonStyleDocumentData>,
+    "button_style",
+    Lang
+  >;
+
+/**
  * Item in *Footer Section → Links*
  */
 export interface FooterSectionDocumentDataLinksItem {
@@ -646,6 +768,7 @@ export type StandardPageDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | BrandColorDocument
+  | ButtonStyleDocument
   | FooterSectionDocument
   | HomePageDocument
   | MegaMenuFeaturedImageDocument
@@ -896,6 +1019,8 @@ declare module "@prismicio/client" {
     export type {
       BrandColorDocument,
       BrandColorDocumentData,
+      ButtonStyleDocument,
+      ButtonStyleDocumentData,
       FooterSectionDocument,
       FooterSectionDocumentData,
       FooterSectionDocumentDataLinksItem,
