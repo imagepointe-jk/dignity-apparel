@@ -5,19 +5,18 @@ type Props = {
   className?: string;
   style?: CSSProperties;
 };
-export function Arrow({ size, className, style }: Props) {
+export function CheckMark({ size, className, style }: Props) {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       height={size ? `${size}px` : "24px"}
-      viewBox="200 -720 500 500"
-      width={size ? `${size}px` : "24px"}
-      fill="undefined"
-      style={style}
       className={className}
+      style={style}
+      viewBox="0 0 24 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
+        d="M7.62706 15.4903L1.93746 9.58203L0 11.5798L7.62706 19.5L24 2.49776L22.0762 0.5L7.62706 15.4903Z"
         fill="currentcolor"
       />
     </svg>
