@@ -19,3 +19,18 @@ main {
 h1 {
   font-family: var(--font-metropolis-extra-bold);
 }
+
+.skip-to-main {
+  z-index: -10000;
+  position: fixed;
+  background-color: var(--da-orange);
+  padding: 10px;
+  top: 0;
+  left: 0;
+  color: white;
+}
+
+.skip-to-main:focus,
+.skip-to-main:active {
+  z-index: 10000;
+}

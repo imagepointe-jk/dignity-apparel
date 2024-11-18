@@ -57,8 +57,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={fontClassNames}>
+        <a href="#main" className="skip-to-main">
+          Skip to Main Content
+        </a>
         <NavBarPrismic />
-        {children}
+        <div id="main" tabIndex={-1}>
+          {children}
+        </div>
         <FooterPrismic />
         <PrismicPreview repositoryName={repositoryName} />
       </body>
