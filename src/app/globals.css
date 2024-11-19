@@ -13,11 +13,86 @@ body {
 }
 
 main {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 h1 {
   font-family: var(--font-metropolis-extra-bold);
+  font-size: 3.75rem;
+}
+
+h1.variant-1 {
+  font-family: var(--font-metropolis-black);
+}
+
+h2 {
+  font-family: var(--font-metropolis-extra-bold);
+  font-size: 3rem;
+}
+
+h2.variant-1 {
+  font-family: var(--font-metropolis-black);
+}
+
+h3 {
+  font-family: var(--font-metropolis-extra-bold);
+  font-size: 2.5rem;
+}
+
+h3.variant-1 {
+  font-family: var(--font-metropolis-italic);
+}
+
+h3.variant-2 {
+  font-family: var(--font-merriweather-regular);
+  font-weight: normal;
+}
+
+h3.variant-3 {
+  font-family: var(--font-merriweather-italic);
+  font-weight: normal;
+}
+
+h4 {
+  font-family: var(--font-metropolis-black);
+  font-size: 2rem;
+}
+
+.subheader-1 {
+  font-size: 1.5rem;
+}
+
+.subheader-2 {
+  font-family: var(--font-merriweather-regular);
+  font-size: 1.5rem;
+}
+
+.subheader-3 {
+  font-size: 1.25rem;
+}
+
+.subheader-4 {
+  font-family: var(--font-merriweather-regular);
+  font-size: 1.25rem;
+}
+
+/* This is the default font style set at top of file */
+/* .body-1 {
+  font-family: var(--font-metr-regular);
+  font-size: 1rem;
+} */
+
+.body-2 {
+  font-family: var(--font-merriweather-regular);
+}
+
+.body-3 {
+  font-size: 0.875rem;
+}
+
+.body-4 {
+  font-family: var(--font-merriweather-regular);
+  font-size: 0.875rem;
 }
 
 .skip-to-main {
