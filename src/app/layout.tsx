@@ -26,6 +26,18 @@ const metropolisExtraBoldItalic = localFont({
   src: "./fonts/Metropolis-ExtraBold.woff",
   variable: "--font-metropolis-extra-bold-italic",
 });
+const merriweatherRegular = localFont({
+  src: "./fonts/Merriweather-Regular.ttf",
+  variable: "--font-merriweather-regular",
+});
+const merriweatherItalic = localFont({
+  src: "./fonts/Merriweather-Italic.ttf",
+  variable: "--font-merriweather-italic",
+});
+const merriweatherBold = localFont({
+  src: "./fonts/Merriweather-Bold.ttf",
+  variable: "--font-merriweather-bold",
+});
 
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
@@ -52,6 +64,9 @@ export default function RootLayout({
     metropolisSemiBold.variable,
     metropolisExtraBold.variable,
     metropolisExtraBoldItalic.variable,
+    merriweatherRegular.variable,
+    merriweatherItalic.variable,
+    merriweatherBold.variable,
   ].join(" ");
 
   return (
