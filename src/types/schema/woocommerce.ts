@@ -43,8 +43,8 @@ export const categorySchema = z.object({
 export const pageInfoSchema = z.object({
   hasNextPage: z.boolean(),
   hasPreviousPage: z.boolean(),
-  startCursor: z.string(),
-  endCursor: z.string(),
+  startCursor: z.string().nullable(),
+  endCursor: z.string().nullable(),
 });
 
 export type Product = z.infer<typeof productSchema>;
