@@ -822,24 +822,14 @@ export interface CardsSection1SliceDefaultPrimaryCardsItem {
   button: prismic.LinkField;
 
   /**
-   * Button Primary Color field in *CardsSection1 → Default → Primary → Cards*
+   * Button Style field in *CardsSection1 → Default → Primary → Cards*
    *
    * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
-   * - **API ID Path**: cards_section1.default.primary.cards[].button_primary_color
+   * - **API ID Path**: cards_section1.default.primary.cards[].button_style
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  button_primary_color: prismic.ContentRelationshipField<"brand_color">;
-
-  /**
-   * Button Secondary Color field in *CardsSection1 → Default → Primary → Cards*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: cards_section1.default.primary.cards[].button_secondary_color
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  button_secondary_color: prismic.ContentRelationshipField<"brand_color">;
+  button_style: prismic.ContentRelationshipField<"button_style">;
 }
 
 /**

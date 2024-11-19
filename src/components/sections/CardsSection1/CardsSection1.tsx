@@ -1,6 +1,9 @@
 import { ReactNode } from "react";
 import styles from "@/styles/sections/CardsSection1.module.css";
-import { LinkAsButton } from "@/components/global/LinkAsButton/LinkAsButton";
+import {
+  LinkAsButton,
+  LinkAsButtonData,
+} from "@/components/global/LinkAsButton/LinkAsButton";
 
 type Props = {
   cards: {
@@ -10,12 +13,7 @@ type Props = {
     };
     heading: string;
     bodyNode: ReactNode;
-    button?: {
-      label: string;
-      href: string;
-      bgColor?: string;
-      textColor?: string;
-    };
+    button: LinkAsButtonData;
   }[];
 };
 export function CardsSection1({ cards, ...rest }: Props) {
@@ -28,21 +26,7 @@ export function CardsSection1({ cards, ...rest }: Props) {
           <div>{card.bodyNode}</div>
           {card.button && (
             <div>
-              {/* Temp values */}
-              <LinkAsButton
-                data={{
-                  href: card.button.href,
-                  label: card.button.label,
-                  states: {
-                    hover: {
-                      primaryColor: "",
-                    },
-                    normal: {
-                      primaryColor: "",
-                    },
-                  },
-                }}
-              />
+              <LinkAsButton data={card.button} />
             </div>
           )}
         </div>

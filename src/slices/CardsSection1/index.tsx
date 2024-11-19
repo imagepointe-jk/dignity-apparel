@@ -1,7 +1,11 @@
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { CardsSection1 as CardsSection1Component } from "@/components/sections/CardsSection1/CardsSection1";
-import { getBrandColor, getPrismicLinkUrl } from "@/utility/prismic";
+import {
+  convertButton,
+  getBrandColor,
+  getPrismicLinkUrl,
+} from "@/utility/prismic";
 
 /**
  * Props for `CardsSection1`.
@@ -17,19 +21,16 @@ const CardsSection1 = async ({
 }: CardsSection1Props): Promise<JSX.Element> => {
   const cards = await Promise.all(
     slice.primary.cards.map(async (card) => {
-      const bgColor = await getBrandColor(card.button_primary_color);
-      const textColor = await getBrandColor(card.button_secondary_color);
+      const button = await convertButton({
+        link: card.button,
+        button_style: card.button_style,
+      });
 
       return {
         image: { src: card.image.url || "", alt: card.image.alt || "" },
         heading: `${card.heading}`,
         bodyNode: <PrismicRichText field={card.body} />,
-        button: {
-          href: getPrismicLinkUrl(card.button),
-          label: card.button.text || "Link",
-          bgColor,
-          textColor,
-        },
+        button,
       };
     })
   );

@@ -58,26 +58,6 @@
 								}
 							],
 							[
-								"button_primary_color",
-								{
-									"__TYPE__": "LinkContent",
-									"value": {
-										"__TYPE__": "DocumentLink",
-										"id": "mock_document_id"
-									}
-								}
-							],
-							[
-								"button_secondary_color",
-								{
-									"__TYPE__": "LinkContent",
-									"value": {
-										"__TYPE__": "DocumentLink",
-										"id": "mock_document_id"
-									}
-								}
-							],
-							[
 								"button",
 								{
 									"__TYPE__": "LinkContent",
@@ -85,6 +65,16 @@
 										"__TYPE__": "ExternalLink",
 										"url": "http://twitter.com",
 										"text": "liquid"
+									}
+								}
+							],
+							[
+								"button_style",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
 									}
 								}
 							]

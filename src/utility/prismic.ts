@@ -1,7 +1,5 @@
 import { BRAND_COLOR } from "@/constants";
 import { createClient } from "@/prismicio";
-import { Simplify } from "../../prismicio-types";
-import { Content } from "@prismicio/client";
 import { LinkAsButtonData } from "@/components/global/LinkAsButton/LinkAsButton";
 import { getButtonStyle } from "@/fetch/prismic/prismic";
 import { validateButtonStyleResponse } from "@/types/validation/prismic/validation";
@@ -39,14 +37,12 @@ export async function getBrandColor(relationshipObj: any) {
   return `${match.data.color}`;
 }
 
-export async function convertButton(
-  button: Simplify<Content.HeroSliceDefaultPrimaryButtonsItem> | undefined
-): Promise<LinkAsButtonData> {
-  //@ts-expect-error: "id" does not exist
-  const styleId = button?.button_style.id;
-
+export async function convertButton(button: {
+  link: any;
+  button_style: any;
+}): Promise<LinkAsButtonData> {
   //start out with default data
-  const converted: LinkAsButtonData = {
+  const buttonData: LinkAsButtonData = {
     href: "",
     label: "Link",
     states: {
@@ -60,9 +56,14 @@ export async function convertButton(
       },
     },
   };
-  if (!button || !styleId) {
-    return converted; //return the default as fallback
-  }
+  //return default as fallback
+  if (!button) return buttonData;
+
+  const styleId = button?.button_style?.id;
+  const href = getPrismicLinkUrl(button.link);
+  const label = button?.link?.text || "Link";
+
+  if (!styleId) return buttonData;
 
   const response = await getButtonStyle(styleId);
   const {
@@ -76,19 +77,19 @@ export async function convertButton(
     },
   } = validateButtonStyleResponse(response);
 
-  converted.href = getPrismicLinkUrl(button.link);
-  converted.label = button.link.text || "Link";
-  converted.fullWidth = full_width;
-  converted.type =
+  buttonData.href = href;
+  buttonData.label = label;
+  buttonData.fullWidth = full_width;
+  buttonData.type =
     type === "Filled" ? "filled" : type === "Outlined" ? "outlined" : undefined;
   if (primary_color.data)
-    converted.states.normal.primaryColor = primary_color.data.color;
+    buttonData.states.normal.primaryColor = primary_color.data.color;
   if (secondary_color.data)
-    converted.states.normal.secondaryColor = secondary_color.data.color;
+    buttonData.states.normal.secondaryColor = secondary_color.data.color;
   if (hover_primary_color.data)
-    converted.states.hover.primaryColor = hover_primary_color.data.color;
+    buttonData.states.hover.primaryColor = hover_primary_color.data.color;
   if (hover_secondary_color.data)
-    converted.states.hover.secondaryColor = hover_secondary_color.data.color;
+    buttonData.states.hover.secondaryColor = hover_secondary_color.data.color;
 
-  return converted;
+  return buttonData;
 }
