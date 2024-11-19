@@ -50,23 +50,13 @@
                   "allowText": true
                 }
               },
-              "primary_color": {
+              "button_style": {
                 "type": "Link",
                 "config": {
-                  "label": "Primary Color",
+                  "label": "Button Style",
                   "select": "document",
                   "customtypes": [
-                    "brand_color"
-                  ]
-                }
-              },
-              "secondary_color": {
-                "type": "Link",
-                "config": {
-                  "label": "Secondary Color",
-                  "select": "document",
-                  "customtypes": [
-                    "brand_color"
+                    "button_style"
                   ]
                 }
               }

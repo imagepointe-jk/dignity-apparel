@@ -54,17 +54,7 @@
 								}
 							],
 							[
-								"primary_color",
-								{
-									"__TYPE__": "LinkContent",
-									"value": {
-										"__TYPE__": "DocumentLink",
-										"id": "mock_document_id"
-									}
-								}
-							],
-							[
-								"secondary_color",
+								"button_style",
 								{
 									"__TYPE__": "LinkContent",
 									"value": {

@@ -82,7 +82,7 @@ interface ButtonStyleDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  hover_primary_color: prismic.ContentRelationshipField;
+  hover_primary_color: prismic.ContentRelationshipField<"brand_color">;
 
   /**
    * Hover Secondary Color field in *Button Style*
@@ -904,24 +904,14 @@ export interface HeroSliceDefaultPrimaryButtonsItem {
   link: prismic.LinkField;
 
   /**
-   * Primary Color field in *Hero → Default → Primary → Buttons*
+   * Button Style field in *Hero → Default → Primary → Buttons*
    *
    * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.buttons[].primary_color
+   * - **API ID Path**: hero.default.primary.buttons[].button_style
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  primary_color: prismic.ContentRelationshipField<"brand_color">;
-
-  /**
-   * Secondary Color field in *Hero → Default → Primary → Buttons*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.buttons[].secondary_color
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  secondary_color: prismic.ContentRelationshipField<"brand_color">;
+  button_style: prismic.ContentRelationshipField<"button_style">;
 }
 
 /**

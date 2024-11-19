@@ -32,7 +32,8 @@
         "type": "Link",
         "config": {
           "label": "Hover Primary Color",
-          "select": "document"
+          "select": "document",
+          "customtypes": ["brand_color"]
         }
       },
       "hover_secondary_color": {
