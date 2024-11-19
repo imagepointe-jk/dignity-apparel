@@ -40,7 +40,6 @@ export function QuickSearch() {
 
   return (
     <>
-      <h2>Search</h2>
       <label htmlFor="search" style={{ display: "none" }}>
         Search
       </label>
@@ -49,7 +48,7 @@ export function QuickSearch() {
         className={styles["search-field"]}
         name="search"
         id="search"
-        placeholder="Search..."
+        placeholder="Search for..."
         onChange={(e) => {
           setHasSearched(true);
           setStatus("loading");
@@ -57,7 +56,6 @@ export function QuickSearch() {
         }}
       />
       <div className={styles["results-container"]}>
-        {!hasSearched && <>Search our catalog.</>}
         {hasSearched && (
           <>
             {status === "idle" &&

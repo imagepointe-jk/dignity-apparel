@@ -46,7 +46,7 @@
 
 .purchase-link {
   color: white;
-  background-color: var(--da-orange);
+  background-color: var(--blaze-orange-500);
   padding: 20px;
   font-weight: bold;
   text-transform: uppercase;

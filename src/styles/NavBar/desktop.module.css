@@ -97,7 +97,7 @@
   right: 50%;
   bottom: 0;
   height: 5px;
-  background-color: var(--da-orange);
+  background-color: var(--blaze-orange-500);
   transition: 0.2s;
 }
 
@@ -118,7 +118,7 @@
 
 .special-link-container > a {
   display: block;
-  background-color: var(--da-orange);
+  background-color: var(--blaze-orange-500);
   color: white;
   font-weight: bold;
   font-size: 1.25rem;
@@ -132,7 +132,7 @@
 
 .special-link-container > a::before,
 .special-link-container > a::after {
-  background-color: var(--da-orange);
+  background-color: var(--blaze-orange-500);
   width: 9px;
   display: block;
   content: "";
@@ -330,7 +330,7 @@
   content: "";
   position: absolute;
   display: block;
-  background-color: var(--da-orange);
+  background-color: var(--blaze-orange-500);
   left: 0;
   bottom: 0;
   right: 100%;

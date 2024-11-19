@@ -4,6 +4,10 @@
   padding: 10px 0;
 }
 
+.main:hover {
+  background-color: var(--armor-gray-100);
+}
+
 .image-container {
   height: 100px;
   width: 100px;
