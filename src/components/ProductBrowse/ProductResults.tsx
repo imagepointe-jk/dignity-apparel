@@ -36,12 +36,12 @@ export function ProductResultsWrapped() {
     if (type === "next") {
       if (!pageInfo?.hasNextPage) return null;
       newParams.set("first", `${DEFAULT_PRODUCTS_PAGE_SIZE}`);
-      newParams.set("after", pageInfo.endCursor);
+      if (pageInfo.endCursor) newParams.set("after", pageInfo.endCursor);
     }
     if (type === "previous") {
       if (!pageInfo?.hasPreviousPage) return null;
       newParams.set("last", `${DEFAULT_PRODUCTS_PAGE_SIZE}`);
-      newParams.set("before", pageInfo.startCursor);
+      if (pageInfo.startCursor) newParams.set("before", pageInfo.startCursor);
     }
 
     return `${env.NEXT_PUBLIC_BASE_URL}/products?${newParams}`;
