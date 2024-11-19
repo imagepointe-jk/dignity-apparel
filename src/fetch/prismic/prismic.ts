@@ -57,3 +57,35 @@ export async function getFooter() {
     `,
   });
 }
+
+export async function getButtonStyle(id: string) {
+  const client = createClient();
+  return client.getByID(id, {
+    graphQuery: `
+    {
+      button_style {
+        primary_color {
+          color
+        }
+        secondary_color {
+          color
+        }
+        hover_primary_color {
+          color
+        }
+        hover_secondary_color {
+          color
+        }
+        disabled_primary_color {
+          color
+        }
+        disabled_secondary_color {
+          color
+        }
+        type
+        full_width
+      }
+    }
+    `,
+  });
+}

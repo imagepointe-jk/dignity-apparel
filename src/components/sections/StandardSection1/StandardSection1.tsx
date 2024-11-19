@@ -3,7 +3,7 @@ import { ContainedImage } from "../../global/ContainedImage/ContainedImage";
 import styles from "@/styles/sections/StandardSection1.module.css";
 import {
   LinkAsButton,
-  LinkAsButtonProps,
+  LinkAsButtonData,
 } from "../../global/LinkAsButton/LinkAsButton";
 
 type Props = {
@@ -14,8 +14,8 @@ type Props = {
   horzReversed?: boolean;
   bgColor?: string;
   textColor?: string;
-  buttonPrimary?: LinkAsButtonProps;
-  buttonSecondary?: Omit<LinkAsButtonProps, "secondaryColor">;
+  buttonPrimary?: LinkAsButtonData;
+  buttonSecondary?: Omit<LinkAsButtonData, "secondaryColor">;
 };
 export function StandardSection1({
   heading,
@@ -41,32 +41,32 @@ export function StandardSection1({
             {/* Temp values */}
             {buttonPrimary && (
               <LinkAsButton
-                href={buttonPrimary.href}
-                label={buttonPrimary.label}
-                mainColor={buttonPrimary.mainColor}
-                secondaryColor={buttonPrimary.secondaryColor}
-                states={{
-                  hover: {
-                    primaryColor: "",
-                  },
-                  normal: {
-                    primaryColor: "",
+                data={{
+                  href: buttonPrimary.href,
+                  label: buttonPrimary.label,
+                  states: {
+                    hover: {
+                      primaryColor: "",
+                    },
+                    normal: {
+                      primaryColor: "",
+                    },
                   },
                 }}
               />
             )}
             {buttonSecondary && (
               <LinkAsButton
-                href={buttonSecondary.href}
-                label={buttonSecondary.label}
-                mainColor={buttonSecondary.mainColor}
-                variant={"minor button"}
-                states={{
-                  hover: {
-                    primaryColor: "",
-                  },
-                  normal: {
-                    primaryColor: "",
+                data={{
+                  href: buttonSecondary.href,
+                  label: buttonSecondary.label,
+                  states: {
+                    hover: {
+                      primaryColor: "",
+                    },
+                    normal: {
+                      primaryColor: "",
+                    },
                   },
                 }}
               />

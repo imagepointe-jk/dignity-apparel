@@ -4,12 +4,9 @@ import styles from "@/styles/global/LinkAsButton.module.css";
 import Link from "next/link";
 import { useState } from "react";
 
-export type LinkAsButtonProps = {
+export type LinkAsButtonData = {
   href: string;
   label: string;
-  mainColor: string;
-  secondaryColor?: string;
-  variant?: "minor button";
   fullWidth?: boolean;
   type?: "filled" | "outlined";
   states: {
@@ -23,16 +20,12 @@ export type LinkAsButtonProps = {
     };
   };
 };
+type Props = {
+  data: LinkAsButtonData;
+};
 export function LinkAsButton({
-  href,
-  label,
-  mainColor,
-  secondaryColor,
-  variant,
-  fullWidth,
-  states,
-  type,
-}: LinkAsButtonProps) {
+  data: { href, label, fullWidth, states, type },
+}: Props) {
   const [hovered, setHovered] = useState(false);
 
   function chooseTextColor() {
@@ -58,33 +51,19 @@ export function LinkAsButton({
       const color = hovered
         ? states.hover.primaryColor
         : states.normal.primaryColor;
-      return `2px solid #${color}`;
+      return `2px solid ${color}`;
     } else {
       return "";
     }
   }
 
   return (
-    // <a
-    //   href={href}
-    //   className={`${styles["main"]} ${variant === "minor button" ? styles["minor"] : ""}`}
-    //   style={{
-    //     backgroundColor:
-    //       variant === "minor button" ? undefined : mainColor || BRAND_COLOR,
-    //     outlineColor: variant === "minor button" ? mainColor : undefined,
-    //     color:
-    //       variant === "minor button" ? mainColor : secondaryColor || "white",
-    //       width: fullWidth ? "100%" : undefined
-    //   }}
-    // >
-    //   {label}
-    // </a>
     <Link
       href={href}
       className={styles["main"]}
       style={{
-        color: `#${chooseTextColor()}`,
-        backgroundColor: `#${chooseBackgroundColor()}`,
+        color: `${chooseTextColor()}`,
+        backgroundColor: `${chooseBackgroundColor()}`,
         width: fullWidth ? "100%" : undefined,
         border: chooseBorderStyle(),
       }}

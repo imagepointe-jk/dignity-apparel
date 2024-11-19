@@ -1,5 +1,6 @@
 import { footerSchema } from "@/types/schema/footer";
 import { megaMenuSchema } from "@/types/schema/navbar";
+import { buttonStyleResponseSchema } from "@/types/schema/prismic";
 
 export function validateMegaMenuResponse(response: any) {
   return megaMenuSchema.parse({
@@ -49,4 +50,8 @@ export function validateFooterResponse(response: any) {
       };
     }),
   });
+}
+
+export function validateButtonStyleResponse(response: any) {
+  return buttonStyleResponseSchema.parse(response);
 }
