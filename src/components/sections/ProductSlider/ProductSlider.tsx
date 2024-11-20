@@ -2,6 +2,7 @@
 
 import { CardSlider } from "@/components/global/CardSlider/CardSlider";
 import { LinkAsButton } from "@/components/global/LinkAsButton/LinkAsButton";
+import { BRAND_COLOR } from "@/constants";
 import styles from "@/styles/sections/ProductSlider.module.css";
 
 type Props = {
@@ -45,10 +46,20 @@ export function ProductSlider({ products, buttons }: Props) {
               ))}
             </div>
             <LinkAsButton
-              href={product.url}
-              label="View Product"
-              mainColor={buttons.mainColor}
-              secondaryColor={buttons.secondaryColor}
+              data={{
+                href: "",
+                label: "View Product",
+                states: {
+                  normal: {
+                    primaryColor: BRAND_COLOR,
+                    secondaryColor: "#ffffff",
+                  },
+                  hover: {
+                    primaryColor: BRAND_COLOR,
+                    secondaryColor: "#ffffff",
+                  },
+                },
+              }}
             />
           </div>
         </div>
