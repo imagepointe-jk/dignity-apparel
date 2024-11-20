@@ -44,11 +44,11 @@ export function validateFooterResponse(response: any) {
     }),
     iconLinks: response.data.footer_icon_links.map((item: any) => {
       return {
-        imageUrl: item.icon.url,
         href: item.link.url,
-        name: item.link_name,
+        type: item.type,
       };
     }),
+    homeLinkImageUrl: response.data.footer_home_link_image.url,
   });
 }
 

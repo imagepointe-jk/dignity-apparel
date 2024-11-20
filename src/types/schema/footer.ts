@@ -13,10 +13,10 @@ export const footerSchema = z.object({
   sections: z.array(footerSectionSchema),
   iconLinks: z.array(
     z.object({
-      imageUrl: z.string(),
-      name: z.string().optional(),
+      type: z.string(),
       href: z.string().optional(),
     })
   ),
+  homeLinkImageUrl: z.string(),
 });
 export type Footer = z.infer<typeof footerSchema>;

@@ -104,22 +104,24 @@
                 "allowText": true
               }
             },
-            "link_name": {
-              "type": "Text",
+            "type": {
+              "type": "Select",
               "config": {
-                "label": "Link Name",
-                "placeholder": ""
-              }
-            },
-            "icon": {
-              "type": "Image",
-              "config": {
-                "label": "Icon",
-                "constraint": {},
-                "thumbnails": []
+                "label": "Type",
+                "placeholder": "",
+                "options": ["Facebook", "Instagram", "LinkedIn", "YouTube"],
+                "default_value": "Facebook"
               }
             }
           }
+        }
+      },
+      "footer_home_link_image": {
+        "type": "Image",
+        "config": {
+          "label": "Footer Home Link Image",
+          "constraint": {},
+          "thumbnails": []
         }
       }
     }

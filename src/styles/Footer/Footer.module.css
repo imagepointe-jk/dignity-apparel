@@ -1,6 +1,5 @@
 .main {
-  background-color: rgb(56, 56, 56);
-  padding: 50px 50px 0 50px;
+  background-color: var(--armor-gray-900);
 }
 
 .main a {
@@ -10,18 +9,37 @@
 .main,
 .main a,
 .main a:visited {
-  color: rgb(184, 184, 184);
+  color: white;
+}
+
+.top-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: var(--armor-gray-800);
+  flex-wrap: wrap;
+  padding-top: 10px;
+  padding-bottom: 7px;
+}
+
+.top-banner h3 {
+  margin: 0;
+  text-align: center;
 }
 
 .main-row {
   display: flex;
   gap: 60px;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
+  padding: 40px 30px 0 30px;
 }
 
 .title {
   font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1rem;
 }
 
 .link-list {
@@ -30,38 +48,145 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
+  font-size: 0.813rem;
+}
+
+.subscribe-connect-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.subscribe-description {
+  font-size: 0.813rem;
+  font-family: var(--font-metropolis-semi-bold);
 }
 
 .subscribe-form {
   display: flex;
 }
 
+.email-submit-container {
+  background-color: var(--armor-gray-600);
+  padding: 10px;
+  border-radius: 5px;
+  width: 280px;
+  display: flex;
+}
+
+.subscribe-form input {
+  font-size: 0.875rem;
+  letter-spacing: 0.125rem;
+  background: none;
+  border: none;
+  flex: 1;
+}
+
+.subscribe-form input,
+.subscribe-form input::placeholder {
+  color: white;
+}
+
+.subscribe-form button {
+  font-size: 1rem;
+  font-family: var(--font-metropolis-extra-bold);
+  padding: 8px 13px;
+  border-radius: 5px;
+  background-color: white;
+  border: none;
+  letter-spacing: initial;
+}
+
 .icon-links-row {
   display: flex;
-  gap: 5px;
+  gap: 17px;
+  align-items: center;
 }
 
 .icon-link {
-  width: 25px;
-  height: 25px;
+  /* width: 25px; */
+  /* height: 25px; */
   display: block;
-  background-size: 100% 100%;
+  /* background-size: 100% 100%; */
   cursor: pointer;
+}
+
+.mission-statement {
+  font-size: 1rem;
+  font-family: var(--font-metropolis-semi-bold-italic);
+  font-style: italic;
+  max-width: 320px;
+}
+
+.home-link-container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 40px;
+}
+
+.home-link-container a {
+  display: block;
+}
+
+.home-link-container img {
+  height: 40px;
 }
 
 .bottom-row {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
   gap: 50px;
-  padding: 15px;
+  padding: 15px 30px 15px 30px;
+  border-top: 2px solid var(--armor-gray-800);
+  font-size: 0.75rem;
 }
 
 .bottom-row a {
   display: block;
 }
 
-@media screen and (max-width: 480px) {
+.bottom-row-links {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 15px;
+}
+
+.bottom-row-links > div {
+  padding: 0 25px 0 25px;
+  border-right: 1px solid white;
+}
+
+.bottom-row-links > div:first-child {
+  padding-left: 0;
+}
+
+.bottom-row-links > div:last-child {
+  padding-right: 0;
+  border: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .main-row {
+    justify-content: center;
+  }
+
+  .subscribe-connect-container {
+    align-items: center;
+  }
+
+  .mission-statement {
+    text-align: center;
+  }
+
+  .bottom-row,
+  .bottom-row-links {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
   .main-row,
   .bottom-row {
     flex-direction: column;

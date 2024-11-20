@@ -557,24 +557,18 @@ export interface SettingsDocumentDataFooterIconLinksItem {
   link: prismic.LinkField;
 
   /**
-   * Link Name field in *Settings → Footer Icon Links*
+   * Type field in *Settings → Footer Icon Links*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Select
    * - **Placeholder**: *None*
-   * - **API ID Path**: settings.footer_icon_links[].link_name
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **Default Value**: Facebook
+   * - **API ID Path**: settings.footer_icon_links[].type
+   * - **Documentation**: https://prismic.io/docs/field#select
    */
-  link_name: prismic.KeyTextField;
-
-  /**
-   * Icon field in *Settings → Footer Icon Links*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: settings.footer_icon_links[].icon
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  icon: prismic.ImageField<never>;
+  type: prismic.SelectField<
+    "Facebook" | "Instagram" | "LinkedIn" | "YouTube",
+    "filled"
+  >;
 }
 
 /**
@@ -683,6 +677,17 @@ interface SettingsDocumentData {
   footer_icon_links: prismic.GroupField<
     Simplify<SettingsDocumentDataFooterIconLinksItem>
   >;
+
+  /**
+   * Footer Home Link Image field in *Settings*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.footer_home_link_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  footer_home_link_image: prismic.ImageField<never>;
 }
 
 /**

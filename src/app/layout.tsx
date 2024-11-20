@@ -18,6 +18,10 @@ const metropolisSemiBold = localFont({
   src: "./fonts/Metropolis-SemiBold.woff",
   variable: "--font-metropolis-semi-bold",
 });
+const metropolisSemiBoldItalic = localFont({
+  src: "./fonts/Metropolis-SemiBoldItalic.woff",
+  variable: "--font-metropolis-semi-bold-italic",
+});
 const metropolisExtraBold = localFont({
   src: "./fonts/Metropolis-ExtraBold.woff",
   variable: "--font-metropolis-extra-bold",
@@ -62,6 +66,7 @@ export default function RootLayout({
     metropolisRegular.variable,
     metropolisItalic.variable,
     metropolisSemiBold.variable,
+    metropolisSemiBoldItalic.variable,
     metropolisExtraBold.variable,
     metropolisExtraBoldItalic.variable,
     merriweatherRegular.variable,

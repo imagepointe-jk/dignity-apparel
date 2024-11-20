@@ -52,6 +52,7 @@ export async function getFooter() {
           }
         }
         footer_icon_links
+        footer_home_link_image
       }
     }
     `,

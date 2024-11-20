@@ -20,6 +20,7 @@
 * {
   box-sizing: border-box;
   font-family: var(--font-metropolis-regular);
+  letter-spacing: 0.125rem;
 }
 
 body {
@@ -52,20 +53,24 @@ h2.variant-1 {
 h3 {
   font-family: var(--font-metropolis-extra-bold);
   font-size: 2.5rem;
+  letter-spacing: 0.313rem;
 }
 
 h3.variant-1 {
   font-family: var(--font-metropolis-italic);
+  letter-spacing: 0.313rem;
 }
 
 h3.variant-2 {
   font-family: var(--font-merriweather-regular);
   font-weight: normal;
+  letter-spacing: 0.313rem;
 }
 
 h3.variant-3 {
   font-family: var(--font-merriweather-italic);
   font-weight: normal;
+  letter-spacing: 0.313rem;
 }
 
 h4 {
