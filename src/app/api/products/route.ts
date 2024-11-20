@@ -7,7 +7,6 @@ import {
 import { message } from "@/utility/misc";
 import { INTERNAL_SERVER_ERROR, NOT_FOUND } from "@/utility/statusCodes";
 import { NextRequest } from "next/server";
-import { inspect } from "util";
 
 const emptyResults = {
   data: {

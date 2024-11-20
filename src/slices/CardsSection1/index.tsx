@@ -1,11 +1,7 @@
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { CardsSection1 as CardsSection1Component } from "@/components/sections/CardsSection1/CardsSection1";
-import {
-  convertButton,
-  getBrandColor,
-  getPrismicLinkUrl,
-} from "@/utility/prismic";
+import { convertButton } from "@/utility/prismic";
 
 /**
  * Props for `CardsSection1`.
