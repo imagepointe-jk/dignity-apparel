@@ -24,6 +24,18 @@ export const productSchema = z.object({
     upcharge3x: z.number().optional().nullable(),
     upcharge4x: z.number().optional().nullable(),
   }),
+  categories: z.array(
+    z.object({
+      id: z.number(),
+      name: z.string(),
+    })
+  ),
+  tags: z.array(
+    z.object({
+      id: z.number(),
+      name: z.string(),
+    })
+  ),
   variations: z.array(productVariationSchema),
 });
 

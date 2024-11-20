@@ -92,6 +92,22 @@ export function ProductPage({ product }: Props) {
           </ul>
         </>
       )}
+      <div>
+        Categories
+        <ul>
+          {product.categories.map((cat) => (
+            <li key={cat.id}>{cat.name}</li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        Tags
+        <ul>
+          {product.tags.map((tag) => (
+            <li key={tag.id}>{tag.name}</li>
+          ))}
+        </ul>
+      </div>
       <Link href={""} className={styles["purchase-link"]}>
         Purchase
       </Link>
