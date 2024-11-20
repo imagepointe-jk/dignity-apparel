@@ -22,7 +22,7 @@ type Props = {
     secondaryColor: string;
   };
 };
-export function ProductSlider({ products, buttons }: Props) {
+export function ProductSlider({ products }: Props) {
   return (
     <CardSlider
       dataset={products}
