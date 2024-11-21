@@ -10,7 +10,11 @@ export default async function Page({ params: { slug } }: Props) {
     const json = await productResponse.json();
     const parsed = validateWooCommerceSingleProductResponse(json.data.product);
 
-    return <ProductPage product={parsed} />;
+    return (
+      <div className="x-wide-container">
+        <ProductPage product={parsed} />
+      </div>
+    );
   } catch (error) {
     console.error(error);
     notFound();

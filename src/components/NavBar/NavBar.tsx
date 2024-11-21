@@ -72,39 +72,46 @@ export function NavBar({
           bgColorHexCode="ff0000"
           textColorHexCode="ffffff"
         />
-        <nav
-          aria-label="Main"
-          className={`${styles["main"]} ${
-            !atTopOfPage ? styles["compressed"] : ""
-          }`}
-        >
-          <a href={env.NEXT_PUBLIC_BASE_URL} className={styles["da-home-link"]}>
-            <img
-              src={logo}
-              alt="Dignity Apparel Home"
-              className={styles["da-logo-main"]}
-            />
-            <img src={text} className={styles["da-logo-text"]} />
-          </a>
-          <div className={styles["buttons-container-right"]}>
-            <MegaMenuDesktop
-              data={megaMenu}
-              expandedIndex={expandedIndex}
-              onFocusTopLevel={onFocusTopLevel}
-              setExpandedIndex={setExpandedIndex}
-              specialLink={specialLink}
-            />
-            <button
-              className={styles["hamburger-button"]}
-              onClick={onClickHamburger}
+        <div className={styles["nav-background-bar"]}>
+          <div className="x-wide-container">
+            <nav
+              aria-label="Main"
+              className={`${styles["main"]} ${
+                !atTopOfPage ? styles["compressed"] : ""
+              }`}
             >
-              ☰
-            </button>
-            <button className={styles["button"]} onClick={toggleDialog}>
-              <MagnifyingGlass />
-            </button>
+              <a
+                href={env.NEXT_PUBLIC_BASE_URL}
+                className={styles["da-home-link"]}
+              >
+                <img
+                  src={logo}
+                  alt="Dignity Apparel Home"
+                  className={styles["da-logo-main"]}
+                />
+                <img src={text} className={styles["da-logo-text"]} />
+              </a>
+              <div className={styles["buttons-container-right"]}>
+                <MegaMenuDesktop
+                  data={megaMenu}
+                  expandedIndex={expandedIndex}
+                  onFocusTopLevel={onFocusTopLevel}
+                  setExpandedIndex={setExpandedIndex}
+                  specialLink={specialLink}
+                />
+                <button
+                  className={styles["hamburger-button"]}
+                  onClick={onClickHamburger}
+                >
+                  ☰
+                </button>
+                <button className={styles["button"]} onClick={toggleDialog}>
+                  <MagnifyingGlass />
+                </button>
+              </div>
+            </nav>
           </div>
-        </nav>
+        </div>
         <MegaMenuMobile
           data={megaMenu}
           menuExpanded={mobileMenuExpanded}

@@ -129,3 +129,14 @@ h4 {
 .skip-to-main:active {
   z-index: 10000;
 }
+
+.x-wide-container {
+  width: 100%;
+}
+
+@media screen and (min-width: 1280px) {
+  .x-wide-container {
+    width: 1280px;
+    margin: auto;
+  }
+}

@@ -135,15 +135,18 @@
   height: 40px;
 }
 
+.bottom-row-container {
+  border-top: 2px solid var(--armor-gray-800);
+  margin-top: 50px;
+}
+
 .bottom-row {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 50px;
   padding: 15px 30px 15px 30px;
-  border-top: 2px solid var(--armor-gray-800);
   font-size: 0.75rem;
-  margin-top: 50px;
 }
 
 .bottom-row a {

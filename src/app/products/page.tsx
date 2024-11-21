@@ -7,5 +7,9 @@ export default async function Page() {
   const json = await response.json();
   const parsed = validateCategoriesResponse(json);
 
-  return <ProductBrowse categories={parsed} />;
+  return (
+    <div className="x-wide-container">
+      <ProductBrowse categories={parsed} />
+    </div>
+  );
 }
