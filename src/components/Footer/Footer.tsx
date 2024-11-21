@@ -39,7 +39,7 @@ export function Footer({
         ))}
         <div className={styles["subscribe-connect-container"]}>
           <div className={styles["subscribe-description"]}>
-            Sign up for exclusive updates & new arrivals
+            Sign up for updates & new arrivals
           </div>
           <form className={styles["subscribe-form"]}>
             <label htmlFor="email" style={{ display: "none" }}>
@@ -64,16 +64,15 @@ export function Footer({
               />
             ))}
           </div>
+          <div className={styles["home-link-container"]}>
+            <Link href={env.NEXT_PUBLIC_BASE_URL}>
+              <img src={homeLinkImageUrl} alt="Dignity Apparel" />
+            </Link>
+          </div>
           <p className={styles["mission-statement"]}>
-            We exist to create dignified, life-changing jobs where everyone
-            working here can realize their fill potential.
+            We exist to create dignified, life-changing jobs.
           </p>
         </div>
-      </div>
-      <div className={styles["home-link-container"]}>
-        <Link href={env.NEXT_PUBLIC_BASE_URL}>
-          <img src={homeLinkImageUrl} alt="Dignity Apparel" />
-        </Link>
       </div>
       <div className={styles["bottom-row"]}>
         <div>&copy;{currentYear} Dignity Apparel. All Rights Reserved </div>

@@ -6,6 +6,10 @@
   text-decoration: none;
 }
 
+.main a:hover {
+  text-decoration: underline;
+}
+
 .main,
 .main a,
 .main a:visited {
@@ -49,7 +53,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  font-size: 0.813rem;
+  font-size: 0.875rem;
 }
 
 .subscribe-connect-container {
@@ -59,8 +63,9 @@
 }
 
 .subscribe-description {
-  font-size: 0.813rem;
+  font-size: 0.875rem;
   font-family: var(--font-metropolis-semi-bold);
+  text-align: center;
 }
 
 .subscribe-form {
@@ -71,7 +76,7 @@
   background-color: var(--armor-gray-600);
   padding: 10px;
   border-radius: 5px;
-  width: 280px;
+  width: 350px;
   display: flex;
 }
 
@@ -110,16 +115,16 @@
 }
 
 .mission-statement {
-  font-size: 1rem;
-  font-family: var(--font-metropolis-semi-bold-italic);
+  font-size: 0.75rem;
+  font-family: var(--font-merriweather-italic);
   font-style: italic;
-  max-width: 320px;
+  text-align: center;
+  margin: 0;
 }
 
 .home-link-container {
   display: flex;
   justify-content: center;
-  padding-bottom: 40px;
 }
 
 .home-link-container a {
@@ -138,6 +143,7 @@
   padding: 15px 30px 15px 30px;
   border-top: 2px solid var(--armor-gray-800);
   font-size: 0.75rem;
+  margin-top: 50px;
 }
 
 .bottom-row a {
@@ -171,10 +177,6 @@
 
   .subscribe-connect-container {
     align-items: center;
-  }
-
-  .mission-statement {
-    text-align: center;
   }
 
   .bottom-row,
