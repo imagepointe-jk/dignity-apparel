@@ -27,6 +27,7 @@ function pullProductData(productJson: any) {
       productJson.productCategories?.edges.map((item: any) => ({
         id: item.node.databaseId,
         name: item.node.name,
+        slug: item.node.slug,
       })) || [],
     tags:
       productJson.productTags?.edges.map((item: any) => ({

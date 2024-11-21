@@ -24,6 +24,7 @@ function buildProductFields(params?: {
           node {
             databaseId
             name
+            slug
           }
         }
       }

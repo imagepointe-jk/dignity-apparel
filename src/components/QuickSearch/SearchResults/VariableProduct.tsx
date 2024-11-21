@@ -9,7 +9,7 @@ import { env } from "@/envClient";
 type Props = {
   product: Product;
 };
-export function SearchResultVariableProduct({ product }: Props) {
+export function VariableProduct({ product }: Props) {
   const [viewedIndex, setViewedIndex] = useState(0);
   const swatchesWithImages = getSwatchesWithImages(product);
   const viewedSwatch = swatchesWithImages[viewedIndex];

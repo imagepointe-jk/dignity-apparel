@@ -28,6 +28,7 @@ export const productSchema = z.object({
     z.object({
       id: z.number(),
       name: z.string(),
+      slug: z.string(),
     })
   ),
   tags: z.array(

@@ -14,10 +14,17 @@
   height: 100%;
 }
 
-.results-container {
+.products-container,
+.collections-container {
   margin-top: 10px;
   flex: 1;
   overflow-y: auto;
+}
+
+.collections-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
 }
 
 .search-field {
@@ -34,6 +41,26 @@
 
 .search-field {
   font-weight: bold;
+}
+
+.view-types-container {
+  display: flex;
+  margin-top: 10px;
+  gap: 20px;
+}
+
+.view-types-container button {
+  display: block;
+  font-size: 1.25rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: var(--armor-gray-500);
+}
+
+.view-types-container button.active {
+  color: black;
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 480px) {

@@ -112,3 +112,25 @@ export function getVariationColorName(variation: ProductVariation) {
   const match = colorSwatches.find((swatch) => swatch.name === unformattedName);
   return match?.displayName || "UNKNOWN COLOR";
 }
+
+//get an array of categories representing all the categories the given products are in, with no duplicates
+//also includes the products in the category
+export function getRepresentedCategories(products: Product[]) {
+  const categories: {
+    id: number;
+    slug: string;
+    name: string;
+    products: Product[];
+  }[] = [];
+  for (const product of products) {
+    for (const category of product.categories) {
+      const match = categories.find((item) => item.slug === category.slug);
+      if (!match) {
+        categories.push({ ...category, products: [product] });
+      } else {
+        match.products.push(product);
+      }
+    }
+  }
+  return categories;
+}

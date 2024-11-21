@@ -1,6 +1,6 @@
 import { Product } from "@/types/schema/woocommerce";
 import styles from "@/styles/QuickSearch/SearchResult.module.css";
-import { ContainedImage } from "../global/ContainedImage/ContainedImage";
+import { ContainedImage } from "../../global/ContainedImage/ContainedImage";
 import { getVariationColorName } from "@/utility/products";
 import Link from "next/link";
 import { env } from "@/envClient";
@@ -8,7 +8,7 @@ import { env } from "@/envClient";
 type Props = {
   product: Product;
 };
-export function SearchResultVariableProductGroup({ product }: Props) {
+export function VariableProductGroup({ product }: Props) {
   return (
     <>
       {product.variations.map((variation) => (

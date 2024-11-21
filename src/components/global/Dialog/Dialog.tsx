@@ -3,7 +3,7 @@
 import { forwardRef, useEffect } from "react";
 import styles from "@/styles/global/Dialog.module.css";
 import { XMark } from "@/components/icons/XMark";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 type Props = {
   className?: string;
@@ -14,13 +14,14 @@ type Props = {
 const Dialog = forwardRef<HTMLDialogElement, Props>(
   ({ children, className, toggleDialog }, ref) => {
     const pathname = usePathname();
+    const searchParams = useSearchParams();
 
     useEffect(() => {
       //@ts-expect-error: "current" does not exist
       if (ref?.current.hasAttribute("open")) {
         toggleDialog();
       }
-    }, [pathname]);
+    }, [pathname, searchParams]);
 
     return (
       <dialog
