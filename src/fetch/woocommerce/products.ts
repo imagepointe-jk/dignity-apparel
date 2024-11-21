@@ -18,22 +18,24 @@ function buildProductFields(params?: {
     image {
       sourceUrl
     }
-    productCategories {
-      edges {
-        node {
-          databaseId
-          name
+    ...on Product {
+      productCategories {
+        edges {
+          node {
+            databaseId
+            name
+          }
         }
       }
+      productTags {
+        edges {
+          node {
+            databaseId
+            name
+          }
+        }
+      } 
     }
-    productTags {
-      edges {
-        node {
-          databaseId
-          name
-        }
-      }
-    } 
     ${conditionalStr(
       params?.sizeCharges !== false,
       `sizeCharges {
