@@ -15,7 +15,7 @@ export function VariableProductGroup({ product }: Props) {
         <Link
           key={variation.id}
           className={styles["main"]}
-          href={`${env.NEXT_PUBLIC_BASE_URL}/products/${product.slug}`}
+          href={`${env.NEXT_PUBLIC_BASE_URL}/products/${product.slug}?variationId=${variation.id}`}
         >
           <ContainedImage
             src={variation.imageUrl}

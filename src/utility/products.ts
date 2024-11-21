@@ -89,12 +89,14 @@ export function getSwatchesWithImages(product: Product) {
     );
     if (!match)
       return {
+        variationId: -1,
         name: "UNKNOWN COLOR",
-        imageUrl: variation.imageUrl,
+        productImageUrl: variation.imageUrl,
         hexCode: "000000",
       };
 
     return {
+      variationId: variation.id,
       name: match.displayName,
       productImageUrl: variation.imageUrl,
       hexCode: match.hexCode,

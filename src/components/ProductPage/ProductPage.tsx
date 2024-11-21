@@ -3,9 +3,10 @@
 import { IMAGE_NOT_FOUND_URL } from "@/constants";
 import { Product } from "@/types/schema/woocommerce";
 import { getSwatchesWithImages } from "@/utility/products";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "@/styles/ProductPage/ProductPage.module.css";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 type Props = {
   product: Product;
@@ -16,10 +17,20 @@ export function ProductPage({ product }: Props) {
   const viewedSwatch = swatchesWithImages[viewedIndex];
   const { upcharge2x, upcharge3x, upcharge4x } = product.sizeUpcharges;
   const anyUpcharges = upcharge2x || upcharge3x || upcharge4x;
+  const searchParams = useSearchParams();
 
   function onClickSwatch(clickedIndex: number) {
     setViewedIndex(clickedIndex);
   }
+
+  useEffect(() => {
+    const variationIdParam = searchParams.get("variationId");
+    const variationId = variationIdParam ? +variationIdParam : null;
+    const indexToView = swatchesWithImages.findIndex(
+      (swatch) => swatch.variationId === variationId
+    );
+    if (indexToView) setViewedIndex(indexToView);
+  }, []);
 
   return (
     <div className={styles["main"]}>
