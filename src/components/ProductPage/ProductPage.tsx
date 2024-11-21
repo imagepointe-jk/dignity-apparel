@@ -29,7 +29,8 @@ export function ProductPage({ product }: Props) {
     const indexToView = swatchesWithImages.findIndex(
       (swatch) => swatch.variationId === variationId
     );
-    if (indexToView) setViewedIndex(indexToView);
+    if (indexToView !== undefined && indexToView !== -1)
+      setViewedIndex(indexToView);
   }, []);
 
   return (
