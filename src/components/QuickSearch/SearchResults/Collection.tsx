@@ -1,9 +1,12 @@
 import { ContainedImage } from "@/components/global/ContainedImage/ContainedImage";
 import { IMAGE_NOT_FOUND_URL } from "@/constants";
 import { env } from "@/envClient";
+import { queryProducts } from "@/fetch/client/products";
 import styles from "@/styles/QuickSearch/SearchResult.module.css";
 import { Product } from "@/types/schema/woocommerce";
+import { validateWooCommerceProductsResponse } from "@/types/validation/woocommerce/woocommerce";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 type Props = {
   category: {
@@ -14,8 +17,33 @@ type Props = {
   };
 };
 export function Collection({ category }: Props) {
+  const [totalInCategory, setTotalInCategory] = useState(null as number | null);
+
   const firstProductImageUrl =
     category.products[0]?.imageUrl || IMAGE_NOT_FOUND_URL;
+
+  async function getTotal() {
+    try {
+      const response = await queryProducts({
+        category: category.slug,
+        first: 1000,
+        after: null,
+        before: null,
+        last: null,
+        search: null,
+      });
+      const json = await response.json();
+      const parsed = validateWooCommerceProductsResponse(json);
+      setTotalInCategory(parsed.products.length);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    getTotal();
+  }, []);
+
   return (
     <Link
       href={`${env.NEXT_PUBLIC_BASE_URL}/products?category=${category.slug}`}
@@ -27,9 +55,13 @@ export function Collection({ category }: Props) {
       />
       <div className={styles["info-container"]}>
         <div>{category.name}</div>
-        <div className={styles["products-count"]}>
-          {category.products.length}{" "}
-          {`product${category.products.length > 1 ? "s" : ""}`}
+
+        <div
+          className={styles["products-count"]}
+          style={{ opacity: totalInCategory === null ? "0" : undefined }}
+        >
+          {totalInCategory}{" "}
+          {`product${totalInCategory !== null && totalInCategory > 1 ? "s" : ""}`}
         </div>
       </div>
     </Link>
