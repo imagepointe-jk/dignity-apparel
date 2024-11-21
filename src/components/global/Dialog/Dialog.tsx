@@ -8,11 +8,12 @@ import { usePathname, useSearchParams } from "next/navigation";
 type Props = {
   className?: string;
   children: React.ReactNode;
+  showCloseButton?: boolean;
   toggleDialog: () => void;
 };
 
 const Dialog = forwardRef<HTMLDialogElement, Props>(
-  ({ children, className, toggleDialog }, ref) => {
+  ({ children, className, toggleDialog, showCloseButton }, ref) => {
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
@@ -35,9 +36,11 @@ const Dialog = forwardRef<HTMLDialogElement, Props>(
       >
         <div>
           {children}
-          <button className={styles["x"]} onClick={toggleDialog}>
-            <XMark />
-          </button>
+          {showCloseButton !== false && (
+            <button className={styles["x"]} onClick={toggleDialog}>
+              <XMark />
+            </button>
+          )}
         </div>
       </dialog>
     );

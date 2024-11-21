@@ -1,15 +1,19 @@
 import styles from "@/styles/QuickSearch/QuickSearch.module.css";
-import { VariableProduct } from "./SearchResults/VariableProduct";
 import debounce from "lodash.debounce";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { queryProducts } from "@/fetch/client/products";
 import { validateWooCommerceProductsResponse } from "@/types/validation/woocommerce/woocommerce";
 import { Product } from "@/types/schema/woocommerce";
 import { VariableProductGroup } from "./SearchResults/VariableProductGroup";
 import { getRepresentedCategories } from "@/utility/products";
 import { Collection } from "./SearchResults/Collection";
+import { XMark } from "../icons/XMark";
 
-export function QuickSearch() {
+type Props = {
+  toggleDialog: () => void;
+};
+export function QuickSearch({ toggleDialog }: Props) {
+  const [search, setSearch] = useState("");
   const [hasSearched, setHasSearched] = useState(false); //whether the user has made any searches yet
   const [viewType, setViewType] = useState(
     "collections" as "products" | "collections"
@@ -24,7 +28,18 @@ export function QuickSearch() {
   );
   const categories = getRepresentedCategories(results);
 
+  function onClickClear() {
+    if (search) setSearch("");
+    else toggleDialog();
+  }
+
   async function doSearch(search: string) {
+    if (!search) {
+      setResults([]);
+      setStatus("idle");
+      return;
+    }
+
     try {
       const response = await queryProducts({
         search,
@@ -45,8 +60,19 @@ export function QuickSearch() {
     }
   }
 
+  useEffect(() => {
+    setHasSearched(true);
+    setStatus("loading");
+    debouncedOnSearchInput(search);
+  }, [search]);
+
   return (
     <>
+      <div className={styles["clear-button-container"]}>
+        <button onClick={onClickClear}>
+          {search && "Clear"} <XMark />
+        </button>
+      </div>
       <label htmlFor="search" style={{ display: "none" }}>
         Search
       </label>
@@ -56,11 +82,8 @@ export function QuickSearch() {
         name="search"
         id="search"
         placeholder="Search for..."
-        onChange={(e) => {
-          setHasSearched(true);
-          setStatus("loading");
-          debouncedOnSearchInput(e.target.value);
-        }}
+        onChange={(e) => setSearch(e.target.value)}
+        value={search}
       />
       <div className={styles["view-types-container"]}>
         <button

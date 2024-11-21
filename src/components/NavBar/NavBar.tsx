@@ -116,8 +116,9 @@ export function NavBar({
         ref={dialogRef}
         toggleDialog={toggleDialog}
         className={stylesSearch["dialog"]}
+        showCloseButton={false}
       >
-        <QuickSearch />
+        <QuickSearch toggleDialog={toggleDialog} />
       </Dialog>
     </>
   );
