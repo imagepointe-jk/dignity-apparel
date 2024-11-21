@@ -2,22 +2,40 @@
   display: flex;
   gap: 10px;
   padding: 10px 0;
+  align-items: center;
+  color: black;
+  text-decoration: none;
+}
+
+.main:visited {
+  color: black;
 }
 
 .main:hover {
   background-color: var(--armor-gray-100);
 }
 
-.image-container {
-  height: 100px;
+.main .image-container {
+  height: 136px;
   width: 100px;
 }
 
-.image-container img {
+.info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 1.25rem;
+}
+
+.main:hover .info-container {
+  text-decoration: underline;
+}
+
+/* .image-container img {
   height: 100%;
   margin: auto;
   display: block;
-}
+} */
 
 .swatches {
   list-style-type: none;

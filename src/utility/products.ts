@@ -1,4 +1,4 @@
-import { Product } from "@/types/schema/woocommerce";
+import { Product, ProductVariation } from "@/types/schema/woocommerce";
 
 type ColorSwatch = {
   name: string;
@@ -103,4 +103,12 @@ export function getSwatchesWithImages(product: Product) {
   });
 
   return withImages;
+}
+
+export function getVariationColorName(variation: ProductVariation) {
+  const unformattedName =
+    variation.attributes.find((att) => att.name === "pa_color")?.value ||
+    "UNKNOWN COLOR";
+  const match = colorSwatches.find((swatch) => swatch.name === unformattedName);
+  return match?.displayName || "UNKNOWN COLOR";
 }

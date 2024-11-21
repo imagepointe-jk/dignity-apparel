@@ -5,6 +5,7 @@ import { useCallback, useState } from "react";
 import { queryProducts } from "@/fetch/client/products";
 import { validateWooCommerceProductsResponse } from "@/types/validation/woocommerce/woocommerce";
 import { Product } from "@/types/schema/woocommerce";
+import { SearchResultVariableProductGroup } from "./SearchResultVariableProductGroup";
 
 export function QuickSearch() {
   const [hasSearched, setHasSearched] = useState(false); //whether the user has made any searches yet
@@ -60,7 +61,7 @@ export function QuickSearch() {
           <>
             {status === "idle" &&
               results.map((product) => (
-                <SearchResultVariableProduct
+                <SearchResultVariableProductGroup
                   key={product.id}
                   product={product}
                 />

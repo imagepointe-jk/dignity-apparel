@@ -60,5 +60,6 @@ export const pageInfoSchema = z.object({
 });
 
 export type Product = z.infer<typeof productSchema>;
+export type ProductVariation = z.infer<typeof productVariationSchema>;
 export type Category = z.infer<typeof categorySchema>;
 export type PageInfo = z.infer<typeof pageInfoSchema>;
