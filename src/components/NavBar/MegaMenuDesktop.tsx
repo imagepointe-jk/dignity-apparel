@@ -53,67 +53,66 @@ export function MegaMenuDesktop({
           {/* Dropdown with sections, if any */}
 
           {item.sections.length && (
-            <ul
-              className={`${styles["mega-menu-dropdown"]} ${expandedIndex === i ? styles["expanded"] : ""}`}
+            <div
+              className={`${styles["mega-menu-dropdown-container"]} ${expandedIndex === i ? styles["expanded"] : undefined}`}
             >
-              {/* The link sections */}
-
-              <li className={styles["mega-menu-dropdown-sections-container"]}>
-                <ul>
-                  {item.sections.map((section, j) => (
-                    <li key={section.title || `${j}`}>
-                      <ul className={styles["mega-menu-dropdown-section"]}>
-                        {section.title && (
-                          <li
-                            className={
-                              styles["mega-menu-dropdown-section-title"]
-                            }
-                            tabIndex={i === expandedIndex ? 0 : -1}
-                          >
-                            {section.title}
+              <ul className={styles["mega-menu-dropdown"]}>
+                {/* The link sections */}
+                <li className={styles["mega-menu-dropdown-sections-container"]}>
+                  <ul>
+                    {item.sections.map((section, j) => (
+                      <li key={section.title || `${j}`}>
+                        <ul className={styles["mega-menu-dropdown-section"]}>
+                          {section.title && (
+                            <li
+                              className={
+                                styles["mega-menu-dropdown-section-title"]
+                              }
+                              tabIndex={i === expandedIndex ? 0 : -1}
+                            >
+                              {section.title}
+                            </li>
+                          )}
+                          <li>
+                            <ul>
+                              {section.links.map((link) => (
+                                <li key={link.label}>
+                                  <a
+                                    href={link.href}
+                                    tabIndex={i === expandedIndex ? 0 : -1}
+                                  >
+                                    {link.label}
+                                  </a>
+                                </li>
+                              ))}
+                            </ul>
                           </li>
-                        )}
-                        <li>
-                          <ul>
-                            {section.links.map((link) => (
-                              <li key={link.label}>
-                                <a
-                                  href={link.href}
-                                  tabIndex={i === expandedIndex ? 0 : -1}
-                                >
-                                  {link.label}
-                                </a>
-                              </li>
-                            ))}
-                          </ul>
-                        </li>
-                      </ul>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-
-              {/* Featured images wrapped with links */}
-
-              <li>
-                <ul
-                  className={
-                    styles["mega-menu-dropdown-featured-items-container"]
-                  }
-                >
-                  {item.featured.map((featured, i) => (
-                    <li key={featured.caption}>
-                      <FeaturedCard
-                        data={{
-                          ...featured,
-                          tabIndex: i === expandedIndex ? 0 : -1,
-                        }}
-                      />
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            </ul>
+                        </ul>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+                {/* Featured images wrapped with links */}
+                <li>
+                  <ul
+                    className={
+                      styles["mega-menu-dropdown-featured-items-container"]
+                    }
+                  >
+                    {item.featured.map((featured, i) => (
+                      <li key={featured.caption}>
+                        <FeaturedCard
+                          data={{
+                            ...featured,
+                            tabIndex: i === expandedIndex ? 0 : -1,
+                          }}
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              </ul>
+            </div>
           )}
         </li>
       ))}
