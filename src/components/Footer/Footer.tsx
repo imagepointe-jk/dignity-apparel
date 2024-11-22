@@ -110,7 +110,7 @@ type SocialMediaLinkProps = {
 };
 function SocialMediaLink({ href, type }: SocialMediaLinkProps) {
   return (
-    <Link href={href || ""}>
+    <Link href={href || ""} aria-label={`dignity apparel ${type}`}>
       {type.toLocaleLowerCase() === "facebook" && <Facebook size={20} />}
       {type.toLocaleLowerCase() === "youtube" && <YouTube size={14} />}
       {type.toLocaleLowerCase() === "instagram" && <Instagram size={20} />}
