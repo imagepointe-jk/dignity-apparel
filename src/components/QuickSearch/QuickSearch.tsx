@@ -69,7 +69,7 @@ export function QuickSearch({ toggleDialog }: Props) {
   return (
     <>
       <div className={styles["clear-button-container"]}>
-        <button onClick={onClickClear}>
+        <button onClick={onClickClear} aria-label={search ? "Clear" : "Close"}>
           {search && "Clear"} <XMark />
         </button>
       </div>
@@ -101,20 +101,24 @@ export function QuickSearch({ toggleDialog }: Props) {
       </div>
       <div
         className={`${viewType === "products" ? styles["products-container"] : styles["collections-container"]}`}
+        aria-live="polite"
+        aria-atomic="true"
       >
         {hasSearched && (
           <>
             {status === "idle" && (
-              <>
+              <ul>
                 {viewType === "products" &&
                   results.map((product) => (
                     <VariableProductGroup key={product.id} product={product} />
                   ))}
                 {viewType === "collections" &&
                   categories.map((cat) => (
-                    <Collection key={cat.id} category={cat} />
+                    <li key={cat.id}>
+                      <Collection category={cat} />
+                    </li>
                   ))}
-              </>
+              </ul>
             )}
             {status === "idle" && results?.length === 0 && <>No results.</>}
             {status === "error" && <>Something went wrong.</>}

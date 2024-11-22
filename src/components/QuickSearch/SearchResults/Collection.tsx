@@ -51,6 +51,7 @@ export function Collection({ category }: Props) {
     >
       <ContainedImage
         src={firstProductImageUrl}
+        alt={category.name}
         containerClassName={styles["image-container"]}
       />
       <div className={styles["info-container"]}>
@@ -59,6 +60,7 @@ export function Collection({ category }: Props) {
         <div
           className={styles["products-count"]}
           style={{ opacity: totalInCategory === null ? "0" : undefined }}
+          aria-hidden={totalInCategory === null}
         >
           {totalInCategory}{" "}
           {`product${totalInCategory !== null && totalInCategory > 1 ? "s" : ""}`}

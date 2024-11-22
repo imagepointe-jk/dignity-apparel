@@ -105,7 +105,11 @@ export function NavBar({
                 >
                   ☰
                 </button>
-                <button className={styles["button"]} onClick={toggleDialog}>
+                <button
+                  className={styles["button"]}
+                  onClick={toggleDialog}
+                  aria-label="Search"
+                >
                   <MagnifyingGlass />
                 </button>
               </div>

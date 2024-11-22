@@ -19,9 +19,12 @@ export function FeaturedCard({
       className={styles["mega-menu-dropdown-featured-container"]}
       tabIndex={tabIndex}
     >
-      <img src={imageUrl} alt={imageAlt} />
+      <img src={imageUrl} alt={"featured image text"} />
       <div className={styles["mega-menu-dropdown-featured-overlay"]}>
-        <div className={styles["mega-menu-dropdown-featured-hover-text"]}>
+        <div
+          className={styles["mega-menu-dropdown-featured-hover-text"]}
+          aria-hidden="true"
+        >
           {hoverText || "View More"}
         </div>
       </div>
@@ -30,6 +33,7 @@ export function FeaturedCard({
         <img
           src="/da-tri.png"
           className={styles["mega-menu-dropdown-featured-arrow"]}
+          aria-hidden="true"
         />
       </div>
     </a>

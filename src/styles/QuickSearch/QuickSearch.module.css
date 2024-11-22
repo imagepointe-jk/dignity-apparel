@@ -37,7 +37,14 @@
   overflow-y: auto;
 }
 
-.collections-container {
+.products-container ul,
+.collections-container ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.collections-container ul {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;

@@ -123,6 +123,7 @@ h4 {
   top: 0;
   left: 0;
   color: white;
+  pointer-events: none;
 }
 
 .skip-to-main:focus,
