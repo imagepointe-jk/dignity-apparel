@@ -283,11 +283,6 @@
   padding: 0;
 }
 
-/* .mega-menu-dropdown.expanded {
-  pointer-events: initial;
-  opacity: 1;
-} */
-
 .mega-menu-dropdown-featured-items-container {
   display: flex;
   gap: 10px;

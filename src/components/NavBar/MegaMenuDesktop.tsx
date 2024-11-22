@@ -99,7 +99,7 @@ export function MegaMenuDesktop({
                       styles["mega-menu-dropdown-featured-items-container"]
                     }
                   >
-                    {item.featured.map((featured, i) => (
+                    {item.featured.map((featured) => (
                       <li key={featured.caption}>
                         <FeaturedCard
                           data={{
