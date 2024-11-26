@@ -19,7 +19,7 @@ export function FeaturedCard({
       className={styles["mega-menu-dropdown-featured-container"]}
       tabIndex={tabIndex}
     >
-      <img src={imageUrl} alt={"featured image text"} />
+      <img src={imageUrl} alt={imageAlt} />
       <div className={styles["mega-menu-dropdown-featured-overlay"]}>
         <div
           className={styles["mega-menu-dropdown-featured-hover-text"]}
