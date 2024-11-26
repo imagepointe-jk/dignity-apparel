@@ -10,6 +10,7 @@ const productVariationSchema = z.object({
     })
   ),
   imageUrl: z.string(),
+  stockQuantity: z.number().nullable(),
 });
 
 export const productSchema = z.object({

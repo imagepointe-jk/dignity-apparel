@@ -41,6 +41,7 @@ function pullProductData(productJson: any) {
           name: item.name,
           imageUrl: item.image?.sourceUrl || "",
           attributes: item.attributes.nodes,
+          stockQuantity: item.stockQuantity,
         };
       }) || [],
   };

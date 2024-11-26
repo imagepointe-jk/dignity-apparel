@@ -2,7 +2,10 @@
 
 import { IMAGE_NOT_FOUND_URL } from "@/constants";
 import { Product } from "@/types/schema/woocommerce";
-import { getSwatchesWithImages } from "@/utility/products";
+import {
+  getColorStockAmounts,
+  getSwatchesWithImages,
+} from "@/utility/products";
 import { useEffect, useState } from "react";
 import styles from "@/styles/ProductPage/ProductPage.module.css";
 import Link from "next/link";
@@ -12,25 +15,26 @@ type Props = {
   product: Product;
 };
 export function ProductPage({ product }: Props) {
-  const [viewedIndex, setViewedIndex] = useState(0);
+  const [viewedVariationId, setViewedVariationId] = useState(
+    null as number | null
+  );
   const swatchesWithImages = getSwatchesWithImages(product);
-  const viewedSwatch = swatchesWithImages[viewedIndex];
+  const viewedSwatch = swatchesWithImages.find(
+    (swatch) => swatch.variationId === viewedVariationId
+  );
   const { upcharge2x, upcharge3x, upcharge4x } = product.sizeUpcharges;
   const anyUpcharges = upcharge2x || upcharge3x || upcharge4x;
   const searchParams = useSearchParams();
+  const sizeStocks = getColorStockAmounts(product, viewedSwatch?.name || "");
 
-  function onClickSwatch(clickedIndex: number) {
-    setViewedIndex(clickedIndex);
+  function onClickSwatch(clickedVariationId: number) {
+    setViewedVariationId(clickedVariationId);
   }
 
   useEffect(() => {
     const variationIdParam = searchParams.get("variationId");
     const variationId = variationIdParam ? +variationIdParam : null;
-    const indexToView = swatchesWithImages.findIndex(
-      (swatch) => swatch.variationId === variationId
-    );
-    if (indexToView !== undefined && indexToView !== -1)
-      setViewedIndex(indexToView);
+    setViewedVariationId(variationId);
   }, []);
 
   return (
@@ -45,12 +49,12 @@ export function ProductPage({ product }: Props) {
       <h3>Available Colors</h3>
       <div>
         <ul className={styles["swatches"]}>
-          {swatchesWithImages.map((item, i) => (
+          {swatchesWithImages.map((item) => (
             <li key={item.name}>
               <button
                 key={item.name}
-                className={`${styles["swatch"]} ${viewedIndex === i ? styles["selected"] : ""}`}
-                onClick={() => onClickSwatch(i)}
+                className={`${styles["swatch"]} ${viewedVariationId === item.variationId ? styles["selected"] : ""}`}
+                onClick={() => onClickSwatch(item.variationId)}
                 style={{
                   backgroundColor: item.swatchImageUrl
                     ? undefined
@@ -64,9 +68,15 @@ export function ProductPage({ product }: Props) {
           ))}
         </ul>
       </div>
-      <div>{viewedSwatch?.name || "UNKNOWN COLOR"}</div>
+      <div>{viewedSwatch?.displayName || "UNKNOWN COLOR"}</div>
       <h3>Sizes</h3>
-      <p>S-4XL</p>
+      <ul>
+        {sizeStocks.map((size) => (
+          <li key={size.size}>
+            {size.size.toLocaleUpperCase()}: {size.stock}
+          </li>
+        ))}
+      </ul>
       <h3>Product Description</h3>
       <p dangerouslySetInnerHTML={{ __html: product.descriptionSanitized }}></p>
       <h3>Pricing Table</h3>

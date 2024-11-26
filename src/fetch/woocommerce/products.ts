@@ -49,7 +49,7 @@ function buildProductFields(params?: {
     ${conditionalStr(
       params?.variations !== false,
       `...on VariableProduct {
-        variations {
+        variations(first: 1000) {
           nodes {
             id
             databaseId
@@ -57,6 +57,7 @@ function buildProductFields(params?: {
             image {
               sourceUrl
             }
+            stockQuantity
             attributes {
               nodes {
                 name
