@@ -6,7 +6,7 @@ import {
   getColorStockAmounts,
   getSwatchesWithImages,
 } from "@/utility/products";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import styles from "@/styles/ProductPage/ProductPage.module.css";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -15,6 +15,14 @@ type Props = {
   product: Product;
 };
 export function ProductPage({ product }: Props) {
+  return (
+    <Suspense>
+      <ProductPageWrapped product={product} />
+    </Suspense>
+  );
+}
+
+function ProductPageWrapped({ product }: Props) {
   const [viewedVariationId, setViewedVariationId] = useState(
     null as number | null
   );

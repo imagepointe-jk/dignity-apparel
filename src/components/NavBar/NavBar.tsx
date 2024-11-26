@@ -1,7 +1,7 @@
 "use client";
 import styles from "@/styles/NavBar/desktop.module.css";
 import stylesSearch from "@/styles/QuickSearch/QuickSearch.module.css";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import throttle from "lodash.throttle";
 import { TopBanner } from "./TopBanner";
 import { MegaMenuDesktop } from "./MegaMenuDesktop";
@@ -24,7 +24,19 @@ type Props = {
     text: string;
   };
 };
-export function NavBar({
+export function NavBar({ megaMenu, logoImgUrls, specialLink }: Props) {
+  return (
+    <Suspense>
+      <NavBarWrapped
+        logoImgUrls={logoImgUrls}
+        megaMenu={megaMenu}
+        specialLink={specialLink}
+      />
+    </Suspense>
+  );
+}
+
+function NavBarWrapped({
   megaMenu,
   logoImgUrls: { logo, text },
   specialLink,
