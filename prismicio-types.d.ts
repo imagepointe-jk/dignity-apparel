@@ -227,7 +227,10 @@ export type FooterSectionDocument<Lang extends string = string> =
     Lang
   >;
 
-type HomePageDocumentDataSlicesSlice = CardsSection1Slice | HeroSlice;
+type HomePageDocumentDataSlicesSlice =
+  | FeaturedProductsSlice
+  | CardsSection1Slice
+  | HeroSlice;
 
 /**
  * Content for Home Page documents
@@ -885,6 +888,68 @@ export type CardsSection1Slice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *FeaturedProducts → Default → Primary → Product Slugs*
+ */
+export interface FeaturedProductsSliceDefaultPrimaryProductSlugsItem {
+  /**
+   * Slug field in *FeaturedProducts → Default → Primary → Product Slugs*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_products.default.primary.product_slugs[].slug
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slug: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *FeaturedProducts → Default → Primary*
+ */
+export interface FeaturedProductsSliceDefaultPrimary {
+  /**
+   * Product Slugs field in *FeaturedProducts → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_products.default.primary.product_slugs[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  product_slugs: prismic.GroupField<
+    Simplify<FeaturedProductsSliceDefaultPrimaryProductSlugsItem>
+  >;
+}
+
+/**
+ * Default variation for FeaturedProducts Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeaturedProductsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FeaturedProductsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *FeaturedProducts*
+ */
+type FeaturedProductsSliceVariation = FeaturedProductsSliceDefault;
+
+/**
+ * FeaturedProducts Shared Slice
+ *
+ * - **API ID**: `featured_products`
+ * - **Description**: FeaturedProducts
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeaturedProductsSlice = prismic.SharedSlice<
+  "featured_products",
+  FeaturedProductsSliceVariation
+>;
+
+/**
  * Item in *Hero → Default → Primary → Buttons*
  */
 export interface HeroSliceDefaultPrimaryButtonsItem {
@@ -1035,6 +1100,11 @@ declare module "@prismicio/client" {
       CardsSection1SliceDefaultPrimary,
       CardsSection1SliceVariation,
       CardsSection1SliceDefault,
+      FeaturedProductsSlice,
+      FeaturedProductsSliceDefaultPrimaryProductSlugsItem,
+      FeaturedProductsSliceDefaultPrimary,
+      FeaturedProductsSliceVariation,
+      FeaturedProductsSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimaryButtonsItem,
       HeroSliceDefaultPrimary,

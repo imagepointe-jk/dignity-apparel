@@ -6,7 +6,7 @@ import {
   getVariationColorDisplayName,
 } from "@/utility/products";
 import Link from "next/link";
-import { env } from "@/envClient";
+import { productUrl } from "@/utility/url";
 
 type Props = {
   product: Product;
@@ -23,7 +23,7 @@ export function VariableProductGroup({ product }: Props) {
           <Link
             key={variation.id}
             className={styles["main"]}
-            href={`${env.NEXT_PUBLIC_BASE_URL}/products/${product.slug}?variationId=${variation.id}`}
+            href={productUrl(product, variation.id)}
           >
             <ContainedImage
               src={variation.imageUrl}

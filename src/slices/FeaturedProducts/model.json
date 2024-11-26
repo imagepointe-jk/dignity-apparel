@@ -1,0 +1,35 @@
+{
+  "id": "featured_products",
+  "type": "SharedSlice",
+  "name": "FeaturedProducts",
+  "description": "FeaturedProducts",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "product_slugs": {
+          "type": "Group",
+          "config": {
+            "label": "Product Slugs",
+            "repeat": true,
+            "fields": {
+              "slug": {
+                "type": "Text",
+                "config": {
+                  "label": "Slug",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
