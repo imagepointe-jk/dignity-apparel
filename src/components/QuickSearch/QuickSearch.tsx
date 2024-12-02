@@ -16,7 +16,7 @@ export function QuickSearch({ toggleDialog }: Props) {
   const [search, setSearch] = useState("");
   const [hasSearched, setHasSearched] = useState(false); //whether the user has made any searches yet
   const [viewType, setViewType] = useState(
-    "collections" as "products" | "collections"
+    "products" as "products" | "collections"
   );
   const [status, setStatus] = useState("idle" as "idle" | "loading" | "error");
   const [results, setResults] = useState([] as Product[]);
@@ -61,7 +61,7 @@ export function QuickSearch({ toggleDialog }: Props) {
   }
 
   useEffect(() => {
-    setHasSearched(true);
+    if (search) setHasSearched(true);
     setStatus("loading");
     debouncedOnSearchInput(search);
   }, [search]);
