@@ -26,9 +26,13 @@ function ProductPageWrapped({ product }: Props) {
   const [viewedVariationId, setViewedVariationId] = useState(
     null as number | null
   );
+  const viewedVariationIdToUse =
+    viewedVariationId === null
+      ? product.variations[0]?.id || null
+      : viewedVariationId;
   const swatchesWithImages = getSwatchesWithImages(product);
   const viewedSwatch = swatchesWithImages.find(
-    (swatch) => swatch.variationId === viewedVariationId
+    (swatch) => swatch.variationId === viewedVariationIdToUse
   );
   const { upcharge2x, upcharge3x, upcharge4x } = product.sizeUpcharges;
   const anyUpcharges = upcharge2x || upcharge3x || upcharge4x;
@@ -61,7 +65,7 @@ function ProductPageWrapped({ product }: Props) {
             <li key={item.name}>
               <button
                 key={item.name}
-                className={`${styles["swatch"]} ${viewedVariationId === item.variationId ? styles["selected"] : ""}`}
+                className={`${styles["swatch"]} ${viewedVariationIdToUse === item.variationId ? styles["selected"] : ""}`}
                 onClick={() => onClickSwatch(item.variationId)}
                 style={{
                   backgroundColor: item.swatchImageUrl
