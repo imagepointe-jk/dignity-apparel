@@ -20,10 +20,15 @@ export const productSchema = z.object({
   slug: z.string(),
   imageUrl: z.string(),
   descriptionSanitized: z.string(),
+  shortDescriptionSanitized: z.string(),
   sizeUpcharges: z.object({
     upcharge2x: z.number().optional().nullable(),
     upcharge3x: z.number().optional().nullable(),
     upcharge4x: z.number().optional().nullable(),
+  }),
+  additionalProductInformation: z.object({
+    careInformationSanitized: z.string().optional().nullable(),
+    materialDescription: z.string().optional().nullable(),
   }),
   categories: z.array(
     z.object({

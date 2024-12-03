@@ -71,12 +71,11 @@ function ProductPageWrapped({ product }: Props) {
         <div className={styles["info-container"]}>
           <div>
             <h1>{product.name}</h1>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
-              nulla fugit fuga dicta. Voluptas necessitatibus consectetur
-              aliquid. Modi doloribus, perferendis amet ducimus ratione a ut
-              animi voluptates pariatur beatae optio.
-            </p>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: product.shortDescriptionSanitized,
+              }}
+            ></div>
           </div>
           <div
             className={`${styles["info-subcontainer"]} ${styles["swatches-container"]}`}
@@ -150,11 +149,7 @@ function ProductPageWrapped({ product }: Props) {
               labelClassName={styles["expandable-label"]}
               content={
                 <div>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Sunt, voluptatem ratione laborum voluptatibus, numquam iste
-                  porro perferendis velit necessitatibus laboriosam itaque nemo
-                  mollitia sequi consequatur quam veniam? Veniam, itaque
-                  nesciunt.
+                  {product.additionalProductInformation.materialDescription}
                 </div>
               }
             />
@@ -162,13 +157,13 @@ function ProductPageWrapped({ product }: Props) {
               label="Care Information"
               labelClassName={styles["expandable-label"]}
               content={
-                <div>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Sunt, voluptatem ratione laborum voluptatibus, numquam iste
-                  porro perferendis velit necessitatibus laboriosam itaque nemo
-                  mollitia sequi consequatur quam veniam? Veniam, itaque
-                  nesciunt.
-                </div>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      product.additionalProductInformation
+                        .careInformationSanitized || "",
+                  }}
+                ></div>
               }
             />
           </div>

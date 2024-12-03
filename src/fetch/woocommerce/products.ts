@@ -8,6 +8,7 @@ function conditionalStr(condition: boolean, str: string) {
 function buildProductFields(params?: {
   variations?: boolean;
   sizeCharges?: boolean;
+  additionalInfo?: boolean;
 }) {
   return `
     id
@@ -45,7 +46,15 @@ function buildProductFields(params?: {
         upcharge4x
       }`
     )}
+    ${conditionalStr(
+      params?.additionalInfo !== false,
+      `additionalProductInformation {
+        materialDescription
+        careInformation
+      }`
+    )}
     description
+    shortDescription
     ${conditionalStr(
       params?.variations !== false,
       `...on VariableProduct {
@@ -160,7 +169,7 @@ export async function queryProducts(params: {
         endCursor
       }
         nodes {
-          ${buildProductFields({ sizeCharges: false })}
+          ${buildProductFields({ sizeCharges: false, additionalInfo: false })}
         }
     }
   }

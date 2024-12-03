@@ -18,10 +18,18 @@ function pullProductData(productJson: any) {
     slug: productJson.slug,
     imageUrl: productJson.image?.sourceUrl || "",
     descriptionSanitized: sanitizeHtml(productJson.description || ""),
+    shortDescriptionSanitized: sanitizeHtml(productJson.shortDescription || ""),
     sizeUpcharges: {
       upcharge2x: productJson.sizeCharges?.upcharge2x,
       upcharge3x: productJson.sizeCharges?.upcharge3x,
       upcharge4x: productJson.sizeCharges?.upcharge4x,
+    },
+    additionalProductInformation: {
+      careInformationSanitized: sanitizeHtml(
+        productJson.additionalProductInformation?.careInformation || ""
+      ),
+      materialDescription:
+        productJson.additionalProductInformation?.materialDescription,
     },
     categories:
       productJson.productCategories?.edges.map((item: any) => ({
