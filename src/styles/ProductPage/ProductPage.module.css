@@ -1,55 +1,138 @@
 .main {
   margin-top: 150px;
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
 }
 
-.product-image {
-  display: block;
-  height: 600px;
+.main h1 {
+  font-size: 1.5rem;
+  font-family: var(--font-metropolis-semi-bold);
+  margin: 0;
+}
+
+.main p {
+  margin: 5px 0;
+  line-height: 1.5rem;
+}
+
+.images-container {
+  position: sticky;
+  top: 150px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  flex: 0 0 780px;
+}
+
+.main .product-img-container {
+  width: 375px;
+  height: 550px;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.info-subcontainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.info-label-1 {
+  font-weight: bold;
+  font-size: 0.875rem;
+}
+
+.swatch-color-text {
+  color: var(--armor-gray-500);
+  font-weight: initial;
+  font-size: 0.875rem;
 }
 
 .swatches {
   list-style-type: none;
-  margin: 0;
   padding: 0;
   display: flex;
-  gap: 3px;
+  gap: 10px;
+  margin: 0;
 }
 
 .swatch {
   display: block;
-  border: none;
-  padding: 0;
-  width: 20px;
-  height: 20px;
+  border: 2px solid white;
+  outline: 1px solid var(--armor-gray-300);
+  width: 30px;
+  height: 30px;
   background-repeat: contain;
   background-size: 100% 100%;
   cursor: pointer;
+  border-radius: 100px;
 }
 
 .swatch.selected {
-  outline: 2px solid black;
-}
-
-.pricing-table {
-  border-collapse: collapse;
-  text-align: center;
-}
-
-.pricing-table thead {
-  font-weight: bold;
-  background-color: lightgray;
-}
-
-.pricing-table td {
-  padding: 10px;
+  outline-color: black;
 }
 
 .purchase-link {
-  color: white;
   background-color: var(--blaze-orange-500);
-  padding: 20px;
+  color: white;
   font-weight: bold;
-  text-transform: uppercase;
-  display: inline-block;
+  padding: 15px;
+  border-radius: 5px;
   text-decoration: none;
+  display: inline-block;
+}
+
+.usa-container {
+  padding: 15px;
+  background-color: var(--armor-gray-200);
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.usa-heading {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.usa-container .usa-body {
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.usa-body a {
+  display: block;
+}
+
+.expandables {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.expandable-label {
+  font-weight: bold;
+}
+
+.recommended-container {
+  background-color: var(--armor-gray-50);
+  padding: 20px 10px 40px 10px;
+}
+
+.recommended-heading {
+  text-align: center;
+  margin: 0 0 20px 0;
+}
+
+.recommended-content {
+  display: flex;
+  justify-content: center;
+  min-height: 450px;
+  flex-wrap: wrap;
+  gap: 40px;
 }

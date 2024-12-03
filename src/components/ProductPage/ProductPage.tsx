@@ -10,6 +10,10 @@ import { Suspense, useEffect, useState } from "react";
 import styles from "@/styles/ProductPage/ProductPage.module.css";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { ContainedImage } from "../global/ContainedImage/ContainedImage";
+import { FlagDA } from "../icons/FlagDA";
+import { ExpandableDiv } from "../global/ExpandableDiv/ExpandableDiv";
+import { Recommendations } from "./Recommendations";
 
 type Props = {
   product: Product;
@@ -34,10 +38,10 @@ function ProductPageWrapped({ product }: Props) {
   const viewedSwatch = swatchesWithImages.find(
     (swatch) => swatch.variationId === viewedVariationIdToUse
   );
-  const { upcharge2x, upcharge3x, upcharge4x } = product.sizeUpcharges;
-  const anyUpcharges = upcharge2x || upcharge3x || upcharge4x;
   const searchParams = useSearchParams();
   const sizeStocks = getColorStockAmounts(product, viewedSwatch?.name || "");
+  const smallestSize = sizeStocks[0];
+  const largestSize = sizeStocks[sizeStocks.length - 1];
 
   function onClickSwatch(clickedVariationId: number) {
     setViewedVariationId(clickedVariationId);
@@ -50,101 +54,127 @@ function ProductPageWrapped({ product }: Props) {
   }, []);
 
   return (
-    <div className={styles["main"]}>
-      <h1>{product.name}</h1>
-      <div>{product.sku}</div>
-      <img
-        src={viewedSwatch?.productImageUrl || IMAGE_NOT_FOUND_URL}
-        alt={product.name}
-        className={styles["product-image"]}
-      />
-      <h3>Available Colors</h3>
-      <div>
-        <ul className={styles["swatches"]}>
-          {swatchesWithImages.map((item) => (
-            <li key={item.name}>
-              <button
-                key={item.name}
-                className={`${styles["swatch"]} ${viewedVariationIdToUse === item.variationId ? styles["selected"] : ""}`}
-                onClick={() => onClickSwatch(item.variationId)}
-                style={{
-                  backgroundColor: item.swatchImageUrl
-                    ? undefined
-                    : `#${item.hexCode}`,
-                  backgroundImage: item.swatchImageUrl
-                    ? `url(${item.swatchImageUrl})`
-                    : undefined,
-                }}
-              ></button>
-            </li>
-          ))}
-        </ul>
+    <>
+      <div className={`${styles["main"]} x-wide-container`}>
+        <div className={styles["images-container"]}>
+          <ContainedImage
+            src={product.imageUrl}
+            alt={product.name}
+            containerClassName={styles["product-img-container"]}
+          />
+          <ContainedImage
+            src={viewedSwatch?.productImageUrl || IMAGE_NOT_FOUND_URL}
+            alt={product.name}
+            containerClassName={styles["product-img-container"]}
+          />
+        </div>
+        <div className={styles["info-container"]}>
+          <div>
+            <h1>{product.name}</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi
+              nulla fugit fuga dicta. Voluptas necessitatibus consectetur
+              aliquid. Modi doloribus, perferendis amet ducimus ratione a ut
+              animi voluptates pariatur beatae optio.
+            </p>
+          </div>
+          <div
+            className={`${styles["info-subcontainer"]} ${styles["swatches-container"]}`}
+          >
+            <div>
+              <span className={styles["info-label-1"]}>Color: </span>
+              <span className={styles["swatch-color-text"]}>
+                {viewedSwatch?.displayName || "UNKNOWN COLOR"}
+              </span>
+            </div>
+            <div>
+              <ul className={styles["swatches"]}>
+                {swatchesWithImages.map((item) => (
+                  <li key={item.name}>
+                    <button
+                      key={item.name}
+                      className={`${styles["swatch"]} ${viewedVariationIdToUse === item.variationId ? styles["selected"] : ""}`}
+                      onClick={() => onClickSwatch(item.variationId)}
+                      style={{
+                        backgroundColor: item.swatchImageUrl
+                          ? undefined
+                          : `#${item.hexCode}`,
+                        backgroundImage: item.swatchImageUrl
+                          ? `url(${item.swatchImageUrl})`
+                          : undefined,
+                      }}
+                    ></button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className={styles["info-subcontainer"]}>
+            <div className={styles["info-label-1"]}>Sizes</div>
+            <div>
+              {smallestSize?.size.toLocaleUpperCase()} -{" "}
+              {largestSize?.size.toLocaleUpperCase()}
+            </div>
+          </div>
+          <div>
+            <Link href={""} className={styles["purchase-link"]}>
+              Login to Purchase
+            </Link>
+          </div>
+          <div className={styles["usa-container"]}>
+            <div>
+              <FlagDA size={35} />
+            </div>
+            <div>
+              <div className={styles["usa-heading"]}>MADE IN THE USA</div>
+              <p className={styles["usa-body"]}>
+                Born, Built, and Sewn in the USA.
+                <Link href={""}>Learn More</Link>
+              </p>
+            </div>
+          </div>
+          <div className={styles["expandables"]}>
+            <ExpandableDiv
+              label="Product Description"
+              labelClassName={styles["expandable-label"]}
+              content={
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: product.descriptionSanitized,
+                  }}
+                ></div>
+              }
+            />
+            <ExpandableDiv
+              label="Material"
+              labelClassName={styles["expandable-label"]}
+              content={
+                <div>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Sunt, voluptatem ratione laborum voluptatibus, numquam iste
+                  porro perferendis velit necessitatibus laboriosam itaque nemo
+                  mollitia sequi consequatur quam veniam? Veniam, itaque
+                  nesciunt.
+                </div>
+              }
+            />
+            <ExpandableDiv
+              label="Care Information"
+              labelClassName={styles["expandable-label"]}
+              content={
+                <div>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Sunt, voluptatem ratione laborum voluptatibus, numquam iste
+                  porro perferendis velit necessitatibus laboriosam itaque nemo
+                  mollitia sequi consequatur quam veniam? Veniam, itaque
+                  nesciunt.
+                </div>
+              }
+            />
+          </div>
+        </div>
       </div>
-      <div>{viewedSwatch?.displayName || "UNKNOWN COLOR"}</div>
-      <h3>Sizes</h3>
-      <ul>
-        {sizeStocks.map((size) => (
-          <li key={size.size}>
-            {size.size.toLocaleUpperCase()}: {size.stock}
-          </li>
-        ))}
-      </ul>
-      <h3>Product Description</h3>
-      <p dangerouslySetInnerHTML={{ __html: product.descriptionSanitized }}></p>
-      <h3>Pricing Table</h3>
-      <table className={styles["pricing-table"]}>
-        <thead>
-          <tr>
-            <td>S</td>
-            <td>M</td>
-            <td>L</td>
-            <td>XL</td>
-            <td>2XL</td>
-            <td>3XL</td>
-            <td>4XL</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>$1</td>
-            <td>$10</td>
-            <td>$100</td>
-            <td>$1</td>
-            <td>$10</td>
-            <td>$100</td>
-            <td>$1</td>
-          </tr>
-        </tbody>
-      </table>
-      {anyUpcharges && (
-        <>
-          <h3>Size Upcharges</h3>
-          <ul>
-            {upcharge2x && <li>2X: ${upcharge2x}</li>}
-            {upcharge3x && <li>3X: ${upcharge3x}</li>}
-            {upcharge4x && <li>4X: ${upcharge4x}</li>}
-          </ul>
-        </>
-      )}
-      <div>
-        Categories
-        <ul>
-          {product.categories.map((cat) => (
-            <li key={cat.id}>{cat.name}</li>
-          ))}
-        </ul>
-      </div>
-      <div>
-        Tags
-        <ul>
-          {product.tags.map((tag) => (
-            <li key={tag.id}>{tag.name}</li>
-          ))}
-        </ul>
-      </div>
-      <Link href={""} className={styles["purchase-link"]}>
-        Purchase
-      </Link>
-    </div>
+      <Recommendations categorySlug={product.categories[0]?.slug || ""} />
+    </>
   );
 }
