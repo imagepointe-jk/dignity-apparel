@@ -180,7 +180,7 @@ export async function queryProducts(params: {
   query QueryProducts(
       $searchTerm: String, 
       $category: String, 
-      $availability: String, 
+      ${conditionalStr(!!availability, "$availability: String,")}
       $fabricWeight: [String], 
       $fabricType: [String],
       $features: [String],
@@ -200,12 +200,17 @@ export async function queryProducts(params: {
         category: $category, 
         taxonomyFilter: {
           filters: [
+            ${conditionalStr(
+              !!availability,
+              `
             {
               taxonomy: PA_AVAILABILITY,
               terms: [
-                $availability
+                $availability,
               ]
             },
+              `
+            )}
             {
               taxonomy: PA_FABRIC_WEIGHT,
               terms: $fabricWeight
