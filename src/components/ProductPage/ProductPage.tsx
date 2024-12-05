@@ -111,8 +111,7 @@ function ProductPageWrapped({ product }: Props) {
           <div className={styles["info-subcontainer"]}>
             <div className={styles["info-label-1"]}>Sizes</div>
             <div>
-              {smallestSize?.size.toLocaleUpperCase()} -{" "}
-              {largestSize?.size.toLocaleUpperCase()}
+              {`Available In Sizes ${smallestSize?.size.toLocaleUpperCase()} to ${largestSize?.size.toLocaleUpperCase()}`}
             </div>
           </div>
           <div>
