@@ -27,7 +27,7 @@ export function VariableProductGroup({ product }: Props) {
           >
             <ContainedImage
               src={variation.imageUrl}
-              alt={variation.name}
+              alt={product.name}
               containerClassName={styles["image-container"]}
             />
             <div className={styles["info-container"]}>
