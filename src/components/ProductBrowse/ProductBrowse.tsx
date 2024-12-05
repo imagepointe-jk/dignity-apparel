@@ -1,7 +1,7 @@
 "use client";
 
 import { Attribute, Category } from "@/types/schema/woocommerce";
-import { Filters } from "./Filters";
+import { Filters } from "./Filters/Filters";
 import styles from "@/styles/ProductBrowse/ProductBrowse.module.css";
 import { ProductResults } from "./ProductResults";
 
