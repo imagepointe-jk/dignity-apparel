@@ -3,6 +3,7 @@ import {
   MAX_PRODUCTS_PAGE_SIZE,
 } from "@/constants";
 import {
+  attributeSchema,
   Category,
   pageInfoSchema,
   productSchema,
@@ -104,6 +105,10 @@ export function validateCategoriesResponse(json: any) {
   }
 
   return categories;
+}
+
+export function validateAttributesResponse(json: any) {
+  return (json as any[]).map((item) => attributeSchema.parse(item));
 }
 
 export function validatePagination(pagination: {

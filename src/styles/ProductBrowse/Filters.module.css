@@ -1,0 +1,41 @@
+.main {
+  border-right: 1px solid var(--armor-gray-200);
+  padding-right: 10px;
+  margin-bottom: 20px;
+  flex: 0 0 410px;
+}
+
+.clear-filters {
+  border: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  padding: 10px 5px;
+}
+
+.expandable-main {
+  padding-bottom: 20px;
+}
+
+.expandable-label {
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.expandable-main .expandable-content {
+  margin-bottom: 0;
+}
+
+.expandable-content-list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.input-container {
+  cursor: pointer;
+}
+
+.input-container input {
+  accent-color: var(--blaze-orange-500);
+}

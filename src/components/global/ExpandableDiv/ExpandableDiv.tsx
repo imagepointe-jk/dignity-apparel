@@ -7,6 +7,7 @@ type Props = {
   mainClassName?: string;
   labelClassName?: string;
   contentClassName?: string;
+  startExpanded?: boolean;
 };
 export function ExpandableDiv({
   label,
@@ -14,6 +15,7 @@ export function ExpandableDiv({
   mainClassName,
   labelClassName,
   contentClassName,
+  startExpanded,
 }: Props) {
   const [expanded, setExpanded] = useState(false);
   const contentRef = useRef(null as HTMLDivElement | null);
@@ -29,6 +31,11 @@ export function ExpandableDiv({
 
     return contentRef.current.scrollHeight;
   }
+
+  useEffect(() => {
+    //if we should start expanded, simulate a click on mount
+    if (startExpanded) onClick();
+  }, []);
 
   useEffect(() => {
     if (!contentRef.current) return;

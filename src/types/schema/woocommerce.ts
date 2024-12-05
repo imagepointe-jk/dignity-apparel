@@ -59,6 +59,21 @@ export const categorySchema = z.object({
   ),
 });
 
+export const attributeSchema = z.object({
+  attribute: z.object({
+    attribute_id: z.string(),
+    attribute_name: z.string(),
+    attribute_label: z.string(),
+  }),
+  terms: z.array(
+    z.object({
+      term_id: z.number(),
+      name: z.string(),
+      slug: z.string(),
+    })
+  ),
+});
+
 export const pageInfoSchema = z.object({
   hasNextPage: z.boolean(),
   hasPreviousPage: z.boolean(),
@@ -69,4 +84,18 @@ export const pageInfoSchema = z.object({
 export type Product = z.infer<typeof productSchema>;
 export type ProductVariation = z.infer<typeof productVariationSchema>;
 export type Category = z.infer<typeof categorySchema>;
+export type Attribute = z.infer<typeof attributeSchema>;
 export type PageInfo = z.infer<typeof pageInfoSchema>;
+export type ProductBrowseURLParams = {
+  first: number | null;
+  last: number | null;
+  before: string | null;
+  after: string | null;
+  search: string | null;
+  category: string | null;
+  fit: "mens" | "womens" | "unisex";
+  features: string[];
+  ["fabric-type"]: string[];
+  ["fabric-weight"]: string[];
+  availability: "made-to-order" | "in-stock";
+};

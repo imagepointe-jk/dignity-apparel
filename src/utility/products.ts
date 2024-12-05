@@ -1,4 +1,8 @@
-import { Product, ProductVariation } from "@/types/schema/woocommerce";
+import {
+  Product,
+  ProductBrowseURLParams,
+  ProductVariation,
+} from "@/types/schema/woocommerce";
 
 type ColorSwatch = {
   name: string;
@@ -214,4 +218,43 @@ function sortBySize<T>(items: T[], getItemSize: (item: T) => string) {
     const valueB = getSizeValue(sizeB.toLocaleLowerCase());
     return valueA - valueB;
   });
+}
+
+export function validateBrowseSearchParams(
+  searchParams: URLSearchParams
+): ProductBrowseURLParams {
+  function get(param: string) {
+    return searchParams.get(param);
+  }
+
+  function getAll(param: string) {
+    return searchParams.getAll(param);
+  }
+
+  const search = get("search");
+  const category = get("category");
+  const before = get("before");
+  const after = get("after");
+  const first = get("first");
+  const last = get("last");
+  const availability = get("availability");
+  const fabricType = getAll("fabric-type");
+  const fabricWeight = getAll("fabric-weight");
+  const features = getAll("feature");
+  const fit = get("fit");
+
+  return {
+    search,
+    category,
+    before: before ? decodeURIComponent(before) : null,
+    after: after ? decodeURIComponent(after) : null,
+    first: first ? +first : null,
+    last: last ? +last : null,
+    availability:
+      availability === "made-to-order" ? "made-to-order" : "in-stock",
+    "fabric-type": fabricType,
+    "fabric-weight": fabricWeight,
+    features,
+    fit: fit === "mens" ? "mens" : fit === "womens" ? "womens" : "unisex",
+  };
 }

@@ -7,7 +7,8 @@ import { validateWooCommerceProductsResponse } from "@/types/validation/woocomme
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
-import { ProductCard } from "./ProductCard";
+import { FeaturedProductCard2 } from "../global/FeaturedProductCards/FeaturedProductCard2";
+import { validateBrowseSearchParams } from "@/utility/products";
 
 export function ProductResults() {
   return (
@@ -54,20 +55,16 @@ export function ProductResultsWrapped() {
     setStatus("loading");
     setPageInfo(null);
     try {
-      const search = searchParams.get("search");
-      const category = searchParams.get("category");
-      const before = searchParams.get("before");
-      const after = searchParams.get("after");
-      const first = searchParams.get("first");
-      const last = searchParams.get("last");
+      const { search, category, before, after, first, last } =
+        validateBrowseSearchParams(searchParams);
 
       const response = await queryProducts({
         search,
         category,
-        before: before ? decodeURIComponent(before) : null,
-        after: after ? decodeURIComponent(after) : null,
-        first: first ? +first : null,
-        last: last ? +last : null,
+        before,
+        after,
+        first,
+        last,
       });
       const json = await response.json();
       const parsed = validateWooCommerceProductsResponse(json);
@@ -87,11 +84,12 @@ export function ProductResultsWrapped() {
 
   return (
     <div>
+      <h1 className={styles["heading"]}>USA MADE APPAREL</h1>
       <div className={styles["cards-container"]}>
         {status === "idle" &&
           results.length > 0 &&
           results.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <FeaturedProductCard2 key={product.id} product={product} />
           ))}
         {status === "idle" && results.length === 0 && <>No results.</>}
         {status === "loading" && <>Loading...</>}
@@ -103,10 +101,6 @@ export function ProductResultsWrapped() {
           {nextUrl && <Link href={nextUrl}>Next &gt;</Link>}
         </div>
       )}
-      {/* <div>
-        <Link>&lt; Previous</Link>
-        <Link>&gt; Next</Link>
-      </div> */}
     </div>
   );
 }

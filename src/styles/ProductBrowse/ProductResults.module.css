@@ -1,5 +1,12 @@
+.heading {
+  font-size: 3rem;
+  color: var(--blaze-orange-500);
+  margin-top: 0;
+}
+
 .cards-container {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  row-gap: 70px;
 }
