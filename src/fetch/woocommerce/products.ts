@@ -152,16 +152,87 @@ export async function getProducts() {
 export async function queryProducts(params: {
   search: string | null;
   category: string | null;
+  availability: string | null;
+  fabricType: string[];
+  fabricWeight: string[];
+  features: string[];
+  fit: string | null;
   before: string | null;
   after: string | null;
   first: number | null;
   last: number | null;
 }) {
-  const { category, search, before, after, first, last } = params;
+  const {
+    category,
+    search,
+    availability,
+    fabricType,
+    fabricWeight,
+    features,
+    fit,
+    before,
+    after,
+    first,
+    last,
+  } = params;
 
   const query = `
-  query QueryProducts($searchTerm: String, $category: String, $first: Int, $last: Int, $after: String, $before: String) {
-    products(first: $first, last: $last, after: $after, before: $before, where: { search: $searchTerm, category: $category }) {
+  query QueryProducts(
+      $searchTerm: String, 
+      $category: String, 
+      $availability: String, 
+      $fabricWeight: [String], 
+      $fabricType: [String],
+      $features: [String],
+      ${conditionalStr(!!fit, "$fit: String,")}
+      $first: Int, 
+      $last: Int, 
+      $after: String, 
+      $before: String
+    ) {
+    products(
+      first: $first, 
+      last: $last, 
+      after: $after, 
+      before: $before, 
+      where: { 
+        search: $searchTerm, 
+        category: $category, 
+        taxonomyFilter: {
+          filters: [
+            {
+              taxonomy: PA_AVAILABILITY,
+              terms: [
+                $availability
+              ]
+            },
+            {
+              taxonomy: PA_FABRIC_WEIGHT,
+              terms: $fabricWeight
+            },
+            {
+              taxonomy: PA_FABRIC_TYPE,
+              terms: $fabricType
+            },
+            {
+              taxonomy: PA_FEATURES,
+              terms: $features
+            },
+            ${conditionalStr(
+              !!fit,
+              `
+            {
+              taxonomy: PA_FIT,
+              terms: [
+                $fit,
+              ]
+            }
+              `
+            )}
+          ],
+          relation: AND
+        } 
+      }) {
       pageInfo {
         hasNextPage
         hasPreviousPage
@@ -184,7 +255,19 @@ export async function queryProducts(params: {
       },
       body: JSON.stringify({
         query,
-        variables: { searchTerm: search, category, before, after, first, last },
+        variables: {
+          searchTerm: search,
+          category,
+          availability,
+          fabricType,
+          fabricWeight,
+          features,
+          fit,
+          before,
+          after,
+          first,
+          last,
+        },
       }),
     })
   );

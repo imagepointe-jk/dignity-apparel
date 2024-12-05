@@ -23,12 +23,20 @@ const emptyResults = {
 };
 
 export async function GET(request: NextRequest) {
-  const search = request.nextUrl.searchParams.get("search");
-  const category = request.nextUrl.searchParams.get("category");
-  const beforeParam = request.nextUrl.searchParams.get("before");
-  const afterParam = request.nextUrl.searchParams.get("after");
-  const firstParam = request.nextUrl.searchParams.get("first");
-  const lastParam = request.nextUrl.searchParams.get("last");
+  const { searchParams } = request.nextUrl;
+  const search = searchParams.get("search");
+  const category = searchParams.get("category");
+  const availability = searchParams.get("availability");
+  const fabricType = searchParams.getAll("fabric-type");
+  const fabricWeight = searchParams.getAll("fabric-weight");
+  const features = searchParams.getAll("feature");
+  const fit = ["mens", "womens"].includes(`${searchParams.get("fit")}`)
+    ? searchParams.get("fit")
+    : null;
+  const beforeParam = searchParams.get("before");
+  const afterParam = searchParams.get("after");
+  const firstParam = searchParams.get("first");
+  const lastParam = searchParams.get("last");
   const { after, before, first, last } = validatePagination({
     before: beforeParam,
     after: afterParam,
@@ -40,6 +48,11 @@ export async function GET(request: NextRequest) {
     const response = await queryProducts({
       search,
       category,
+      availability,
+      fabricType,
+      fabricWeight,
+      features,
+      fit,
       before,
       after,
       first,

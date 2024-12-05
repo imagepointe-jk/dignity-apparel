@@ -55,12 +55,28 @@ export function ProductResultsWrapped() {
     setStatus("loading");
     setPageInfo(null);
     try {
-      const { search, category, before, after, first, last } =
-        validateBrowseSearchParams(searchParams);
+      const {
+        search,
+        category,
+        availability,
+        "fabric-type": fabricType,
+        "fabric-weight": fabricWeight,
+        features,
+        fit,
+        before,
+        after,
+        first,
+        last,
+      } = validateBrowseSearchParams(searchParams);
 
       const response = await queryProducts({
         search,
         category,
+        availability,
+        fabricType,
+        fabricWeight,
+        features,
+        fit,
         before,
         after,
         first,
