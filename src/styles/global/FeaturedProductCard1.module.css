@@ -1,12 +1,12 @@
 .card {
   color: white;
-  width: 300px;
+  width: 265px;
 }
 
 .slider-container,
 .slider-item-image-container,
 .featured-image-container {
-  height: 450px;
+  height: 400px;
 }
 
 .slider-container {
@@ -39,7 +39,7 @@
 }
 
 .slider-item-image-container {
-  flex: 0 0 300px;
+  flex: 0 0 265px;
 }
 
 .condensed .featured-image-container {
@@ -52,7 +52,7 @@
 
 .condensed .slider-container,
 .condensed .featured-image-container {
-  height: 300px;
+  height: 265px;
 }
 
 .image-overlay {

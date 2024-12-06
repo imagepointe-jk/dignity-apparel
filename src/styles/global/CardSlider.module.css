@@ -1,7 +1,13 @@
 .main {
+  position: relative;
+  margin: 0 50px;
+}
+
+.sliding-parent {
   height: 475px;
   overflow: hidden;
   position: relative;
+  margin: auto;
 }
 
 .sliding-container {
@@ -16,42 +22,60 @@
   width: 300px;
   height: 450px;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card {
   position: absolute;
-  left: 10px;
-  top: 10px;
-  right: 10px;
-  bottom: 10px;
 }
 
 .arrow-button {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   padding: 10px;
   border-radius: 100px;
-  background-color: white;
+  background-color: black;
+  color: white;
   position: absolute;
   top: 50%;
   translate: 0 -50%;
   z-index: 10;
-  box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.5);
   cursor: pointer;
 }
 
+.arrow-button.disabled {
+  background-color: var(--armor-gray-500);
+}
+
 .arrow-icon-left {
-  left: 10px;
+  left: -50px;
 }
 
 .arrow-icon-right {
-  right: 10px;
+  right: -50px;
 }
 
 .arrow-icon-left svg {
   rotate: 180deg;
+  translate: -2px -2px;
 }
 
 .arrow-icon-right svg {
-  translate: 2px 0;
+  translate: -2px -2px;
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    margin: 0;
+  }
+
+  .arrow-icon-left {
+    left: 0;
+  }
+
+  .arrow-icon-right {
+    right: 0;
+  }
 }

@@ -20,6 +20,25 @@
 						]
 					}
 				]
+			},
+			"heading_text": {
+				"__TYPE__": "FieldContent",
+				"value": "fifty",
+				"type": "Text"
+			},
+			"primary_text_color": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "DocumentLink",
+					"id": "mock_document_id"
+				}
+			},
+			"background_color": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "DocumentLink",
+					"id": "mock_document_id"
+				}
 			}
 		},
 		"items": []

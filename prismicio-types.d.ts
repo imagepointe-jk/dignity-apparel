@@ -963,6 +963,36 @@ export interface FeaturedProductsSliceDefaultPrimaryProductSlugsItem {
  */
 export interface FeaturedProductsSliceDefaultPrimary {
   /**
+   * Heading Text field in *FeaturedProducts → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_products.default.primary.heading_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading_text: prismic.KeyTextField;
+
+  /**
+   * Primary Text Color field in *FeaturedProducts → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_products.default.primary.primary_text_color
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  primary_text_color: prismic.ContentRelationshipField<"brand_color">;
+
+  /**
+   * Background Color field in *FeaturedProducts → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_products.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  background_color: prismic.ContentRelationshipField<"brand_color">;
+
+  /**
    * Product Slugs field in *FeaturedProducts → Default → Primary*
    *
    * - **Field Type**: Group

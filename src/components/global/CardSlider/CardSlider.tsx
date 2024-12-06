@@ -1,9 +1,9 @@
 "use client";
-import { Arrow } from "@/components/icons/Arrow";
+import { Arrow3 } from "@/components/icons/Arrow3";
 import styles from "@/styles/global/CardSlider.module.css";
 import { clamp } from "@/utility/misc";
 import throttle from "lodash.throttle";
-import { ReactNode, useRef } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 
 type HasId = {
   id: number | string;
@@ -12,8 +12,14 @@ type Props<T> = {
   dataset: T[];
   createCard: (data: T) => ReactNode;
 };
+//the main container gets a max-width set based on the number of cards, to reduce unused space.
+//the max-width will not be set larger than the following number of cards.
+const maxFittingCount = 4;
 export function CardSlider<T extends HasId>({ dataset, createCard }: Props<T>) {
   const mainRef = useRef(null as HTMLDivElement | null);
+  const [canMoveLeft, setCanMoveLeft] = useState(false);
+  const [canMoveRight, setCanMoveRight] = useState(false);
+  const [maxWidth, setMaxWidth] = useState(undefined as string | undefined);
   const onClickArrowThrottled = throttle(
     (direction: "left" | "right") => {
       if (!mainRef.current) return;
@@ -22,13 +28,21 @@ export function CardSlider<T extends HasId>({ dataset, createCard }: Props<T>) {
       const slidingContainer = mainRef.current.children[0] as HTMLElement;
       if (!slidingContainer) return;
 
-      const newOffset = getNewOffset(
+      const offsets = calculateOffsets(
         direction,
         mainBoundingRect,
         slidingContainer
       );
 
-      if (newOffset !== null) slidingContainer.style.left = `${newOffset}px`;
+      if (offsets?.newOffset !== null)
+        slidingContainer.style.left = `${offsets?.newOffset}px`;
+
+      //movement ability depends on which cards are fully visible, which changes during the transition animation.
+      //wait until the transition is over to recalculate which directions we can move.
+      setTimeout(() => {
+        setCanMoveLeft(canMoveInDirection("left"));
+        setCanMoveRight(canMoveInDirection("right"));
+      }, 1200);
     },
     1200,
     {
@@ -36,7 +50,28 @@ export function CardSlider<T extends HasId>({ dataset, createCard }: Props<T>) {
     }
   );
 
-  function getNewOffset(
+  function getFirstCardWidth() {
+    return (
+      mainRef.current?.children[0]?.children[0]?.getBoundingClientRect()
+        .width || 0
+    );
+  }
+
+  function canMoveInDirection(direction: "left" | "right") {
+    if (!mainRef.current) return false;
+
+    const mainBoundingRect = mainRef.current.getBoundingClientRect();
+    const slidingContainer = mainRef.current.children[0] as HTMLElement;
+    const offsets = calculateOffsets(
+      direction,
+      mainBoundingRect,
+      slidingContainer
+    );
+
+    return offsets?.newOffset !== offsets?.curOffset;
+  }
+
+  function calculateOffsets(
     moveDirection: "left" | "right",
     mainBoundingRect: DOMRect,
     slidingContainer: HTMLElement
@@ -81,7 +116,7 @@ export function CardSlider<T extends HasId>({ dataset, createCard }: Props<T>) {
           firstNotFullyVisibleContainer.element.getBoundingClientRect().left;
 
     //clamp to prevent scrolling past end of cards
-    const cardWidth = firstCard.getBoundingClientRect().width;
+    const cardWidth = getFirstCardWidth();
     const minOffset = clamp(
       mainBoundingRect.width - cardWidth * slidingContainer.children.length,
       Number.MIN_SAFE_INTEGER,
@@ -90,29 +125,46 @@ export function CardSlider<T extends HasId>({ dataset, createCard }: Props<T>) {
     const curOffset = +slidingContainer.style.left.replace("px", "");
     const newOffset = clamp(curOffset + distToMove, minOffset, 0);
 
-    return newOffset;
+    return { curOffset, newOffset };
   }
 
+  useEffect(() => {
+    if (!mainRef.current) return;
+
+    const totalCards = mainRef.current.children[0]?.children.length || 0;
+    const maxWidth = `${clamp(getFirstCardWidth() * totalCards, 0, getFirstCardWidth() * maxFittingCount)}px`;
+    setMaxWidth(maxWidth);
+
+    setCanMoveLeft(canMoveInDirection("left"));
+    setCanMoveRight(canMoveInDirection("right"));
+  }, [mainRef]);
+
   return (
-    <div className={styles["main"]} ref={mainRef}>
-      <div className={styles["sliding-container"]} style={{ left: "0" }}>
-        {dataset.map((data) => (
-          <div key={data.id} className={styles["card-container"]}>
-            <div className={styles["card"]}>{createCard(data)}</div>
-          </div>
-        ))}
+    <div className={styles["main"]}>
+      <div
+        className={styles["sliding-parent"]}
+        ref={mainRef}
+        style={{ maxWidth }}
+      >
+        <div className={styles["sliding-container"]} style={{ left: "0" }}>
+          {dataset.map((data) => (
+            <div key={data.id} className={styles["card-container"]}>
+              <div className={styles["card"]}>{createCard(data)}</div>
+            </div>
+          ))}
+        </div>
       </div>
       <div
-        className={`${styles["arrow-button"]} ${styles["arrow-icon-left"]}`}
+        className={`${styles["arrow-button"]} ${styles["arrow-icon-left"]} ${!canMoveLeft ? styles["disabled"] : ""}`}
         onClick={() => onClickArrowThrottled("left")}
       >
-        <Arrow size={20} />
+        <Arrow3 size={18} />
       </div>
       <div
-        className={`${styles["arrow-button"]} ${styles["arrow-icon-right"]}`}
+        className={`${styles["arrow-button"]} ${styles["arrow-icon-right"]} ${!canMoveRight ? styles["disabled"] : ""}`}
         onClick={() => onClickArrowThrottled("right")}
       >
-        <Arrow size={20} />
+        <Arrow3 size={18} />
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import { validateWooCommerceSingleProductResponse } from "@/types/validation/woo
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { FeaturedProducts as FeaturedProductsComponent } from "@/components/sections/FeaturedProducts/FeaturedProducts";
+import { getBrandColor } from "@/utility/prismic";
 
 /**
  * Props for `FeaturedProducts`.
@@ -23,9 +24,14 @@ const FeaturedProducts = async ({
   const parsed = jsons.map((json) =>
     validateWooCommerceSingleProductResponse(json.data.product)
   );
+  const backgroundColor = await getBrandColor(slice.primary.background_color);
+  const textColor = await getBrandColor(slice.primary.primary_text_color);
 
   return (
     <FeaturedProductsComponent
+      headingText="ABC"
+      backgroundColor={backgroundColor.replace("#", "")}
+      primaryTextColor={textColor.replace("#", "")}
       products={parsed}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
