@@ -154,18 +154,20 @@ export function CardSlider<T extends HasId>({ dataset, createCard }: Props<T>) {
           ))}
         </div>
       </div>
-      <div
+      <button
         className={`${styles["arrow-button"]} ${styles["arrow-icon-left"]} ${!canMoveLeft ? styles["disabled"] : ""}`}
         onClick={() => onClickArrowThrottled("left")}
+        aria-label="scroll gallery left"
       >
         <Arrow3 size={18} />
-      </div>
-      <div
+      </button>
+      <button
         className={`${styles["arrow-button"]} ${styles["arrow-icon-right"]} ${!canMoveRight ? styles["disabled"] : ""}`}
         onClick={() => onClickArrowThrottled("right")}
+        aria-label="scroll gallery right"
       >
         <Arrow3 size={18} />
-      </div>
+      </button>
     </div>
   );
 }
