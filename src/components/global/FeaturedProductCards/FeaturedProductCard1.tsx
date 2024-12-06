@@ -40,42 +40,51 @@ export function FeaturedProductCard1({ product }: Props) {
           ))}
         </div>
         <div className={styles["image-overlay"]}>
-          <div className={styles["product-name"]}>{product.name}</div>
-          <div>Material Text Here</div>
-          <div>Available Colors</div>
-          <div className={styles["swatches-row"]}>
-            {swatches.map((swatch) => (
-              <div
-                key={swatch.variationId}
-                className={styles["swatch"]}
-                style={{
-                  backgroundColor: swatch.hexCode
-                    ? `#${swatch.hexCode}`
-                    : undefined,
-                  backgroundImage: swatch.swatchImageUrl
-                    ? `url("${swatch.swatchImageUrl}")`
-                    : undefined,
-                }}
-              ></div>
-            ))}
+          <div>
+            <div className={styles["product-name"]}>{product.name}</div>
+            {product.additionalProductInformation.materialDescription && (
+              <div className={styles["material-description"]}>
+                {product.additionalProductInformation.materialDescription}
+              </div>
+            )}
+          </div>
+          <div className={styles["colors-container"]}>
+            <div className={styles["colors-text"]}>Available Colors</div>
+            <div className={styles["swatches-row"]}>
+              {swatches.map((swatch) => (
+                <div
+                  key={swatch.variationId}
+                  className={styles["swatch"]}
+                  style={{
+                    backgroundColor: swatch.hexCode
+                      ? `#${swatch.hexCode}`
+                      : undefined,
+                    backgroundImage: swatch.swatchImageUrl
+                      ? `url("${swatch.swatchImageUrl}")`
+                      : undefined,
+                  }}
+                ></div>
+              ))}
+            </div>
           </div>
           <Link href={productUrl(product)} className={styles["product-link"]}>
             View Product
           </Link>
         </div>
+        <div className={styles["hover-line"]}></div>
         <button
           className={styles["arrow-left"]}
           onClick={() => onClickArrow("left")}
           disabled={!canGoLeft}
         >
-          <Arrow />
+          <Arrow size={14} />
         </button>
         <button
           className={styles["arrow-right"]}
           onClick={() => onClickArrow("right")}
           disabled={!canGoRight}
         >
-          <Arrow />
+          <Arrow size={14} />
         </button>
       </div>
       <div className={styles["slide-dots-row"]}>
