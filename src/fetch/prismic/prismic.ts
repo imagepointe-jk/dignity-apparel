@@ -1,5 +1,10 @@
 import { createClient } from "@/prismicio";
 
+export async function getAnnouncementBanner() {
+  const client = createClient();
+  return client.getSingle("announcement_banner");
+}
+
 export async function getMegaMenu() {
   const client = createClient();
   return client.getSingle("settings", {

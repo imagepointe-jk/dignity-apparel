@@ -1,7 +1,7 @@
 "use client";
 import styles from "@/styles/NavBar/desktop.module.css";
 import stylesSearch from "@/styles/QuickSearch/QuickSearch.module.css";
-import { Suspense, useEffect, useRef, useState } from "react";
+import { ReactNode, Suspense, useEffect, useRef, useState } from "react";
 import throttle from "lodash.throttle";
 import { TopBanner } from "./TopBanner";
 import { MegaMenuDesktop } from "./MegaMenuDesktop";
@@ -14,6 +14,13 @@ import { env } from "@/envClient";
 
 const topOfPageThreshold = 200; //when the value of window.scrollY is less than this, we consider that to be the "top of the page"
 type Props = {
+  announcementBanner?: {
+    bodyNode: ReactNode;
+    link?: {
+      href: string;
+      label: string;
+    };
+  };
   megaMenu: MegaMenu;
   specialLink?: {
     text: string;
@@ -24,10 +31,16 @@ type Props = {
     text: string;
   };
 };
-export function NavBar({ megaMenu, logoImgUrls, specialLink }: Props) {
+export function NavBar({
+  announcementBanner,
+  megaMenu,
+  logoImgUrls,
+  specialLink,
+}: Props) {
   return (
     <Suspense>
       <NavBarWrapped
+        announcementBanner={announcementBanner}
         logoImgUrls={logoImgUrls}
         megaMenu={megaMenu}
         specialLink={specialLink}
@@ -37,6 +50,7 @@ export function NavBar({ megaMenu, logoImgUrls, specialLink }: Props) {
 }
 
 function NavBarWrapped({
+  announcementBanner,
   megaMenu,
   logoImgUrls: { logo, text },
   specialLink,
@@ -78,12 +92,15 @@ function NavBarWrapped({
   return (
     <>
       <div className={styles["nav-container"]}>
-        <TopBanner
-          hidden={!atTopOfPage}
-          text="This is a test banner"
-          bgColorHexCode="ff0000"
-          textColorHexCode="ffffff"
-        />
+        {announcementBanner && (
+          <TopBanner
+            hidden={!atTopOfPage}
+            bodyNode={announcementBanner.bodyNode}
+            link={announcementBanner.link}
+            bgColorHexCode="0E2C63"
+            textColorHexCode="ffffff"
+          />
+        )}
         <div className={styles["nav-background-bar"]}>
           <div className="x-wide-container">
             <nav

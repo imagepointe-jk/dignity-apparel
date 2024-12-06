@@ -1,4 +1,5 @@
 export const BRAND_COLOR = "#FF3301";
+export const BRAND_COLOR_HOVER = "#ff5c33";
 
 export const easyCorsInit = {
   headers: {

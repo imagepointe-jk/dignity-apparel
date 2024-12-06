@@ -1,6 +1,18 @@
 import { footerSchema } from "@/types/schema/footer";
 import { megaMenuSchema } from "@/types/schema/navbar";
 import { buttonStyleResponseSchema } from "@/types/schema/prismic";
+import { RichTextField } from "@prismicio/client";
+
+export function validateAnnouncementBannerResponse(response: any) {
+  return {
+    showBanner: !!response.data.show_banner,
+    text: response.data.text as RichTextField, //not aware of an easy way to actually parse this
+    link: {
+      href: response.data.link.url ? `${response.data.link.url}` : undefined,
+      label: `${response.data.link.text}`,
+    },
+  };
+}
 
 export function validateMegaMenuResponse(response: any) {
   return megaMenuSchema.parse({

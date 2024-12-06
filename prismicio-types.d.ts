@@ -5,6 +5,61 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 /**
+ * Content for Announcement Banner documents
+ */
+interface AnnouncementBannerDocumentData {
+  /**
+   * Show Banner field in *Announcement Banner*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: announcement_banner.show_banner
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  show_banner: prismic.BooleanField;
+
+  /**
+   * Text field in *Announcement Banner*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: announcement_banner.text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+
+  /**
+   * Link field in *Announcement Banner*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: announcement_banner.link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Announcement Banner document from Prismic
+ *
+ * - **API ID**: `announcement_banner`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AnnouncementBannerDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<AnnouncementBannerDocumentData>,
+    "announcement_banner",
+    Lang
+  >;
+
+/**
  * Content for Brand Color documents
  */
 interface BrandColorDocumentData {
@@ -775,6 +830,7 @@ export type StandardPageDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
+  | AnnouncementBannerDocument
   | BrandColorDocument
   | ButtonStyleDocument
   | FooterSectionDocument
@@ -1067,6 +1123,8 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      AnnouncementBannerDocument,
+      AnnouncementBannerDocumentData,
       BrandColorDocument,
       BrandColorDocumentData,
       ButtonStyleDocument,

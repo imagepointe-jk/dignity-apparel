@@ -1,0 +1,39 @@
+{
+  "format": "custom",
+  "id": "announcement_banner",
+  "label": "Announcement Banner",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "show_banner": {
+        "type": "Boolean",
+        "config": {
+          "label": "Show Banner",
+          "placeholder_false": "Don't show",
+          "placeholder_true": "Show",
+          "default_value": false
+        }
+      },
+      "text": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Text",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "strong,em,rtl"
+        }
+      },
+      "link": {
+        "type": "Link",
+        "config": {
+          "label": "Link",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "select": null,
+          "allowText": true
+        }
+      }
+    }
+  }
+}
