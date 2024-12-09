@@ -12,6 +12,14 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "tiling_background": {
+          "type": "Image",
+          "config": {
+            "label": "Tiling Background",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
         "cards": {
           "type": "Group",
           "config": {

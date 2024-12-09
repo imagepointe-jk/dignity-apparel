@@ -4,6 +4,8 @@ import {
   LinkAsButton,
   LinkAsButtonData,
 } from "@/components/global/LinkAsButton/LinkAsButton";
+import { WithTilingBackground } from "@/types/schema/misc";
+import { bgImage } from "@/utility/misc";
 
 type Props = {
   cards: {
@@ -15,10 +17,14 @@ type Props = {
     bodyNode: ReactNode;
     button: LinkAsButtonData;
   }[];
-};
-export function CardsSection1({ cards, ...rest }: Props) {
+} & WithTilingBackground;
+export function CardsSection1({ tilingBackground, cards, ...rest }: Props) {
   return (
-    <section className={styles["main"]} {...rest}>
+    <section
+      className={styles["main"]}
+      {...rest}
+      style={{ ...bgImage(tilingBackground?.src) }}
+    >
       {cards.map((card) => (
         <div key={card.heading} className={styles["card"]}>
           <img src={card.image.src} alt={card.image.alt} />

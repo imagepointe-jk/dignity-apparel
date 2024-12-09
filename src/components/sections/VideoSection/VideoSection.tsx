@@ -1,19 +1,20 @@
 import styles from "@/styles/sections/VideoSection.module.css";
+import { WithTilingBackground } from "@/types/schema/misc";
+import { bgImage } from "@/utility/misc";
 import { ReactNode } from "react";
 
 type Props = {
   embedCode?: string;
   heading?: string;
   headingColor?: string;
-  bgColor?: string;
   bodyText?: ReactNode;
   textColor?: string;
-};
+} & WithTilingBackground;
 export function VideoSection({
   embedCode,
   heading,
   headingColor,
-  bgColor,
+  tilingBackground,
   bodyText,
   textColor,
   ...rest
@@ -26,7 +27,10 @@ export function VideoSection({
     : undefined;
 
   return (
-    <section style={{ backgroundColor: bgColor, color: textColor }} {...rest}>
+    <section
+      style={{ ...bgImage(tilingBackground?.src), color: textColor }}
+      {...rest}
+    >
       <div className={`${styles["main"]} x-wide-container`}>
         {heading && <h2 style={{ color: headingColor }}>{heading}</h2>}
         <div

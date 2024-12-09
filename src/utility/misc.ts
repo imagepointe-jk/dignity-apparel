@@ -7,3 +7,7 @@ export function clamp(val: number, min: number, max: number) {
 export function message(msg: string) {
   return { message: msg };
 }
+
+export function bgImage(src: string | null | undefined) {
+  return { backgroundImage: src ? `url("${src}")` : undefined };
+}

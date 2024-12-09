@@ -29,6 +29,14 @@
             ]
           }
         },
+        "tiling_background": {
+          "type": "Image",
+          "config": {
+            "label": "Tiling Background",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
         "video": {
           "type": "Embed",
           "config": {

@@ -902,6 +902,16 @@ export interface CardsSection1SliceDefaultPrimaryCardsItem {
  */
 export interface CardsSection1SliceDefaultPrimary {
   /**
+   * Tiling Background field in *CardsSection1 → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cards_section1.default.primary.tiling_background
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  tiling_background: prismic.ImageField<never>;
+
+  /**
    * Cards field in *CardsSection1 → Default → Primary*
    *
    * - **Field Type**: Group
@@ -984,14 +994,14 @@ export interface FeaturedProductsSliceDefaultPrimary {
   primary_text_color: prismic.ContentRelationshipField<"brand_color">;
 
   /**
-   * Background Color field in *FeaturedProducts → Default → Primary*
+   * Tiling Background field in *FeaturedProducts → Default → Primary*
    *
-   * - **Field Type**: Content Relationship
+   * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: featured_products.default.primary.background_color
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   * - **API ID Path**: featured_products.default.primary.tiling_background
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
-  background_color: prismic.ContentRelationshipField<"brand_color">;
+  tiling_background: prismic.ImageField<never>;
 
   /**
    * Product Slugs field in *FeaturedProducts → Default → Primary*
@@ -1156,6 +1166,16 @@ export interface VideoSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   heading_color: prismic.ContentRelationshipField<"brand_color">;
+
+  /**
+   * Tiling Background field in *Video → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video.default.primary.tiling_background
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  tiling_background: prismic.ImageField<never>;
 
   /**
    * Video field in *Video → Default → Primary*

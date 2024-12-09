@@ -29,14 +29,12 @@
             ]
           }
         },
-        "background_color": {
-          "type": "Link",
+        "tiling_background": {
+          "type": "Image",
           "config": {
-            "label": "Background Color",
-            "select": "document",
-            "customtypes": [
-              "brand_color"
-            ]
+            "label": "Tiling Background",
+            "constraint": {},
+            "thumbnails": []
           }
         },
         "product_slugs": {

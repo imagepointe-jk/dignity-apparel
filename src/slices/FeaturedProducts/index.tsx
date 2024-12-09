@@ -24,13 +24,12 @@ const FeaturedProducts = async ({
   const parsed = jsons.map((json) =>
     validateWooCommerceSingleProductResponse(json.data.product)
   );
-  const backgroundColor = await getBrandColor(slice.primary.background_color);
   const textColor = await getBrandColor(slice.primary.primary_text_color);
 
   return (
     <FeaturedProductsComponent
       headingText="ABC"
-      backgroundColor={backgroundColor.replace("#", "")}
+      tilingBackground={{ src: slice.primary.tiling_background.url }}
       primaryTextColor={textColor.replace("#", "")}
       products={parsed}
       data-slice-type={slice.slice_type}

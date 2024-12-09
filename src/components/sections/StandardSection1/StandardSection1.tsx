@@ -5,6 +5,8 @@ import {
   LinkAsButton,
   LinkAsButtonData,
 } from "../../global/LinkAsButton/LinkAsButton";
+import { WithTilingBackground } from "@/types/schema/misc";
+import { bgImage } from "@/utility/misc";
 
 type Props = {
   heading: string;
@@ -12,18 +14,17 @@ type Props = {
   imgSrc: string;
   imgAlt: string;
   horzReversed?: boolean;
-  bgColor?: string;
   textColor?: string;
   buttonPrimary?: LinkAsButtonData;
   buttonSecondary?: Omit<LinkAsButtonData, "secondaryColor">;
-};
+} & WithTilingBackground;
 export function StandardSection1({
   heading,
   bodyTextNode,
   imgSrc,
   imgAlt,
   horzReversed,
-  bgColor,
+  tilingBackground,
   textColor,
   buttonPrimary,
   buttonSecondary,
@@ -31,7 +32,7 @@ export function StandardSection1({
   return (
     <section
       className={`${styles["main"]} ${horzReversed ? styles["reversed"] : ""}`}
-      style={{ backgroundColor: bgColor, color: textColor }}
+      style={{ ...bgImage(tilingBackground?.src), color: textColor }}
     >
       <div className={styles["content-container"]}>
         <h2>{heading}</h2>

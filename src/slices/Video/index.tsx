@@ -22,6 +22,7 @@ const Video = async ({ slice }: VideoProps): Promise<JSX.Element> => {
       bodyText={<PrismicRichText field={slice.primary.body_text} />}
       textColor={primaryColor}
       embedCode={slice.primary.video.html || ""}
+      tilingBackground={{ src: slice.primary.tiling_background.url }}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     />

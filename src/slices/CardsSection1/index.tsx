@@ -35,6 +35,7 @@ const CardsSection1 = async ({
     <CardsSection1Component
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      tilingBackground={{ src: slice.primary.tiling_background.url }}
       cards={cards}
     />
   );
