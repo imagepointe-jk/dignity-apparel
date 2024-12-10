@@ -111,6 +111,7 @@ export function FiltersWrapped({ categories, attributes }: Props) {
                 key={item.id}
                 className={styles["clear-filter-button"]}
                 onClick={() => clearParam(item.pairToClear)}
+                aria-label={`clear ${item.label} filter`}
               >
                 <XMark2 size={10} />
                 {item.label}
