@@ -283,6 +283,7 @@ export type FooterSectionDocument<Lang extends string = string> =
   >;
 
 type HomePageDocumentDataSlicesSlice =
+  | StandardSection1Slice
   | VideoSlice
   | FeaturedProductsSlice
   | CardsSection1Slice
@@ -1144,6 +1145,132 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Primary content in *StandardSection1 → Default → Primary*
+ */
+export interface StandardSection1SliceDefaultPrimary {
+  /**
+   * Tiling Background field in *StandardSection1 → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: standard_section1.default.primary.tiling_background
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  tiling_background: prismic.ImageField<never>;
+
+  /**
+   * Heading field in *StandardSection1 → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: standard_section1.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Subtext field in *StandardSection1 → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: standard_section1.default.primary.subtext
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtext: prismic.RichTextField;
+
+  /**
+   * Body field in *StandardSection1 → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: standard_section1.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Button Link field in *StandardSection1 → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: standard_section1.default.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+
+  /**
+   * Button Style field in *StandardSection1 → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: standard_section1.default.primary.button_style
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_style: prismic.ContentRelationshipField<"button_style">;
+
+  /**
+   * Primary Text Color field in *StandardSection1 → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: standard_section1.default.primary.primary_text_color
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  primary_text_color: prismic.ContentRelationshipField<"brand_color">;
+
+  /**
+   * Image field in *StandardSection1 → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: standard_section1.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Image Location field in *StandardSection1 → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Right
+   * - **API ID Path**: standard_section1.default.primary.image_location
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  image_location: prismic.SelectField<"Right" | "Left", "filled">;
+}
+
+/**
+ * Default variation for StandardSection1 Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type StandardSection1SliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<StandardSection1SliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *StandardSection1*
+ */
+type StandardSection1SliceVariation = StandardSection1SliceDefault;
+
+/**
+ * StandardSection1 Shared Slice
+ *
+ * - **API ID**: `standard_section1`
+ * - **Description**: StandardSection1
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type StandardSection1Slice = prismic.SharedSlice<
+  "standard_section1",
+  StandardSection1SliceVariation
+>;
+
+/**
  * Primary content in *Video → Default → Primary*
  */
 export interface VideoSliceDefaultPrimary {
@@ -1301,6 +1428,10 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      StandardSection1Slice,
+      StandardSection1SliceDefaultPrimary,
+      StandardSection1SliceVariation,
+      StandardSection1SliceDefault,
       VideoSlice,
       VideoSliceDefaultPrimary,
       VideoSliceVariation,

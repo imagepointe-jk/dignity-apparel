@@ -9,77 +9,51 @@ import { WithTilingBackground } from "@/types/schema/misc";
 import { bgImage } from "@/utility/misc";
 
 type Props = {
-  heading: string;
+  headingNode: ReactNode;
+  subtextNode?: ReactNode;
   bodyTextNode: ReactNode;
-  imgSrc: string;
-  imgAlt: string;
+  img: {
+    src: string;
+    alt?: string | null | undefined;
+  };
   horzReversed?: boolean;
   textColor?: string;
   buttonPrimary?: LinkAsButtonData;
   buttonSecondary?: Omit<LinkAsButtonData, "secondaryColor">;
 } & WithTilingBackground;
 export function StandardSection1({
-  heading,
+  headingNode,
+  subtextNode,
   bodyTextNode,
-  imgSrc,
-  imgAlt,
+  img,
   horzReversed,
   tilingBackground,
   textColor,
   buttonPrimary,
-  buttonSecondary,
+  ...rest
 }: Props) {
   return (
     <section
-      className={`${styles["main"]} ${horzReversed ? styles["reversed"] : ""}`}
       style={{ ...bgImage(tilingBackground?.src), color: textColor }}
+      {...rest}
     >
-      <div className={styles["content-container"]}>
-        <h2>{heading}</h2>
-        <div className={styles["body-container"]}>{bodyTextNode}</div>
-        {(buttonPrimary || buttonSecondary) && (
-          <div className={styles["button-row"]}>
-            {/* Temp values */}
-            {buttonPrimary && (
-              <LinkAsButton
-                data={{
-                  href: buttonPrimary.href,
-                  label: buttonPrimary.label,
-                  states: {
-                    hover: {
-                      primaryColor: "",
-                    },
-                    normal: {
-                      primaryColor: "",
-                    },
-                  },
-                }}
-              />
-            )}
-            {buttonSecondary && (
-              <LinkAsButton
-                data={{
-                  href: buttonSecondary.href,
-                  label: buttonSecondary.label,
-                  states: {
-                    hover: {
-                      primaryColor: "",
-                    },
-                    normal: {
-                      primaryColor: "",
-                    },
-                  },
-                }}
-              />
-            )}
+      <div
+        className={`${styles["main"]} ${horzReversed ? styles["reversed"] : ""}`}
+      >
+        <div>
+          <div className={styles["content-container"]}>
+            <div>
+              {headingNode}
+              {subtextNode}
+            </div>
+            {bodyTextNode}
+            {buttonPrimary && <LinkAsButton data={buttonPrimary} />}
           </div>
-        )}
+        </div>
+        <div className={styles["image-container"]}>
+          <img src={img.src} alt={img.alt || "image"} />
+        </div>
       </div>
-      <ContainedImage
-        src={imgSrc}
-        alt={imgAlt}
-        containerClassName={styles["image-container"]}
-      ></ContainedImage>
     </section>
   );
 }
