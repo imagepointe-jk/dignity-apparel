@@ -5,14 +5,14 @@ import { ReactNode } from "react";
 
 type Props = {
   embedCode?: string;
-  heading?: string;
+  headingNode?: ReactNode;
   headingColor?: string;
   bodyText?: ReactNode;
   textColor?: string;
 } & WithTilingBackground;
 export function VideoSection({
   embedCode,
-  heading,
+  headingNode,
   headingColor,
   tilingBackground,
   bodyText,
@@ -32,7 +32,9 @@ export function VideoSection({
       {...rest}
     >
       <div className={`${styles["main"]} x-wide-container`}>
-        {heading && <h2 style={{ color: headingColor }}>{heading}</h2>}
+        {headingNode && (
+          <div style={{ color: headingColor }}>{headingNode}</div>
+        )}
         <div
           className={styles["video-container"]}
           dangerouslySetInnerHTML={{ __html: adjustedCode || "" }}

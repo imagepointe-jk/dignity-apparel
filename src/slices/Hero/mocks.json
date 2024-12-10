@@ -31,11 +31,6 @@
 				"value": "troops",
 				"type": "Text"
 			},
-			"subtext": {
-				"__TYPE__": "FieldContent",
-				"value": "ground",
-				"type": "Text"
-			},
 			"buttons": {
 				"__TYPE__": "GroupContentType",
 				"value": [
@@ -64,6 +59,17 @@
 								}
 							]
 						]
+					}
+				]
+			},
+			"subtext": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Magna exercitation culpa enim cupidatat nulla do proident commodo. Adipisicing Lorem anim nisi dolore qui. Aliqua aliqua anim aliquip occaecat consectetur consectetur pariatur labore consequat cillum reprehenderit velit."
+						}
 					}
 				]
 			}

@@ -1,7 +1,7 @@
 import { getProductBySlug } from "@/fetch/woocommerce/products";
 import { validateWooCommerceSingleProductResponse } from "@/types/validation/woocommerce/woocommerce";
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { FeaturedProducts as FeaturedProductsComponent } from "@/components/sections/FeaturedProducts/FeaturedProducts";
 import { getBrandColor } from "@/utility/prismic";
 
@@ -28,7 +28,7 @@ const FeaturedProducts = async ({
 
   return (
     <FeaturedProductsComponent
-      headingText="ABC"
+      headingNode={<PrismicRichText field={slice.primary.heading} />}
       tilingBackground={{ src: slice.primary.tiling_background.url }}
       primaryTextColor={textColor.replace("#", "")}
       products={parsed}

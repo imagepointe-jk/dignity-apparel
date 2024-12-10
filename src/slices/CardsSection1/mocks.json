@@ -36,14 +36,6 @@
 								}
 							],
 							[
-								"heading",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "environment",
-									"type": "Text"
-								}
-							],
-							[
 								"body",
 								{
 									"__TYPE__": "StructuredTextContent",
@@ -76,6 +68,20 @@
 										"__TYPE__": "DocumentLink",
 										"id": "mock_document_id"
 									}
+								}
+							],
+							[
+								"heading",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading2",
+											"content": {
+												"text": "Division"
+											}
+										}
+									]
 								}
 							]
 						]

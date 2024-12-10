@@ -12,11 +12,13 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "heading_text": {
-          "type": "Text",
+        "heading": {
+          "type": "StructuredText",
           "config": {
-            "label": "Heading Text",
-            "placeholder": ""
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2,heading3,heading1,heading4"
           }
         },
         "primary_text_color": {

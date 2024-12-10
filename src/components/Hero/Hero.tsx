@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import {
   LinkAsButton,
   LinkAsButtonData,
@@ -6,7 +7,7 @@ import styles from "@/styles/Hero/Hero.module.css";
 
 type Props = {
   heading: string;
-  subtext: string;
+  subtextNode: ReactNode;
   buttonPrimary: LinkAsButtonData;
   buttonSecondary?: LinkAsButtonData;
   bgImageUrl?: string;
@@ -16,7 +17,7 @@ type Props = {
 export function Hero({
   bgImageUrl,
   heading,
-  subtext,
+  subtextNode,
   buttonPrimary,
   buttonSecondary,
 }: Props) {
@@ -31,7 +32,7 @@ export function Hero({
     >
       <div className={styles["content"]}>
         <h1>{heading}</h1>
-        <p>{subtext}</p>
+        {subtextNode}
         <div className={styles["buttons-container"]}>
           <LinkAsButton data={buttonPrimary} />
           {buttonSecondary && <LinkAsButton data={buttonSecondary} />}

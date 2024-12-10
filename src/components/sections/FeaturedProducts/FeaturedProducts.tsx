@@ -6,14 +6,15 @@ import styles from "@/styles/sections/FeaturedProducts.module.css";
 import { WithTilingBackground } from "@/types/schema/misc";
 import { Product } from "@/types/schema/woocommerce";
 import { bgImage } from "@/utility/misc";
+import { ReactNode } from "react";
 
 type Props = {
   products: Product[];
-  headingText: string;
+  headingNode: ReactNode;
   primaryTextColor: string;
 } & WithTilingBackground;
 export function FeaturedProducts({
-  headingText,
+  headingNode,
   primaryTextColor,
   tilingBackground,
   products,
@@ -26,7 +27,7 @@ export function FeaturedProducts({
       {...rest}
     >
       <div className="x-wide-container">
-        <h2 style={{ color: `#${primaryTextColor}` }}>{headingText}</h2>
+        <div style={{ color: `#${primaryTextColor}` }}>{headingNode}</div>
         <CardSlider
           createCard={(product) => <FeaturedProductCard1 product={product} />}
           dataset={products}

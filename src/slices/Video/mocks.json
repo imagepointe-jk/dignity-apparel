@@ -3,11 +3,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"heading_text": {
-				"__TYPE__": "FieldContent",
-				"value": "about",
-				"type": "Text"
-			},
 			"video": {
 				"embed_url": "https://twitter.com/timbenniks/status/1304146886832594944",
 				"author_name": "Tim Benniks",
@@ -80,6 +75,17 @@
 				"alt": null,
 				"__TYPE__": "ImageContent",
 				"thumbnails": {}
+			},
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Trade"
+						}
+					}
+				]
 			}
 		},
 		"items": []

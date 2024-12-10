@@ -859,12 +859,12 @@ export interface CardsSection1SliceDefaultPrimaryCardsItem {
   /**
    * Heading field in *CardsSection1 → Default → Primary → Cards*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
    * - **API ID Path**: cards_section1.default.primary.cards[].heading
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  heading: prismic.KeyTextField;
+  heading: prismic.RichTextField;
 
   /**
    * Body field in *CardsSection1 → Default → Primary → Cards*
@@ -974,14 +974,14 @@ export interface FeaturedProductsSliceDefaultPrimaryProductSlugsItem {
  */
 export interface FeaturedProductsSliceDefaultPrimary {
   /**
-   * Heading Text field in *FeaturedProducts → Default → Primary*
+   * Heading field in *FeaturedProducts → Default → Primary*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: featured_products.default.primary.heading_text
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **API ID Path**: featured_products.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  heading_text: prismic.KeyTextField;
+  heading: prismic.RichTextField;
 
   /**
    * Primary Text Color field in *FeaturedProducts → Default → Primary*
@@ -1088,12 +1088,12 @@ export interface HeroSliceDefaultPrimary {
   /**
    * Subtext field in *Hero → Default → Primary*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
    * - **API ID Path**: hero.default.primary.subtext
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  subtext: prismic.KeyTextField;
+  subtext: prismic.RichTextField;
 
   /**
    * Background Image field in *Hero → Default → Primary*
@@ -1148,14 +1148,14 @@ export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
  */
 export interface VideoSliceDefaultPrimary {
   /**
-   * Heading Text field in *Video → Default → Primary*
+   * Heading field in *Video → Default → Primary*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: video.default.primary.heading_text
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **API ID Path**: video.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  heading_text: prismic.KeyTextField;
+  heading: prismic.RichTextField;
 
   /**
    * Heading Color field in *Video → Default → Primary*

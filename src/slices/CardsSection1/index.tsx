@@ -24,7 +24,7 @@ const CardsSection1 = async ({
 
       return {
         image: { src: card.image.url || "", alt: card.image.alt || "" },
-        heading: `${card.heading}`,
+        headingNode: <PrismicRichText field={card.heading} />,
         bodyNode: <PrismicRichText field={card.body} />,
         button,
       };

@@ -35,10 +35,12 @@
                 }
               },
               "heading": {
-                "type": "Text",
+                "type": "StructuredText",
                 "config": {
                   "label": "Heading",
-                  "placeholder": ""
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "heading2,heading3,heading4"
                 }
               },
               "body": {
@@ -47,7 +49,8 @@
                   "label": "Body",
                   "placeholder": "",
                   "allowTargetBlank": true,
-                  "multi": "paragraph,strong,em"
+                  "multi": "paragraph,strong,em",
+                  "labels:": ["body1", "body2", "body3", "body4"]
                 }
               },
               "button": {
@@ -65,9 +68,7 @@
                 "config": {
                   "label": "Button Style",
                   "select": "document",
-                  "customtypes": [
-                    "button_style"
-                  ]
+                  "customtypes": ["button_style"]
                 }
               }
             }

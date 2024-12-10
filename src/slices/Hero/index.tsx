@@ -1,7 +1,7 @@
 import { Hero as HeroComponent } from "@/components/Hero/Hero";
 import { convertButton } from "@/utility/prismic";
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 
 /**
  * Props for `Hero`.
@@ -30,7 +30,7 @@ const Hero = async ({ slice }: HeroProps): Promise<JSX.Element> => {
       heading={`${heading}`}
       buttonPrimary={buttonPrimary}
       buttonSecondary={buttonSecondary}
-      subtext={`${subtext}`}
+      subtextNode={<PrismicRichText field={subtext} />}
       bgImageUrl={background_image.url || ""}
     />
   );

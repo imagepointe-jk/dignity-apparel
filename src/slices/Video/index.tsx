@@ -17,7 +17,7 @@ const Video = async ({ slice }: VideoProps): Promise<JSX.Element> => {
 
   return (
     <VideoSection
-      heading={slice.primary.heading_text || ""}
+      headingNode={<PrismicRichText field={slice.primary.heading} />}
       headingColor={headingColor}
       bodyText={<PrismicRichText field={slice.primary.body_text} />}
       textColor={primaryColor}
