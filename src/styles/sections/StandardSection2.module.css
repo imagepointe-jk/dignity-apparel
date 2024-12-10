@@ -52,3 +52,34 @@
   margin-top: 20px;
   align-items: center;
 }
+
+@media screen and (max-width: 1024px) {
+  .main-flex,
+  .reversed .main-flex {
+    flex-direction: column-reverse;
+  }
+
+  .main {
+    text-align: center;
+  }
+
+  .buttons-container {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .content-container {
+    padding: 0 10px;
+  }
+
+  .main .image-container {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .heading-ornament {
+    display: none;
+  }
+}
