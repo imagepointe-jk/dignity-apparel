@@ -1,11 +1,12 @@
 import styles from "@/styles/ProductBrowse/Filters.module.css";
 import { Attribute, Category } from "@/types/schema/woocommerce";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { Suspense } from "react";
+import { Suspense, useCallback } from "react";
 import { ExpandableDiv } from "../../global/ExpandableDiv/ExpandableDiv";
 import { FilterGroup } from "./FilterGroup";
 import { searchParamsArray } from "@/utility/url";
 import { XMark2 } from "@/components/icons/XMark2";
+import debounce from "lodash.debounce";
 
 export type FilterItemType = {
   id: number;
@@ -49,9 +50,23 @@ export function FiltersWrapped({ categories, attributes }: Props) {
       .map((attr) => attributeToFilterGroup(attr))
   );
   const searchParamsArr = searchParamsArray(searchParams.toString());
+  const debouncedOnSearchInput = useCallback(
+    debounce(async (search: string) => {
+      const curSearch = searchParams.get("search");
+      if (!curSearch && !search) return;
+
+      const newSearchParams = new URLSearchParams(searchParams);
+      if (!search) newSearchParams.delete("search");
+      else newSearchParams.set("search", search);
+
+      router.push(`${pathname}?${newSearchParams}`);
+    }, 700),
+    []
+  );
 
   //for each of the search params (some of which have multiple values), cross-reference with the filterGroups to build "clear button" data
   const clearFilterButtons = searchParamsArr
+    .filter((param) => param.key !== "search")
     .map((param) => {
       const nameToMatch = param.key === "feature" ? "features" : param.key;
       const matchingFilterGroup = filterGroups.find(
@@ -98,9 +113,25 @@ export function FiltersWrapped({ categories, attributes }: Props) {
     router.push(`${pathname}?${newParams}`);
   }
 
+  function countFilterParams() {
+    //counts the number of search params corresponding to actual filters (i.e. not "search")
+    //"clear filters" button will appear when this returns more than 0
+    const filteredParams = new URLSearchParams(searchParams);
+    filteredParams.delete("search");
+    return filteredParams.size;
+  }
+
   return (
     <div className={styles["main"]}>
-      {searchParams.size > 0 && (
+      <input
+        type="search"
+        name="main-search"
+        id="main-search"
+        placeholder="Search for a product"
+        className={styles["search"]}
+        onChange={(e) => debouncedOnSearchInput(e.target.value)}
+      />
+      {countFilterParams() > 0 && (
         <>
           <button onClick={clearFilters} className={styles["clear-filters"]}>
             Clear All Filters
