@@ -33,7 +33,11 @@
   flex: 0 0 50%;
 }
 
-.image-container {
+.main .image-container {
+  height: 529px;
+}
+
+/* .image-container {
   overflow: hidden;
   height: 529px;
 }
@@ -43,7 +47,7 @@
   height: 100%;
   object-fit: cover;
   object-position: 50% 50%;
-}
+} */
 
 @media screen and (max-width: 1024px) {
   .main {
@@ -57,7 +61,7 @@
     max-width: initial;
   }
 
-  .image-container {
+  .main .image-container {
     flex: initial;
     width: 100%;
     height: 350px;

@@ -283,6 +283,7 @@ export type FooterSectionDocument<Lang extends string = string> =
   >;
 
 type HomePageDocumentDataSlicesSlice =
+  | StandardSection2Slice
   | StandardSection1Slice
   | VideoSlice
   | FeaturedProductsSlice
@@ -1271,6 +1272,149 @@ export type StandardSection1Slice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *StandardSection2 → Default → Primary → Button Links*
+ */
+export interface StandardSection2SliceDefaultPrimaryButtonLinksItem {
+  /**
+   * Link field in *StandardSection2 → Default → Primary → Button Links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: standard_section2.default.primary.button_links[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * Style field in *StandardSection2 → Default → Primary → Button Links*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: standard_section2.default.primary.button_links[].style
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  style: prismic.ContentRelationshipField<"button_style">;
+}
+
+/**
+ * Primary content in *StandardSection2 → Default → Primary*
+ */
+export interface StandardSection2SliceDefaultPrimary {
+  /**
+   * Tiling Background field in *StandardSection2 → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: standard_section2.default.primary.tiling_background
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  tiling_background: prismic.ImageField<never>;
+
+  /**
+   * Heading field in *StandardSection2 → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: standard_section2.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Subtext field in *StandardSection2 → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: standard_section2.default.primary.subtext
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtext: prismic.RichTextField;
+
+  /**
+   * Body field in *StandardSection2 → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: standard_section2.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Primary Text Color field in *StandardSection2 → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: standard_section2.default.primary.primary_text_color
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  primary_text_color: prismic.ContentRelationshipField<"brand_color">;
+
+  /**
+   * Button Links field in *StandardSection2 → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: standard_section2.default.primary.button_links[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  button_links: prismic.GroupField<
+    Simplify<StandardSection2SliceDefaultPrimaryButtonLinksItem>
+  >;
+
+  /**
+   * Image field in *StandardSection2 → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: standard_section2.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Image Location field in *StandardSection2 → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Right
+   * - **API ID Path**: standard_section2.default.primary.image_location
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  image_location: prismic.SelectField<"Right" | "Left", "filled">;
+}
+
+/**
+ * Default variation for StandardSection2 Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type StandardSection2SliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<StandardSection2SliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *StandardSection2*
+ */
+type StandardSection2SliceVariation = StandardSection2SliceDefault;
+
+/**
+ * StandardSection2 Shared Slice
+ *
+ * - **API ID**: `standard_section2`
+ * - **Description**: StandardSection2
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type StandardSection2Slice = prismic.SharedSlice<
+  "standard_section2",
+  StandardSection2SliceVariation
+>;
+
+/**
  * Primary content in *Video → Default → Primary*
  */
 export interface VideoSliceDefaultPrimary {
@@ -1432,6 +1576,11 @@ declare module "@prismicio/client" {
       StandardSection1SliceDefaultPrimary,
       StandardSection1SliceVariation,
       StandardSection1SliceDefault,
+      StandardSection2Slice,
+      StandardSection2SliceDefaultPrimaryButtonLinksItem,
+      StandardSection2SliceDefaultPrimary,
+      StandardSection2SliceVariation,
+      StandardSection2SliceDefault,
       VideoSlice,
       VideoSliceDefaultPrimary,
       VideoSliceVariation,

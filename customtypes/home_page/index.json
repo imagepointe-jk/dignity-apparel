@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "standard_section2": {
+              "type": "SharedSlice"
+            },
             "standard_section1": {
               "type": "SharedSlice"
             },

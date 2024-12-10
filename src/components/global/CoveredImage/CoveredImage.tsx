@@ -1,4 +1,4 @@
-import styles from "@/styles/global/ContainedImage.module.css";
+import styles from "@/styles/global/CoveredImage.module.css";
 import { CSSProperties, ReactNode } from "react";
 
 //wrapper for an image that stops any part of the image from overflowing.
@@ -7,7 +7,7 @@ type Props = React.ImgHTMLAttributes<HTMLImageElement> & {
   containerStyle?: CSSProperties;
   children?: ReactNode;
 };
-export function ContainedImage({
+export function CoveredImage({
   containerClassName,
   containerStyle,
   children,

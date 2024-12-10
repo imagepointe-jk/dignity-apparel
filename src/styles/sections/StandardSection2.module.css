@@ -1,0 +1,54 @@
+.main {
+  padding-bottom: 50px;
+}
+
+.main h1,
+.main h2,
+.main h3,
+.main h4,
+.main p {
+  margin: 0;
+}
+
+.heading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 30px 0;
+}
+
+.heading-ornament {
+  width: 80px;
+  height: 3px;
+}
+
+.main-flex {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.reversed .main-flex {
+  flex-direction: row-reverse;
+}
+
+.main .image-container {
+  width: 440px;
+  height: 440px;
+  border-radius: 5px;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 20px;
+  align-items: center;
+}

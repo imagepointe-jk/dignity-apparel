@@ -1,0 +1,74 @@
+import { CoveredImage } from "@/components/global/CoveredImage/CoveredImage";
+import {
+  LinkAsButton,
+  LinkAsButtonData,
+} from "@/components/global/LinkAsButton/LinkAsButton";
+import styles from "@/styles/sections/StandardSection2.module.css";
+import { WithTilingBackground } from "@/types/schema/misc";
+import { bgImage } from "@/utility/misc";
+import { ReactNode } from "react";
+
+type Props = {
+  headingNode: ReactNode;
+  subtextNode?: ReactNode;
+  bodyTextNode: ReactNode;
+  img: {
+    src: string;
+    alt?: string | null | undefined;
+  };
+  horzReversed?: boolean;
+  textColor?: string;
+  buttons: LinkAsButtonData[];
+} & WithTilingBackground;
+export function StandardSection2({
+  bodyTextNode,
+  buttons,
+  headingNode,
+  img,
+  horzReversed,
+  subtextNode,
+  textColor,
+  tilingBackground,
+  ...rest
+}: Props) {
+  return (
+    <section
+      style={{ ...bgImage(tilingBackground?.src), color: textColor }}
+      {...rest}
+    >
+      <div
+        className={`${styles["main"]} ${horzReversed ? styles["reversed"] : ""} x-wide-container`}
+      >
+        <div className={styles["heading-container"]}>
+          <div
+            className={styles["heading-ornament"]}
+            style={{ backgroundColor: textColor }}
+          ></div>
+          {headingNode}
+          <div
+            className={styles["heading-ornament"]}
+            style={{ backgroundColor: textColor }}
+          ></div>
+        </div>
+        <div className={styles["main-flex"]}>
+          <div className={styles["content-container"]}>
+            {subtextNode}
+            {bodyTextNode}
+            <div className={styles["buttons-container"]}>
+              {buttons.map((button, i) => (
+                <LinkAsButton key={i} data={button} />
+              ))}
+            </div>
+          </div>
+          <div>
+            <CoveredImage
+              src={img.src}
+              alt={img.alt || "image"}
+              containerClassName={styles["image-container"]}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

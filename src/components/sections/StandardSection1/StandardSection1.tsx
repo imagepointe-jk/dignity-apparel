@@ -6,6 +6,7 @@ import {
 } from "../../global/LinkAsButton/LinkAsButton";
 import { WithTilingBackground } from "@/types/schema/misc";
 import { bgImage } from "@/utility/misc";
+import { CoveredImage } from "@/components/global/CoveredImage/CoveredImage";
 
 type Props = {
   headingNode: ReactNode;
@@ -49,9 +50,11 @@ export function StandardSection1({
             {buttonPrimary && <LinkAsButton data={buttonPrimary} />}
           </div>
         </div>
-        <div className={styles["image-container"]}>
-          <img src={img.src} alt={img.alt || "image"} />
-        </div>
+        <CoveredImage
+          src={img.src}
+          alt={img.alt || "image"}
+          containerClassName={styles["image-container"]}
+        />
       </div>
     </section>
   );

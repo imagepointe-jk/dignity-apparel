@@ -7,5 +7,6 @@ export const components = {
   featured_products: dynamic(() => import("./FeaturedProducts")),
   hero: dynamic(() => import("./Hero")),
   standard_section1: dynamic(() => import("./StandardSection1")),
+  standard_section2: dynamic(() => import("./StandardSection2")),
   video: dynamic(() => import("./Video")),
 };

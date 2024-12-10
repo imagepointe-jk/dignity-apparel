@@ -1,0 +1,108 @@
+{
+  "id": "standard_section2",
+  "type": "SharedSlice",
+  "name": "StandardSection2",
+  "description": "StandardSection2",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "tiling_background": {
+          "type": "Image",
+          "config": {
+            "label": "Tiling Background",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading1,heading2,heading3,heading4,strong,em"
+          }
+        },
+        "subtext": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Subtext",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2,heading3,heading4,heading5,paragraph,strong,em",
+            "labels": ["subheader1", "subheader2", "subheader3", "subheader4"]
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink",
+            "labels": ["body1", "body2", "body3", "body4"]
+          }
+        },
+        "primary_text_color": {
+          "type": "Link",
+          "config": {
+            "label": "Primary Text Color",
+            "select": "document",
+            "customtypes": ["brand_color"]
+          }
+        },
+        "button_links": {
+          "type": "Group",
+          "config": {
+            "label": "Button Links",
+            "repeat": true,
+            "fields": {
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Link",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "select": null,
+                  "allowText": true
+                }
+              },
+              "style": {
+                "type": "Link",
+                "config": {
+                  "label": "Style",
+                  "select": "document",
+                  "customtypes": ["button_style"]
+                }
+              }
+            }
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "image_location": {
+          "type": "Select",
+          "config": {
+            "label": "Image Location",
+            "placeholder": "",
+            "options": ["Right", "Left"],
+            "default_value": "Right"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
