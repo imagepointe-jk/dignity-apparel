@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { ContainedImage } from "../../global/ContainedImage/ContainedImage";
 import styles from "@/styles/sections/StandardSection1.module.css";
 import {
   LinkAsButton,
