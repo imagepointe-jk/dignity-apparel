@@ -617,20 +617,6 @@ export interface SettingsDocumentDataFooterIconLinksItem {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   link: prismic.LinkField;
-
-  /**
-   * Type field in *Settings → Footer Icon Links*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **Default Value**: Facebook
-   * - **API ID Path**: settings.footer_icon_links[].type
-   * - **Documentation**: https://prismic.io/docs/field#select
-   */
-  type: prismic.SelectField<
-    "Facebook" | "Instagram" | "LinkedIn" | "YouTube",
-    "filled"
-  >;
 }
 
 /**

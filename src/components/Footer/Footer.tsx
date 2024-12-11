@@ -58,11 +58,7 @@ export function Footer({
             </form>
             <div className={styles["icon-links-row"]}>
               {iconLinks.map((link, i) => (
-                <SocialMediaLink
-                  key={`${link.type}-${i}`}
-                  type={link.type}
-                  href={link.href}
-                />
+                <SocialMediaLink key={i} href={link.href} />
               ))}
             </div>
             <div className={styles["home-link-container"]}>
@@ -106,15 +102,25 @@ export function Footer({
 
 type SocialMediaLinkProps = {
   href?: string;
-  type: string;
 };
-function SocialMediaLink({ href, type }: SocialMediaLinkProps) {
+function SocialMediaLink({ href }: SocialMediaLinkProps) {
+  const type = !href
+    ? null
+    : href.includes("facebook")
+      ? "facebook"
+      : href.includes("youtube")
+        ? "youtube"
+        : href.includes("instagram")
+          ? "instagram"
+          : href.includes("linkedin")
+            ? "linkedin"
+            : null;
   return (
     <Link href={href || ""} aria-label={`dignity apparel ${type}`}>
-      {type.toLocaleLowerCase() === "facebook" && <Facebook size={20} />}
-      {type.toLocaleLowerCase() === "youtube" && <YouTube size={14} />}
-      {type.toLocaleLowerCase() === "instagram" && <Instagram size={20} />}
-      {type.toLocaleLowerCase() === "linkedin" && <LinkedIn size={20} />}
+      {type === "facebook" && <Facebook size={20} />}
+      {type === "youtube" && <YouTube size={14} />}
+      {type === "instagram" && <Instagram size={20} />}
+      {type === "linkedin" && <LinkedIn size={20} />}
     </Link>
   );
 }

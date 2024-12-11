@@ -13,7 +13,6 @@ export const footerSchema = z.object({
   sections: z.array(footerSectionSchema),
   iconLinks: z.array(
     z.object({
-      type: z.string(),
       href: z.string().optional(),
     })
   ),

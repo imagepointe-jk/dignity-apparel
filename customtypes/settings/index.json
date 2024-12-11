@@ -103,15 +103,6 @@
                 "select": null,
                 "allowText": true
               }
-            },
-            "type": {
-              "type": "Select",
-              "config": {
-                "label": "Type",
-                "placeholder": "",
-                "options": ["Facebook", "Instagram", "LinkedIn", "YouTube"],
-                "default_value": "Facebook"
-              }
             }
           }
         }

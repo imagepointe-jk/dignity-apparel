@@ -57,7 +57,6 @@ export function validateFooterResponse(response: any) {
     iconLinks: response.data.footer_icon_links.map((item: any) => {
       return {
         href: item.link.url,
-        type: item.type,
       };
     }),
     homeLinkImageUrl: response.data.footer_home_link_image.url,
