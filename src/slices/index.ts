@@ -8,5 +8,6 @@ export const components = {
   hero: dynamic(() => import("./Hero")),
   standard_section1: dynamic(() => import("./StandardSection1")),
   standard_section2: dynamic(() => import("./StandardSection2")),
+  text_with_heading: dynamic(() => import("./TextWithHeading")),
   video: dynamic(() => import("./Video")),
 };

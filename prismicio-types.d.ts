@@ -283,6 +283,7 @@ export type FooterSectionDocument<Lang extends string = string> =
   >;
 
 type HomePageDocumentDataSlicesSlice =
+  | TextWithHeadingSlice
   | StandardSection2Slice
   | StandardSection1Slice
   | VideoSlice
@@ -1415,6 +1416,91 @@ export type StandardSection2Slice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *TextWithHeading → Default → Primary*
+ */
+export interface TextWithHeadingSliceDefaultPrimary {
+  /**
+   * Tiling Background field in *TextWithHeading → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_heading.default.primary.tiling_background
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  tiling_background: prismic.ImageField<never>;
+
+  /**
+   * Heading field in *TextWithHeading → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_heading.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Subheading field in *TextWithHeading → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_heading.default.primary.subheading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subheading: prismic.RichTextField;
+
+  /**
+   * Body field in *TextWithHeading → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_heading.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Primary Text Color field in *TextWithHeading → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_heading.default.primary.primary_text_color
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  primary_text_color: prismic.ContentRelationshipField<"brand_color">;
+}
+
+/**
+ * Default variation for TextWithHeading Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextWithHeadingSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TextWithHeadingSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TextWithHeading*
+ */
+type TextWithHeadingSliceVariation = TextWithHeadingSliceDefault;
+
+/**
+ * TextWithHeading Shared Slice
+ *
+ * - **API ID**: `text_with_heading`
+ * - **Description**: TextWithHeading
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextWithHeadingSlice = prismic.SharedSlice<
+  "text_with_heading",
+  TextWithHeadingSliceVariation
+>;
+
+/**
  * Primary content in *Video → Default → Primary*
  */
 export interface VideoSliceDefaultPrimary {
@@ -1581,6 +1667,10 @@ declare module "@prismicio/client" {
       StandardSection2SliceDefaultPrimary,
       StandardSection2SliceVariation,
       StandardSection2SliceDefault,
+      TextWithHeadingSlice,
+      TextWithHeadingSliceDefaultPrimary,
+      TextWithHeadingSliceVariation,
+      TextWithHeadingSliceDefault,
       VideoSlice,
       VideoSliceDefaultPrimary,
       VideoSliceVariation,
