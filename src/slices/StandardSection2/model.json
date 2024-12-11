@@ -36,7 +36,12 @@
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "heading2,heading3,heading4,heading5,paragraph,strong,em",
-            "labels": ["subheader1", "subheader2", "subheader3", "subheader4"]
+            "labels": [
+              "subheader1",
+              "subheader2",
+              "subheader3",
+              "subheader4"
+            ]
           }
         },
         "body": {
@@ -46,7 +51,12 @@
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "paragraph,strong,em,hyperlink",
-            "labels": ["body1", "body2", "body3", "body4"]
+            "labels": [
+              "body1",
+              "body2",
+              "body3",
+              "body4"
+            ]
           }
         },
         "primary_text_color": {
@@ -54,7 +64,9 @@
           "config": {
             "label": "Primary Text Color",
             "select": "document",
-            "customtypes": ["brand_color"]
+            "customtypes": [
+              "brand_color"
+            ]
           }
         },
         "button_links": {
@@ -78,7 +90,9 @@
                 "config": {
                   "label": "Style",
                   "select": "document",
-                  "customtypes": ["button_style"]
+                  "customtypes": [
+                    "button_style"
+                  ]
                 }
               }
             }
@@ -97,8 +111,18 @@
           "config": {
             "label": "Image Location",
             "placeholder": "",
-            "options": ["Right", "Left"],
+            "options": [
+              "Right",
+              "Left"
+            ],
             "default_value": "Right"
+          }
+        },
+        "video": {
+          "type": "Embed",
+          "config": {
+            "label": "Video",
+            "placeholder": "If provided, this will replace the image."
           }
         }
       },

@@ -40,6 +40,17 @@
   border-radius: 5px;
 }
 
+.video-container {
+  width: 640px;
+  height: 360px;
+}
+
+.video-container iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+
 .content-container {
   display: flex;
   flex-direction: column;

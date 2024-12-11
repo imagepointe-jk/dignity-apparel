@@ -1383,6 +1383,16 @@ export interface StandardSection2SliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#select
    */
   image_location: prismic.SelectField<"Right" | "Left", "filled">;
+
+  /**
+   * Video field in *StandardSection2 → Default → Primary*
+   *
+   * - **Field Type**: Embed
+   * - **Placeholder**: If provided, this will replace the image.
+   * - **API ID Path**: standard_section2.default.primary.video
+   * - **Documentation**: https://prismic.io/docs/field#embed
+   */
+  video: prismic.EmbedField;
 }
 
 /**

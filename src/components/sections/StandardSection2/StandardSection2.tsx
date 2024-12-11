@@ -16,6 +16,7 @@ type Props = {
     src: string;
     alt?: string | null | undefined;
   };
+  videoEmbedCode?: string;
   horzReversed?: boolean;
   textColor?: string;
   buttons: LinkAsButtonData[];
@@ -25,12 +26,19 @@ export function StandardSection2({
   buttons,
   headingNode,
   img,
+  videoEmbedCode,
   horzReversed,
   subtextNode,
   textColor,
   tilingBackground,
   ...rest
 }: Props) {
+  //adjust undesired embed code attributes
+  const adjustedEmbedCode = videoEmbedCode
+    ? videoEmbedCode
+        .replace(/width="[^"*]*"/g, 'width="100%"')
+        .replace(/height="[^"]*"/g, "")
+    : undefined;
   return (
     <section
       style={{ ...bgImage(tilingBackground?.src), color: textColor }}
@@ -61,11 +69,19 @@ export function StandardSection2({
             </div>
           </div>
           <div>
-            <CoveredImage
-              src={img.src}
-              alt={img.alt || "image"}
-              containerClassName={styles["image-container"]}
-            />
+            {!adjustedEmbedCode && (
+              <CoveredImage
+                src={img.src}
+                alt={img.alt || "image"}
+                containerClassName={styles["image-container"]}
+              />
+            )}
+            {adjustedEmbedCode && (
+              <div
+                className={styles["video-container"]}
+                dangerouslySetInnerHTML={{ __html: adjustedEmbedCode }}
+              ></div>
+            )}
           </div>
         </div>
       </div>
