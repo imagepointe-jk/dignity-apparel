@@ -21,6 +21,11 @@
   border: 0;
 }
 
+.body-text-container {
+  max-width: 800px;
+  padding: 0 10px;
+}
+
 @media screen and (max-width: 900px) {
   .video-container {
     width: 100%;

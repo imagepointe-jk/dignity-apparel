@@ -39,7 +39,12 @@ export function VideoSection({
           className={styles["video-container"]}
           dangerouslySetInnerHTML={{ __html: adjustedCode || "" }}
         ></div>
-        <div style={{ color: textColor }}>{bodyText}</div>
+        <div
+          className={styles["body-text-container"]}
+          style={{ color: textColor }}
+        >
+          {bodyText}
+        </div>
       </div>
     </section>
   );
