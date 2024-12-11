@@ -99,13 +99,18 @@ export function ProductResultsWrapped() {
   }, [searchParams]);
 
   return (
-    <div>
+    <div className={styles["main"]}>
       <h1 className={styles["heading"]}>USA MADE APPAREL</h1>
       <div className={styles["cards-container"]}>
         {status === "idle" &&
           results.length > 0 &&
           results.map((product) => (
-            <FeaturedProductCard2 key={product.id} product={product} />
+            <FeaturedProductCard2
+              key={product.id}
+              product={product}
+              mainClassName={styles["card-main-container"]}
+              imageContainerClassName={styles["card-image-container"]}
+            />
           ))}
         {status === "idle" && results.length === 0 && <>No results.</>}
         {status === "loading" && <>Loading...</>}

@@ -1,5 +1,6 @@
 .main {
   background-color: var(--armor-gray-900);
+  letter-spacing: 0.125rem;
 }
 
 .main a {

@@ -10,3 +10,11 @@
   gap: 20px;
   row-gap: 70px;
 }
+
+.main .card-main-container {
+  max-width: 269px;
+}
+
+.main .card-image-container {
+  height: 405px;
+}

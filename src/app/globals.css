@@ -20,7 +20,6 @@
 * {
   box-sizing: border-box;
   font-family: var(--font-metropolis-regular);
-  letter-spacing: 0.125rem;
 }
 
 body {

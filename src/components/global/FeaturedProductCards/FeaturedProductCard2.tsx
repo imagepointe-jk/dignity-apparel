@@ -11,8 +11,13 @@ import Link from "next/link";
 type Props = {
   product: Product;
   mainClassName?: string;
+  imageContainerClassName?: string;
 };
-export function FeaturedProductCard2({ product, mainClassName }: Props) {
+export function FeaturedProductCard2({
+  product,
+  mainClassName,
+  imageContainerClassName,
+}: Props) {
   const swatches = getSwatchesWithImages(product);
   const stockAmounts = getColorStockAmounts(product, swatches[0]?.name || "");
   //different colors might have different size ranges, but this is not accounted for in the design,
@@ -26,7 +31,10 @@ export function FeaturedProductCard2({ product, mainClassName }: Props) {
       <div className={styles["category-text"]}>
         {product.categories[0]?.name}
       </div>
-      <Link href={productUrl(product)} className={styles["image-container"]}>
+      <Link
+        href={productUrl(product)}
+        className={`${styles["image-container"]} ${imageContainerClassName || ""}`}
+      >
         <img src={product.imageUrl || IMAGE_NOT_FOUND_URL} alt={product.name} />
         <div className={styles["image-overlay"]}>
           <div className={styles["hover-text"]} aria-hidden="true">
