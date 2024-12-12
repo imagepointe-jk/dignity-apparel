@@ -10,25 +10,29 @@ const metropolisRegular = localFont({
   src: "./fonts/Metropolis-Regular.woff",
   variable: "--font-metropolis-regular",
 });
-const metropolisItalic = localFont({
-  src: "./fonts/Metropolis-RegularItalic.woff",
-  variable: "--font-metropolis-italic",
+const metropolisMedium = localFont({
+  src: "./fonts/Metropolis-Medium.woff",
+  variable: "--font-metropolis-medium",
 });
-const metropolisSemiBold = localFont({
-  src: "./fonts/Metropolis-SemiBold.woff",
-  variable: "--font-metropolis-semi-bold",
-});
-const metropolisSemiBoldItalic = localFont({
-  src: "./fonts/Metropolis-SemiBoldItalic.woff",
-  variable: "--font-metropolis-semi-bold-italic",
+const metropolisMediumItalic = localFont({
+  src: "./fonts/Metropolis-MediumItalic.woff",
+  variable: "--font-metropolis-medium-italic",
 });
 const metropolisExtraBold = localFont({
   src: "./fonts/Metropolis-ExtraBold.woff",
   variable: "--font-metropolis-extra-bold",
 });
+const metropolisBold = localFont({
+  src: "./fonts/Metropolis-Bold.woff",
+  variable: "--font-metropolis-bold",
+});
 const metropolisExtraBoldItalic = localFont({
   src: "./fonts/Metropolis-ExtraBold.woff",
   variable: "--font-metropolis-extra-bold-italic",
+});
+const metropolisBlack = localFont({
+  src: "./fonts/Metropolis-Black.woff",
+  variable: "--font-metropolis-black",
 });
 const merriweatherRegular = localFont({
   src: "./fonts/Merriweather-Regular.ttf",
@@ -37,10 +41,6 @@ const merriweatherRegular = localFont({
 const merriweatherItalic = localFont({
   src: "./fonts/Merriweather-Italic.ttf",
   variable: "--font-merriweather-italic",
-});
-const merriweatherBold = localFont({
-  src: "./fonts/Merriweather-Bold.ttf",
-  variable: "--font-merriweather-bold",
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -64,14 +64,14 @@ export default function RootLayout({
 }>) {
   const fontClassNames = [
     metropolisRegular.variable,
-    metropolisItalic.variable,
-    metropolisSemiBold.variable,
-    metropolisSemiBoldItalic.variable,
     metropolisExtraBold.variable,
     metropolisExtraBoldItalic.variable,
     merriweatherRegular.variable,
     merriweatherItalic.variable,
-    merriweatherBold.variable,
+    metropolisBlack.variable,
+    metropolisMedium.variable,
+    metropolisMediumItalic.variable,
+    metropolisBold.variable,
   ].join(" ");
 
   return (

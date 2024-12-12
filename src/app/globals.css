@@ -31,87 +31,201 @@ main {
   font-size: 1rem;
 }
 
-h1 {
-  font-family: var(--font-metropolis-extra-bold);
+.display-1,
+.display-1-medium {
   font-size: 3.75rem;
 }
 
-h1.variant-1 {
+.display-1 {
   font-family: var(--font-metropolis-black);
+  letter-spacing: 0.175rem;
+}
+
+.display-1-medium {
+  font-family: var(--font-metropolis-medium);
+}
+
+h1,
+.h1-medium {
+  font-size: 3.75rem;
+}
+
+h1 {
+  font-family: var(--font-metropolis-black);
+  letter-spacing: 0.175rem;
+}
+
+.h1-medium {
+  font-family: var(--font-metropolis-medium);
+  font-weight: normal;
+}
+
+h2,
+.h2-medium {
+  font-size: 3rem;
+  line-height: 1.1;
 }
 
 h2 {
   font-family: var(--font-metropolis-extra-bold);
-  font-size: 3rem;
+  font-weight: normal;
 }
 
-h2.variant-1 {
-  font-family: var(--font-metropolis-black);
+.h2-medium {
+  font-family: var(--font-metropolis-medium);
+  font-weight: normal;
+  letter-spacing: 0.175rem;
+}
+
+h3,
+.h3-medium,
+.h3-medium-italic,
+.h3-italic,
+.h3-bold {
+  font-size: 2.5rem;
+  font-weight: normal;
+  line-height: 1.2;
 }
 
 h3 {
-  font-family: var(--font-metropolis-extra-bold);
-  font-size: 2.5rem;
-  letter-spacing: 0.313rem;
-}
-
-h3.variant-1 {
-  font-family: var(--font-metropolis-italic);
-  letter-spacing: 0.313rem;
-}
-
-h3.variant-2 {
   font-family: var(--font-merriweather-regular);
-  font-weight: normal;
-  letter-spacing: 0.313rem;
 }
 
-h3.variant-3 {
+.h3-medium-italic {
+  font-family: var(--font-metropolis-medium-italic);
+  letter-spacing: 0.125rem;
+}
+
+.h3-italic {
   font-family: var(--font-merriweather-italic);
-  font-weight: normal;
-  letter-spacing: 0.313rem;
 }
 
-h4 {
-  font-family: var(--font-metropolis-black);
+.h3-bold {
+  font-family: var(--font-metropolis-bold);
+  letter-spacing: 0.125rem;
+}
+
+h4,
+.h4-semi-bold {
   font-size: 2rem;
 }
 
-.subheader1 {
-  font-size: 1.5rem;
+h4 {
+  font-family: var(--font-metropolis-regular);
+  font-weight: normal;
 }
 
-.subheader2 {
+.h4-semi-bold {
+  font-family: var(--font-metropolis-regular);
+  letter-spacing: 0.125rem;
+  font-weight: bold;
+}
+
+.subheader-1-regular,
+.subheader-1-medium,
+.subheader-1-semi-bold {
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.subheader-1-semi-bold {
+  font-family: var(--font-metropolis-extra-bold);
+  line-height: 1.2;
+}
+
+.subheader-1-medium {
+  font-family: var(--font-metropolis-regular);
+  font-weight: bold;
+}
+
+.subheader-1-regular {
+  font-family: var(--font-metropolis-regular);
+  font-weight: normal;
+}
+
+.subheader-2 {
   font-family: var(--font-merriweather-regular);
   font-size: 1.5rem;
 }
 
-.subheader3 {
+.subheader-3 {
+  font-family: var(--font-metropolis-regular);
   font-size: 1.25rem;
 }
 
-.subheader4 {
+.subheader-4 {
   font-family: var(--font-merriweather-regular);
   font-size: 1.25rem;
 }
 
-/* This is the default font style set at top of file */
-/* .body-1 {
-  font-family: var(--font-metr-regular);
+.body-1,
+.body-1-semi-bold,
+.body-1-underline {
+  font-family: var(--font-metropolis-regular);
   font-size: 1rem;
-} */
-
-.body2 {
-  font-family: var(--font-merriweather-regular);
+  line-height: 1.4;
 }
 
-.body3 {
-  font-size: 0.875rem;
+.body-1-semi-bold {
+  font-weight: bold;
 }
 
-.body4 {
+.body-1-underline {
+  text-decoration: underline;
+}
+
+.body-2,
+.body-2-bold,
+.body-2-underline {
+  font-family: var(--font-merriweather-regular);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.body-2-bold {
+  font-weight: bold;
+}
+
+.body-2-underline {
+  text-decoration: underline;
+}
+
+.body-3,
+.body-3-semi-bold,
+.body-3-underline {
+  font-family: var(--font-metropolis-regular);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.body-3-semi-bold {
+  font-weight: bold;
+}
+
+.body-3-underline {
+  text-decoration: underline;
+}
+
+.body-4,
+.body-4-bold,
+.body-4-underline {
   font-family: var(--font-merriweather-regular);
   font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.body-4-bold {
+  font-weight: bold;
+}
+
+.body-4-underline {
+  text-decoration: underline;
+}
+
+.button {
+  font-family: var(--font-metropolis-extra-bold);
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
 .skip-to-main {

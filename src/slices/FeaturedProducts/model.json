@@ -18,7 +18,15 @@
             "label": "Heading",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "heading2,heading3,heading1,heading4"
+            "multi": "heading2,heading3,heading1,heading4",
+            "labels": [
+              "h1-medium",
+              "h2-medium",
+              "h3-medium-italic",
+              "h3-italic",
+              "h3-bold",
+              "h4-semi-bold"
+            ]
           }
         },
         "primary_text_color": {
@@ -26,9 +34,7 @@
           "config": {
             "label": "Primary Text Color",
             "select": "document",
-            "customtypes": [
-              "brand_color"
-            ]
+            "customtypes": ["brand_color"]
           }
         },
         "tiling_background": {

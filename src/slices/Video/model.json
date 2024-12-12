@@ -18,7 +18,15 @@
             "label": "Heading",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "heading1,heading2,heading3,heading4"
+            "multi": "heading1,heading2,heading3,heading4",
+            "labels": [
+              "h1-medium",
+              "h2-medium",
+              "h3-medium-italic",
+              "h3-italic",
+              "h3-bold",
+              "h4-semi-bold"
+            ]
           }
         },
         "heading_color": {
@@ -26,7 +34,9 @@
           "config": {
             "label": "Heading Color",
             "select": "document",
-            "customtypes": ["brand_color"]
+            "customtypes": [
+              "brand_color"
+            ]
           }
         },
         "tiling_background": {
@@ -50,8 +60,21 @@
             "label": "Body Text",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "strong,em",
-            "labels": ["body1", "body2", "body3", "body4"]
+            "multi": "paragraph",
+            "labels": [
+              "body1",
+              "body1-semi-bold",
+              "body1-underline",
+              "body2",
+              "body2-bold",
+              "body2-underline",
+              "body3",
+              "body3-semi-bold",
+              "body3-underline",
+              "body4",
+              "body4-bold",
+              "body4-underline"
+            ]
           }
         },
         "primary_text_color": {
@@ -59,7 +82,9 @@
           "config": {
             "label": "Primary Text Color",
             "select": "document",
-            "customtypes": ["brand_color"]
+            "customtypes": [
+              "brand_color"
+            ]
           }
         }
       },
