@@ -1,0 +1,78 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Result"
+						}
+					}
+				]
+			},
+			"reviews": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"rating",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "23",
+									"type": "Number"
+								}
+							],
+							[
+								"body",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Et proident do nisi veniam duis amet. Officia nisi non ea commodo fugiat duis aliquip dolore commodo aute exercitation officia dolore. Tempor ad dolor anim aliqua velit adipisicing labore eu sint quis velit."
+											}
+										}
+									]
+								}
+							],
+							[
+								"read_more_link",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://prismic.io"
+									}
+								}
+							],
+							[
+								"reviewer_name",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "river",
+									"type": "Text"
+								}
+							],
+							[
+								"company_name",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "front",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

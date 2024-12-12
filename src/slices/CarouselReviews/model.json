@@ -1,0 +1,77 @@
+{
+  "id": "carousel_reviews",
+  "type": "SharedSlice",
+  "name": "CarouselReviews",
+  "description": "CarouselReviews",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading1,heading2,heading3,heading4"
+          }
+        },
+        "reviews": {
+          "type": "Group",
+          "config": {
+            "label": "Reviews",
+            "repeat": true,
+            "fields": {
+              "rating": {
+                "type": "Number",
+                "config": {
+                  "label": "Rating",
+                  "placeholder": ""
+                }
+              },
+              "body": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Body",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph"
+                }
+              },
+              "read_more_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Read More Link",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "select": null,
+                  "allowText": false
+                }
+              },
+              "reviewer_name": {
+                "type": "Text",
+                "config": {
+                  "label": "Reviewer Name",
+                  "placeholder": ""
+                }
+              },
+              "company_name": {
+                "type": "Text",
+                "config": {
+                  "label": "Company Name",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

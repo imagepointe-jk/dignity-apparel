@@ -283,6 +283,7 @@ export type FooterSectionDocument<Lang extends string = string> =
   >;
 
 type HomePageDocumentDataSlicesSlice =
+  | CarouselReviewsSlice
   | TextWithHeadingSlice
   | StandardSection2Slice
   | StandardSection1Slice
@@ -941,6 +942,118 @@ type CardsSection1SliceVariation = CardsSection1SliceDefault;
 export type CardsSection1Slice = prismic.SharedSlice<
   "cards_section1",
   CardsSection1SliceVariation
+>;
+
+/**
+ * Item in *CarouselReviews → Default → Primary → Reviews*
+ */
+export interface CarouselReviewsSliceDefaultPrimaryReviewsItem {
+  /**
+   * Rating field in *CarouselReviews → Default → Primary → Reviews*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel_reviews.default.primary.reviews[].rating
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  rating: prismic.NumberField;
+
+  /**
+   * Body field in *CarouselReviews → Default → Primary → Reviews*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel_reviews.default.primary.reviews[].body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Read More Link field in *CarouselReviews → Default → Primary → Reviews*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel_reviews.default.primary.reviews[].read_more_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  read_more_link: prismic.LinkField;
+
+  /**
+   * Reviewer Name field in *CarouselReviews → Default → Primary → Reviews*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel_reviews.default.primary.reviews[].reviewer_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  reviewer_name: prismic.KeyTextField;
+
+  /**
+   * Company Name field in *CarouselReviews → Default → Primary → Reviews*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel_reviews.default.primary.reviews[].company_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  company_name: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *CarouselReviews → Default → Primary*
+ */
+export interface CarouselReviewsSliceDefaultPrimary {
+  /**
+   * Heading field in *CarouselReviews → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel_reviews.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Reviews field in *CarouselReviews → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel_reviews.default.primary.reviews[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  reviews: prismic.GroupField<
+    Simplify<CarouselReviewsSliceDefaultPrimaryReviewsItem>
+  >;
+}
+
+/**
+ * Default variation for CarouselReviews Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CarouselReviewsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CarouselReviewsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CarouselReviews*
+ */
+type CarouselReviewsSliceVariation = CarouselReviewsSliceDefault;
+
+/**
+ * CarouselReviews Shared Slice
+ *
+ * - **API ID**: `carousel_reviews`
+ * - **Description**: CarouselReviews
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CarouselReviewsSlice = prismic.SharedSlice<
+  "carousel_reviews",
+  CarouselReviewsSliceVariation
 >;
 
 /**
@@ -1644,6 +1757,11 @@ declare module "@prismicio/client" {
       CardsSection1SliceDefaultPrimary,
       CardsSection1SliceVariation,
       CardsSection1SliceDefault,
+      CarouselReviewsSlice,
+      CarouselReviewsSliceDefaultPrimaryReviewsItem,
+      CarouselReviewsSliceDefaultPrimary,
+      CarouselReviewsSliceVariation,
+      CarouselReviewsSliceDefault,
       FeaturedProductsSlice,
       FeaturedProductsSliceDefaultPrimaryProductSlugsItem,
       FeaturedProductsSliceDefaultPrimary,

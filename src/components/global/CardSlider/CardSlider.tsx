@@ -9,13 +9,18 @@ type HasId = {
   id: number | string;
 };
 type Props<T> = {
+  cardContainerClassName?: string;
   dataset: T[];
   createCard: (data: T) => ReactNode;
 };
 //the main container gets a max-width set based on the number of cards, to reduce unused space.
 //the max-width will not be set larger than the following number of cards.
 const maxFittingCount = 4;
-export function CardSlider<T extends HasId>({ dataset, createCard }: Props<T>) {
+export function CardSlider<T extends HasId>({
+  dataset,
+  createCard,
+  cardContainerClassName,
+}: Props<T>) {
   const mainRef = useRef(null as HTMLDivElement | null);
   const [canMoveLeft, setCanMoveLeft] = useState(false);
   const [canMoveRight, setCanMoveRight] = useState(false);
@@ -148,7 +153,10 @@ export function CardSlider<T extends HasId>({ dataset, createCard }: Props<T>) {
       >
         <div className={styles["sliding-container"]} style={{ left: "0" }}>
           {dataset.map((data) => (
-            <div key={data.id} className={styles["card-container"]}>
+            <div
+              key={data.id}
+              className={`${styles["card-container"]} ${cardContainerClassName || ""}`}
+            >
               <div className={styles["card"]}>{createCard(data)}</div>
             </div>
           ))}
