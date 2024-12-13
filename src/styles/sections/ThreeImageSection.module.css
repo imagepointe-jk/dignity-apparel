@@ -44,3 +44,30 @@
   align-items: flex-start;
   justify-content: center;
 }
+
+@media screen and (max-width: 1280px) {
+  .main {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .secondary-images-container {
+    display: none;
+  }
+
+  .content-container {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .images-container {
+    width: 100%;
+  }
+
+  .primary-image-container {
+    width: 100%;
+  }
+}
