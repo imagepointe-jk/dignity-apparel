@@ -67,18 +67,18 @@
             "allowTargetBlank": true,
             "multi": "paragraph,heading2,heading3,heading4,hyperlink,list-item,o-list-item",
             "labels": [
-              "body1",
-              "body1-semi-bold",
-              "body1-underline",
-              "body2",
-              "body2-bold",
-              "body2-underline",
-              "body3",
-              "body3-semi-bold",
-              "body3-underline",
-              "body4",
-              "body4-bold",
-              "body4-underline"
+              "body-1",
+              "body-1-semi-bold",
+              "body-1-underline",
+              "body-2",
+              "body-2-bold",
+              "body-2-underline",
+              "body-3",
+              "body-3-semi-bold",
+              "body-3-underline",
+              "body-4",
+              "body-4-bold",
+              "body-4-underline"
             ]
           }
         },
@@ -87,9 +87,7 @@
           "config": {
             "label": "Primary Text Color",
             "select": "document",
-            "customtypes": [
-              "brand_color"
-            ]
+            "customtypes": ["brand_color"]
           }
         }
       },

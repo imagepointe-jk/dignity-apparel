@@ -38,18 +38,18 @@
               "subheader-2",
               "subheader-3",
               "subheader-4",
-              "body1",
-              "body1-semi-bold",
-              "body1-underline",
-              "body2",
-              "body2-bold",
-              "body2-underline",
-              "body3",
-              "body3-semi-bold",
-              "body3-underline",
-              "body4",
-              "body4-bold",
-              "body4-underline"
+              "body-1",
+              "body-1-semi-bold",
+              "body-1-underline",
+              "body-2",
+              "body-2-bold",
+              "body-2-underline",
+              "body-3",
+              "body-3-semi-bold",
+              "body-3-underline",
+              "body-4",
+              "body-4-bold",
+              "body-4-underline"
             ]
           }
         },
@@ -61,18 +61,18 @@
             "allowTargetBlank": true,
             "multi": "paragraph",
             "labels": [
-              "body1",
-              "body1-semi-bold",
-              "body1-underline",
-              "body2",
-              "body2-bold",
-              "body2-underline",
-              "body3",
-              "body3-semi-bold",
-              "body3-underline",
-              "body4",
-              "body4-bold",
-              "body4-underline"
+              "body-1",
+              "body-1-semi-bold",
+              "body-1-underline",
+              "body-2",
+              "body-2-bold",
+              "body-2-underline",
+              "body-3",
+              "body-3-semi-bold",
+              "body-3-underline",
+              "body-4",
+              "body-4-bold",
+              "body-4-underline"
             ]
           }
         },
@@ -96,10 +96,7 @@
           "config": {
             "label": "Background Overlay Opacity",
             "placeholder": "",
-            "options": [
-              "50%",
-              "95%"
-            ],
+            "options": ["50%", "95%"],
             "default_value": "50%"
           }
         },
@@ -108,11 +105,7 @@
           "config": {
             "label": "Layout",
             "placeholder": "",
-            "options": [
-              "Centered",
-              "Left",
-              "Right"
-            ],
+            "options": ["Centered", "Left", "Right"],
             "default_value": "Centered"
           }
         },
@@ -144,9 +137,7 @@
                 "config": {
                   "label": "Button Style",
                   "select": "document",
-                  "customtypes": [
-                    "button_style"
-                  ]
+                  "customtypes": ["button_style"]
                 }
               }
             }
