@@ -1199,6 +1199,16 @@ export interface HeroSliceDefaultPrimary {
   subtext: prismic.RichTextField;
 
   /**
+   * Body field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
    * Background Image field in *Hero → Default → Primary*
    *
    * - **Field Type**: Image
@@ -1207,6 +1217,48 @@ export interface HeroSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   background_image: prismic.ImageField<never>;
+
+  /**
+   * Background Video URL field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: If provided, this will replace the background image.
+   * - **API ID Path**: hero.default.primary.background_video_url
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  background_video_url: prismic.KeyTextField;
+
+  /**
+   * Background Overlay Opacity field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: 50%
+   * - **API ID Path**: hero.default.primary.background_overlay_opacity
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  background_overlay_opacity: prismic.SelectField<"50%" | "95%", "filled">;
+
+  /**
+   * Layout field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Centered
+   * - **API ID Path**: hero.default.primary.layout
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  layout: prismic.SelectField<"Centered" | "Left" | "Right", "filled">;
+
+  /**
+   * Section Height field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: Height in px (leave blank to use default)
+   * - **API ID Path**: hero.default.primary.section_height
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  section_height: prismic.NumberField;
 
   /**
    * Buttons field in *Hero → Default → Primary*

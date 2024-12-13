@@ -72,6 +72,37 @@
 						}
 					}
 				]
+			},
+			"layout": {
+				"__TYPE__": "FieldContent",
+				"value": "Centered",
+				"type": "Select"
+			},
+			"body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Dolore labore eiusmod eiusmod tempor. Dolor mollit laborum occaecat commodo id deserunt dolore."
+						}
+					}
+				]
+			},
+			"background_video_url": {
+				"__TYPE__": "FieldContent",
+				"value": "breathe",
+				"type": "Text"
+			},
+			"background_overlay_opacity": {
+				"__TYPE__": "FieldContent",
+				"value": "95%",
+				"type": "Select"
+			},
+			"section_height": {
+				"__TYPE__": "FieldContent",
+				"value": "89",
+				"type": "Number"
 			}
 		},
 		"items": []

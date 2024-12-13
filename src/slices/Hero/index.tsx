@@ -12,7 +12,17 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  * Component for "Hero" Slices.
  */
 const Hero = async ({ slice }: HeroProps): Promise<JSX.Element> => {
-  const { background_image, buttons, heading, subtext } = slice.primary;
+  const {
+    background_image,
+    buttons,
+    heading,
+    subtext,
+    body,
+    background_video_url,
+    layout,
+    background_overlay_opacity,
+    section_height,
+  } = slice.primary;
   const buttonPrimary = await convertButton({
     button_style: buttons[0]?.button_style,
     link: buttons[0]?.link,
@@ -26,12 +36,24 @@ const Hero = async ({ slice }: HeroProps): Promise<JSX.Element> => {
 
   return (
     <HeroComponent
-      alignment={"center"}
+      alignment={
+        layout === "Left" ? "left" : layout === "Centered" ? "center" : "right"
+      }
       heading={`${heading}`}
       buttonPrimary={buttonPrimary}
       buttonSecondary={buttonSecondary}
       subtextNode={<PrismicRichText field={subtext} />}
+      body={<PrismicRichText field={body} />}
       bgImageUrl={background_image.url || ""}
+      bgVideoUrl={background_video_url || undefined}
+      overlayNormalized={
+        background_overlay_opacity === "50%"
+          ? 0.5
+          : background_overlay_opacity === "95%"
+            ? 0.95
+            : 0
+      }
+      heightOverride={section_height || undefined}
     />
   );
 };

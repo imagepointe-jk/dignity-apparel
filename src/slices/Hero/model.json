@@ -27,6 +27,40 @@
             "allowTargetBlank": true,
             "multi": "paragraph,heading2,heading3,heading4",
             "labels": [
+              "h2-medium",
+              "h3-medium-italic",
+              "h3-italic",
+              "h3-bold",
+              "h4-semi-bold",
+              "subheader-1-regular",
+              "subheader-1-medium",
+              "subheader-1-semi-bold",
+              "subheader-2",
+              "subheader-3",
+              "subheader-4",
+              "body1",
+              "body1-semi-bold",
+              "body1-underline",
+              "body2",
+              "body2-bold",
+              "body2-underline",
+              "body3",
+              "body3-semi-bold",
+              "body3-underline",
+              "body4",
+              "body4-bold",
+              "body4-underline"
+            ]
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph",
+            "labels": [
               "body1",
               "body1-semi-bold",
               "body1-underline",
@@ -50,6 +84,45 @@
             "thumbnails": []
           }
         },
+        "background_video_url": {
+          "type": "Text",
+          "config": {
+            "label": "Background Video URL",
+            "placeholder": "If provided, this will replace the background image."
+          }
+        },
+        "background_overlay_opacity": {
+          "type": "Select",
+          "config": {
+            "label": "Background Overlay Opacity",
+            "placeholder": "",
+            "options": [
+              "50%",
+              "95%"
+            ],
+            "default_value": "50%"
+          }
+        },
+        "layout": {
+          "type": "Select",
+          "config": {
+            "label": "Layout",
+            "placeholder": "",
+            "options": [
+              "Centered",
+              "Left",
+              "Right"
+            ],
+            "default_value": "Centered"
+          }
+        },
+        "section_height": {
+          "type": "Number",
+          "config": {
+            "label": "Section Height",
+            "placeholder": "Height in px (leave blank to use default)"
+          }
+        },
         "buttons": {
           "type": "Group",
           "config": {
@@ -71,7 +144,9 @@
                 "config": {
                   "label": "Button Style",
                   "select": "document",
-                  "customtypes": ["button_style"]
+                  "customtypes": [
+                    "button_style"
+                  ]
                 }
               }
             }
