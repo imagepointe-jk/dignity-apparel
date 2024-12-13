@@ -16,7 +16,10 @@ export function StarRating({ stars, containerClassName }: Props) {
   });
 
   return (
-    <div className={`${styles["main"]} ${containerClassName || ""}`}>
+    <div
+      className={`${styles["main"]} ${containerClassName || ""}`}
+      aria-label={`${stars} out of 5 stars`}
+    >
       {starsArr.map((item, i) =>
         item === "full" ? (
           <Star key={i} size={20} />
