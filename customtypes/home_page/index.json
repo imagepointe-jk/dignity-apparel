@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "three_image_section": {
+              "type": "SharedSlice"
+            },
             "single_review": {
               "type": "SharedSlice"
             },

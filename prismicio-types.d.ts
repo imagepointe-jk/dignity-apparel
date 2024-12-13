@@ -283,6 +283,7 @@ export type FooterSectionDocument<Lang extends string = string> =
   >;
 
 type HomePageDocumentDataSlicesSlice =
+  | ThreeImageSectionSlice
   | SingleReviewSlice
   | CarouselReviewsSlice
   | TextWithHeadingSlice
@@ -1768,6 +1769,141 @@ export type TextWithHeadingSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *ThreeImageSection → Default → Primary*
+ */
+export interface ThreeImageSectionSliceDefaultPrimary {
+  /**
+   * Tiling Background field in *ThreeImageSection → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: three_image_section.default.primary.tiling_background
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  tiling_background: prismic.ImageField<never>;
+
+  /**
+   * Heading field in *ThreeImageSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: three_image_section.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Subheading field in *ThreeImageSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: three_image_section.default.primary.subheading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subheading: prismic.RichTextField;
+
+  /**
+   * Body field in *ThreeImageSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: three_image_section.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Primary Text Color field in *ThreeImageSection → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: three_image_section.default.primary.primary_text_color
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  primary_text_color: prismic.ContentRelationshipField<"brand_color">;
+
+  /**
+   * Link field in *ThreeImageSection → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: three_image_section.default.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * Link Button Style field in *ThreeImageSection → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: three_image_section.default.primary.link_button_style
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link_button_style: prismic.ContentRelationshipField<"button_style">;
+
+  /**
+   * Primary Image field in *ThreeImageSection → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: three_image_section.default.primary.primary_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  primary_image: prismic.ImageField<never>;
+
+  /**
+   * Secondary Image 1 field in *ThreeImageSection → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: three_image_section.default.primary.secondary_image_1
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  secondary_image_1: prismic.ImageField<never>;
+
+  /**
+   * Secondary Image 2 field in *ThreeImageSection → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: three_image_section.default.primary.secondary_image_2
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  secondary_image_2: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for ThreeImageSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ThreeImageSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ThreeImageSectionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ThreeImageSection*
+ */
+type ThreeImageSectionSliceVariation = ThreeImageSectionSliceDefault;
+
+/**
+ * ThreeImageSection Shared Slice
+ *
+ * - **API ID**: `three_image_section`
+ * - **Description**: ThreeImageSection
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ThreeImageSectionSlice = prismic.SharedSlice<
+  "three_image_section",
+  ThreeImageSectionSliceVariation
+>;
+
+/**
  * Primary content in *Video → Default → Primary*
  */
 export interface VideoSliceDefaultPrimary {
@@ -1947,6 +2083,10 @@ declare module "@prismicio/client" {
       TextWithHeadingSliceDefaultPrimary,
       TextWithHeadingSliceVariation,
       TextWithHeadingSliceDefault,
+      ThreeImageSectionSlice,
+      ThreeImageSectionSliceDefaultPrimary,
+      ThreeImageSectionSliceVariation,
+      ThreeImageSectionSliceDefault,
       VideoSlice,
       VideoSliceDefaultPrimary,
       VideoSliceVariation,

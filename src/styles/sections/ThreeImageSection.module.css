@@ -1,0 +1,46 @@
+.main {
+  padding: 30px 40px 30px 40px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+
+.main h1,
+.main h2,
+.main h3,
+.main h4,
+.main p {
+  margin: 0;
+}
+
+.images-container {
+  display: flex;
+  gap: 20px;
+}
+
+.secondary-images-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.primary-image-container {
+  width: 350px;
+  height: 450px;
+  border-radius: 5px;
+}
+
+.secondary-image-single-container {
+  width: 350px;
+  height: 215px;
+  border-radius: 5px;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: flex-start;
+  justify-content: center;
+}
