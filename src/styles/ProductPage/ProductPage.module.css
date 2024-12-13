@@ -7,14 +7,12 @@
 }
 
 .main h1 {
-  font-size: 1.5rem;
-  font-family: var(--font-metropolis-semi-bold);
   margin: 0;
+  letter-spacing: initial;
 }
 
 .main p {
   margin: 5px 0;
-  line-height: 1.5rem;
 }
 
 .images-container {
@@ -50,8 +48,6 @@
 
 .swatch-color-text {
   color: var(--armor-gray-500);
-  font-weight: initial;
-  font-size: 0.875rem;
 }
 
 .swatches {

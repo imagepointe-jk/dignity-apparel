@@ -41,6 +41,10 @@
   margin: 0;
 }
 
+.main h1 {
+  line-height: 1;
+}
+
 .video-container {
   position: absolute;
   inset: 0;

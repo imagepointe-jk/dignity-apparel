@@ -40,7 +40,9 @@ export function Recommendations({ categorySlug }: Props) {
 
   return (
     <section className={styles["recommended-container"]}>
-      <h3 className={styles["recommended-heading"]}>RECOMMENDED STYLES</h3>
+      <h3 className={`${styles["recommended-heading"]} h3-bold`}>
+        RECOMMENDED STYLES
+      </h3>
       <div className={`${styles["recommended-content"]} x-wide-container`}>
         {status === "idle" && (
           <>
