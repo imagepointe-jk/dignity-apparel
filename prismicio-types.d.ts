@@ -283,6 +283,7 @@ export type FooterSectionDocument<Lang extends string = string> =
   >;
 
 type HomePageDocumentDataSlicesSlice =
+  | SingleReviewSlice
   | CarouselReviewsSlice
   | TextWithHeadingSlice
   | StandardSection2Slice
@@ -1246,6 +1247,111 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Primary content in *SingleReview → Default → Primary*
+ */
+export interface SingleReviewSliceDefaultPrimary {
+  /**
+   * Tiling Background field in *SingleReview → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: single_review.default.primary.tiling_background
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  tiling_background: prismic.ImageField<never>;
+
+  /**
+   * Heading field in *SingleReview → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: single_review.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Rating field in *SingleReview → Default → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: single_review.default.primary.rating
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  rating: prismic.NumberField;
+
+  /**
+   * Body field in *SingleReview → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: single_review.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Reviewer Name field in *SingleReview → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: single_review.default.primary.reviewer_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  reviewer_name: prismic.KeyTextField;
+
+  /**
+   * Company Name field in *SingleReview → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: single_review.default.primary.company_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  company_name: prismic.KeyTextField;
+
+  /**
+   * Primary Text Color field in *SingleReview → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: single_review.default.primary.primary_text_color
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  primary_text_color: prismic.ContentRelationshipField<"brand_color">;
+}
+
+/**
+ * Default variation for SingleReview Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SingleReviewSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SingleReviewSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SingleReview*
+ */
+type SingleReviewSliceVariation = SingleReviewSliceDefault;
+
+/**
+ * SingleReview Shared Slice
+ *
+ * - **API ID**: `single_review`
+ * - **Description**: SingleReview
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SingleReviewSlice = prismic.SharedSlice<
+  "single_review",
+  SingleReviewSliceVariation
+>;
+
+/**
  * Primary content in *StandardSection1 → Default → Primary*
  */
 export interface StandardSection1SliceDefaultPrimary {
@@ -1772,6 +1878,10 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      SingleReviewSlice,
+      SingleReviewSliceDefaultPrimary,
+      SingleReviewSliceVariation,
+      SingleReviewSliceDefault,
       StandardSection1Slice,
       StandardSection1SliceDefaultPrimary,
       StandardSection1SliceVariation,

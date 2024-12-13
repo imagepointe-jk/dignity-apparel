@@ -1,0 +1,84 @@
+{
+  "id": "single_review",
+  "type": "SharedSlice",
+  "name": "SingleReview",
+  "description": "SingleReview",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "tiling_background": {
+          "type": "Image",
+          "config": {
+            "label": "Tiling Background",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading1,heading2,heading3,heading4",
+            "labels": [
+              "h1-medium",
+              "h2-medium",
+              "h3-medium-italic",
+              "h3-italic",
+              "h3-bold",
+              "h4-semi-bold"
+            ]
+          }
+        },
+        "rating": {
+          "type": "Number",
+          "config": {
+            "label": "Rating",
+            "placeholder": ""
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        },
+        "reviewer_name": {
+          "type": "Text",
+          "config": {
+            "label": "Reviewer Name",
+            "placeholder": ""
+          }
+        },
+        "company_name": {
+          "type": "Text",
+          "config": {
+            "label": "Company Name",
+            "placeholder": ""
+          }
+        },
+        "primary_text_color": {
+          "type": "Link",
+          "config": {
+            "label": "Primary Text Color",
+            "select": "document",
+            "customtypes": [
+              "brand_color"
+            ]
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

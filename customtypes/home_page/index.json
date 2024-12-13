@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "single_review": {
+              "type": "SharedSlice"
+            },
             "carousel_reviews": {
               "type": "SharedSlice"
             },
