@@ -68,7 +68,7 @@ export function StandardSection2({
               ))}
             </div>
           </div>
-          <div>
+          <div className={styles["image-or-video-parent"]}>
             {!adjustedEmbedCode && (
               <CoveredImage
                 src={img.src}

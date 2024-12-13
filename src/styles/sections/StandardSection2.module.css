@@ -34,6 +34,12 @@
   flex-direction: row-reverse;
 }
 
+.image-or-video-parent {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .main .image-container {
   width: 440px;
   height: 440px;
@@ -93,5 +99,14 @@
 @media screen and (max-width: 768px) {
   .heading-ornament {
     display: none;
+  }
+
+  .video-container {
+    width: 100%;
+    height: initial;
+  }
+
+  .main-flex {
+    padding: 0;
   }
 }
