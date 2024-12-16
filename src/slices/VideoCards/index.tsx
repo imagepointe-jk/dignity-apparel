@@ -2,11 +2,7 @@ import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { VideoCards as VideoCardsComponent } from "@/components/sections/VideoCards/VideoCards";
 import { IMAGE_NOT_FOUND_URL } from "@/constants";
-import {
-  convertButton,
-  getBrandColor,
-  getPrismicLinkUrl,
-} from "@/utility/prismic";
+import { convertButton, getBrandColor } from "@/utility/prismic";
 
 /**
  * Props for `VideoCards`.
