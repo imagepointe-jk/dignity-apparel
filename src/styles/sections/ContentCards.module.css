@@ -91,6 +91,14 @@
   height: 450px;
 }
 
+.cards-4 .card-content a {
+  display: none;
+}
+
+.cards-4 .card:hover .card-content a {
+  display: initial;
+}
+
 .card-type-text-below .card:hover .card-bg-container img {
   scale: initial;
 }
@@ -124,6 +132,12 @@
 
   .cards-4 .card {
     flex: 0 0 47%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .cards-4 .card-content a {
+    display: initial;
   }
 }
 
