@@ -1,7 +1,6 @@
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { VideoCards as VideoCardsComponent } from "@/components/sections/VideoCards/VideoCards";
-import { IMAGE_NOT_FOUND_URL } from "@/constants";
 import { convertButton, getBrandColor } from "@/utility/prismic";
 
 /**
@@ -43,7 +42,7 @@ const VideoCards = async ({ slice }: VideoCardsProps): Promise<JSX.Element> => {
       textColor={textColor}
       cardBgColor={cardBgColor}
       cards={convertedCards}
-      tilingBackground={{ src: tiling_background.url || IMAGE_NOT_FOUND_URL }}
+      tilingBackground={{ src: tiling_background.url }}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     />
