@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactNode, useEffect, useRef, useState } from "react";
 import styles from "@/styles/global/ExpandableDiv.module.css";
 
@@ -5,7 +7,9 @@ type Props = {
   label?: string;
   content: ReactNode;
   mainClassName?: string;
+  mainExpandedClassName?: string;
   labelClassName?: string;
+  labelExpandedClassName?: string;
   contentClassName?: string;
   startExpanded?: boolean;
 };
@@ -13,7 +17,9 @@ export function ExpandableDiv({
   label,
   content,
   mainClassName,
+  mainExpandedClassName,
   labelClassName,
+  labelExpandedClassName,
   contentClassName,
   startExpanded,
 }: Props) {
@@ -60,11 +66,11 @@ export function ExpandableDiv({
 
   return (
     <div
-      className={`${styles["main"]} ${mainClassName || ""} ${expanded ? styles["expanded"] : ""}`}
+      className={`${styles["main"]} ${mainClassName || ""} ${expanded ? styles["expanded"] : ""} ${expanded && mainExpandedClassName ? mainExpandedClassName : ""}`}
     >
       <button
         onClick={onClick}
-        className={`${styles["label"]} ${labelClassName || ""}`}
+        className={`${styles["label"]} ${labelClassName || ""} ${expanded && labelExpandedClassName ? labelExpandedClassName : ""}`}
         aria-expanded={expanded}
       >
         {label || "Details"}

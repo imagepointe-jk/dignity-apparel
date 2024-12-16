@@ -283,6 +283,7 @@ export type FooterSectionDocument<Lang extends string = string> =
   >;
 
 type HomePageDocumentDataSlicesSlice =
+  | AccordionSlice
   | VideoCardsSlice
   | ContentCardsSlice
   | ThreeImageSectionSlice
@@ -835,6 +836,109 @@ export type AllDocumentTypes =
   | MegaMenuSectionDocument
   | SettingsDocument
   | StandardPageDocument;
+
+/**
+ * Item in *Accordion → Default → Primary → Sections*
+ */
+export interface AccordionSliceDefaultPrimarySectionsItem {
+  /**
+   * Title field in *Accordion → Default → Primary → Sections*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: accordion.default.primary.sections[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Body field in *Accordion → Default → Primary → Sections*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: accordion.default.primary.sections[].body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Accordion → Default → Primary*
+ */
+export interface AccordionSliceDefaultPrimary {
+  /**
+   * Tiling Background field in *Accordion → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: accordion.default.primary.tiling_background
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  tiling_background: prismic.ImageField<never>;
+
+  /**
+   * Heading field in *Accordion → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: accordion.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Content Color field in *Accordion → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Normal
+   * - **API ID Path**: accordion.default.primary.content_color
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_color: prismic.SelectField<"Normal" | "White", "filled">;
+
+  /**
+   * Sections field in *Accordion → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: accordion.default.primary.sections[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  sections: prismic.GroupField<
+    Simplify<AccordionSliceDefaultPrimarySectionsItem>
+  >;
+}
+
+/**
+ * Default variation for Accordion Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AccordionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AccordionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Accordion*
+ */
+type AccordionSliceVariation = AccordionSliceDefault;
+
+/**
+ * Accordion Shared Slice
+ *
+ * - **API ID**: `accordion`
+ * - **Description**: Accordion
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AccordionSlice = prismic.SharedSlice<
+  "accordion",
+  AccordionSliceVariation
+>;
 
 /**
  * Item in *CardsSection1 → Default → Primary → Cards*
@@ -2329,6 +2433,11 @@ declare module "@prismicio/client" {
       StandardPageDocumentData,
       StandardPageDocumentDataSlicesSlice,
       AllDocumentTypes,
+      AccordionSlice,
+      AccordionSliceDefaultPrimarySectionsItem,
+      AccordionSliceDefaultPrimary,
+      AccordionSliceVariation,
+      AccordionSliceDefault,
       CardsSection1Slice,
       CardsSection1SliceDefaultPrimaryCardsItem,
       CardsSection1SliceDefaultPrimary,
