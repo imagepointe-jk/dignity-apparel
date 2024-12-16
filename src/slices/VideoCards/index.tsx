@@ -44,6 +44,8 @@ const VideoCards = async ({ slice }: VideoCardsProps): Promise<JSX.Element> => {
       cardBgColor={cardBgColor}
       cards={convertedCards}
       tilingBackground={{ src: tiling_background.url || IMAGE_NOT_FOUND_URL }}
+      data-slice-type={slice.slice_type}
+      data-slice-variation={slice.variation}
     />
   );
 };
