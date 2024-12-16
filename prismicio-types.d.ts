@@ -283,6 +283,7 @@ export type FooterSectionDocument<Lang extends string = string> =
   >;
 
 type HomePageDocumentDataSlicesSlice =
+  | ContentCardsSlice
   | ThreeImageSectionSlice
   | SingleReviewSlice
   | CarouselReviewsSlice
@@ -1056,6 +1057,147 @@ type CarouselReviewsSliceVariation = CarouselReviewsSliceDefault;
 export type CarouselReviewsSlice = prismic.SharedSlice<
   "carousel_reviews",
   CarouselReviewsSliceVariation
+>;
+
+/**
+ * Item in *ContentCards → Default → Primary → Cards*
+ */
+export interface ContentCardsSliceDefaultPrimaryCardsItem {
+  /**
+   * Heading field in *ContentCards → Default → Primary → Cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_cards.default.primary.cards[].heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Body field in *ContentCards → Default → Primary → Cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_cards.default.primary.cards[].body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Link field in *ContentCards → Default → Primary → Cards*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_cards.default.primary.cards[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * Button Style field in *ContentCards → Default → Primary → Cards*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_cards.default.primary.cards[].button_style
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_style: prismic.ContentRelationshipField<"button_style">;
+
+  /**
+   * Image field in *ContentCards → Default → Primary → Cards*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_cards.default.primary.cards[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *ContentCards → Default → Primary*
+ */
+export interface ContentCardsSliceDefaultPrimary {
+  /**
+   * Tiling Background field in *ContentCards → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_cards.default.primary.tiling_background
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  tiling_background: prismic.ImageField<never>;
+
+  /**
+   * Heading field in *ContentCards → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_cards.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Primary Text Color field in *ContentCards → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_cards.default.primary.primary_text_color
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  primary_text_color: prismic.ContentRelationshipField<"brand_color">;
+
+  /**
+   * Card Type field in *ContentCards → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Text Overlay
+   * - **API ID Path**: content_cards.default.primary.card_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  card_type: prismic.SelectField<"Text Overlay" | "Text Below", "filled">;
+
+  /**
+   * Cards field in *ContentCards → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_cards.default.primary.cards[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  cards: prismic.GroupField<Simplify<ContentCardsSliceDefaultPrimaryCardsItem>>;
+}
+
+/**
+ * Default variation for ContentCards Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContentCardsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContentCardsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ContentCards*
+ */
+type ContentCardsSliceVariation = ContentCardsSliceDefault;
+
+/**
+ * ContentCards Shared Slice
+ *
+ * - **API ID**: `content_cards`
+ * - **Description**: ContentCards
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContentCardsSlice = prismic.SharedSlice<
+  "content_cards",
+  ContentCardsSliceVariation
 >;
 
 /**
@@ -2056,6 +2198,11 @@ declare module "@prismicio/client" {
       CarouselReviewsSliceDefaultPrimary,
       CarouselReviewsSliceVariation,
       CarouselReviewsSliceDefault,
+      ContentCardsSlice,
+      ContentCardsSliceDefaultPrimaryCardsItem,
+      ContentCardsSliceDefaultPrimary,
+      ContentCardsSliceVariation,
+      ContentCardsSliceDefault,
       FeaturedProductsSlice,
       FeaturedProductsSliceDefaultPrimaryProductSlugsItem,
       FeaturedProductsSliceDefaultPrimary,

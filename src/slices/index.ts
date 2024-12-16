@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 export const components = {
   cards_section1: dynamic(() => import("./CardsSection1")),
   carousel_reviews: dynamic(() => import("./CarouselReviews")),
+  content_cards: dynamic(() => import("./ContentCards")),
   featured_products: dynamic(() => import("./FeaturedProducts")),
   hero: dynamic(() => import("./Hero")),
   single_review: dynamic(() => import("./SingleReview")),
