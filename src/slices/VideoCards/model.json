@@ -1,0 +1,139 @@
+{
+  "id": "video_cards",
+  "type": "SharedSlice",
+  "name": "VideoCards",
+  "description": "VideoCards",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "tiling_background": {
+          "type": "Image",
+          "config": {
+            "label": "Tiling Background",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading1,heading2,heading4,heading3",
+            "labels": [
+              "h1-medium",
+              "h2-medium",
+              "h3-medium-italic",
+              "h3-italic",
+              "h3-bold",
+              "h4-semi-bold"
+            ]
+          }
+        },
+        "primary_text_color": {
+          "type": "Link",
+          "config": {
+            "label": "Primary Text Color",
+            "select": "document",
+            "customtypes": ["brand_color"]
+          }
+        },
+        "card_background_color": {
+          "type": "Link",
+          "config": {
+            "label": "Card Background Color",
+            "select": "document",
+            "customtypes": ["brand_color"]
+          }
+        },
+        "cards": {
+          "type": "Group",
+          "config": {
+            "label": "Cards",
+            "repeat": true,
+            "fields": {
+              "video": {
+                "type": "Embed",
+                "config": {
+                  "label": "Video",
+                  "placeholder": ""
+                }
+              },
+              "heading": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Heading",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "heading2,heading3,heading4,paragraph",
+                  "labels": [
+                    "h2-medium",
+                    "h3-medium-italic",
+                    "h3-italic",
+                    "h3-bold",
+                    "h4-semi-bold",
+                    "subheader-1-regular",
+                    "subheader-1-medium",
+                    "subheader-1-semi-bold",
+                    "subheader-2",
+                    "subheader-3",
+                    "subheader-4"
+                  ]
+                }
+              },
+              "body": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Body",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph",
+                  "labels": [
+                    "body-1",
+                    "body-1-semi-bold",
+                    "body-1-underline",
+                    "body-2",
+                    "body-2-bold",
+                    "body-2-underline",
+                    "body-3",
+                    "body-3-semi-bold",
+                    "body-3-underline",
+                    "body-4",
+                    "body-4-bold",
+                    "body-4-underline"
+                  ]
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Link",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "select": null,
+                  "allowText": true
+                }
+              },
+              "button_style": {
+                "type": "Link",
+                "config": {
+                  "label": "Button Style",
+                  "select": "document",
+                  "customtypes": ["button_style"]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "video_cards": {
+              "type": "SharedSlice"
+            },
             "content_cards": {
               "type": "SharedSlice"
             },

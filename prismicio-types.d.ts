@@ -283,6 +283,7 @@ export type FooterSectionDocument<Lang extends string = string> =
   >;
 
 type HomePageDocumentDataSlicesSlice =
+  | VideoCardsSlice
   | ContentCardsSlice
   | ThreeImageSectionSlice
   | SingleReviewSlice
@@ -2137,6 +2138,146 @@ type VideoSliceVariation = VideoSliceDefault;
  */
 export type VideoSlice = prismic.SharedSlice<"video", VideoSliceVariation>;
 
+/**
+ * Item in *VideoCards → Default → Primary → Cards*
+ */
+export interface VideoCardsSliceDefaultPrimaryCardsItem {
+  /**
+   * Video field in *VideoCards → Default → Primary → Cards*
+   *
+   * - **Field Type**: Embed
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_cards.default.primary.cards[].video
+   * - **Documentation**: https://prismic.io/docs/field#embed
+   */
+  video: prismic.EmbedField;
+
+  /**
+   * Heading field in *VideoCards → Default → Primary → Cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_cards.default.primary.cards[].heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Body field in *VideoCards → Default → Primary → Cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_cards.default.primary.cards[].body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Link field in *VideoCards → Default → Primary → Cards*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_cards.default.primary.cards[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * Button Style field in *VideoCards → Default → Primary → Cards*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_cards.default.primary.cards[].button_style
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_style: prismic.ContentRelationshipField<"button_style">;
+}
+
+/**
+ * Primary content in *VideoCards → Default → Primary*
+ */
+export interface VideoCardsSliceDefaultPrimary {
+  /**
+   * Tiling Background field in *VideoCards → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_cards.default.primary.tiling_background
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  tiling_background: prismic.ImageField<never>;
+
+  /**
+   * Heading field in *VideoCards → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_cards.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Primary Text Color field in *VideoCards → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_cards.default.primary.primary_text_color
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  primary_text_color: prismic.ContentRelationshipField<"brand_color">;
+
+  /**
+   * Card Background Color field in *VideoCards → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_cards.default.primary.card_background_color
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  card_background_color: prismic.ContentRelationshipField<"brand_color">;
+
+  /**
+   * Cards field in *VideoCards → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_cards.default.primary.cards[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  cards: prismic.GroupField<Simplify<VideoCardsSliceDefaultPrimaryCardsItem>>;
+}
+
+/**
+ * Default variation for VideoCards Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VideoCardsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<VideoCardsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *VideoCards*
+ */
+type VideoCardsSliceVariation = VideoCardsSliceDefault;
+
+/**
+ * VideoCards Shared Slice
+ *
+ * - **API ID**: `video_cards`
+ * - **Description**: VideoCards
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VideoCardsSlice = prismic.SharedSlice<
+  "video_cards",
+  VideoCardsSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -2238,6 +2379,11 @@ declare module "@prismicio/client" {
       VideoSliceDefaultPrimary,
       VideoSliceVariation,
       VideoSliceDefault,
+      VideoCardsSlice,
+      VideoCardsSliceDefaultPrimaryCardsItem,
+      VideoCardsSliceDefaultPrimary,
+      VideoCardsSliceVariation,
+      VideoCardsSliceDefault,
     };
   }
 }
