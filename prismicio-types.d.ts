@@ -283,6 +283,7 @@ export type FooterSectionDocument<Lang extends string = string> =
   >;
 
 type HomePageDocumentDataSlicesSlice =
+  | SocialLinksSlice
   | ValueChainSlice
   | AccordionSlice
   | VideoCardsSlice
@@ -1653,6 +1654,89 @@ export type SingleReviewSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *SocialLinks → Default → Primary → Social Links*
+ */
+export interface SocialLinksSliceDefaultPrimarySocialLinksItem {
+  /**
+   * Link field in *SocialLinks → Default → Primary → Social Links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: social_links.default.primary.social_links[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Primary content in *SocialLinks → Default → Primary*
+ */
+export interface SocialLinksSliceDefaultPrimary {
+  /**
+   * Tiling Background field in *SocialLinks → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: social_links.default.primary.tiling_background
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  tiling_background: prismic.ImageField<never>;
+
+  /**
+   * Content Color field in *SocialLinks → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Normal
+   * - **API ID Path**: social_links.default.primary.content_color
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_color: prismic.SelectField<"Normal" | "White", "filled">;
+
+  /**
+   * Social Links field in *SocialLinks → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: social_links.default.primary.social_links[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  social_links: prismic.GroupField<
+    Simplify<SocialLinksSliceDefaultPrimarySocialLinksItem>
+  >;
+}
+
+/**
+ * Default variation for SocialLinks Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SocialLinksSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SocialLinksSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SocialLinks*
+ */
+type SocialLinksSliceVariation = SocialLinksSliceDefault;
+
+/**
+ * SocialLinks Shared Slice
+ *
+ * - **API ID**: `social_links`
+ * - **Description**: SocialLinks
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SocialLinksSlice = prismic.SharedSlice<
+  "social_links",
+  SocialLinksSliceVariation
+>;
+
+/**
  * Primary content in *StandardSection1 → Default → Primary*
  */
 export interface StandardSection1SliceDefaultPrimary {
@@ -2498,6 +2582,11 @@ declare module "@prismicio/client" {
       SingleReviewSliceDefaultPrimary,
       SingleReviewSliceVariation,
       SingleReviewSliceDefault,
+      SocialLinksSlice,
+      SocialLinksSliceDefaultPrimarySocialLinksItem,
+      SocialLinksSliceDefaultPrimary,
+      SocialLinksSliceVariation,
+      SocialLinksSliceDefault,
       StandardSection1Slice,
       StandardSection1SliceDefaultPrimary,
       StandardSection1SliceVariation,

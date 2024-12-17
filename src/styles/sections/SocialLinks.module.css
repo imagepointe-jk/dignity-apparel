@@ -1,0 +1,25 @@
+.main {
+  text-align: center;
+  padding: 70px 0;
+}
+
+.main.white * {
+  color: white;
+}
+
+.main h2 {
+  margin-top: 0;
+}
+
+.links-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.links-container,
+.links-container a:visited {
+  color: var(--blaze-orange-500);
+}

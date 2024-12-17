@@ -2,11 +2,8 @@ import { Footer as FooterType } from "@/types/schema/footer";
 import styles from "@/styles/Footer/Footer.module.css";
 import Link from "next/link";
 import { Flag } from "../icons/Flag";
-import { Facebook } from "../icons/Facebook";
-import { YouTube } from "../icons/YouTube";
-import { Instagram } from "../icons/Instagram";
-import { LinkedIn } from "../icons/LinkedIn";
 import { env } from "@/envClient";
+import { SocialMediaLink } from "../global/SocialMediaLink/SocialMediaLink";
 
 type Props = {
   data: FooterType;
@@ -97,30 +94,5 @@ export function Footer({
         </div>
       </div>
     </footer>
-  );
-}
-
-type SocialMediaLinkProps = {
-  href?: string;
-};
-function SocialMediaLink({ href }: SocialMediaLinkProps) {
-  const type = !href
-    ? null
-    : href.includes("facebook")
-      ? "facebook"
-      : href.includes("youtube")
-        ? "youtube"
-        : href.includes("instagram")
-          ? "instagram"
-          : href.includes("linkedin")
-            ? "linkedin"
-            : null;
-  return (
-    <Link href={href || ""} aria-label={`dignity apparel ${type}`}>
-      {type === "facebook" && <Facebook size={20} />}
-      {type === "youtube" && <YouTube size={14} />}
-      {type === "instagram" && <Instagram size={20} />}
-      {type === "linkedin" && <LinkedIn size={20} />}
-    </Link>
   );
 }
