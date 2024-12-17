@@ -14,6 +14,7 @@ export const components = {
   standard_section2: dynamic(() => import("./StandardSection2")),
   text_with_heading: dynamic(() => import("./TextWithHeading")),
   three_image_section: dynamic(() => import("./ThreeImageSection")),
+  value_chain: dynamic(() => import("./ValueChain")),
   video: dynamic(() => import("./Video")),
   video_cards: dynamic(() => import("./VideoCards")),
 };

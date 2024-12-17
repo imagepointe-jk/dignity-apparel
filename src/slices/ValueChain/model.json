@@ -1,0 +1,16 @@
+{
+  "id": "value_chain",
+  "type": "SharedSlice",
+  "name": "ValueChain",
+  "description": "ValueChain",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": ""
+    }
+  ]
+}

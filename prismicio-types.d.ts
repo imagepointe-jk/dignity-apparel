@@ -283,6 +283,7 @@ export type FooterSectionDocument<Lang extends string = string> =
   >;
 
 type HomePageDocumentDataSlicesSlice =
+  | ValueChainSlice
   | AccordionSlice
   | VideoCardsSlice
   | ContentCardsSlice
@@ -2151,6 +2152,36 @@ export type ThreeImageSectionSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Default variation for ValueChain Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ValueChainSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *ValueChain*
+ */
+type ValueChainSliceVariation = ValueChainSliceDefault;
+
+/**
+ * ValueChain Shared Slice
+ *
+ * - **API ID**: `value_chain`
+ * - **Description**: ValueChain
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ValueChainSlice = prismic.SharedSlice<
+  "value_chain",
+  ValueChainSliceVariation
+>;
+
+/**
  * Primary content in *Video → Default → Primary*
  */
 export interface VideoSliceDefaultPrimary {
@@ -2484,6 +2515,9 @@ declare module "@prismicio/client" {
       ThreeImageSectionSliceDefaultPrimary,
       ThreeImageSectionSliceVariation,
       ThreeImageSectionSliceDefault,
+      ValueChainSlice,
+      ValueChainSliceVariation,
+      ValueChainSliceDefault,
       VideoSlice,
       VideoSliceDefaultPrimary,
       VideoSliceVariation,
