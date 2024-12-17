@@ -101,3 +101,9 @@
     max-width: 100%;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .section {
+    height: 1000px;
+  }
+}

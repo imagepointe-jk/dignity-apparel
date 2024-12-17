@@ -5,6 +5,8 @@ import { createClient, repositoryName } from "@/prismicio";
 import { NavBarPrismic } from "@/components/NavBar/NavBarPrismic";
 import FooterPrismic from "@/components/Footer/FooterPrismic";
 import { PrismicPreview } from "@prismicio/next";
+import { getAnnouncementBanner } from "@/fetch/prismic/prismic";
+import { validateAnnouncementBannerResponse } from "@/types/validation/prismic/validation";
 
 const metropolisRegular = localFont({
   src: "./fonts/Metropolis-Regular.woff",
@@ -57,7 +59,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -73,10 +75,16 @@ export default function RootLayout({
     metropolisMediumItalic.variable,
     metropolisBold.variable,
   ].join(" ");
+  const announcementBannerResponse = await getAnnouncementBanner();
+  const parsedAnnouncementBanner = validateAnnouncementBannerResponse(
+    announcementBannerResponse
+  );
 
   return (
     <html lang="en">
-      <body className={fontClassNames}>
+      <body
+        className={`${fontClassNames} ${parsedAnnouncementBanner.showBanner ? "with-announcement-banner" : ""}`}
+      >
         <a href="#main" className="skip-to-main">
           Skip to Main Content
         </a>
