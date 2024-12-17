@@ -194,5 +194,13 @@
   .bottom-row {
     flex-direction: column;
     text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .email-submit-container {
+    width: 100%;
   }
 }
