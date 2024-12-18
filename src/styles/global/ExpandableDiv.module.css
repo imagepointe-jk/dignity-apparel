@@ -16,7 +16,7 @@
 
 .label::after {
   content: "▴" / ""; /* Hide from screen readers */
-  scale: 200%;
+  scale: 200% 138%;
   rotate: 90deg;
   line-height: 0;
   display: block;

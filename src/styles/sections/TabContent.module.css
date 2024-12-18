@@ -37,7 +37,6 @@
 .tab button {
   border: none;
   height: 65px;
-  /* padding: 10px 20px; */
   background: none;
   cursor: pointer;
   position: relative;
@@ -60,7 +59,6 @@
 .tab.selected button {
   color: var(--blaze-orange-500);
   font-weight: bold;
-  /* border-bottom: 5px solid var(--blaze-orange-500); */
 }
 
 .tab:first-child {
