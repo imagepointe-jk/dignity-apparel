@@ -11,6 +11,7 @@ import { MagnifyingGlass } from "../icons/MagnifyingGlass";
 import Dialog from "../global/Dialog/Dialog";
 import { QuickSearch } from "../QuickSearch/QuickSearch";
 import { env } from "@/envClient";
+import { Person } from "../icons/Person";
 
 const topOfPageThreshold = 200; //when the value of window.scrollY is less than this, we consider that to be the "top of the page"
 type Props = {
@@ -134,13 +135,31 @@ function NavBarWrapped({
                 >
                   ☰
                 </button>
-                <button
-                  className={styles["button"]}
-                  onClick={toggleDialog}
-                  aria-label="Search"
-                >
-                  <MagnifyingGlass />
-                </button>
+                <div className={styles["far-right-buttons"]}>
+                  <button
+                    className={styles["button"]}
+                    onClick={toggleDialog}
+                    aria-label="Search"
+                  >
+                    <MagnifyingGlass size={28} />
+                  </button>
+                  <a
+                    href="https://dawholesale.unionwebstores.com/my-account"
+                    className={styles["my-account-button"]}
+                  >
+                    <span
+                      style={{
+                        width: 0,
+                        height: 0,
+                        overflow: "hidden",
+                        display: "block",
+                      }}
+                    >
+                      My Account
+                    </span>
+                    <Person size={28} />
+                  </a>
+                </div>
               </div>
             </nav>
           </div>

@@ -50,7 +50,7 @@
 
 .buttons-container-right {
   display: flex;
-  gap: 80px;
+  gap: 55px;
   padding-right: 10px;
 }
 
@@ -398,8 +398,25 @@
   border: none;
 }
 
-.button:hover {
-  opacity: 40%;
+.far-right-buttons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.my-account-button {
+  display: flex;
+  align-items: center;
+}
+
+.my-account-button,
+.my-account-button:visited {
+  color: black;
+}
+
+.button:hover,
+.my-account-button:hover {
+  color: #777777;
 }
 
 @media screen and (max-width: 768px) {

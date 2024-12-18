@@ -8,17 +8,19 @@ type Props = {
 export function MagnifyingGlass({ size, className, style }: Props) {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height={size ? `${size}px` : "24px"}
-      viewBox="0 -960 960 960"
-      width={size ? `${size}px` : "24px"}
-      fill="undefined"
-      style={style}
+      height={size}
       className={className}
+      style={style}
+      viewBox="0 0 28 28"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"
-        fill="currentcolor"
+        d="M26 26L20.2 20.2M23.3333 12.6667C23.3333 18.5577 18.5577 23.3333 12.6667 23.3333C6.77563 23.3333 2 18.5577 2 12.6667C2 6.77563 6.77563 2 12.6667 2C18.5577 2 23.3333 6.77563 23.3333 12.6667Z"
+        stroke="currentcolor"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
