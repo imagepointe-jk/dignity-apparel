@@ -1,17 +1,21 @@
 "use client";
 
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { CSSProperties, ReactNode, useEffect, useRef, useState } from "react";
 import styles from "@/styles/global/ExpandableDiv.module.css";
 
 type Props = {
-  label?: string;
+  label?: ReactNode;
   content: ReactNode;
   mainClassName?: string;
   mainExpandedClassName?: string;
   labelClassName?: string;
   labelExpandedClassName?: string;
+  labelStyle?: CSSProperties;
   contentClassName?: string;
+  contentStyle?: CSSProperties;
   startExpanded?: boolean;
+  expanded?: boolean;
+  onClick?: () => void;
 };
 export function ExpandableDiv({
   label,
@@ -19,17 +23,23 @@ export function ExpandableDiv({
   mainClassName,
   mainExpandedClassName,
   labelClassName,
+  labelStyle,
   labelExpandedClassName,
   contentClassName,
+  contentStyle,
   startExpanded,
+  expanded: expandedOverride,
+  onClick: onClickOverride,
 }: Props) {
   const [expanded, setExpanded] = useState(false);
+  const expandedStateToUse =
+    expandedOverride !== undefined ? expandedOverride : expanded;
   const contentRef = useRef(null as HTMLDivElement | null);
 
   function onClick() {
     if (!contentRef.current) return;
 
-    setExpanded(!expanded);
+    setExpanded(!expandedStateToUse);
   }
 
   function getScrollHeight() {
@@ -54,7 +64,7 @@ export function ExpandableDiv({
       )
     );
     for (const el of focusableElements) {
-      if (expanded) {
+      if (expandedStateToUse) {
         el.removeAttribute("aria-hidden");
         el.removeAttribute("tabindex");
       } else {
@@ -62,25 +72,27 @@ export function ExpandableDiv({
         el.setAttribute("tabindex", "-1");
       }
     }
-  }, [expanded]);
+  }, [expandedStateToUse]);
 
   return (
     <div
-      className={`${styles["main"]} ${mainClassName || ""} ${expanded ? styles["expanded"] : ""} ${expanded && mainExpandedClassName ? mainExpandedClassName : ""}`}
+      className={`${styles["main"]} ${mainClassName || ""} ${expandedStateToUse ? styles["expanded"] : ""} ${expandedStateToUse && mainExpandedClassName ? mainExpandedClassName : ""}`}
     >
       <button
-        onClick={onClick}
-        className={`${styles["label"]} ${labelClassName || ""} ${expanded && labelExpandedClassName ? labelExpandedClassName : ""}`}
-        aria-expanded={expanded}
+        onClick={onClickOverride ? onClickOverride : onClick}
+        className={`${styles["label"]} ${labelClassName || ""} ${expandedStateToUse && labelExpandedClassName ? labelExpandedClassName : ""}`}
+        style={labelStyle}
+        aria-expanded={expandedStateToUse}
       >
-        {label || "Details"}
+        {label}
       </button>
       <div
         ref={contentRef}
         className={`${styles["content"]} ${contentClassName || ""}`}
         style={{
-          height: expanded ? `${getScrollHeight()}px` : "0px",
+          height: expandedStateToUse ? `${getScrollHeight()}px` : "0px",
           overflow: "hidden",
+          ...contentStyle,
         }}
       >
         {content}

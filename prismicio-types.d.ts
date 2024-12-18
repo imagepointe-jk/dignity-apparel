@@ -283,6 +283,7 @@ export type FooterSectionDocument<Lang extends string = string> =
   >;
 
 type HomePageDocumentDataSlicesSlice =
+  | TabContentSlice
   | SocialLinksSlice
   | ValueChainSlice
   | AccordionSlice
@@ -2016,6 +2017,119 @@ export type StandardSection2Slice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *TabContent → Default → Primary → Sections*
+ */
+export interface TabContentSliceDefaultPrimarySectionsItem {
+  /**
+   * Title field in *TabContent → Default → Primary → Sections*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tab_content.default.primary.sections[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Body field in *TabContent → Default → Primary → Sections*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tab_content.default.primary.sections[].body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *TabContent → Default → Primary*
+ */
+export interface TabContentSliceDefaultPrimary {
+  /**
+   * Tiling Background field in *TabContent → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tab_content.default.primary.tiling_background
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  tiling_background: prismic.ImageField<never>;
+
+  /**
+   * Tab Background Color field in *TabContent → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tab_content.default.primary.tab_background_color
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  tab_background_color: prismic.ContentRelationshipField<"brand_color">;
+
+  /**
+   * Heading field in *TabContent → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tab_content.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Content Color field in *TabContent → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Normal
+   * - **API ID Path**: tab_content.default.primary.content_color
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  content_color: prismic.SelectField<"Normal" | "White", "filled">;
+
+  /**
+   * Sections field in *TabContent → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tab_content.default.primary.sections[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  sections: prismic.GroupField<
+    Simplify<TabContentSliceDefaultPrimarySectionsItem>
+  >;
+}
+
+/**
+ * Default variation for TabContent Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TabContentSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TabContentSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TabContent*
+ */
+type TabContentSliceVariation = TabContentSliceDefault;
+
+/**
+ * TabContent Shared Slice
+ *
+ * - **API ID**: `tab_content`
+ * - **Description**: TabContent
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TabContentSlice = prismic.SharedSlice<
+  "tab_content",
+  TabContentSliceVariation
+>;
+
+/**
  * Primary content in *TextWithHeading → Default → Primary*
  */
 export interface TextWithHeadingSliceDefaultPrimary {
@@ -2596,6 +2710,11 @@ declare module "@prismicio/client" {
       StandardSection2SliceDefaultPrimary,
       StandardSection2SliceVariation,
       StandardSection2SliceDefault,
+      TabContentSlice,
+      TabContentSliceDefaultPrimarySectionsItem,
+      TabContentSliceDefaultPrimary,
+      TabContentSliceVariation,
+      TabContentSliceDefault,
       TextWithHeadingSlice,
       TextWithHeadingSliceDefaultPrimary,
       TextWithHeadingSliceVariation,

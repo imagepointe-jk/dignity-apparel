@@ -13,6 +13,7 @@ export const components = {
   social_links: dynamic(() => import("./SocialLinks")),
   standard_section1: dynamic(() => import("./StandardSection1")),
   standard_section2: dynamic(() => import("./StandardSection2")),
+  tab_content: dynamic(() => import("./TabContent")),
   text_with_heading: dynamic(() => import("./TextWithHeading")),
   three_image_section: dynamic(() => import("./ThreeImageSection")),
   value_chain: dynamic(() => import("./ValueChain")),

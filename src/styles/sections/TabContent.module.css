@@ -1,0 +1,141 @@
+.main h1,
+.main h2,
+.main h3,
+.main h4,
+.main p {
+  margin: 0;
+}
+
+.main h1,
+.main h2,
+.main h3,
+.main h4 {
+  margin-bottom: 20px;
+}
+
+.main {
+  max-width: 1180px;
+  margin: auto;
+  padding: 60px 0;
+}
+
+.heading-container {
+  text-align: center;
+}
+
+.tabs-list {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.tab {
+  padding: 0 10px;
+}
+
+.tab button {
+  border: none;
+  height: 65px;
+  /* padding: 10px 20px; */
+  background: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.animated-line {
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  height: 5px;
+  background-color: var(--blaze-orange-500);
+  transition: 0.2s;
+}
+
+.tab.selected .animated-line {
+  right: 0;
+}
+
+.tab.selected button {
+  color: var(--blaze-orange-500);
+  font-weight: bold;
+  /* border-bottom: 5px solid var(--blaze-orange-500); */
+}
+
+.tab:first-child {
+  border-top-left-radius: 5px;
+}
+
+.tab:last-child {
+  border-top-right-radius: 5px;
+}
+
+.content-container {
+  padding: 40px 80px 40px 80px;
+  border-radius: 5px;
+  border-top-left-radius: 0;
+}
+
+.mobile {
+  display: none;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.mobile-expandable-div:last-child {
+  border-bottom: none;
+}
+
+.mobile-label {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.mobile-label::after {
+  display: none;
+}
+
+.mobile-label > p {
+  position: relative;
+}
+
+.mobile-label > p::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  height: 5px;
+  background-color: var(--blaze-orange-500);
+  translate: 0 200%;
+  transition: 0.2s;
+}
+
+.mobile-label-selected > p::after {
+  right: 0;
+}
+
+.mobile-label-selected {
+  color: var(--blaze-orange-500);
+  font-weight: bold;
+}
+
+.main .mobile-content {
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .non-mobile {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+  }
+
+  .main {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
