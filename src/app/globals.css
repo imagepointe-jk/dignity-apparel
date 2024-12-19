@@ -254,6 +254,30 @@ h4 {
   width: 100%;
 }
 
+.link-with-arrow {
+  position: relative;
+}
+
+.link-with-arrow::after {
+  content: "▴" / ""; /* Hide from screen readers */
+  scale: 200% 138%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  translate: 90% 8px;
+  rotate: 90deg;
+  line-height: 0;
+  display: block;
+  transition: 0.2s;
+  text-decoration: none;
+  opacity: 0;
+}
+
+.link-with-arrow:hover::after {
+  translate: 124% 8px;
+  opacity: 1;
+}
+
 @media screen and (min-width: 1280px) {
   .x-wide-container {
     width: 1280px;

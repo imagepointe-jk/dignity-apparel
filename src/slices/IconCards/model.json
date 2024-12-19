@@ -1,0 +1,223 @@
+{
+  "id": "icon_cards",
+  "type": "SharedSlice",
+  "name": "IconCards",
+  "description": "IconCards",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "background_image": {
+          "type": "Image",
+          "config": {
+            "label": "Background Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "background_behavior": {
+          "type": "Select",
+          "config": {
+            "label": "Background Behavior",
+            "placeholder": "",
+            "options": [
+              "Tile",
+              "Fill",
+              "Parallax"
+            ],
+            "default_value": "Tile"
+          }
+        },
+        "background_overlay_opacity": {
+          "type": "Number",
+          "config": {
+            "label": "Background Overlay Opacity",
+            "placeholder": "Between 0 and 1"
+          }
+        },
+        "primary_text_color": {
+          "type": "Select",
+          "config": {
+            "label": "Primary Text Color",
+            "placeholder": "",
+            "options": [
+              "Black",
+              "White"
+            ],
+            "default_value": "Black"
+          }
+        },
+        "icon_details_text_color": {
+          "type": "Link",
+          "config": {
+            "label": "Icon Detail Text Color",
+            "select": "document",
+            "customtypes": [
+              "brand_color"
+            ]
+          }
+        },
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading1,heading2,heading3,heading4",
+            "labels": [
+              "h1-medium",
+              "h2-medium",
+              "h3-medium-italic",
+              "h3-italic",
+              "h3-bold",
+              "h4-semi-bold"
+            ]
+          }
+        },
+        "subheading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Subheading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2,heading3,heading4,paragraph",
+            "labels": [
+              "h2-medium",
+              "h3-medium-italic",
+              "h3-italic",
+              "h3-bold",
+              "h4-semi-bold",
+              "subheader-1-regular",
+              "subheader-1-medium",
+              "subheader-1-semi-bold",
+              "subheader-2",
+              "subheader-3",
+              "subheader-4"
+            ]
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph",
+            "labels": [
+              "body-1",
+              "body-1-semi-bold",
+              "body-1-underline",
+              "body-2",
+              "body-2-bold",
+              "body-2-underline",
+              "body-3",
+              "body-3-semi-bold",
+              "body-3-underline",
+              "body-4",
+              "body-4-bold",
+              "body-4-underline"
+            ]
+          }
+        },
+        "button": {
+          "type": "Link",
+          "config": {
+            "label": "Button",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null,
+            "allowText": true
+          }
+        },
+        "button_style": {
+          "type": "Link",
+          "config": {
+            "label": "Button Style",
+            "select": "document",
+            "customtypes": [
+              "button_style"
+            ]
+          }
+        },
+        "cards": {
+          "type": "Group",
+          "config": {
+            "label": "Cards",
+            "repeat": true,
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Title",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "heading2,heading3,heading4,paragraph",
+                  "labels": [
+                    "h2-medium",
+                    "h3-medium-italic",
+                    "h3-italic",
+                    "h3-bold",
+                    "h4-semi-bold",
+                    "subheader-1-regular",
+                    "subheader-1-medium",
+                    "subheader-1-semi-bold",
+                    "subheader-2",
+                    "subheader-3",
+                    "subheader-4"
+                  ]
+                }
+              },
+              "detail_text": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Detail Text",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph",
+                  "labels": [
+                    "body-1",
+                    "body-1-semi-bold",
+                    "body-1-underline",
+                    "body-2",
+                    "body-2-bold",
+                    "body-2-underline",
+                    "body-3",
+                    "body-3-semi-bold",
+                    "body-3-underline",
+                    "body-4",
+                    "body-4-bold",
+                    "body-4-underline"
+                  ]
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Link",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "select": null,
+                  "allowText": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

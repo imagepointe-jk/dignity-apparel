@@ -283,6 +283,7 @@ export type FooterSectionDocument<Lang extends string = string> =
   >;
 
 type HomePageDocumentDataSlicesSlice =
+  | IconCardsSlice
   | TabContentSlice
   | SocialLinksSlice
   | ValueChainSlice
@@ -1550,6 +1551,201 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Item in *IconCards → Default → Primary → Cards*
+ */
+export interface IconCardsSliceDefaultPrimaryCardsItem {
+  /**
+   * Image field in *IconCards → Default → Primary → Cards*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: icon_cards.default.primary.cards[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *IconCards → Default → Primary → Cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: icon_cards.default.primary.cards[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Detail Text field in *IconCards → Default → Primary → Cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: icon_cards.default.primary.cards[].detail_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  detail_text: prismic.RichTextField;
+
+  /**
+   * Link field in *IconCards → Default → Primary → Cards*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: icon_cards.default.primary.cards[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Primary content in *IconCards → Default → Primary*
+ */
+export interface IconCardsSliceDefaultPrimary {
+  /**
+   * Background Image field in *IconCards → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: icon_cards.default.primary.background_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  background_image: prismic.ImageField<never>;
+
+  /**
+   * Background Behavior field in *IconCards → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Tile
+   * - **API ID Path**: icon_cards.default.primary.background_behavior
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  background_behavior: prismic.SelectField<
+    "Tile" | "Fill" | "Parallax",
+    "filled"
+  >;
+
+  /**
+   * Background Overlay Opacity field in *IconCards → Default → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: Between 0 and 1
+   * - **API ID Path**: icon_cards.default.primary.background_overlay_opacity
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  background_overlay_opacity: prismic.NumberField;
+
+  /**
+   * Primary Text Color field in *IconCards → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Black
+   * - **API ID Path**: icon_cards.default.primary.primary_text_color
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  primary_text_color: prismic.SelectField<"Black" | "White", "filled">;
+
+  /**
+   * Icon Detail Text Color field in *IconCards → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: icon_cards.default.primary.icon_details_text_color
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  icon_details_text_color: prismic.ContentRelationshipField<"brand_color">;
+
+  /**
+   * Heading field in *IconCards → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: icon_cards.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Subheading field in *IconCards → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: icon_cards.default.primary.subheading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subheading: prismic.RichTextField;
+
+  /**
+   * Body field in *IconCards → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: icon_cards.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Button field in *IconCards → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: icon_cards.default.primary.button
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button: prismic.LinkField;
+
+  /**
+   * Button Style field in *IconCards → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: icon_cards.default.primary.button_style
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_style: prismic.ContentRelationshipField<"button_style">;
+
+  /**
+   * Cards field in *IconCards → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: icon_cards.default.primary.cards[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  cards: prismic.GroupField<Simplify<IconCardsSliceDefaultPrimaryCardsItem>>;
+}
+
+/**
+ * Default variation for IconCards Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type IconCardsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<IconCardsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *IconCards*
+ */
+type IconCardsSliceVariation = IconCardsSliceDefault;
+
+/**
+ * IconCards Shared Slice
+ *
+ * - **API ID**: `icon_cards`
+ * - **Description**: IconCards
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type IconCardsSlice = prismic.SharedSlice<
+  "icon_cards",
+  IconCardsSliceVariation
+>;
+
+/**
  * Primary content in *SingleReview → Default → Primary*
  */
 export interface SingleReviewSliceDefaultPrimary {
@@ -2692,6 +2888,11 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      IconCardsSlice,
+      IconCardsSliceDefaultPrimaryCardsItem,
+      IconCardsSliceDefaultPrimary,
+      IconCardsSliceVariation,
+      IconCardsSliceDefault,
       SingleReviewSlice,
       SingleReviewSliceDefaultPrimary,
       SingleReviewSliceVariation,

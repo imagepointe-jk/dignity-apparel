@@ -9,6 +9,7 @@ export const components = {
   content_cards: dynamic(() => import("./ContentCards")),
   featured_products: dynamic(() => import("./FeaturedProducts")),
   hero: dynamic(() => import("./Hero")),
+  icon_cards: dynamic(() => import("./IconCards")),
   single_review: dynamic(() => import("./SingleReview")),
   social_links: dynamic(() => import("./SocialLinks")),
   standard_section1: dynamic(() => import("./StandardSection1")),
