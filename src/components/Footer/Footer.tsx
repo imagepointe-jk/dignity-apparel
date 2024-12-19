@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Flag } from "../icons/Flag";
 import { env } from "@/envClient";
 import { SocialMediaLink } from "../global/SocialMediaLink/SocialMediaLink";
+import { SubscriptionForm } from "./SubscriptionForm";
 
 type Props = {
   data: FooterType;
@@ -39,20 +40,7 @@ export function Footer({
             <div className={styles["subscribe-description"]}>
               Sign up for updates & new arrivals
             </div>
-            <form className={styles["subscribe-form"]}>
-              <label htmlFor="email" style={{ display: "none" }}>
-                Email
-              </label>
-              <div className={styles["email-submit-container"]}>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Enter your email..."
-                />
-                <button>Submit</button>
-              </div>
-            </form>
+            <SubscriptionForm />
             <div className={styles["icon-links-row"]}>
               {iconLinks.map((link, i) => (
                 <SocialMediaLink key={i} href={link.href} />

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import "./sendpulse.css";
 import { createClient, repositoryName } from "@/prismicio";
 import { NavBarPrismic } from "@/components/NavBar/NavBarPrismic";
 import FooterPrismic from "@/components/Footer/FooterPrismic";

@@ -1,0 +1,12 @@
+/* Styles to customize the embedded Sendpulse subscription form */
+.sp-form[sp-id="240784"] .sp-field label,
+.sp-link-wrapper {
+  display: none;
+}
+
+/* The form is initially created below the footer, but our code then moves it to where it belongs */
+/* Keep it hidden until it's in place */
+#sp-form-240784 {
+  display: none;
+  background: none;
+}
