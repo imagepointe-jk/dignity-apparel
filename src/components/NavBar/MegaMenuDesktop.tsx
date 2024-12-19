@@ -52,7 +52,7 @@ export function MegaMenuDesktop({
 
           {/* Dropdown with sections, if any */}
 
-          {item.sections.length && (
+          {item.sections.length > 0 && (
             <div
               className={`${styles["mega-menu-dropdown-container"]} ${expandedIndex === i ? styles["expanded"] : undefined}`}
             >
