@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "buttons": {
+              "type": "SharedSlice"
+            },
             "icon_cards": {
               "type": "SharedSlice"
             },

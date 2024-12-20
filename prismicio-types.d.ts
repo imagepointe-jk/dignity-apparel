@@ -283,6 +283,7 @@ export type FooterSectionDocument<Lang extends string = string> =
   >;
 
 type HomePageDocumentDataSlicesSlice =
+  | ButtonsSlice
   | IconCardsSlice
   | TabContentSlice
   | SocialLinksSlice
@@ -765,6 +766,7 @@ export type SettingsDocument<Lang extends string = string> =
   >;
 
 type StandardPageDocumentDataSlicesSlice =
+  | ButtonsSlice
   | ContentCardsSlice
   | VideoSlice
   | ValueChainSlice
@@ -959,6 +961,86 @@ type AccordionSliceVariation = AccordionSliceDefault;
 export type AccordionSlice = prismic.SharedSlice<
   "accordion",
   AccordionSliceVariation
+>;
+
+/**
+ * Item in *Buttons → Default → Primary → Buttons*
+ */
+export interface ButtonsSliceDefaultPrimaryButtonsItem {
+  /**
+   * Link field in *Buttons → Default → Primary → Buttons*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: buttons.default.primary.buttons[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * Button Style field in *Buttons → Default → Primary → Buttons*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: buttons.default.primary.buttons[].button_style
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_style: prismic.ContentRelationshipField<"button_style">;
+}
+
+/**
+ * Primary content in *Buttons → Default → Primary*
+ */
+export interface ButtonsSliceDefaultPrimary {
+  /**
+   * Tiling Background field in *Buttons → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: buttons.default.primary.tiling_background
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  tiling_background: prismic.ImageField<never>;
+
+  /**
+   * Buttons field in *Buttons → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: buttons.default.primary.buttons[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  buttons: prismic.GroupField<Simplify<ButtonsSliceDefaultPrimaryButtonsItem>>;
+}
+
+/**
+ * Default variation for Buttons Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ButtonsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ButtonsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Buttons*
+ */
+type ButtonsSliceVariation = ButtonsSliceDefault;
+
+/**
+ * Buttons Shared Slice
+ *
+ * - **API ID**: `buttons`
+ * - **Description**: Buttons
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ButtonsSlice = prismic.SharedSlice<
+  "buttons",
+  ButtonsSliceVariation
 >;
 
 /**
@@ -2880,6 +2962,11 @@ declare module "@prismicio/client" {
       AccordionSliceDefaultPrimary,
       AccordionSliceVariation,
       AccordionSliceDefault,
+      ButtonsSlice,
+      ButtonsSliceDefaultPrimaryButtonsItem,
+      ButtonsSliceDefaultPrimary,
+      ButtonsSliceVariation,
+      ButtonsSliceDefault,
       CardsSection1Slice,
       CardsSection1SliceDefaultPrimaryCardsItem,
       CardsSection1SliceDefaultPrimary,
