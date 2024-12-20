@@ -185,16 +185,16 @@ interface ButtonStyleDocumentData {
   type: prismic.SelectField<"Filled" | "Outlined", "filled">;
 
   /**
-   * Full Width field in *Button Style*
+   * Extra Padding field in *Button Style*
    *
    * - **Field Type**: Boolean
    * - **Placeholder**: *None*
    * - **Default Value**: false
-   * - **API ID Path**: button_style.full_width
+   * - **API ID Path**: button_style.extra_padding
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#boolean
    */
-  full_width: prismic.BooleanField;
+  extra_padding: prismic.BooleanField;
 
   /**
    * Preview Image field in *Button Style*

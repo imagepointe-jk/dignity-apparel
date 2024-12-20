@@ -7,7 +7,7 @@ import { useState } from "react";
 export type LinkAsButtonData = {
   href: string;
   label: string;
-  fullWidth?: boolean;
+  extraPadding?: boolean;
   type?: "filled" | "outlined";
   states: {
     normal: {
@@ -24,7 +24,7 @@ type Props = {
   data: LinkAsButtonData;
 };
 export function LinkAsButton({
-  data: { href, label, fullWidth, states, type },
+  data: { href, label, extraPadding, states, type },
 }: Props) {
   const [hovered, setHovered] = useState(false);
 
@@ -60,11 +60,10 @@ export function LinkAsButton({
   return (
     <Link
       href={href}
-      className={styles["main"]}
+      className={`${styles["main"]} ${extraPadding ? styles["extra-padding"] : ""}`}
       style={{
         color: `${chooseTextColor()}`,
         backgroundColor: `${chooseBackgroundColor()}`,
-        width: fullWidth ? "100%" : undefined,
         border: chooseBorderStyle(),
       }}
       onMouseEnter={() => setHovered(true)}

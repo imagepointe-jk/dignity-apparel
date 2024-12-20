@@ -81,6 +81,10 @@
     text-align: center;
   }
 
+  .heading-ornament {
+    display: none;
+  }
+
   .buttons-container {
     justify-content: center;
     flex-wrap: wrap;
@@ -97,10 +101,6 @@
 }
 
 @media screen and (max-width: 768px) {
-  .heading-ornament {
-    display: none;
-  }
-
   .video-container {
     width: 100%;
     height: initial;

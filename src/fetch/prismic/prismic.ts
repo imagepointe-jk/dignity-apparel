@@ -89,7 +89,7 @@ export async function getButtonStyle(id: string) {
           color
         }
         type
-        full_width
+        extra_padding
       }
     }
     `,

@@ -69,10 +69,10 @@
           "default_value": "Filled"
         }
       },
-      "full_width": {
+      "extra_padding": {
         "type": "Boolean",
         "config": {
-          "label": "Full Width",
+          "label": "Extra Padding",
           "placeholder_false": "false",
           "placeholder_true": "true",
           "default_value": false

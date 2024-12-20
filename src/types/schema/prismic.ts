@@ -53,6 +53,6 @@ export const buttonStyleResponseSchema = z.object({
         .optional(),
     }),
     type: z.enum(buttonStyleTypes),
-    full_width: z.boolean(),
+    extra_padding: z.boolean().optional().nullable(),
   }),
 });

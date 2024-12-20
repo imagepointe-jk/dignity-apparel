@@ -50,12 +50,12 @@ export function StandardSection2({
         <div className={styles["heading-container"]}>
           <div
             className={styles["heading-ornament"]}
-            style={{ backgroundColor: textColor }}
+            style={{ backgroundColor: textColor || "black" }}
           ></div>
           {headingNode}
           <div
             className={styles["heading-ornament"]}
-            style={{ backgroundColor: textColor }}
+            style={{ backgroundColor: textColor || "black" }}
           ></div>
         </div>
         <div className={styles["main-flex"]}>

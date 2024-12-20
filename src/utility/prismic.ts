@@ -72,14 +72,14 @@ export async function convertButton(button: {
       hover_secondary_color,
       primary_color,
       secondary_color,
-      full_width,
+      extra_padding,
       type,
     },
   } = validateButtonStyleResponse(response);
 
   buttonData.href = href;
   buttonData.label = label;
-  buttonData.fullWidth = full_width;
+  buttonData.extraPadding = extra_padding || false;
   buttonData.type =
     type === "Filled" ? "filled" : type === "Outlined" ? "outlined" : undefined;
   if (primary_color.data)
