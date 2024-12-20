@@ -17,6 +17,51 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "content_cards": {
+              "type": "SharedSlice"
+            },
+            "video": {
+              "type": "SharedSlice"
+            },
+            "value_chain": {
+              "type": "SharedSlice"
+            },
+            "three_image_section": {
+              "type": "SharedSlice"
+            },
+            "icon_cards": {
+              "type": "SharedSlice"
+            },
+            "standard_section1": {
+              "type": "SharedSlice"
+            },
+            "standard_section2": {
+              "type": "SharedSlice"
+            },
+            "tab_content": {
+              "type": "SharedSlice"
+            },
+            "video_cards": {
+              "type": "SharedSlice"
+            },
+            "carousel_reviews": {
+              "type": "SharedSlice"
+            },
+            "text_with_heading": {
+              "type": "SharedSlice"
+            },
+            "single_review": {
+              "type": "SharedSlice"
+            },
+            "social_links": {
+              "type": "SharedSlice"
+            },
+            "featured_products": {
+              "type": "SharedSlice"
+            },
+            "accordion": {
+              "type": "SharedSlice"
+            },
             "cards_section1": {
               "type": "SharedSlice"
             },

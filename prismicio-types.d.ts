@@ -764,7 +764,24 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
-type StandardPageDocumentDataSlicesSlice = CardsSection1Slice | HeroSlice;
+type StandardPageDocumentDataSlicesSlice =
+  | ContentCardsSlice
+  | VideoSlice
+  | ValueChainSlice
+  | ThreeImageSectionSlice
+  | IconCardsSlice
+  | StandardSection1Slice
+  | StandardSection2Slice
+  | TabContentSlice
+  | VideoCardsSlice
+  | CarouselReviewsSlice
+  | TextWithHeadingSlice
+  | SingleReviewSlice
+  | SocialLinksSlice
+  | FeaturedProductsSlice
+  | AccordionSlice
+  | CardsSection1Slice
+  | HeroSlice;
 
 /**
  * Content for Standard Page documents
