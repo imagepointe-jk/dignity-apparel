@@ -18,6 +18,7 @@ export const components = {
   tab_content: dynamic(() => import("./TabContent")),
   text_with_heading: dynamic(() => import("./TextWithHeading")),
   three_image_section: dynamic(() => import("./ThreeImageSection")),
+  two_thirds_image_text: dynamic(() => import("./TwoThirdsImageText")),
   value_chain: dynamic(() => import("./ValueChain")),
   video: dynamic(() => import("./Video")),
   video_cards: dynamic(() => import("./VideoCards")),

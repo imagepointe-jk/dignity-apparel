@@ -766,6 +766,7 @@ export type SettingsDocument<Lang extends string = string> =
   >;
 
 type StandardPageDocumentDataSlicesSlice =
+  | TwoThirdsImageTextSlice
   | ButtonsSlice
   | ContentCardsSlice
   | VideoSlice
@@ -2645,6 +2646,119 @@ export type ThreeImageSectionSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *TwoThirdsImageText → Default → Primary → Sections*
+ */
+export interface TwoThirdsImageTextSliceDefaultPrimarySectionsItem {
+  /**
+   * Title field in *TwoThirdsImageText → Default → Primary → Sections*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_thirds_image_text.default.primary.sections[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Body field in *TwoThirdsImageText → Default → Primary → Sections*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_thirds_image_text.default.primary.sections[].body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *TwoThirdsImageText → Default → Primary*
+ */
+export interface TwoThirdsImageTextSliceDefaultPrimary {
+  /**
+   * Tiling Background field in *TwoThirdsImageText → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_thirds_image_text.default.primary.tiling_background
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  tiling_background: prismic.ImageField<never>;
+
+  /**
+   * Heading field in *TwoThirdsImageText → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_thirds_image_text.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Text Color field in *TwoThirdsImageText → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Normal
+   * - **API ID Path**: two_thirds_image_text.default.primary.text_color
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  text_color: prismic.SelectField<"Normal" | "White", "filled">;
+
+  /**
+   * Image field in *TwoThirdsImageText → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_thirds_image_text.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Sections field in *TwoThirdsImageText → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_thirds_image_text.default.primary.sections[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  sections: prismic.GroupField<
+    Simplify<TwoThirdsImageTextSliceDefaultPrimarySectionsItem>
+  >;
+}
+
+/**
+ * Default variation for TwoThirdsImageText Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TwoThirdsImageTextSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TwoThirdsImageTextSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TwoThirdsImageText*
+ */
+type TwoThirdsImageTextSliceVariation = TwoThirdsImageTextSliceDefault;
+
+/**
+ * TwoThirdsImageText Shared Slice
+ *
+ * - **API ID**: `two_thirds_image_text`
+ * - **Description**: TwoThirdsImageText
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TwoThirdsImageTextSlice = prismic.SharedSlice<
+  "two_thirds_image_text",
+  TwoThirdsImageTextSliceVariation
+>;
+
+/**
  * Default variation for ValueChain Slice
  *
  * - **API ID**: `default`
@@ -3028,6 +3142,11 @@ declare module "@prismicio/client" {
       ThreeImageSectionSliceDefaultPrimary,
       ThreeImageSectionSliceVariation,
       ThreeImageSectionSliceDefault,
+      TwoThirdsImageTextSlice,
+      TwoThirdsImageTextSliceDefaultPrimarySectionsItem,
+      TwoThirdsImageTextSliceDefaultPrimary,
+      TwoThirdsImageTextSliceVariation,
+      TwoThirdsImageTextSliceDefault,
       ValueChainSlice,
       ValueChainSliceVariation,
       ValueChainSliceDefault,
