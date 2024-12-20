@@ -18,12 +18,26 @@ const FeaturedProducts = async ({
   slice,
 }: FeaturedProductsProps): Promise<JSX.Element> => {
   const responses = await Promise.all(
-    slice.primary.product_slugs.map((item) => getProductBySlug(item.slug || ""))
+    slice.primary.product_slugs.map((item) =>
+      getProductBySlug(item.slug || "").catch(() => {
+        console.error(`Error fetching product with slug ${item.slug}`);
+        return null;
+      })
+    )
   );
-  const jsons = await Promise.all(responses.map((response) => response.json()));
-  const parsed = jsons.map((json) =>
-    validateWooCommerceSingleProductResponse(json.data.product)
+  const jsons = await Promise.all(
+    responses.map((response) => (response === null ? null : response.json()))
   );
+  const parsed = jsons.map((json) => {
+    try {
+      return validateWooCommerceSingleProductResponse(json.data.product);
+    } catch (error) {
+      if (error) {
+      } //we don't need the error
+      return null;
+    }
+  });
+  const nonNullParsed = parsed.filter((item) => item !== null);
   const textColor = await getBrandColor(slice.primary.primary_text_color);
 
   return (
@@ -31,7 +45,7 @@ const FeaturedProducts = async ({
       headingNode={<PrismicRichText field={slice.primary.heading} />}
       tilingBackground={{ src: slice.primary.tiling_background.url }}
       primaryTextColor={textColor.replace("#", "")}
-      products={parsed}
+      products={nonNullParsed}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     />
