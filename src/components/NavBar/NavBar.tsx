@@ -110,6 +110,12 @@ function NavBarWrapped({
                 !atTopOfPage ? styles["compressed"] : ""
               }`}
             >
+              <button
+                className={styles["hamburger-button"]}
+                onClick={onClickHamburger}
+              >
+                ☰
+              </button>
               <a
                 href={env.NEXT_PUBLIC_BASE_URL}
                 className={styles["da-home-link"]}
@@ -129,12 +135,6 @@ function NavBarWrapped({
                   setExpandedIndex={setExpandedIndex}
                   specialLink={specialLink}
                 />
-                <button
-                  className={styles["hamburger-button"]}
-                  onClick={onClickHamburger}
-                >
-                  ☰
-                </button>
                 <div className={styles["far-right-buttons"]}>
                   <button
                     className={styles["button"]}
@@ -167,8 +167,8 @@ function NavBarWrapped({
         <MegaMenuMobile
           data={megaMenu}
           menuExpanded={mobileMenuExpanded}
-          expandedIndex={expandedIndex}
-          setExpandedIndex={setExpandedIndex}
+          closeFn={() => setMobileMenuExpanded(false)}
+          specialLink={specialLink}
         />
       </div>
       <Dialog

@@ -27,3 +27,4 @@ export const megaMenuSchema = z.object({
 });
 
 export type MegaMenu = z.infer<typeof megaMenuSchema>;
+export type MegaMenuSection = z.infer<typeof megaMenuSectionSchema>;

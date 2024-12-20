@@ -3,6 +3,7 @@
 import { CSSProperties, ReactNode, useEffect, useRef, useState } from "react";
 import styles from "@/styles/global/ExpandableDiv.module.css";
 
+// TODO: Update this component to use height: calc-size(auto, size) for animated height changes, instead of all the javascript. Browser support still limited as of 12/20/24, but likely to improve soon. Use progressive enhancement in the meantime.
 type Props = {
   label?: ReactNode;
   content: ReactNode;
