@@ -9,4 +9,10 @@
 #sp-form-240784 {
   display: none;
   background: none;
+  width: 100%;
+  padding-left: 0;
+}
+
+.sp-form .sp-field[sp-id="sp-94da80f6-0ced-4d70-8409-b31a052e0ee1"] {
+  padding-left: 0;
 }

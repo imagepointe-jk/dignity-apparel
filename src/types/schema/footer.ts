@@ -19,3 +19,4 @@ export const footerSchema = z.object({
   homeLinkImageUrl: z.string(),
 });
 export type Footer = z.infer<typeof footerSchema>;
+export type FooterSection = z.infer<typeof footerSectionSchema>;
