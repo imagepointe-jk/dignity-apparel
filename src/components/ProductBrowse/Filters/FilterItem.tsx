@@ -3,18 +3,31 @@ import { ProductBrowseURLParams } from "@/types/schema/woocommerce";
 import { validateBrowseSearchParams } from "@/utility/products";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { FilterItemType } from "./Filters";
+import { Dispatch, SetStateAction } from "react";
 
 type FilterItemProps = {
   parentName: string;
   item: FilterItemType;
   type: "radio" | "checkbox";
+  mode: "normal" | "modal";
+  storedSearchParams: URLSearchParams;
+  setStoredSearchParams: Dispatch<SetStateAction<URLSearchParams>>;
 };
-export function FilterItem({ parentName, item, type }: FilterItemProps) {
+export function FilterItem({
+  parentName,
+  item,
+  type,
+  mode,
+  storedSearchParams,
+  setStoredSearchParams,
+}: FilterItemProps) {
   const inputId = `${parentName}-${item.slug}`;
   const searchParams = useSearchParams();
+  const searchParamsToUse =
+    mode === "normal" ? searchParams : storedSearchParams;
   const pathname = usePathname();
   const router = useRouter();
-  const validatedParams = validateBrowseSearchParams(searchParams);
+  const validatedParams = validateBrowseSearchParams(searchParamsToUse);
 
   function isChecked() {
     const key = parentName as keyof ProductBrowseURLParams;
@@ -34,7 +47,7 @@ export function FilterItem({ parentName, item, type }: FilterItemProps) {
     const key = parentName as keyof ProductBrowseURLParams;
     const parentNameToUse = parentName === "features" ? "feature" : parentName;
     const value = validatedParams[key];
-    const newParams = new URLSearchParams(searchParams);
+    const newParams = new URLSearchParams(searchParamsToUse);
 
     //if this filter item corresponds to a param that can have multiple values, handle adding/removing from the values
     if (type === "checkbox") {
@@ -61,7 +74,11 @@ export function FilterItem({ parentName, item, type }: FilterItemProps) {
       }
     }
 
-    router.push(`${pathname}?${newParams.toString()}`);
+    if (mode === "normal") {
+      router.push(`${pathname}?${newParams.toString()}`);
+    } else {
+      setStoredSearchParams(newParams);
+    }
   }
 
   return (

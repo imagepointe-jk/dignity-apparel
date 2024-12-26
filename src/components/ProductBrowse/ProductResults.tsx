@@ -6,19 +6,22 @@ import { PageInfo, Product } from "@/types/schema/woocommerce";
 import { validateWooCommerceProductsResponse } from "@/types/validation/woocommerce/woocommerce";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
+import { ReactNode, Suspense, useEffect, useState } from "react";
 import { FeaturedProductCard2 } from "../global/FeaturedProductCards/FeaturedProductCard2";
 import { validateBrowseSearchParams } from "@/utility/products";
 
-export function ProductResults() {
+export function ProductResults({ childrenUnderTitle }: Props) {
   return (
     <Suspense>
-      <ProductResultsWrapped />
+      <ProductResultsWrapped childrenUnderTitle={childrenUnderTitle} />
     </Suspense>
   );
 }
 
-export function ProductResultsWrapped() {
+type Props = {
+  childrenUnderTitle?: ReactNode;
+};
+export function ProductResultsWrapped({ childrenUnderTitle }: Props) {
   const [results, setResults] = useState([] as Product[]);
   const [pageInfo, setPageInfo] = useState(null as PageInfo | null);
   const [status, setStatus] = useState(
@@ -101,6 +104,7 @@ export function ProductResultsWrapped() {
   return (
     <div className={styles["main"]}>
       <h1 className={styles["heading"]}>USA MADE APPAREL</h1>
+      {childrenUnderTitle}
       <div className={styles["cards-container"]}>
         {status === "idle" &&
           results.length > 0 &&

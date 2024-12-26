@@ -1,6 +1,6 @@
 .main {
   border-right: 1px solid var(--armor-gray-200);
-  padding-right: 10px;
+  padding: 0 10px;
   margin-bottom: 20px;
   flex: 0 0 369px;
 }
@@ -69,4 +69,58 @@
 
 .input-container input {
   accent-color: var(--blaze-orange-500);
+}
+
+.modal .mobile-close-x {
+  right: initial;
+  left: 0;
+}
+
+.modal {
+  padding-top: 50px;
+  width: 70%;
+  max-width: 70%;
+}
+
+.modal .main {
+  border: none;
+}
+
+.save-and-close-modal {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background-color: var(--blaze-orange-500);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 15px;
+}
+
+.filter-modal-button {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  background-color: black;
+  color: white;
+  border: none;
+  font-family: var(--font-metropolis-regular);
+  font-size: 0.825rem;
+  letter-spacing: 0.125rem;
+  padding: 15px;
+  margin-bottom: 50px;
+}
+
+@media screen and (max-width: 1024px) {
+  .main.desktop {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .modal {
+    width: 100%;
+    max-width: 100%;
+  }
 }

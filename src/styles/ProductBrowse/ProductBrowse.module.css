@@ -1,8 +1,37 @@
 .main {
-  margin-top: 150px;
+  margin-top: 175px;
 }
 
 .main-flex {
   display: flex;
   gap: 40px;
+}
+
+.mobile {
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .main {
+    padding: 0 40px;
+    margin-bottom: 50px;
+  }
+
+  .main-flex {
+    flex-direction: column;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .main {
+    padding: 0 10px;
+  }
 }

@@ -1,12 +1,12 @@
+import { XMark2 } from "@/components/icons/XMark2";
 import styles from "@/styles/ProductBrowse/Filters.module.css";
 import { Attribute, Category } from "@/types/schema/woocommerce";
+import { searchParamsArray } from "@/utility/url";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { Suspense, useCallback } from "react";
+import { Suspense, useState } from "react";
 import { ExpandableDiv } from "../../global/ExpandableDiv/ExpandableDiv";
 import { FilterGroup } from "./FilterGroup";
-import { searchParamsArray } from "@/utility/url";
-import { XMark2 } from "@/components/icons/XMark2";
-import debounce from "lodash.debounce";
+import { Search } from "./Search";
 
 export type FilterItemType = {
   id: number;
@@ -18,21 +18,32 @@ export type FilterGroupType = {
   label: string;
   subItems: FilterItemType[];
 };
-type Props = {
+export type FilterProps = {
   categories: Category[];
   attributes: Attribute[];
+  mode: "normal" | "modal";
 };
-export function Filters({ categories, attributes }: Props) {
+export function Filters({ categories, attributes, mode }: FilterProps) {
   return (
     <Suspense>
-      <FiltersWrapped categories={categories} attributes={attributes} />
+      <FiltersWrapped
+        categories={categories}
+        attributes={attributes}
+        mode={mode}
+      />
     </Suspense>
   );
 }
-export function FiltersWrapped({ categories, attributes }: Props) {
+export function FiltersWrapped({ categories, attributes, mode }: FilterProps) {
   const searchParams = useSearchParams();
+  const [storedSearchParams, setStoredSearchParams] = useState(
+    new URLSearchParams(searchParams)
+  );
+  const searchParamsToUse =
+    mode === "normal" ? searchParams : storedSearchParams;
   const pathname = usePathname();
   const router = useRouter();
+  const includeSearch = mode === "normal";
   const categoriesAsFilterGroup: FilterGroupType = {
     label: "Collections",
     name: "category",
@@ -49,20 +60,7 @@ export function FiltersWrapped({ categories, attributes }: Props) {
       )
       .map((attr) => attributeToFilterGroup(attr))
   );
-  const searchParamsArr = searchParamsArray(searchParams.toString());
-  const debouncedOnSearchInput = useCallback(
-    debounce(async (search: string) => {
-      const curSearch = searchParams.get("search");
-      if (!curSearch && !search) return;
-
-      const newSearchParams = new URLSearchParams(searchParams);
-      if (!search) newSearchParams.delete("search");
-      else newSearchParams.set("search", search);
-
-      router.push(`${pathname}?${newSearchParams}`);
-    }, 700),
-    []
-  );
+  const searchParamsArr = searchParamsArray(searchParamsToUse.toString());
 
   //for each of the search params (some of which have multiple values), cross-reference with the filterGroups to build "clear button" data
   const clearFilterButtons = searchParamsArr
@@ -98,11 +96,14 @@ export function FiltersWrapped({ categories, attributes }: Props) {
   }
 
   function clearFilters() {
-    router.push(pathname);
+    if (mode === "normal") router.push(pathname);
+    else setStoredSearchParams(new URLSearchParams());
   }
 
   function clearParam(pair: { key: string; value: string }) {
-    const rawPairs = Array.from(new URLSearchParams(searchParams).entries());
+    const rawPairs = Array.from(
+      new URLSearchParams(searchParamsToUse).entries()
+    );
     const withoutPair = rawPairs.filter(
       (raw) => !(raw[0] === pair.key && raw[1] === pair.value)
     );
@@ -110,27 +111,35 @@ export function FiltersWrapped({ categories, attributes }: Props) {
     for (const filteredPair of withoutPair) {
       newParams.append(filteredPair[0], filteredPair[1]);
     }
-    router.push(`${pathname}?${newParams}`);
+
+    if (mode === "normal") router.push(`${pathname}?${newParams}`);
+    else setStoredSearchParams(newParams);
   }
 
   function countFilterParams() {
     //counts the number of search params corresponding to actual filters (i.e. not "search")
     //"clear filters" button will appear when this returns more than 0
-    const filteredParams = new URLSearchParams(searchParams);
+    const filteredParams = new URLSearchParams(searchParamsToUse);
     filteredParams.delete("search");
     return filteredParams.size;
   }
 
+  function applyStoredFilters() {
+    if (mode === "normal") return;
+    router.push(`${pathname}?${storedSearchParams}`);
+  }
+
   return (
     <div className={styles["main"]}>
-      <input
-        type="search"
-        name="main-search"
-        id="main-search"
-        placeholder="Search for a product"
-        className={styles["search"]}
-        onChange={(e) => debouncedOnSearchInput(e.target.value)}
-      />
+      {includeSearch && <Search />}
+      {mode === "modal" && (
+        <button
+          className={styles["save-and-close-modal"]}
+          onClick={applyStoredFilters}
+        >
+          Select Filters And Close
+        </button>
+      )}
       {countFilterParams() > 0 && (
         <>
           <button onClick={clearFilters} className={styles["clear-filters"]}>
@@ -154,7 +163,14 @@ export function FiltersWrapped({ categories, attributes }: Props) {
       {filterGroups.map((group) => (
         <ExpandableDiv
           key={group.name}
-          content={<FilterGroup group={group} />}
+          content={
+            <FilterGroup
+              group={group}
+              mode={mode}
+              storedSearchParams={storedSearchParams}
+              setStoredSearchParams={setStoredSearchParams}
+            />
+          }
           label={group.label}
           mainClassName={styles["expandable-main"]}
           labelClassName={styles["expandable-label"]}

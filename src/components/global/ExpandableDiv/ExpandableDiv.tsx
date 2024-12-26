@@ -3,7 +3,6 @@
 import { CSSProperties, ReactNode, useEffect, useRef, useState } from "react";
 import styles from "@/styles/global/ExpandableDiv.module.css";
 
-// TODO: Update this component to use height: calc-size(auto, size) for animated height changes, instead of all the javascript. Browser support still limited as of 12/20/24, but likely to improve soon. Use progressive enhancement in the meantime.
 type Props = {
   label?: ReactNode;
   content: ReactNode;
@@ -41,12 +40,6 @@ export function ExpandableDiv({
     if (!contentRef.current) return;
 
     setExpanded(!expandedStateToUse);
-  }
-
-  function getScrollHeight() {
-    if (!contentRef.current) return 0;
-
-    return contentRef.current.scrollHeight;
   }
 
   useEffect(() => {
@@ -91,7 +84,6 @@ export function ExpandableDiv({
         ref={contentRef}
         className={`${styles["content"]} ${contentClassName || ""}`}
         style={{
-          height: expandedStateToUse ? `${getScrollHeight()}px` : "0px",
           overflow: "hidden",
           ...contentStyle,
         }}

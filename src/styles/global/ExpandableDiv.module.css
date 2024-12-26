@@ -31,8 +31,11 @@
 .content {
   transition: 0.2s;
   margin: 0 15px 0 30px;
+  height: 0px;
 }
 
 .expanded .content {
   margin: 0 15px 30px 30px;
+  height: auto;
+  height: calc-size(auto, size);
 }
