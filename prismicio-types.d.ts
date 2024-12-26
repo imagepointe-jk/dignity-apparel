@@ -225,6 +225,105 @@ export type ButtonStyleDocument<Lang extends string = string> =
   >;
 
 /**
+ * Item in *Contact Page → Phone Information*
+ */
+export interface ContactPageDocumentDataPhoneInformationItem {
+  /**
+   * Paragraph field in *Contact Page → Phone Information*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_page.phone_information[].paragraph
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  paragraph: prismic.RichTextField;
+}
+
+/**
+ * Item in *Contact Page → Social Links*
+ */
+export interface ContactPageDocumentDataSocialLinksItem {
+  /**
+   * Link field in *Contact Page → Social Links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_page.social_links[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Content for Contact Page documents
+ */
+interface ContactPageDocumentData {
+  /**
+   * Contact Form Heading field in *Contact Page*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_page.contact_form_heading
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  contact_form_heading: prismic.TitleField;
+
+  /**
+   * Phone Information field in *Contact Page*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_page.phone_information[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  phone_information: prismic.GroupField<
+    Simplify<ContactPageDocumentDataPhoneInformationItem>
+  >;
+
+  /**
+   * Email Address field in *Contact Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_page.email_address
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  email_address: prismic.KeyTextField;
+
+  /**
+   * Social Links field in *Contact Page*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_page.social_links[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  social_links: prismic.GroupField<
+    Simplify<ContactPageDocumentDataSocialLinksItem>
+  >;
+}
+
+/**
+ * Contact Page document from Prismic
+ *
+ * - **API ID**: `contact_page`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ContactPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ContactPageDocumentData>,
+    "contact_page",
+    Lang
+  >;
+
+/**
  * Item in *Footer Section → Links*
  */
 export interface FooterSectionDocumentDataLinksItem {
@@ -853,6 +952,7 @@ export type AllDocumentTypes =
   | AnnouncementBannerDocument
   | BrandColorDocument
   | ButtonStyleDocument
+  | ContactPageDocument
   | FooterSectionDocument
   | HomePageDocument
   | MegaMenuFeaturedImageDocument
@@ -3047,6 +3147,10 @@ declare module "@prismicio/client" {
       BrandColorDocumentData,
       ButtonStyleDocument,
       ButtonStyleDocumentData,
+      ContactPageDocument,
+      ContactPageDocumentData,
+      ContactPageDocumentDataPhoneInformationItem,
+      ContactPageDocumentDataSocialLinksItem,
       FooterSectionDocument,
       FooterSectionDocumentData,
       FooterSectionDocumentDataLinksItem,
