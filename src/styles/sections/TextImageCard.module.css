@@ -1,0 +1,32 @@
+.main h1,
+.main h2,
+.main h3,
+.main h4,
+.main p {
+  margin: 0;
+}
+
+.main {
+  padding: 50px;
+}
+
+.card {
+  background-color: white;
+  display: flex;
+}
+
+.content {
+  flex: 0 0 50%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 40px;
+  gap: 30px;
+}
+
+.image-container {
+  height: 410px;
+  flex: 0 0 50%;
+}

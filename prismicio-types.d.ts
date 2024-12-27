@@ -382,6 +382,7 @@ export type FooterSectionDocument<Lang extends string = string> =
   >;
 
 type HomePageDocumentDataSlicesSlice =
+  | TextImageCardSlice
   | ButtonsSlice
   | IconCardsSlice
   | TabContentSlice
@@ -865,6 +866,7 @@ export type SettingsDocument<Lang extends string = string> =
   >;
 
 type StandardPageDocumentDataSlicesSlice =
+  | TextImageCardSlice
   | TwoThirdsImageTextSlice
   | ButtonsSlice
   | ContentCardsSlice
@@ -2526,6 +2528,111 @@ export type TabContentSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *TextImageCard → Default → Primary*
+ */
+export interface TextImageCardSliceDefaultPrimary {
+  /**
+   * Tiling Background field in *TextImageCard → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_image_card.default.primary.tiling_background
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  tiling_background: prismic.ImageField<never>;
+
+  /**
+   * Heading field in *TextImageCard → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_image_card.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Subheading field in *TextImageCard → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_image_card.default.primary.subheading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subheading: prismic.RichTextField;
+
+  /**
+   * Body field in *TextImageCard → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_image_card.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Button field in *TextImageCard → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_image_card.default.primary.button
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button: prismic.LinkField;
+
+  /**
+   * Button Style field in *TextImageCard → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_image_card.default.primary.button_style
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_style: prismic.ContentRelationshipField<"button_style">;
+
+  /**
+   * Image field in *TextImageCard → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_image_card.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for TextImageCard Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextImageCardSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TextImageCardSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TextImageCard*
+ */
+type TextImageCardSliceVariation = TextImageCardSliceDefault;
+
+/**
+ * TextImageCard Shared Slice
+ *
+ * - **API ID**: `text_image_card`
+ * - **Description**: TextImageCard
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextImageCardSlice = prismic.SharedSlice<
+  "text_image_card",
+  TextImageCardSliceVariation
+>;
+
+/**
  * Primary content in *TextWithHeading → Default → Primary*
  */
 export interface TextWithHeadingSliceDefaultPrimary {
@@ -3238,6 +3345,10 @@ declare module "@prismicio/client" {
       TabContentSliceDefaultPrimary,
       TabContentSliceVariation,
       TabContentSliceDefault,
+      TextImageCardSlice,
+      TextImageCardSliceDefaultPrimary,
+      TextImageCardSliceVariation,
+      TextImageCardSliceDefault,
       TextWithHeadingSlice,
       TextWithHeadingSliceDefaultPrimary,
       TextWithHeadingSliceVariation,
