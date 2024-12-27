@@ -1,0 +1,30 @@
+.main h1,
+.main h2,
+.main h3,
+.main h4 {
+  margin: 0;
+  line-height: 1;
+}
+
+.main {
+  max-width: 960px;
+  margin: auto;
+  padding: 50px 10px;
+}
+
+.main-heading {
+  color: var(--blaze-orange-500);
+}
+
+.heading-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.heading-container p {
+  margin: 0;
+}

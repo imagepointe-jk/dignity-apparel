@@ -17,6 +17,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "article": {
+              "type": "SharedSlice"
+            },
             "text_image_card": {
               "type": "SharedSlice"
             },
