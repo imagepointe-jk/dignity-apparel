@@ -4,6 +4,7 @@ import { validateWooCommerceProductsResponse } from "@/types/validation/woocomme
 import { useEffect, useState } from "react";
 import styles from "@/styles/ProductPage/ProductPage.module.css";
 import { FeaturedProductCard2 } from "../global/FeaturedProductCards/FeaturedProductCard2";
+import { CardSlider } from "../global/CardSlider/CardSlider";
 
 type Props = {
   categorySlug: string;
@@ -13,6 +14,10 @@ export function Recommendations({ categorySlug }: Props) {
   const [status, setStatus] = useState(
     "loading" as "idle" | "loading" | "error"
   );
+  const TEMP_PRODUCTS = products
+    .concat([...products])
+    .concat([...products])
+    .concat([...products]);
 
   async function fetchData() {
     try {
@@ -46,11 +51,18 @@ export function Recommendations({ categorySlug }: Props) {
       <div className={`${styles["recommended-content"]} x-wide-container`}>
         {status === "idle" && (
           <>
-            {products.length === 0 && <>No recommended products.</>}
-            {products.length > 0 &&
-              products.map((product) => (
-                <FeaturedProductCard2 key={product.id} product={product} />
-              ))}
+            {TEMP_PRODUCTS.length === 0 && <>No recommended products.</>}
+            {TEMP_PRODUCTS.length > 0 && (
+              <CardSlider
+                createCard={(product) => (
+                  <FeaturedProductCard2 product={product} />
+                )}
+                dataset={TEMP_PRODUCTS}
+                slidingParentClassName={
+                  styles["recommendations-sliding-parent"]
+                }
+              />
+            )}
           </>
         )}
         {status === "loading" && <>Loading...</>}

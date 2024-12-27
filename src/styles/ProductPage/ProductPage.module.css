@@ -127,11 +127,11 @@
 }
 
 .recommended-content {
-  display: flex;
-  justify-content: center;
   min-height: 450px;
-  flex-wrap: wrap;
-  gap: 40px;
+}
+
+.recommended-container .recommendations-sliding-parent {
+  height: 525px;
 }
 
 .mobile-heading {

@@ -10,6 +10,7 @@ type HasId = {
 };
 type Props<T> = {
   cardContainerClassName?: string;
+  slidingParentClassName?: string;
   dataset: T[];
   createCard: (data: T) => ReactNode;
 };
@@ -20,6 +21,7 @@ export function CardSlider<T extends HasId>({
   dataset,
   createCard,
   cardContainerClassName,
+  slidingParentClassName,
 }: Props<T>) {
   const mainRef = useRef(null as HTMLDivElement | null);
   const [canMoveLeft, setCanMoveLeft] = useState(false);
@@ -147,7 +149,7 @@ export function CardSlider<T extends HasId>({
   return (
     <div className={styles["main"]}>
       <div
-        className={styles["sliding-parent"]}
+        className={`${styles["sliding-parent"]} ${slidingParentClassName || ""}`}
         ref={mainRef}
         style={{ maxWidth }}
       >
