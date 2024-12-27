@@ -38,6 +38,8 @@ const TextImageCard = async ({
       link={convertedButton}
       subheading={<PrismicRichText field={subheading} />}
       tilingBackground={{ src: tiling_background.url }}
+      data-slice-type={slice.slice_type}
+      data-slice-variation={slice.variation}
     />
   );
 };
