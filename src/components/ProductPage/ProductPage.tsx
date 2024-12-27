@@ -56,6 +56,7 @@ function ProductPageWrapped({ product }: Props) {
   return (
     <>
       <div className={`${styles["main"]} x-wide-container`}>
+        <div className={styles["mobile-heading"]}>{product.name}</div>
         <div className={styles["images-container"]}>
           <ContainedImage
             src={product.imageUrl}
