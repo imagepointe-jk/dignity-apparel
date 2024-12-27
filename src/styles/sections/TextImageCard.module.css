@@ -30,3 +30,32 @@
   height: 410px;
   flex: 0 0 50%;
 }
+
+@media screen and (max-width: 1024px) {
+  .card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .content {
+    padding: 40px;
+  }
+
+  .image-container {
+    height: initial;
+    flex: 0 0 450px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .main {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .content {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
