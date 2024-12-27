@@ -1,0 +1,177 @@
+.section {
+  padding: 70px 0;
+}
+
+.main {
+  padding: 0 40px;
+}
+
+.main h1,
+.main h4 {
+  margin: 0;
+}
+
+.main h1 {
+  line-height: 1;
+  font-size: 3rem;
+  color: var(--blaze-orange-500);
+}
+
+.with-video .content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.job-description {
+  color: var(--armor-gray-500);
+  font-size: 1.75rem;
+}
+
+.main-flex {
+  display: flex;
+  gap: 40px;
+}
+
+.main .featured-img-container {
+  flex: 0 0 494px;
+  height: 637px;
+}
+
+.body-text {
+  font-family: var(--font-merriweather-italic);
+  font-size: 1.125rem;
+}
+
+.with-video .body-text {
+  margin: 40px 0;
+}
+
+.highlight-text-container {
+  font-style: italic;
+  font-weight: bold;
+  position: relative;
+  max-width: 900px;
+  margin: 110px auto 110px auto;
+  text-align: center;
+}
+
+.with-video .highlight-text-container {
+  display: none;
+}
+
+.quote-mark {
+  color: var(--blaze-orange-300);
+  position: absolute;
+}
+
+.quote-mark-left {
+  left: 0;
+  top: 0;
+  translate: -117% -57%;
+  rotate: 180deg;
+}
+
+.quote-mark-right {
+  right: 0;
+  bottom: 0;
+  translate: 118% 29%;
+}
+
+.additional-images-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.additional-images-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main .additional-image-horz {
+  width: 636px;
+  height: 295px;
+}
+
+.main .additional-image-vert {
+  width: 522px;
+  height: 637px;
+}
+
+.video-container {
+  width: 960px;
+  margin-top: 30px;
+}
+
+.video-container iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+
+.tablet {
+  display: none;
+}
+
+.mobile {
+  display: none;
+}
+
+@media screen and (max-width: 1280px) {
+  .desktop-only {
+    display: none;
+  }
+
+  .tablet {
+    display: block;
+  }
+
+  .main .featured-img-container {
+    width: 494px;
+    flex: 0 0 637px;
+    margin: 20px 0;
+  }
+
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .quote-mark {
+    display: none;
+  }
+
+  .additional-images-flex {
+    justify-content: center;
+  }
+
+  .additional-images-column {
+    gap: 30px;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .main {
+    padding: 0 10px;
+  }
+
+  .video-container {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main .featured-img-container {
+    width: 305px;
+    flex: 0 0 429px;
+    margin: 20px 0;
+  }
+
+  .main .additional-image-horz {
+    width: 100%;
+  }
+}

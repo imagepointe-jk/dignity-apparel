@@ -95,3 +95,13 @@ export async function getButtonStyle(id: string) {
     `,
   });
 }
+
+export async function getStaffStories() {
+  const client = createClient();
+  return client.getAllByType("staff_story");
+}
+
+export async function getStaffStoryByUID(uid: string) {
+  const client = createClient();
+  return client.getByUID("staff_story", uid);
+}

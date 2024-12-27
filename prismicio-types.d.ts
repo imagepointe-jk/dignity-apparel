@@ -865,6 +865,132 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Staff Story → Additional Images*
+ */
+export interface StaffStoryDocumentDataAdditionalImagesItem {
+  /**
+   * Image field in *Staff Story → Additional Images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: staff_story.additional_images[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Content for Staff Story documents
+ */
+interface StaffStoryDocumentData {
+  /**
+   * First Name field in *Staff Story*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: staff_story.first_name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  first_name: prismic.KeyTextField;
+
+  /**
+   * Job Description Short field in *Staff Story*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: staff_story.job_description_short
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  job_description_short: prismic.KeyTextField;
+
+  /**
+   * Story Text field in *Staff Story*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: staff_story.story_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  story_text: prismic.RichTextField;
+
+  /**
+   * Highlight Text field in *Staff Story*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Displayed as a quote blurb on the story page.
+   * - **API ID Path**: staff_story.highlight_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  highlight_text: prismic.KeyTextField;
+
+  /**
+   * Video field in *Staff Story*
+   *
+   * - **Field Type**: Embed
+   * - **Placeholder**: If provided, this will replace the image AND change the layout.
+   * - **API ID Path**: staff_story.video
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#embed
+   */
+  video: prismic.EmbedField;
+
+  /**
+   * Card Image field in *Staff Story*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: staff_story.card_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  card_image: prismic.ImageField<never>;
+
+  /**
+   * Image field in *Staff Story*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: staff_story.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Additional Images field in *Staff Story*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: staff_story.additional_images[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  additional_images: prismic.GroupField<
+    Simplify<StaffStoryDocumentDataAdditionalImagesItem>
+  >;
+}
+
+/**
+ * Staff Story document from Prismic
+ *
+ * - **API ID**: `staff_story`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type StaffStoryDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<StaffStoryDocumentData>,
+    "staff_story",
+    Lang
+  >;
+
 type StandardPageDocumentDataSlicesSlice =
   | ArticleSlice
   | TextImageCardSlice
@@ -962,6 +1088,7 @@ export type AllDocumentTypes =
   | MegaMenuItemDocument
   | MegaMenuSectionDocument
   | SettingsDocument
+  | StaffStoryDocument
   | StandardPageDocument;
 
 /**
@@ -3344,6 +3471,9 @@ declare module "@prismicio/client" {
       SettingsDocumentDataNavigationItem,
       SettingsDocumentDataFooterSectionsItem,
       SettingsDocumentDataFooterIconLinksItem,
+      StaffStoryDocument,
+      StaffStoryDocumentData,
+      StaffStoryDocumentDataAdditionalImagesItem,
       StandardPageDocument,
       StandardPageDocumentData,
       StandardPageDocumentDataSlicesSlice,
