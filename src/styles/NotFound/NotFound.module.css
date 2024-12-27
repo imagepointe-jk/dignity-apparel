@@ -1,0 +1,44 @@
+.main {
+  margin: 200px 0 70px 0;
+  padding: 0 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.heading-404 {
+  color: var(--blaze-orange-500);
+  margin: 0;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.link-sections-container {
+  display: flex;
+  gap: 80px;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.link-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.link-section-title {
+  font-weight: bold;
+  font-size: 1.125rem;
+}
+
+.link-section a,
+.link-section a:visited {
+  color: black;
+}
