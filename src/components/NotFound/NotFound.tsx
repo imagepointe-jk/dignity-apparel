@@ -16,11 +16,11 @@ export function NotFound({ data }: Props) {
         <h2 className={styles["heading-404"]}>404</h2>
         <div className={styles["info-container"]}>
           <div className="subheader-2">
-            oops...looks like that doesn't exist
+            oops...looks like that doesn&apos;t exist
           </div>
           <div className="body-2">
-            We couldn't find the content you're looking for on our website. Use
-            the links below to navigate to another page.
+            We couldn&apos;t find the content you&apos;re looking for on our
+            website. Use the links below to navigate to another page.
           </div>
         </div>
         <div className={styles["link-sections-container"]}>
@@ -30,7 +30,9 @@ export function NotFound({ data }: Props) {
                 {section.title}
               </div>
               {section.links.map((item) => (
-                <Link href={item.href || ""}>{item.displayText}</Link>
+                <Link key={item.displayText} href={item.href || ""}>
+                  {item.displayText}
+                </Link>
               ))}
             </div>
           ))}
