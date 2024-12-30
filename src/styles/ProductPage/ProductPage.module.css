@@ -134,6 +134,10 @@
   height: 525px;
 }
 
+.loading-indicator-container {
+  margin-top: 150px;
+}
+
 .mobile-heading {
   display: none;
 }

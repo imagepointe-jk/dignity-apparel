@@ -9,6 +9,7 @@ import { useSearchParams } from "next/navigation";
 import { ReactNode, Suspense, useEffect, useState } from "react";
 import { FeaturedProductCard2 } from "../global/FeaturedProductCards/FeaturedProductCard2";
 import { validateBrowseSearchParams } from "@/utility/products";
+import { LoadingIndicator } from "../global/LoadingIndicator/LoadingIndicator";
 
 export function ProductResults({ childrenUnderTitle }: Props) {
   return (
@@ -117,7 +118,12 @@ export function ProductResultsWrapped({ childrenUnderTitle }: Props) {
             />
           ))}
         {status === "idle" && results.length === 0 && <>No results.</>}
-        {status === "loading" && <>Loading...</>}
+        {status === "loading" && (
+          <LoadingIndicator
+            message="Loading results..."
+            containerClassName={styles["loading-indicator-container"]}
+          />
+        )}
         {status === "error" && <>Something went wrong.</>}
       </div>
       {(prevUrl || nextUrl) && (

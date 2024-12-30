@@ -24,6 +24,13 @@
   height: 405px;
 }
 
+.loading-indicator-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 80px 0;
+}
+
 @media screen and (max-width: 480px) {
   .cards-container {
     justify-content: center;

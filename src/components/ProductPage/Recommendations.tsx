@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import styles from "@/styles/ProductPage/ProductPage.module.css";
 import { FeaturedProductCard2 } from "../global/FeaturedProductCards/FeaturedProductCard2";
 import { CardSlider } from "../global/CardSlider/CardSlider";
+import { LoadingIndicator } from "../global/LoadingIndicator/LoadingIndicator";
 
 type Props = {
   categorySlug: string;
@@ -61,7 +62,12 @@ export function Recommendations({ categorySlug }: Props) {
             )}
           </>
         )}
-        {status === "loading" && <>Loading...</>}
+        {status === "loading" && (
+          <LoadingIndicator
+            message="Loading results..."
+            containerClassName={styles["loading-indicator-container"]}
+          />
+        )}
         {status === "error" && <>No recommended products.</>}
       </div>
     </section>

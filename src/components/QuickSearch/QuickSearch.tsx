@@ -8,6 +8,7 @@ import { VariableProductGroup } from "./SearchResults/VariableProductGroup";
 import { getRepresentedCategories } from "@/utility/products";
 import { Collection } from "./SearchResults/Collection";
 import { XMark } from "../icons/XMark";
+import { LoadingIndicator } from "../global/LoadingIndicator/LoadingIndicator";
 
 type Props = {
   toggleDialog: () => void;
@@ -122,7 +123,12 @@ export function QuickSearch({ toggleDialog }: Props) {
             )}
             {status === "idle" && results?.length === 0 && <>No results.</>}
             {status === "error" && <>Something went wrong.</>}
-            {status === "loading" && <div>Loading...</div>}
+            {status === "loading" && (
+              <LoadingIndicator
+                message="Loading results..."
+                containerClassName={styles["loading-indicator-container"]}
+              />
+            )}
           </>
         )}
       </div>
