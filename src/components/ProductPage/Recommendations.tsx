@@ -14,10 +14,6 @@ export function Recommendations({ categorySlug }: Props) {
   const [status, setStatus] = useState(
     "loading" as "idle" | "loading" | "error"
   );
-  const TEMP_PRODUCTS = products
-    .concat([...products])
-    .concat([...products])
-    .concat([...products]);
 
   async function fetchData() {
     try {
@@ -51,13 +47,13 @@ export function Recommendations({ categorySlug }: Props) {
       <div className={`${styles["recommended-content"]} x-wide-container`}>
         {status === "idle" && (
           <>
-            {TEMP_PRODUCTS.length === 0 && <>No recommended products.</>}
-            {TEMP_PRODUCTS.length > 0 && (
+            {products.length === 0 && <>No recommended products.</>}
+            {products.length > 0 && (
               <CardSlider
                 createCard={(product) => (
                   <FeaturedProductCard2 product={product} />
                 )}
-                dataset={TEMP_PRODUCTS}
+                dataset={products}
                 slidingParentClassName={
                   styles["recommendations-sliding-parent"]
                 }
