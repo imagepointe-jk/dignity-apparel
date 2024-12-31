@@ -47,11 +47,13 @@ export function FiltersWrapped({ categories, attributes, mode }: FilterProps) {
   const categoriesAsFilterGroup: FilterGroupType = {
     label: "Collections",
     name: "category",
-    subItems: categories.map((cat) => ({
-      id: cat.id,
-      name: cat.name,
-      slug: cat.slug,
-    })),
+    subItems: categories
+      .filter((cat) => cat.slug !== "uncategorized")
+      .map((cat) => ({
+        id: cat.id,
+        name: cat.name,
+        slug: cat.slug,
+      })),
   };
   const filterGroups: FilterGroupType[] = [categoriesAsFilterGroup].concat(
     attributes
