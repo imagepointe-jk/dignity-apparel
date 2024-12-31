@@ -14,8 +14,6 @@ export function SubscriptionForm() {
         sendpulseForm.style.display = "block";
         console.log("sendpulse initialized");
         clearInterval(interval);
-      } else {
-        console.log(sendpulseContainer, sendpulseForm);
       }
     }, 500);
 
