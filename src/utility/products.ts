@@ -29,7 +29,7 @@ const colorSwatches: ColorSwatch[] = [
   {
     name: "navy",
     displayName: "Navy",
-    hexCode: "483370",
+    hexCode: "262d38",
   },
   {
     name: "purple",
@@ -77,6 +77,26 @@ const colorSwatches: ColorSwatch[] = [
     displayName: "Heather Military Green",
     imageUrl:
       "https://dawholesale.unionwebstores.com/wp-content/uploads/sites/118/2024/11/heather-military-green.png",
+  },
+  {
+    name: "sand",
+    displayName: "Sand",
+    hexCode: "d19e6c",
+  },
+  {
+    name: "storm",
+    displayName: "Storm",
+    hexCode: "6265AA",
+  },
+  {
+    name: "carbon",
+    displayName: "Carbon",
+    hexCode: "a3a3a3",
+  },
+  {
+    name: "onyx",
+    displayName: "Onyx",
+    hexCode: "000000",
   },
 ];
 
