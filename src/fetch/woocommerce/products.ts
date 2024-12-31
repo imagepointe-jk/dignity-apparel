@@ -198,6 +198,7 @@ export async function queryProducts(params: {
       where: { 
         search: $searchTerm, 
         category: $category, 
+        status: "PUBLISH",
         taxonomyFilter: {
           filters: [
             ${conditionalStr(
