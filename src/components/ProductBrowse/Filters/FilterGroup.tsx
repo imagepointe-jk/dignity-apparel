@@ -32,16 +32,6 @@ export function FilterGroup({
           setStoredSearchParams={setStoredSearchParams}
         />
       ))}
-      {group.name === "fit" && (
-        <FilterItem
-          parentName={group.name}
-          item={{ name: "Unisex", slug: "unisex", id: -1 }}
-          type={"radio"}
-          mode={mode}
-          storedSearchParams={storedSearchParams}
-          setStoredSearchParams={setStoredSearchParams}
-        />
-      )}
     </ul>
   );
 }
