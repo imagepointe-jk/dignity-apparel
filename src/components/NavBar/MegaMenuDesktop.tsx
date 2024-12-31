@@ -32,7 +32,7 @@ export function MegaMenuDesktop({
           onMouseOut={() => setExpandedIndex(null)}
         >
           <a
-            href=""
+            href={item.href}
             onClick={(e) => {
               if (
                 !item.href ||
