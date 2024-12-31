@@ -80,6 +80,7 @@
   text-decoration: none;
 }
 
+.product-name,
 .product-name:visited {
   color: black;
 }
