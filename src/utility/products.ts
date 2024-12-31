@@ -193,11 +193,11 @@ export function getRepresentedCategories(products: Product[]) {
 function sortBySize<T>(items: T[], getItemSize: (item: T) => string) {
   function getSizeValue(size: string) {
     switch (size) {
-      case "s":
+      case "small":
         return 1;
-      case "m":
+      case "medium":
         return 2;
-      case "l":
+      case "large":
         return 3;
       case "xl":
         return 4;
@@ -207,6 +207,8 @@ function sortBySize<T>(items: T[], getItemSize: (item: T) => string) {
         return 6;
       case "4xl":
         return 7;
+      case "5xl":
+        return 8;
       default:
         return 1;
     }
@@ -257,4 +259,11 @@ export function validateBrowseSearchParams(
     features,
     fit: fit === "mens" ? "mens" : fit === "womens" ? "womens" : "unisex",
   };
+}
+
+export function abbreviateSize(size: string) {
+  if (["small", "medium", "large"].includes(size.toLocaleLowerCase())) {
+    return size.substring(0, 1);
+  }
+  return size;
 }

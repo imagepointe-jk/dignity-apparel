@@ -2,6 +2,7 @@ import { IMAGE_NOT_FOUND_URL } from "@/constants";
 import styles from "@/styles/global/FeaturedProductCard2.module.css";
 import { Product } from "@/types/schema/woocommerce";
 import {
+  abbreviateSize,
   getColorStockAmounts,
   getSwatchesWithImages,
 } from "@/utility/products";
@@ -22,7 +23,9 @@ export function FeaturedProductCard2({
   const stockAmounts = getColorStockAmounts(product, swatches[0]?.name || "");
   //different colors might have different size ranges, but this is not accounted for in the design,
   //so just guess and pick the first color
-  const smallestSize = stockAmounts[0]?.size || "UNKNOWN SIZE";
+  const smallestSize = stockAmounts[0]?.size
+    ? abbreviateSize(stockAmounts[0].size)
+    : "UNKNOWN SIZE";
   const largestSize =
     stockAmounts[stockAmounts.length - 1]?.size || "UNKNOWN SIZE";
 

@@ -3,6 +3,7 @@
 import { IMAGE_NOT_FOUND_URL } from "@/constants";
 import { Product } from "@/types/schema/woocommerce";
 import {
+  abbreviateSize,
   getColorStockAmounts,
   getSwatchesWithImages,
 } from "@/utility/products";
@@ -40,8 +41,10 @@ function ProductPageWrapped({ product }: Props) {
   );
   const searchParams = useSearchParams();
   const sizeStocks = getColorStockAmounts(product, viewedSwatch?.name || "");
-  const smallestSize = sizeStocks[0];
-  const largestSize = sizeStocks[sizeStocks.length - 1];
+  const smallestSize = sizeStocks[0]
+    ? abbreviateSize(sizeStocks[0].size)
+    : "UNKNOWN SIZE";
+  const largestSize = sizeStocks[sizeStocks.length - 1]?.size || "UNKNOWN SIZE";
 
   function onClickSwatch(clickedVariationId: number) {
     setViewedVariationId(clickedVariationId);
@@ -113,7 +116,7 @@ function ProductPageWrapped({ product }: Props) {
           <div className={styles["info-subcontainer"]}>
             <div className="body-3-semi-bold">Sizes</div>
             <div className="body-1">
-              {`Available In Sizes ${smallestSize?.size.toLocaleUpperCase()} to ${largestSize?.size.toLocaleUpperCase()}`}
+              {`Available In Sizes ${smallestSize.toLocaleUpperCase()} to ${largestSize.toLocaleUpperCase()}`}
             </div>
           </div>
           <div>
