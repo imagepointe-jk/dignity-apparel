@@ -6,6 +6,7 @@ import {
   abbreviateSize,
   getColorStockAmounts,
   getSwatchesWithImages,
+  isSizedProduct,
 } from "@/utility/products";
 import { Suspense, useEffect, useState } from "react";
 import styles from "@/styles/ProductPage/ProductPage.module.css";
@@ -113,12 +114,14 @@ function ProductPageWrapped({ product }: Props) {
               </ul>
             </div>
           </div>
-          <div className={styles["info-subcontainer"]}>
-            <div className="body-3-semi-bold">Sizes</div>
-            <div className="body-1">
-              {`Available In Sizes ${smallestSize.toLocaleUpperCase()} to ${largestSize.toLocaleUpperCase()}`}
+          {isSizedProduct(product) && (
+            <div className={styles["info-subcontainer"]}>
+              <div className="body-3-semi-bold">Sizes</div>
+              <div className="body-1">
+                {`Available In Sizes ${smallestSize.toLocaleUpperCase()} to ${largestSize.toLocaleUpperCase()}`}
+              </div>
             </div>
-          </div>
+          )}
           <div>
             <Link href={""} className={styles["purchase-link"]}>
               Login to Purchase

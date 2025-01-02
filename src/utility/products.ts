@@ -287,3 +287,10 @@ export function abbreviateSize(size: string) {
   }
   return size;
 }
+
+//some products have sizes (e.g. apparel) but some don't (e.g. blankets)
+export function isSizedProduct(product: Product) {
+  return !!product.variations.find((variation) =>
+    variation.attributes.find((attr) => attr.name === "pa_size")
+  );
+}

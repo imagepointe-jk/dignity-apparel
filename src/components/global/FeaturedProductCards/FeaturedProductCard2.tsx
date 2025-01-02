@@ -5,6 +5,7 @@ import {
   abbreviateSize,
   getColorStockAmounts,
   getSwatchesWithImages,
+  isSizedProduct,
 } from "@/utility/products";
 import { productUrl } from "@/utility/url";
 import Link from "next/link";
@@ -51,9 +52,11 @@ export function FeaturedProductCard2({
         <Link href={productUrl(product)} className={styles["product-name"]}>
           {product.name}
         </Link>
-        <div className={styles["product-sizes"]}>
-          {smallestSize.toLocaleUpperCase()}-{largestSize.toLocaleUpperCase()}
-        </div>
+        {isSizedProduct(product) && (
+          <div className={styles["product-sizes"]}>
+            {smallestSize.toLocaleUpperCase()}-{largestSize.toLocaleUpperCase()}
+          </div>
+        )}
         <div className={styles["swatches-container"]}>
           {swatches.map((swatch) => (
             <div
