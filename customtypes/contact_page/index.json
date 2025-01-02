@@ -83,6 +83,20 @@
             }
           }
         }
+      },
+      "map_1_style_url": {
+        "type": "Text",
+        "config": {
+          "label": "Map 1 Style URL",
+          "placeholder": ""
+        }
+      },
+      "map_2_style_url": {
+        "type": "Text",
+        "config": {
+          "label": "Map 2 Style URL",
+          "placeholder": ""
+        }
       }
     }
   }

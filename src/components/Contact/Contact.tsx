@@ -5,18 +5,23 @@ import { SocialMediaLink } from "../global/SocialMediaLink/SocialMediaLink";
 import { Envelope } from "../icons/Envelope";
 import { People } from "../icons/People";
 import { Phone } from "../icons/Phone";
+import { Mapbox } from "../global/Mapbox/Mapbox";
 
 type Props = {
   emailAddress: string;
   phoneInformation: ReactNode;
   contactFormHeading: ReactNode;
   socialLinkUrls: string[];
+  mapboxStyleUrl1: string;
+  mapboxStyleUrl2: string;
 };
 export function Contact({
   emailAddress,
   phoneInformation,
   contactFormHeading,
   socialLinkUrls,
+  mapboxStyleUrl1,
+  mapboxStyleUrl2,
 }: Props) {
   return (
     <div className={styles["main"]}>
@@ -74,8 +79,14 @@ export function Contact({
           USA-made apparel.
         </div>
         <div className={styles["maps-flex"]}>
-          <div className={styles["map-container"]}></div>
-          <div className={styles["map-container"]}></div>
+          <Mapbox
+            mapStyleUrl={mapboxStyleUrl1}
+            containerClassName={styles["map-container"]}
+          />
+          <Mapbox
+            mapStyleUrl={mapboxStyleUrl2}
+            containerClassName={styles["map-container"]}
+          />
         </div>
       </div>
     </div>

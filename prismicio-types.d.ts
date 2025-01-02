@@ -305,6 +305,28 @@ interface ContactPageDocumentData {
   social_links: prismic.GroupField<
     Simplify<ContactPageDocumentDataSocialLinksItem>
   >;
+
+  /**
+   * Map 1 Style URL field in *Contact Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_page.map_1_style_url
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  map_1_style_url: prismic.KeyTextField;
+
+  /**
+   * Map 2 Style URL field in *Contact Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_page.map_2_style_url
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  map_2_style_url: prismic.KeyTextField;
 }
 
 /**

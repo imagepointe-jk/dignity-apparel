@@ -88,12 +88,6 @@
   flex-wrap: wrap;
 }
 
-.map-container {
-  width: 550px;
-  height: 400px;
-  background-color: lightgray;
-}
-
 @media screen and (max-width: 1024px) {
   .contact-info-flex {
     flex-direction: column-reverse;
@@ -116,5 +110,9 @@
 
   .locations-heading {
     padding: 0 10px;
+  }
+
+  .main .map-container {
+    width: 100%;
   }
 }
