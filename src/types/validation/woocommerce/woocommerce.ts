@@ -43,6 +43,12 @@ function pullProductData(productJson: any) {
         id: item.node.databaseId,
         name: item.node.name,
       })) || [],
+    globalAttributes: productJson.globalAttributes.edges.map((item: any) => ({
+      name: item.node.name,
+      terms: item.node.terms.edges.map((item: any) => ({
+        slug: item.node.slug,
+      })),
+    })),
     variations:
       productJson.variations?.nodes.map((item: any) => {
         return {
@@ -60,7 +66,7 @@ export function validateWooCommerceSingleProductResponse(productJson: any) {
   return productSchema.parse(pullProductData(productJson));
 }
 
-export function validateWooCommerceProductsResponse(json: any) {
+export function validateWooCommerceProductsGraphQLResponse(json: any) {
   return {
     pageInfo: pageInfoSchema.parse({
       hasNextPage: json.data.products.pageInfo.hasNextPage,
@@ -72,6 +78,10 @@ export function validateWooCommerceProductsResponse(json: any) {
       .filter((item) => productSchema.safeParse(pullProductData(item)).success)
       .map((item: any) => validateWooCommerceSingleProductResponse(item)),
   };
+}
+
+export function validateWooCommerceProducts(json: any) {
+  return (json as any[]).map((item: any) => productSchema.parse(item));
 }
 
 export function validateCategoriesResponse(json: any) {

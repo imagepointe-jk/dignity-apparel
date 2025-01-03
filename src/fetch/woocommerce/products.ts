@@ -1,5 +1,6 @@
 import { env } from "@/env";
 import { queryWpGraphQl } from "./wpgraphql";
+import { ProductQueryParams } from "@/types/schema/woocommerce";
 
 function conditionalStr(condition: boolean, str: string) {
   return condition ? str : "";
@@ -36,6 +37,20 @@ function buildProductFields(params?: {
             name
           }
         }
+      }
+      globalAttributes {
+          edges {
+              node {
+                  name
+                  terms {
+                      edges {
+                          node {
+                              slug
+                          }
+                      }
+                  }
+              }
+          }
       } 
     }
     ${conditionalStr(
@@ -149,19 +164,7 @@ export async function getProducts() {
   });
 }
 
-export async function queryProducts(params: {
-  search: string | null;
-  category: string | null;
-  availability: string | null;
-  fabricType: string[];
-  fabricWeight: string[];
-  features: string[];
-  fit: string | null;
-  before: string | null;
-  after: string | null;
-  first: number | null;
-  last: number | null;
-}) {
+export async function queryProducts(params: ProductQueryParams) {
   const {
     category,
     search,

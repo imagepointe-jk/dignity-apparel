@@ -2,7 +2,10 @@ import styles from "@/styles/QuickSearch/QuickSearch.module.css";
 import debounce from "lodash.debounce";
 import { useCallback, useEffect, useState } from "react";
 import { queryProducts } from "@/fetch/client/products";
-import { validateWooCommerceProductsResponse } from "@/types/validation/woocommerce/woocommerce";
+import {
+  validateWooCommerceProducts,
+  validateWooCommerceProductsGraphQLResponse,
+} from "@/types/validation/woocommerce/woocommerce";
 import { Product } from "@/types/schema/woocommerce";
 import { VariableProductGroup } from "./SearchResults/VariableProductGroup";
 import { getRepresentedCategories } from "@/utility/products";
@@ -51,8 +54,8 @@ export function QuickSearch({ toggleDialog }: Props) {
         last: null,
       });
       const json = await response.json();
-      const parsed = validateWooCommerceProductsResponse(json);
-      setResults(parsed.products);
+      const parsed = validateWooCommerceProducts(json);
+      setResults(parsed);
       setStatus("idle");
     } catch (error) {
       setResults([]);

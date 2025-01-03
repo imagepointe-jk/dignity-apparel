@@ -1,12 +1,8 @@
 import { easyCorsInit } from "@/constants";
-import { queryProducts } from "@/fetch/woocommerce/products";
-import {
-  validatePagination,
-  validateWooCommerceProductsResponse,
-} from "@/types/validation/woocommerce/woocommerce";
 import { message } from "@/utility/misc";
 import { INTERNAL_SERVER_ERROR, NOT_FOUND } from "@/utility/statusCodes";
 import { NextRequest } from "next/server";
+import { queryCachedProducts } from "./simpleCache";
 
 const emptyResults = {
   data: {
@@ -33,19 +29,9 @@ export async function GET(request: NextRequest) {
   const fit = ["mens", "womens"].includes(`${searchParams.get("fit")}`)
     ? searchParams.get("fit")
     : null;
-  const beforeParam = searchParams.get("before");
-  const afterParam = searchParams.get("after");
-  const firstParam = searchParams.get("first");
-  const lastParam = searchParams.get("last");
-  const { after, before, first, last } = validatePagination({
-    before: beforeParam,
-    after: afterParam,
-    first: firstParam ? +firstParam : null,
-    last: lastParam ? +lastParam : null,
-  });
 
   try {
-    const response = await queryProducts({
+    const products = await queryCachedProducts({
       search,
       category,
       availability,
@@ -53,20 +39,18 @@ export async function GET(request: NextRequest) {
       fabricWeight,
       features,
       fit,
-      before,
-      after,
-      first,
-      last,
+      before: null,
+      after: null,
+      first: null,
+      last: null,
     });
-    const json = await response.json();
-    const parsed = validateWooCommerceProductsResponse(json);
-    if (parsed.products.length === 0)
+    if (products.length === 0)
       return Response.json(emptyResults, {
         ...easyCorsInit,
         status: NOT_FOUND,
       });
 
-    return Response.json(json, easyCorsInit);
+    return Response.json(products, easyCorsInit);
   } catch (error) {
     console.error(error);
     return Response.json(message("Server error."), {

@@ -3,7 +3,7 @@ import { env } from "@/envClient";
 import { queryProducts } from "@/fetch/client/products";
 import styles from "@/styles/ProductBrowse/ProductResults.module.css";
 import { PageInfo, Product } from "@/types/schema/woocommerce";
-import { validateWooCommerceProductsResponse } from "@/types/validation/woocommerce/woocommerce";
+import { validateWooCommerceProducts } from "@/types/validation/woocommerce/woocommerce";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ReactNode, Suspense, useEffect, useState } from "react";
@@ -24,7 +24,7 @@ type Props = {
 };
 export function ProductResultsWrapped({ childrenUnderTitle }: Props) {
   const [results, setResults] = useState([] as Product[]);
-  const [pageInfo, setPageInfo] = useState(null as PageInfo | null);
+  const [pageInfo, setPageInfo] = useState(null as PageInfo | null); //currently unused
   const [status, setStatus] = useState(
     "loading" as "idle" | "loading" | "error"
   );
@@ -57,7 +57,6 @@ export function ProductResultsWrapped({ childrenUnderTitle }: Props) {
 
   async function getResults() {
     setStatus("loading");
-    setPageInfo(null);
     try {
       const {
         search,
@@ -86,11 +85,13 @@ export function ProductResultsWrapped({ childrenUnderTitle }: Props) {
         first,
         last,
       });
+      if (!response.ok) {
+        throw new Error(`API response status ${response.status}`);
+      }
       const json = await response.json();
-      const parsed = validateWooCommerceProductsResponse(json);
+      const parsed = validateWooCommerceProducts(json);
 
-      setResults(parsed.products);
-      setPageInfo(parsed.pageInfo);
+      setResults(parsed);
       setStatus("idle");
     } catch (error) {
       console.error(error);

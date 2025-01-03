@@ -1,6 +1,6 @@
 import { queryProducts } from "@/fetch/client/products";
 import { Product } from "@/types/schema/woocommerce";
-import { validateWooCommerceProductsResponse } from "@/types/validation/woocommerce/woocommerce";
+import { validateWooCommerceProducts } from "@/types/validation/woocommerce/woocommerce";
 import { useEffect, useState } from "react";
 import styles from "@/styles/ProductPage/ProductPage.module.css";
 import { FeaturedProductCard2 } from "../global/FeaturedProductCards/FeaturedProductCard2";
@@ -27,8 +27,8 @@ export function Recommendations({ categorySlug }: Props) {
         search: null,
       });
       const json = await response.json();
-      const parsed = validateWooCommerceProductsResponse(json);
-      setProducts(parsed.products);
+      const parsed = validateWooCommerceProducts(json);
+      setProducts(parsed);
       setStatus("idle");
     } catch (error) {
       console.error(error);

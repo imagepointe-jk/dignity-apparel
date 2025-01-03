@@ -4,7 +4,10 @@ import { env } from "@/envClient";
 import { queryProducts } from "@/fetch/client/products";
 import styles from "@/styles/QuickSearch/SearchResult.module.css";
 import { Product } from "@/types/schema/woocommerce";
-import { validateWooCommerceProductsResponse } from "@/types/validation/woocommerce/woocommerce";
+import {
+  validateWooCommerceProducts,
+  validateWooCommerceProductsGraphQLResponse,
+} from "@/types/validation/woocommerce/woocommerce";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -33,8 +36,8 @@ export function Collection({ category }: Props) {
         search: null,
       });
       const json = await response.json();
-      const parsed = validateWooCommerceProductsResponse(json);
-      setTotalInCategory(parsed.products.length);
+      const parsed = validateWooCommerceProducts(json);
+      setTotalInCategory(parsed.length);
     } catch (error) {
       console.error(error);
     }

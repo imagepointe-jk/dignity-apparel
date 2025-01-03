@@ -43,6 +43,12 @@ export const productSchema = z.object({
       name: z.string(),
     })
   ),
+  globalAttributes: z.array(
+    z.object({
+      name: z.string(),
+      terms: z.array(z.object({ slug: z.string() })),
+    })
+  ),
   variations: z.array(productVariationSchema),
 });
 
@@ -98,4 +104,17 @@ export type ProductBrowseURLParams = {
   ["fabric-type"]: string[];
   ["fabric-weight"]: string[];
   availability: "made-to-order" | "in-stock" | null;
+};
+export type ProductQueryParams = {
+  search: string | null;
+  category: string | null;
+  availability: string | null;
+  fabricType: string[];
+  fabricWeight: string[];
+  features: string[];
+  fit: string | null;
+  before: string | null;
+  after: string | null;
+  first: number | null;
+  last: number | null;
 };
