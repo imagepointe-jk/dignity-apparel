@@ -46,7 +46,9 @@ export function MegaMenuMobile({
               >
                 {navItem.sections.length === 0 &&
                   navItem.featured.length === 0 && (
-                    <Link href={navItem.href || ""}>{navItem.label}</Link>
+                    <Link href={navItem.href || ""} onClick={closeFn}>
+                      {navItem.label}
+                    </Link>
                   )}
                 {(navItem.sections.length > 0 || navItem.featured.length > 0) &&
                   navItem.label}
