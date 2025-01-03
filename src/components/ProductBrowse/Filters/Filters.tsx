@@ -3,7 +3,7 @@ import styles from "@/styles/ProductBrowse/Filters.module.css";
 import { Attribute, Category } from "@/types/schema/woocommerce";
 import { searchParamsArray } from "@/utility/url";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { ExpandableDiv } from "../../global/ExpandableDiv/ExpandableDiv";
 import { FilterGroup } from "./FilterGroup";
 import { Search } from "./Search";
@@ -35,12 +35,12 @@ export function Filters({ categories, attributes, mode }: FilterProps) {
   );
 }
 export function FiltersWrapped({ categories, attributes, mode }: FilterProps) {
-  const searchParams = useSearchParams();
+  const windowSearchParams = useSearchParams();
   const [storedSearchParams, setStoredSearchParams] = useState(
-    new URLSearchParams(searchParams)
+    new URLSearchParams(windowSearchParams)
   );
   const searchParamsToUse =
-    mode === "normal" ? searchParams : storedSearchParams;
+    mode === "normal" ? windowSearchParams : storedSearchParams;
   const pathname = usePathname();
   const router = useRouter();
   const includeSearch = mode === "normal";
@@ -130,6 +130,10 @@ export function FiltersWrapped({ categories, attributes, mode }: FilterProps) {
     if (mode === "normal") return;
     router.push(`${pathname}?${storedSearchParams}`);
   }
+
+  useEffect(() => {
+    setStoredSearchParams(windowSearchParams);
+  }, [windowSearchParams]);
 
   return (
     <div className={styles["main"]}>
