@@ -2,10 +2,7 @@ import styles from "@/styles/QuickSearch/QuickSearch.module.css";
 import debounce from "lodash.debounce";
 import { useCallback, useEffect, useState } from "react";
 import { queryProducts } from "@/fetch/client/products";
-import {
-  validateWooCommerceProducts,
-  validateWooCommerceProductsGraphQLResponse,
-} from "@/types/validation/woocommerce/woocommerce";
+import { validateWooCommerceProducts } from "@/types/validation/woocommerce/woocommerce";
 import { Product } from "@/types/schema/woocommerce";
 import { VariableProductGroup } from "./SearchResults/VariableProductGroup";
 import { getRepresentedCategories } from "@/utility/products";

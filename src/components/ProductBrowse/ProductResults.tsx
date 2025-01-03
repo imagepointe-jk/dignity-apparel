@@ -24,7 +24,7 @@ type Props = {
 };
 export function ProductResultsWrapped({ childrenUnderTitle }: Props) {
   const [results, setResults] = useState([] as Product[]);
-  const [pageInfo, setPageInfo] = useState(null as PageInfo | null); //currently unused
+  const [pageInfo] = useState(null as PageInfo | null); //currently unused
   const [status, setStatus] = useState(
     "loading" as "idle" | "loading" | "error"
   );

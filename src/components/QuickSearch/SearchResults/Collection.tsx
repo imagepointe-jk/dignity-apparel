@@ -4,10 +4,7 @@ import { env } from "@/envClient";
 import { queryProducts } from "@/fetch/client/products";
 import styles from "@/styles/QuickSearch/SearchResult.module.css";
 import { Product } from "@/types/schema/woocommerce";
-import {
-  validateWooCommerceProducts,
-  validateWooCommerceProductsGraphQLResponse,
-} from "@/types/validation/woocommerce/woocommerce";
+import { validateWooCommerceProducts } from "@/types/validation/woocommerce/woocommerce";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
