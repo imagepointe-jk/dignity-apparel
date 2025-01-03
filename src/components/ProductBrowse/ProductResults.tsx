@@ -85,9 +85,6 @@ export function ProductResultsWrapped({ childrenUnderTitle }: Props) {
         first,
         last,
       });
-      if (!response.ok) {
-        throw new Error(`API response status ${response.status}`);
-      }
       const json = await response.json();
       const parsed = validateWooCommerceProducts(json);
 

@@ -4,19 +4,7 @@ import { INTERNAL_SERVER_ERROR, NOT_FOUND } from "@/utility/statusCodes";
 import { NextRequest } from "next/server";
 import { queryCachedProducts } from "./simpleCache";
 
-const emptyResults = {
-  data: {
-    products: {
-      nodes: [],
-      pageInfo: {
-        hasNextPage: false,
-        hasPreviousPage: false,
-        startCursor: null,
-        endCursor: null,
-      },
-    },
-  },
-};
+const emptyResults: any[] = [];
 
 export async function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl;
