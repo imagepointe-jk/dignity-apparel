@@ -1,7 +1,6 @@
 import { easyCorsInit } from "@/constants";
-import { NextRequest } from "next/server";
 
-export async function POST(request: NextRequest) {
+export async function POST() {
   //Always send a 200 response back to WooCommerce; the webhook seems to break otherwise
   console.log("hello webhook");
   return Response.json({}, easyCorsInit);
