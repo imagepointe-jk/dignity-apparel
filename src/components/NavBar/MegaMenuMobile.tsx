@@ -59,7 +59,7 @@ export function MegaMenuMobile({
 
               {(navItem.sections.length > 0 || navItem.featured.length > 0) && (
                 <div className={styles["nav-item-sections-container"]}>
-                  <Sections sections={navItem.sections} />
+                  <Sections sections={navItem.sections} closeFn={closeFn} />
 
                   {/* Also map through the nav item's "featured" images and display them as normal subitems for the mobile view */}
 
@@ -68,6 +68,7 @@ export function MegaMenuMobile({
                       <Link
                         href={featured.href}
                         className={styles["nav-subitem-label"]}
+                        onClick={closeFn}
                       >
                         {featured.caption}
                       </Link>
@@ -92,8 +93,9 @@ export function MegaMenuMobile({
 
 type SectionsProps = {
   sections: MegaMenuSection[];
+  closeFn: () => void;
 };
-function Sections({ sections }: SectionsProps) {
+function Sections({ sections, closeFn }: SectionsProps) {
   const [expandedIndex, setExpandedIndex] = useState(null as number | null);
 
   return sections.map((section, i) => (
@@ -101,7 +103,11 @@ function Sections({ sections }: SectionsProps) {
       {!section.title &&
         section.links.map((link) => (
           <div key={link.label}>
-            <Link href={link.href} className={styles["nav-subitem-label"]}>
+            <Link
+              href={link.href}
+              className={styles["nav-subitem-label"]}
+              onClick={closeFn}
+            >
               {link.label}
             </Link>
           </div>
@@ -122,6 +128,7 @@ function Sections({ sections }: SectionsProps) {
                 key={link.label}
                 href={link.href}
                 className={styles["nav-subitem-link"]}
+                onClick={closeFn}
               >
                 {link.label}
               </Link>
