@@ -97,5 +97,5 @@ export type ProductBrowseURLParams = {
   features: string[];
   ["fabric-type"]: string[];
   ["fabric-weight"]: string[];
-  availability: "made-to-order" | "in-stock";
+  availability: "made-to-order" | "in-stock" | null;
 };

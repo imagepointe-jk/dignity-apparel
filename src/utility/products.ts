@@ -273,7 +273,11 @@ export function validateBrowseSearchParams(
     first: first ? +first : null,
     last: last ? +last : null,
     availability:
-      availability === "made-to-order" ? "made-to-order" : "in-stock",
+      availability === "made-to-order"
+        ? "made-to-order"
+        : availability === "in-stock"
+          ? "in-stock"
+          : null,
     "fabric-type": fabricType,
     "fabric-weight": fabricWeight,
     features,
