@@ -2,8 +2,6 @@ import { easyCorsInit } from "@/constants";
 import { NextRequest } from "next/server";
 import { getCachedProducts } from "../simpleCache";
 import { env } from "@/env";
-import { message } from "@/utility/misc";
-import { FORBIDDEN } from "@/utility/statusCodes";
 
 export async function POST(request: NextRequest) {
   const webhookResource = request.headers.get("x-wc-webhook-resource");
@@ -23,11 +21,6 @@ export async function POST(request: NextRequest) {
     const decodedSplit = decoded?.split(":");
     if (decodedSplit && decodedSplit[1] === env.DEVELOPER_PASSWORD) {
       getCachedProducts(true);
-    } else {
-      return Response.json(message("Invalid password."), {
-        ...easyCorsInit,
-        status: FORBIDDEN,
-      });
     }
   }
 
