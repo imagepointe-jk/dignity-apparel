@@ -3,7 +3,7 @@ import { NextRequest } from "next/server";
 import { getCachedProducts } from "../simpleCache";
 
 export async function POST(request: NextRequest) {
-  const webhookResource = request.headers.get("x-wc-webhook-source");
+  const webhookResource = request.headers.get("x-wc-webhook-resource");
   const webhookEvent = request.headers.get("x-wc-webhook-event");
 
   if (
