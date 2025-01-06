@@ -7,10 +7,12 @@ import { FeaturedProductCard2 } from "../global/FeaturedProductCards/FeaturedPro
 import { CardSlider } from "../global/CardSlider/CardSlider";
 import { LoadingIndicator } from "../global/LoadingIndicator/LoadingIndicator";
 
+const defaultCount = 4;
 type Props = {
   categorySlug: string;
+  excludeSkus?: string[];
 };
-export function Recommendations({ categorySlug }: Props) {
+export function Recommendations({ categorySlug, excludeSkus }: Props) {
   const [products, setProducts] = useState([] as Product[]);
   const [status, setStatus] = useState(
     "loading" as "idle" | "loading" | "error"
@@ -19,7 +21,7 @@ export function Recommendations({ categorySlug }: Props) {
   async function fetchData() {
     try {
       const response = await queryProducts({
-        first: 4,
+        first: defaultCount, //! this doesn't work currently with our simple cache, which doesn't support pagination yet
         after: null,
         before: null,
         category: categorySlug,
@@ -28,7 +30,12 @@ export function Recommendations({ categorySlug }: Props) {
       });
       const json = await response.json();
       const parsed = validateWooCommerceProducts(json);
-      setProducts(parsed);
+      const productsToSet = !excludeSkus
+        ? parsed.slice(0, defaultCount)
+        : parsed
+            .filter((item) => !excludeSkus.includes(item.sku))
+            .slice(0, defaultCount);
+      setProducts(productsToSet);
       setStatus("idle");
     } catch (error) {
       console.error(error);

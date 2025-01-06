@@ -185,7 +185,10 @@ function ProductPageWrapped({ product }: Props) {
           </div>
         </div>
       </div>
-      <Recommendations categorySlug={product.categories[0]?.slug || ""} />
+      <Recommendations
+        categorySlug={product.categories[0]?.slug || ""}
+        excludeSkus={[product.sku]}
+      />
     </>
   );
 }
