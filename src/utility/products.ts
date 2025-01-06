@@ -199,6 +199,7 @@ export function getRepresentedCategories(products: Product[]) {
   }[] = [];
   for (const product of products) {
     for (const category of product.categories) {
+      if (category.slug === "uncategorized") continue;
       const match = categories.find((item) => item.slug === category.slug);
       if (!match) {
         categories.push({ ...category, products: [product] });
