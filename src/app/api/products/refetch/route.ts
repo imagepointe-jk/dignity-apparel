@@ -1,5 +1,6 @@
 import { easyCorsInit } from "@/constants";
 import { NextRequest } from "next/server";
+import { getCachedProducts } from "../simpleCache";
 
 export async function POST(request: NextRequest) {
   const webhookResource = request.headers.get("x-wc-webhook-source");
@@ -10,6 +11,9 @@ export async function POST(request: NextRequest) {
     ["created", "updated", "deleted"].includes(`${webhookEvent}`)
   ) {
     console.log(`${webhookResource} event "${webhookEvent}" from WC`);
+    getCachedProducts();
+  } else {
+    console.log("unrecognized combo:", webhookResource, webhookEvent);
   }
 
   //Always send a 200 response back to WooCommerce; the webhook seems to break otherwise

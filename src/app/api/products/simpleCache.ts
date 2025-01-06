@@ -13,7 +13,7 @@ import { validateWooCommerceProductsGraphQLResponse } from "@/types/validation/w
 let sc: Product[] = []; //simpleCache; should only be accessed from queryCachedProducts
 let lft: number | null = null; //lastFetchedTime; should only be accessed from queryCachedProducts
 
-async function getCachedProducts(): Promise<Product[]> {
+export async function getCachedProducts(): Promise<Product[]> {
   const now = Date.now();
   const millisecondsSinceLastFetch =
     lft !== null ? now - lft : Number.MAX_SAFE_INTEGER;
@@ -39,6 +39,7 @@ async function getCachedProducts(): Promise<Product[]> {
 
   sc = parsed.products;
   lft = now;
+  console.log("Product cache updated.");
 
   return parsed.products;
 }
