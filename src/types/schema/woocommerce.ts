@@ -31,6 +31,10 @@ export const productSchema = z.object({
     careInformationSanitized: z.string().optional().nullable(),
     materialDescription: z.string().optional().nullable(),
   }),
+  additionalProductSettings: z.object({
+    linkTextOverride: z.string().optional().nullable(),
+    linkURLOverride: z.string().optional().nullable(),
+  }),
   categories: z.array(
     z.object({
       id: z.number(),

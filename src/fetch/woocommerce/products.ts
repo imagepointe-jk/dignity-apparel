@@ -10,6 +10,7 @@ function buildProductFields(params?: {
   variations?: boolean;
   sizeCharges?: boolean;
   additionalInfo?: boolean;
+  additionalSettings?: boolean;
 }) {
   return `
     id
@@ -67,6 +68,13 @@ function buildProductFields(params?: {
       `additionalProductInformation {
         materialDescription
         careInformation
+      }`
+    )}
+    ${conditionalStr(
+      params?.additionalSettings !== false,
+      `additionalProductSettings {
+        linkTextOverride
+        linkUrlOverride
       }`
     )}
     description
@@ -253,7 +261,7 @@ export async function queryProducts(params: ProductQueryParams) {
         endCursor
       }
         nodes {
-          ${buildProductFields({ sizeCharges: false, additionalInfo: false })}
+          ${buildProductFields({ sizeCharges: false, additionalInfo: false, additionalSettings: false })}
         }
     }
   }

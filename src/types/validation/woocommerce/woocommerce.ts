@@ -33,6 +33,10 @@ function pullProductData(productJson: any) {
       materialDescription:
         productJson.additionalProductInformation?.materialDescription,
     },
+    additionalProductSettings: {
+      linkTextOverride: productJson.additionalProductSettings?.linkTextOverride,
+      linkURLOverride: productJson.additionalProductSettings?.linkUrlOverride,
+    },
     categories:
       productJson.productCategories?.edges.map((item: any) => ({
         id: item.node.databaseId,
