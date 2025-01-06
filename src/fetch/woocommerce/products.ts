@@ -137,6 +137,9 @@ export async function getProductBySlug(slug: string) {
         query,
         variables: { slug },
       }),
+      next: {
+        revalidate: 60,
+      },
     })
   );
 }
