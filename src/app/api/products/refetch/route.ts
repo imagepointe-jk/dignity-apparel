@@ -15,6 +15,7 @@ export async function POST(request: NextRequest) {
   ) {
     getCachedProducts(true);
   } else {
+    console.log("unrecognized", webhookResource, webhookEvent);
     const authorization = request.headers.get("Authorization");
     const split = authorization?.split(" ");
     const givenPassword = split ? split[1] : undefined;
