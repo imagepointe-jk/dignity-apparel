@@ -123,7 +123,7 @@ function ProductPageWrapped({ product }: Props) {
             </div>
           )}
           <div>
-            <Link href={""} className={styles["purchase-link"]}>
+            <Link href={product.link} className={styles["purchase-link"]}>
               Login to Purchase
             </Link>
           </div>

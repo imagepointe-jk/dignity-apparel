@@ -21,6 +21,7 @@ function buildProductFields(params?: {
       sourceUrl
     }
     ...on Product {
+      link
       productCategories {
         edges {
           node {

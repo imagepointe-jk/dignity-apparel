@@ -18,6 +18,7 @@ export const productSchema = z.object({
   name: z.string(),
   sku: z.string(),
   slug: z.string(),
+  link: z.string(),
   imageUrl: z.string(),
   descriptionSanitized: z.string(),
   shortDescriptionSanitized: z.string(),
