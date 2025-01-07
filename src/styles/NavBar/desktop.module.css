@@ -205,6 +205,7 @@
   background: none;
   border: none;
   transition: 0.2s;
+  cursor: pointer;
 }
 
 .main.compressed .hamburger-button {

@@ -1,19 +1,21 @@
-.main {
-  width: 100%;
-  flex-grow: 1;
-  background-color: rgba(0, 0, 0, 0.2);
-  position: relative;
-  opacity: 0;
-  transition: 0.2s;
-  pointer-events: none;
-  z-index: 100;
+.dialog {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  height: 100%;
+  max-height: initial;
+  width: 500px;
+}
+
+.dialog button {
+  cursor: pointer;
+}
+
+.dialog ul {
+  list-style-type: none;
 }
 
 .nav-main-container {
-  position: fixed;
-  z-index: 100;
-  inset: 10px;
-  background-color: white;
   padding: 70px 30px 0 30px;
 }
 
@@ -21,12 +23,15 @@
   height: 100%;
   overflow-y: auto;
   overscroll-behavior: contain;
+  padding-left: 0;
+  margin: 0;
 }
 
-.close-x {
+.dialog .close-x {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 20px;
+  left: 20px;
+  right: initial;
   background: none;
   border: none;
   padding: 0;
@@ -36,6 +41,12 @@
   padding: 20px 0;
   position: relative;
   display: inline-block;
+}
+
+.nav-item-label button {
+  border: none;
+  background: none;
+  padding: 0;
 }
 
 .nav-item-label a,
@@ -72,6 +83,12 @@
   /* Limited browser support as of 12/2024; fallback to height: auto with no animation */
   height: auto;
   height: calc-size(auto, size);
+}
+
+.nav-subitem button {
+  border: none;
+  background: none;
+  padding-top: 13px; /* hack because making it a button misaligns the decorative arrow for some reason */
 }
 
 .nav-subitem-label {
@@ -146,6 +163,13 @@
 
   .mobile-expanded > .nav-items {
     translate: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .dialog {
+    width: 100%;
+    max-width: initial;
   }
 }
 

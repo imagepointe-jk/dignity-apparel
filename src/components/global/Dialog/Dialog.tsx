@@ -8,6 +8,8 @@ import { usePathname, useSearchParams } from "next/navigation";
 type Props = {
   className?: string;
   closeButtonClassName?: string;
+  closeButtonSize?: number;
+  closeButtonAriaLabel?: string;
   children: React.ReactNode;
   showCloseButton?: boolean;
   toggleDialog: () => void;
@@ -21,6 +23,8 @@ const Dialog = forwardRef<HTMLDialogElement, Props>(
       toggleDialog,
       showCloseButton,
       closeButtonClassName,
+      closeButtonSize,
+      closeButtonAriaLabel,
     },
     ref
   ) => {
@@ -39,6 +43,7 @@ const Dialog = forwardRef<HTMLDialogElement, Props>(
         ref={ref}
         className={`${styles["main"]} ${className || ""}`}
         onClick={(e) => {
+          console.log("togglling");
           if (e.currentTarget === e.target) {
             toggleDialog();
           }
@@ -50,8 +55,9 @@ const Dialog = forwardRef<HTMLDialogElement, Props>(
             <button
               className={`${styles["x"]} ${closeButtonClassName || ""}`}
               onClick={toggleDialog}
+              aria-label={closeButtonAriaLabel || "close dialog"}
             >
-              <XMark />
+              <XMark size={closeButtonSize} />
             </button>
           )}
         </div>

@@ -1,7 +1,15 @@
 "use client";
 import styles from "@/styles/NavBar/desktop.module.css";
 import stylesSearch from "@/styles/QuickSearch/QuickSearch.module.css";
-import { ReactNode, Suspense, useEffect, useRef, useState } from "react";
+import stylesMobile from "@/styles/NavBar/mobile.module.css";
+import {
+  MutableRefObject,
+  ReactNode,
+  Suspense,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import throttle from "lodash.throttle";
 import { TopBanner } from "./TopBanner";
 import { MegaMenuDesktop } from "./MegaMenuDesktop";
@@ -59,24 +67,29 @@ function NavBarWrapped({
   const [expandedIndex, setExpandedIndex] = useState(null as number | null);
   const [mobileMenuExpanded, setMobileMenuExpanded] = useState(false);
   const [atTopOfPage, setAtTopOfPage] = useState(true);
-  const dialogRef = useRef(null as HTMLDialogElement | null);
+  const searchDialogRef = useRef(null as HTMLDialogElement | null);
+  const mobileNavDialogRef = useRef(null as HTMLDialogElement | null);
 
-  function toggleDialog() {
-    if (!dialogRef.current) return;
+  function toggleDialog(ref: MutableRefObject<HTMLDialogElement | null>) {
+    if (!ref.current) return;
 
-    if (dialogRef.current.hasAttribute("open")) {
-      dialogRef.current.close();
+    if (ref.current.hasAttribute("open")) {
+      ref.current.close();
     } else {
-      dialogRef.current.showModal();
+      ref.current.showModal();
     }
+  }
+
+  function toggleSearchDialog() {
+    toggleDialog(searchDialogRef);
+  }
+
+  function toggleMobileNavDialog() {
+    toggleDialog(mobileNavDialogRef);
   }
 
   function onFocusTopLevel(focusedIndex: number) {
     if (focusedIndex !== expandedIndex) setExpandedIndex(null);
-  }
-
-  function onClickHamburger() {
-    setMobileMenuExpanded(!mobileMenuExpanded);
   }
 
   useEffect(() => {
@@ -112,7 +125,10 @@ function NavBarWrapped({
             >
               <button
                 className={styles["hamburger-button"]}
-                onClick={onClickHamburger}
+                onClick={toggleMobileNavDialog}
+                aria-label="open navigation"
+                aria-expanded={mobileMenuExpanded}
+                aria-controls="nav-mobile"
               >
                 ☰
               </button>
@@ -138,7 +154,7 @@ function NavBarWrapped({
                 <div className={styles["far-right-buttons"]}>
                   <button
                     className={styles["button"]}
-                    onClick={toggleDialog}
+                    onClick={toggleSearchDialog}
                     aria-label="Search"
                   >
                     <MagnifyingGlass size={28} />
@@ -164,20 +180,29 @@ function NavBarWrapped({
             </nav>
           </div>
         </div>
+      </div>
+      <Dialog
+        ref={searchDialogRef}
+        toggleDialog={toggleSearchDialog}
+        className={stylesSearch["dialog"]}
+        showCloseButton={false}
+      >
+        <QuickSearch toggleDialog={toggleSearchDialog} />
+      </Dialog>
+      <Dialog
+        ref={mobileNavDialogRef}
+        toggleDialog={toggleMobileNavDialog}
+        className={stylesMobile["dialog"]}
+        closeButtonClassName={stylesMobile["close-x"]}
+        closeButtonAriaLabel="close navigation"
+        closeButtonSize={32}
+      >
         <MegaMenuMobile
           data={megaMenu}
           menuExpanded={mobileMenuExpanded}
           closeFn={() => setMobileMenuExpanded(false)}
           specialLink={specialLink}
         />
-      </div>
-      <Dialog
-        ref={dialogRef}
-        toggleDialog={toggleDialog}
-        className={stylesSearch["dialog"]}
-        showCloseButton={false}
-      >
-        <QuickSearch toggleDialog={toggleDialog} />
       </Dialog>
     </>
   );
