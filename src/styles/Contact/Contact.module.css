@@ -88,6 +88,11 @@
   flex-wrap: wrap;
 }
 
+.map-container {
+  width: 550px;
+  height: 400px;
+}
+
 @media screen and (max-width: 1024px) {
   .contact-info-flex {
     flex-direction: column-reverse;
