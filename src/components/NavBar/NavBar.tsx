@@ -162,17 +162,8 @@ function NavBarWrapped({
                   <a
                     href="https://dawholesale.unionwebstores.com/my-account"
                     className={styles["my-account-button"]}
+                    aria-label="my account"
                   >
-                    <span
-                      style={{
-                        width: 0,
-                        height: 0,
-                        overflow: "hidden",
-                        display: "block",
-                      }}
-                    >
-                      My Account
-                    </span>
                     <Person size={28} />
                   </a>
                 </div>

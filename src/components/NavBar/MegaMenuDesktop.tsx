@@ -31,24 +31,28 @@ export function MegaMenuDesktop({
           onMouseOver={() => setExpandedIndex(i)}
           onMouseOut={() => setExpandedIndex(null)}
         >
-          <a
-            href={item.href}
-            onClick={(e) => {
-              if (
-                !item.href ||
-                (e.target as HTMLAnchorElement).href === window.location.href
-              ) {
-                e.preventDefault();
-              }
-              setExpandedIndex(i === expandedIndex ? null : i);
-            }}
-            onFocus={() => onFocusTopLevel(i)}
-          >
-            {item.label}
-            <div
-              className={`${styles["nav-item-underline"]} ${expandedIndex === i ? styles["expanded"] : ""}`}
-            ></div>
-          </a>
+          {/* If there are sections for a dropdown, show a button here */}
+          {item.sections.length > 0 && (
+            <button
+              onClick={() => setExpandedIndex(i === expandedIndex ? null : i)}
+              onFocus={() => onFocusTopLevel(i)}
+            >
+              {item.label}
+              <div
+                className={`${styles["nav-item-underline"]} ${expandedIndex === i ? styles["expanded"] : ""}`}
+              ></div>
+            </button>
+          )}
+
+          {/* if there are no sections for a dropdown, show a link */}
+          {item.sections.length === 0 && (
+            <Link href={item.href || ""} onFocus={() => onFocusTopLevel(i)}>
+              {item.label}
+              <div
+                className={`${styles["nav-item-underline"]} ${expandedIndex === i ? styles["expanded"] : ""}`}
+              ></div>
+            </Link>
+          )}
 
           {/* Dropdown with sections, if any */}
 
@@ -68,7 +72,6 @@ export function MegaMenuDesktop({
                               className={
                                 styles["mega-menu-dropdown-section-title"]
                               }
-                              tabIndex={i === expandedIndex ? 0 : -1}
                             >
                               {section.title}
                             </li>

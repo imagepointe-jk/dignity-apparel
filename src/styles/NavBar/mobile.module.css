@@ -23,7 +23,7 @@
   height: 100%;
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding-left: 0;
+  padding-left: 2px;
   margin: 0;
 }
 
@@ -124,7 +124,7 @@
 }
 
 .nav-subitem-links-container {
-  padding-left: 20px;
+  padding: 2px 2px 2px 20px;
   height: 0;
   overflow: hidden;
   transition: 0.2s;
@@ -148,7 +148,7 @@
 }
 
 .special-link-container {
-  padding: 10px 0 0 9px;
+  padding: 10px 0 2px 9px;
 }
 
 @media screen and (max-width: 1024px) {

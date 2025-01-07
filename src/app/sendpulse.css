@@ -16,3 +16,15 @@
 .sp-form .sp-field[sp-id="sp-94da80f6-0ced-4d70-8409-b31a052e0ee1"] {
   padding-left: 0;
 }
+
+#sp-343511c0-9b4c-4c65-9644-82cd094c61c1 {
+  position: relative;
+  overflow: initial;
+}
+
+#sp-343511c0-9b4c-4c65-9644-82cd094c61c1:focus-visible:before {
+  content: "";
+  border: 2px solid white;
+  position: absolute;
+  inset: -6px;
+}
