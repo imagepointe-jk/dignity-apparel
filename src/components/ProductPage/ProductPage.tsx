@@ -46,6 +46,8 @@ function ProductPageWrapped({ product }: Props) {
     ? abbreviateSize(sizeStocks[0].size)
     : "UNKNOWN SIZE";
   const largestSize = sizeStocks[sizeStocks.length - 1]?.size || "UNKNOWN SIZE";
+  const image1Url = product.imageUrl;
+  const image2Url = viewedSwatch?.productImageUrl || IMAGE_NOT_FOUND_URL;
 
   function onClickSwatch(clickedVariationId: number) {
     setViewedVariationId(clickedVariationId);
@@ -63,15 +65,17 @@ function ProductPageWrapped({ product }: Props) {
         <div className={styles["mobile-heading"]}>{product.name}</div>
         <div className={styles["images-container"]}>
           <ContainedImage
-            src={product.imageUrl}
+            src={image1Url}
             alt={product.name}
             containerClassName={styles["product-img-container"]}
           />
-          <ContainedImage
-            src={viewedSwatch?.productImageUrl || IMAGE_NOT_FOUND_URL}
-            alt={product.name}
-            containerClassName={styles["product-img-container"]}
-          />
+          {image2Url !== image1Url && (
+            <ContainedImage
+              src={image2Url}
+              alt={product.name}
+              containerClassName={styles["product-img-container"]}
+            />
+          )}
         </div>
         <div className={styles["info-container"]}>
           <div>
