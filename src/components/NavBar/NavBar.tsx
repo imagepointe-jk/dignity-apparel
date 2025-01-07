@@ -199,7 +199,6 @@ function NavBarWrapped({
       >
         <MegaMenuMobile
           data={megaMenu}
-          menuExpanded={mobileMenuExpanded}
           closeFn={() => setMobileMenuExpanded(false)}
           specialLink={specialLink}
         />
