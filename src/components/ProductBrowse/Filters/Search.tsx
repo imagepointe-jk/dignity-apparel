@@ -10,9 +10,6 @@ export function Search() {
 
   const debouncedOnSearchInput = useCallback(
     debounce(async (search: string) => {
-      const curSearch = searchParams.get("search");
-      if (!curSearch && !search) return;
-
       const newSearchParams = new URLSearchParams(searchParams);
       if (!search) newSearchParams.delete("search");
       else newSearchParams.set("search", search);
