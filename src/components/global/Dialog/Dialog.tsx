@@ -43,7 +43,6 @@ const Dialog = forwardRef<HTMLDialogElement, Props>(
         ref={ref}
         className={`${styles["main"]} ${className || ""}`}
         onClick={(e) => {
-          console.log("togglling");
           if (e.currentTarget === e.target) {
             toggleDialog();
           }
