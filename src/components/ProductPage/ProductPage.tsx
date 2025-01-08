@@ -103,6 +103,7 @@ function ProductPageWrapped({ product }: Props) {
                     <button
                       key={item.name}
                       className={`${styles["swatch"]} ${viewedVariationIdToUse === item.variationId ? styles["selected"] : ""}`}
+                      aria-label={`garment color ${item.name}`}
                       onClick={() => onClickSwatch(item.variationId)}
                       style={{
                         backgroundColor: item.swatchImageUrl

@@ -46,6 +46,10 @@
   cursor: pointer;
 }
 
+.arrow-button:focus-visible {
+  outline-offset: 3px;
+}
+
 .arrow-button.disabled {
   background-color: var(--armor-gray-500);
 }

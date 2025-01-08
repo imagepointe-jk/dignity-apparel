@@ -31,7 +31,8 @@ export function FeaturedProductCard1({
   }
 
   return (
-    <div
+    <Link
+      href={productUrl(product)}
       className={`${styles["card"]} ${condensed ? styles["condensed"] : ""}`}
     >
       <div className={styles["slider-container"]}>
@@ -94,9 +95,7 @@ export function FeaturedProductCard1({
               </div>
             </>
           )}
-          <Link href={productUrl(product)} className={styles["product-link"]}>
-            View Product
-          </Link>
+          <div className={styles["product-link"]}>View Product</div>
         </div>
         <div className={styles["hover-line"]}></div>
         {scrollableVariations && (
@@ -133,6 +132,6 @@ export function FeaturedProductCard1({
           {product.sku} - {product.name}
         </div>
       )}
-    </div>
+    </Link>
   );
 }

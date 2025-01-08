@@ -82,7 +82,8 @@
   font-size: 0.75rem;
 }
 
-.slider-container:hover .image-overlay {
+.slider-container:hover .image-overlay,
+.card:focus-visible .image-overlay {
   opacity: 1;
 }
 
@@ -198,4 +199,8 @@
   text-align: left;
   padding-top: 15px;
   font-size: 0.75rem;
+}
+
+.card:focus-visible {
+  outline-offset: 3px;
 }

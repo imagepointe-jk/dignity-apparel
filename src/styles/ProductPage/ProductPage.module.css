@@ -70,6 +70,12 @@
   border-radius: 100px;
 }
 
+.swatch:focus-visible {
+  outline-width: 2px;
+  outline-offset: 2px;
+  outline-color: black;
+}
+
 .swatch.selected {
   outline-color: black;
 }
@@ -82,6 +88,10 @@
   border-radius: 5px;
   text-decoration: none;
   display: inline-block;
+}
+
+.purchase-link:focus-visible {
+  outline-offset: 2px;
 }
 
 .usa-container {

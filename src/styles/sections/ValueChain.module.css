@@ -44,6 +44,10 @@
   background-color: var(--armor-gray-400);
 }
 
+.expand-button:focus-visible {
+  outline-offset: -2px;
+}
+
 .expanded-content {
   background-color: white;
   text-align: center;

@@ -25,3 +25,7 @@
 .extra-padding {
   padding: 15px 80px;
 }
+
+.main:focus-visible {
+  outline-offset: 4px;
+}
