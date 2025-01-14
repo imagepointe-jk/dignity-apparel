@@ -49,9 +49,11 @@ export function Hero({
     >
       {bgVideoUrl && (
         <div className={styles["video-container"]}>
-          <video autoPlay loop playsInline muted>
-            <source src={bgVideoUrl} />
-          </video>
+          <iframe
+            src={bgVideoUrl}
+            allow="autoplay; fullscreen"
+            allowFullScreen
+          ></iframe>
         </div>
       )}
       <div
