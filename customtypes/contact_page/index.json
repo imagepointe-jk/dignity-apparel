@@ -84,6 +84,13 @@
           }
         }
       },
+      "contact_form_code": {
+        "type": "Text",
+        "config": {
+          "label": "Contact Form Code",
+          "placeholder": "Embed code for the contact form."
+        }
+      },
       "map_1_style_url": {
         "type": "Text",
         "config": {

@@ -16,6 +16,7 @@ export default async function Page() {
       social_links,
       map_1_style_url,
       map_2_style_url,
+      contact_form_code,
     },
   } = await client.getSingle("contact_page");
 
@@ -29,6 +30,7 @@ export default async function Page() {
         </div>
       ))}
       socialLinkUrls={social_links.map((item) => getPrismicLinkUrl(item.link))}
+      contactFormCode={contact_form_code || ""}
       mapboxStyleUrl1={map_1_style_url || ""}
       mapboxStyleUrl2={map_2_style_url || ""}
     />

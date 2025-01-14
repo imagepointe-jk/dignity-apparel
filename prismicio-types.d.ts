@@ -307,6 +307,17 @@ interface ContactPageDocumentData {
   >;
 
   /**
+   * Contact Form Code field in *Contact Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Embed code for the contact form.
+   * - **API ID Path**: contact_page.contact_form_code
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  contact_form_code: prismic.KeyTextField;
+
+  /**
    * Map 1 Style URL field in *Contact Page*
    *
    * - **Field Type**: Text

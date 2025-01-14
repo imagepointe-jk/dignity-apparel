@@ -13,12 +13,14 @@ type Props = {
   socialLinkUrls: string[];
   mapboxStyleUrl1: string;
   mapboxStyleUrl2: string;
+  contactFormCode: string;
 };
 export function Contact({
   emailAddress,
   phoneInformation,
   contactFormHeading,
   socialLinkUrls,
+  contactFormCode,
 }: Props) {
   return (
     <div className={styles["main"]}>
@@ -55,15 +57,10 @@ export function Contact({
         </div>
         <div className={styles["contact-form-container"]}>
           {contactFormHeading}
-          <div>
-            <p>Contact form placeholder</p>
-            <p>Contact form placeholder</p>
-            <p>Contact form placeholder</p>
-            <p>Contact form placeholder</p>
-            <p>Contact form placeholder</p>
-            <p>Contact form placeholder</p>
-            <button type="submit">Submit</button>
-          </div>
+          <div
+            style={{ width: "100%" }}
+            dangerouslySetInnerHTML={{ __html: contactFormCode }}
+          ></div>
           <div className="body-2">
             We&apos;ll respond within 24-48 business hours.{" "}
           </div>
