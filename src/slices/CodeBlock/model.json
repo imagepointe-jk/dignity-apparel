@@ -1,0 +1,26 @@
+{
+  "id": "code_block",
+  "type": "SharedSlice",
+  "name": "CodeBlock",
+  "description": "CodeBlock",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "code": {
+          "type": "Text",
+          "config": {
+            "label": "Code",
+            "placeholder": "WARNING: This renders raw code. Make sure the code you paste is secure!"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

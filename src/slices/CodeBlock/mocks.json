@@ -1,0 +1,14 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"code": {
+				"__TYPE__": "FieldContent",
+				"value": "carbon",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

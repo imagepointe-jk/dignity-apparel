@@ -8,6 +8,7 @@ export const components = {
   buttons: dynamic(() => import("./Buttons")),
   cards_section1: dynamic(() => import("./CardsSection1")),
   carousel_reviews: dynamic(() => import("./CarouselReviews")),
+  code_block: dynamic(() => import("./CodeBlock")),
   content_cards: dynamic(() => import("./ContentCards")),
   featured_products: dynamic(() => import("./FeaturedProducts")),
   hero: dynamic(() => import("./Hero")),

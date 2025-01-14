@@ -1014,6 +1014,7 @@ export type StaffStoryDocument<Lang extends string = string> =
   >;
 
 type StandardPageDocumentDataSlicesSlice =
+  | CodeBlockSlice
   | ArticleSlice
   | TextImageCardSlice
   | TwoThirdsImageTextSlice
@@ -1583,6 +1584,51 @@ type CarouselReviewsSliceVariation = CarouselReviewsSliceDefault;
 export type CarouselReviewsSlice = prismic.SharedSlice<
   "carousel_reviews",
   CarouselReviewsSliceVariation
+>;
+
+/**
+ * Primary content in *CodeBlock → Default → Primary*
+ */
+export interface CodeBlockSliceDefaultPrimary {
+  /**
+   * Code field in *CodeBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: WARNING: This renders raw code. Make sure the code you paste is secure!
+   * - **API ID Path**: code_block.default.primary.code
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  code: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for CodeBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CodeBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CodeBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CodeBlock*
+ */
+type CodeBlockSliceVariation = CodeBlockSliceDefault;
+
+/**
+ * CodeBlock Shared Slice
+ *
+ * - **API ID**: `code_block`
+ * - **Description**: CodeBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CodeBlockSlice = prismic.SharedSlice<
+  "code_block",
+  CodeBlockSliceVariation
 >;
 
 /**
@@ -3524,6 +3570,10 @@ declare module "@prismicio/client" {
       CarouselReviewsSliceDefaultPrimary,
       CarouselReviewsSliceVariation,
       CarouselReviewsSliceDefault,
+      CodeBlockSlice,
+      CodeBlockSliceDefaultPrimary,
+      CodeBlockSliceVariation,
+      CodeBlockSliceDefault,
       ContentCardsSlice,
       ContentCardsSliceDefaultPrimaryCardsItem,
       ContentCardsSliceDefaultPrimary,
