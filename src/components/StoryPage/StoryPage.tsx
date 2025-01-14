@@ -1,4 +1,4 @@
-import { IMAGE_NOT_FOUND_URL } from "@/constants";
+// import { IMAGE_NOT_FOUND_URL } from "@/constants";
 import styles from "@/styles/StoryPage/StoryPage.module.css";
 import { ReactNode } from "react";
 import { CoveredImage } from "../global/CoveredImage/CoveredImage";
@@ -17,8 +17,9 @@ type Props = {
   videoEmbedCode?: string;
   bodyText: ReactNode;
 };
+//? The additional images section has been temporarily removed.
 export function StoryPage({
-  additionalImages,
+  // additionalImages,
   firstName,
   image,
   jobDescriptionShort,
@@ -26,9 +27,9 @@ export function StoryPage({
   videoEmbedCode,
   bodyText,
 }: Props) {
-  const additionalImage1 = additionalImages[0];
-  const additionalImage2 = additionalImages[1];
-  const additionalImage3 = additionalImages[2];
+  // const additionalImage1 = additionalImages[0];
+  // const additionalImage2 = additionalImages[1];
+  // const additionalImage3 = additionalImages[2];
   const adjustedCode = videoEmbedCode
     ? videoEmbedCode
         .replace(/width="[^"*]*"/g, 'width="100%"')
@@ -86,7 +87,7 @@ export function StoryPage({
           />
         </div>
 
-        <div className={styles["additional-images-flex"]}>
+        {/* <div className={styles["additional-images-flex"]}>
           <div className={styles["additional-images-column"]}>
             <CoveredImage
               containerClassName={styles["additional-image-horz"]}
@@ -109,7 +110,7 @@ export function StoryPage({
             src={additionalImage3?.src || IMAGE_NOT_FOUND_URL}
             alt={additionalImage3?.alt || "image"}
           />
-        </div>
+        </div> */}
       </div>
     </section>
   );
