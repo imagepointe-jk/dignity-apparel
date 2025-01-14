@@ -10,11 +10,17 @@ import { Metadata } from "next";
 export default async function Page() {
   try {
     const categoriesResponse = await getCategories();
+    console.log("1");
     const categoriesJson = await categoriesResponse.json();
+    console.log("2");
     const categoriesParsed = validateCategoriesResponse(categoriesJson);
+    console.log("3");
     const attributesResponse = await getAttributes();
+    console.log("4");
     const attributesJson = await attributesResponse.json();
+    console.log("5");
     const attributesParsed = validateAttributesResponse(attributesJson);
+    console.log("6");
 
     return (
       <div className="x-wide-container">
