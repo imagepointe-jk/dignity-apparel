@@ -73,19 +73,21 @@ export function StoryPage({
           </div>
         </div>
 
-        <div
-          className={`${styles["highlight-text-container"]} subheader-1-semi-bold`}
-        >
-          {highlightText}
-          <QuotationMark
-            size={80}
-            className={`${styles["quote-mark"]} ${styles["quote-mark-left"]}`}
-          />
-          <QuotationMark
-            size={80}
-            className={`${styles["quote-mark"]} ${styles["quote-mark-right"]}`}
-          />
-        </div>
+        {highlightText && (
+          <div
+            className={`${styles["highlight-text-container"]} subheader-1-semi-bold`}
+          >
+            {highlightText}
+            <QuotationMark
+              size={80}
+              className={`${styles["quote-mark"]} ${styles["quote-mark-left"]}`}
+            />
+            <QuotationMark
+              size={80}
+              className={`${styles["quote-mark"]} ${styles["quote-mark-right"]}`}
+            />
+          </div>
+        )}
 
         {/* <div className={styles["additional-images-flex"]}>
           <div className={styles["additional-images-column"]}>

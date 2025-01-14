@@ -9,8 +9,8 @@ export default async function Page() {
     uid: item.uid,
     firstName: item.data.first_name || "",
     cardImage: {
-      src: item.data.image.url || IMAGE_NOT_FOUND_URL,
-      alt: item.data.image.alt || "image",
+      src: item.data.card_image.url || IMAGE_NOT_FOUND_URL,
+      alt: item.data.card_image.alt || "image",
     },
     jobDescriptionShort: item.data.job_description_short || "",
   }));
