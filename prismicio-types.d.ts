@@ -1233,6 +1233,16 @@ export type AccordionSlice = prismic.SharedSlice<
  */
 export interface ArticleSliceDefaultPrimary {
   /**
+   * Slice ID field in *Article → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article.default.primary.slice_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_id: prismic.KeyTextField;
+
+  /**
    * Heading field in *Article → Default → Primary*
    *
    * - **Field Type**: Rich Text

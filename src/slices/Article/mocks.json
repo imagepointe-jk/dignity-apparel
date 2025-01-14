@@ -35,6 +35,11 @@
 						}
 					}
 				]
+			},
+			"slice_id": {
+				"__TYPE__": "FieldContent",
+				"value": "save",
+				"type": "Text"
 			}
 		},
 		"items": []

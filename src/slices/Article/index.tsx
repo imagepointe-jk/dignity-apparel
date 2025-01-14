@@ -11,10 +11,11 @@ export type ArticleProps = SliceComponentProps<Content.ArticleSlice>;
  * Component for "Article" Slices.
  */
 const Article = ({ slice }: ArticleProps): JSX.Element => {
-  const { body, heading, subheading } = slice.primary;
+  const { slice_id, body, heading, subheading } = slice.primary;
 
   return (
     <ArticleComponent
+      id={slice_id}
       heading={<PrismicRichText field={heading} />}
       subheading={<PrismicRichText field={subheading} />}
       body={<PrismicRichText field={body} />}
