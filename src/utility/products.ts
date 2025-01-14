@@ -7,6 +7,7 @@ import {
 type ColorSwatch = {
   name: string;
   displayName: string;
+  order: number;
   hexCode?: string;
   imageUrl?: string;
 };
@@ -15,88 +16,105 @@ const colorSwatches: ColorSwatch[] = [
     name: "black",
     displayName: "Black",
     hexCode: "000000",
+    order: 1,
   },
   {
     name: "red",
     displayName: "Red",
     hexCode: "cd2527",
+    order: 2,
   },
   {
     name: "charcoal",
     displayName: "Charcoal",
     hexCode: "5c5c5c",
+    order: 3,
   },
   {
     name: "navy",
     displayName: "Navy",
     hexCode: "262d38",
+    order: 4,
   },
   {
     name: "purple",
     displayName: "Purple",
     hexCode: "483370",
+    order: 5,
   },
   {
     name: "white",
     displayName: "White",
     hexCode: "f3f5f7",
+    order: 6,
   },
   {
     name: "safety-orange",
     displayName: "Safety Orange",
     hexCode: "f36523",
+    order: 7,
   },
   {
     name: "safety-yellow",
     displayName: "Safety Yellow",
     hexCode: "cddd2a",
+    order: 8,
   },
   {
     name: "royal",
     displayName: "Royal",
     hexCode: "005eab",
+    order: 9,
   },
   {
     name: "storm-grey-heather",
     displayName: "Storm Grey Heather",
     hexCode: "737373",
+    order: 10,
   },
   {
     name: "safety-green",
     displayName: "Safety Green",
     hexCode: "cddd2a",
+    order: 11,
   },
   {
     name: "heather-charcoal",
     displayName: "Heather Charcoal",
     imageUrl:
       "https://dawholesale.unionwebstores.com/wp-content/uploads/sites/118/2024/11/heather-charcoal.png",
+    order: 12,
   },
   {
     name: "heather-military-green",
     displayName: "Heather Military Green",
     imageUrl:
       "https://dawholesale.unionwebstores.com/wp-content/uploads/sites/118/2024/11/heather-military-green.png",
+    order: 13,
   },
   {
     name: "sand",
     displayName: "Sand",
     hexCode: "d19e6c",
+    order: 14,
   },
   {
     name: "storm",
     displayName: "Storm",
     hexCode: "6265AA",
+    order: 15,
   },
   {
     name: "carbon",
     displayName: "Carbon",
     hexCode: "a3a3a3",
+    order: 16,
   },
   {
     name: "onyx",
     displayName: "Onyx",
     hexCode: "000000",
+    order: 17,
   },
 ];
 
@@ -108,6 +126,7 @@ export function getSwatchesWithImages(product: Product) {
     productImageUrl: string;
     hexCode?: string;
     swatchImageUrl?: string;
+    order: number;
   }[] = [];
   const seenColors: string[] = [];
   for (const variation of product.variations) {
@@ -124,6 +143,7 @@ export function getSwatchesWithImages(product: Product) {
         displayName: "UNKNOWN COLOR",
         productImageUrl: variation.imageUrl,
         hexCode: "000000",
+        order: 0,
       });
       continue;
     }
@@ -135,8 +155,10 @@ export function getSwatchesWithImages(product: Product) {
       variationId: variation.id,
       hexCode: match.hexCode,
       swatchImageUrl: match.imageUrl,
+      order: match.order,
     });
   }
+  withImages.sort((a, b) => a.order - b.order);
 
   return withImages;
 }
