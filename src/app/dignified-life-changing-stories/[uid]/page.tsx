@@ -24,7 +24,7 @@ export default async function Page({ params: { uid } }: Props) {
     }));
 
     const allStories = await getStaffStories();
-    const filteredStories = allStories
+    const convertedStories = allStories
       .map((item) => ({
         uid: item.uid,
         firstName: item.data.first_name || "",
@@ -49,7 +49,7 @@ export default async function Page({ params: { uid } }: Props) {
         highlightText={highlight_text || undefined}
         videoEmbedCode={video.html || undefined}
         bodyText={<PrismicRichText field={story_text} />}
-        additionalStories={filteredStories}
+        additionalStories={convertedStories}
       />
     );
   } catch (error) {
