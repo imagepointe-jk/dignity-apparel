@@ -1,10 +1,10 @@
 import { ProductBrowse } from "@/components/ProductBrowse/ProductBrowse";
-import { getAttributes } from "@/fetch/woocommerce/attributes";
-import { getCategories } from "@/fetch/woocommerce/categories";
-import {
-  validateAttributesResponse,
-  validateCategoriesResponse,
-} from "@/types/validation/woocommerce/woocommerce";
+// import { getAttributes } from "@/fetch/woocommerce/attributes";
+// import { getCategories } from "@/fetch/woocommerce/categories";
+// import {
+//   validateAttributesResponse,
+//   validateCategoriesResponse,
+// } from "@/types/validation/woocommerce/woocommerce";
 import { Metadata } from "next";
 
 export default async function Page() {
