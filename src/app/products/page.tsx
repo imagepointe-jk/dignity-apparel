@@ -8,18 +8,20 @@ import {
 import { Metadata } from "next";
 
 export default async function Page() {
-  const categoriesResponse = await getCategories();
-  const categoriesJson = await categoriesResponse.json();
-  const categoriesParsed = validateCategoriesResponse(categoriesJson);
-  const attributesResponse = await getAttributes();
-  const attributesJson = await attributesResponse.json();
-  const attributesParsed = validateAttributesResponse(attributesJson);
+  // const categoriesResponse = await getCategories();
+  // const categoriesJson = await categoriesResponse.json();
+  // const categoriesParsed = validateCategoriesResponse(categoriesJson);
+  // const attributesResponse = await getAttributes();
+  // const attributesJson = await attributesResponse.json();
+  // const attributesParsed = validateAttributesResponse(attributesJson);
 
   return (
     <div className="x-wide-container">
       <ProductBrowse
-        categories={categoriesParsed}
-        attributes={attributesParsed}
+        // categories={categoriesParsed}
+        // attributes={attributesParsed}
+        categories={[]}
+        attributes={[]}
       />
     </div>
   );
