@@ -48,12 +48,13 @@ function pullProductData(productJson: any) {
         id: item.node.databaseId,
         name: item.node.name,
       })) || [],
-    globalAttributes: productJson.globalAttributes.edges.map((item: any) => ({
-      name: item.node.name,
-      terms: item.node.terms.edges.map((item: any) => ({
-        slug: item.node.slug,
-      })),
-    })),
+    globalAttributes:
+      productJson.globalAttributes?.edges.map((item: any) => ({
+        name: item.node.name,
+        terms: item.node.terms.edges.map((item: any) => ({
+          slug: item.node.slug,
+        })),
+      })) || [],
     variations:
       productJson.variations?.nodes.map((item: any) => {
         return {
