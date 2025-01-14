@@ -51,7 +51,7 @@
 
 .main .accordion-label-expanded {
   color: var(--blaze-orange-500);
-  font-weight: bold;
+  font-family: var(--font-metropolis-extra-bold);
 }
 
 .content-white .accordion-label-expanded {
