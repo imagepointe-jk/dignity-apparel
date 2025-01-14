@@ -34,7 +34,10 @@
           "config": {
             "label": "Content Color",
             "placeholder": "",
-            "options": ["Normal", "White"],
+            "options": [
+              "Normal",
+              "White"
+            ],
             "default_value": "Normal"
           }
         },
@@ -57,7 +60,7 @@
                   "label": "Body",
                   "placeholder": "",
                   "allowTargetBlank": true,
-                  "multi": "paragraph",
+                  "multi": "paragraph,hyperlink",
                   "labels": [
                     "body-1",
                     "body-1-semi-bold",
