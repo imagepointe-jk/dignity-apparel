@@ -1,28 +1,4 @@
-.section {
-  background-color: var(--armor-gray-100);
-  padding: 70px 0 50px 0;
-}
-
-.main h1 {
-  color: var(--blaze-orange-600);
-  margin: 0;
-  font-size: 3rem;
-}
-
-.heading-container {
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.cards-flex {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  row-gap: 50px;
-}
-
-/* .card {
+.card {
   background-color: white;
   text-decoration: none;
   position: relative;
@@ -35,7 +11,7 @@
   color: black;
 }
 
-.main .card-img-container {
+.card .card-img-container {
   width: 380px;
   height: 380px;
   position: relative;
@@ -99,8 +75,8 @@
 }
 
 @media screen and (max-width: 480px) {
-  .main .card-img-container {
+  .card .card-img-container {
     width: 310px;
     height: 310px;
   }
-} */
+}

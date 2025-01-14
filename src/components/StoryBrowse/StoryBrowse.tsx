@@ -1,17 +1,9 @@
-import { env } from "@/envClient";
 import styles from "@/styles/StoryBrowse/StoryBrowse.module.css";
-import { CoveredImage } from "../global/CoveredImage/CoveredImage";
+import { StoryData } from "@/types/schema/prismic";
+import { StoryCard } from "./StoryCard";
 
 type Props = {
-  stories: {
-    uid: string;
-    cardImage: {
-      src: string;
-      alt: string;
-    };
-    firstName: string;
-    jobDescriptionShort: string;
-  }[];
+  stories: StoryData[];
 };
 export function StoryBrowse({ stories }: Props) {
   return (
@@ -26,33 +18,7 @@ export function StoryBrowse({ stories }: Props) {
         </div>
         <div className={styles["cards-flex"]}>
           {stories.map((story) => (
-            <a
-              key={story.uid}
-              href={`${env.NEXT_PUBLIC_BASE_URL}/dignified-life-changing-stories/${story.uid}`}
-              className={styles["card"]}
-            >
-              <CoveredImage
-                src={story.cardImage.src}
-                alt={story.firstName}
-                className={styles["card-img"]}
-                containerClassName={styles["card-img-container"]}
-              >
-                <div className={styles["image-overlay"]}>
-                  <div className={styles["image-hover-text"]}>
-                    WHY DIGNITY APPAREL
-                  </div>
-                </div>
-              </CoveredImage>
-              <div className={styles["card-content-container"]}>
-                <div className={`${styles["staff-name"]} subheader-1-medium`}>
-                  {story.firstName}
-                </div>
-                <div className={`${styles["job-description"]} body-2`}>
-                  {story.jobDescriptionShort}
-                </div>
-              </div>
-              <div className={styles["hover-line"]}></div>
-            </a>
+            <StoryCard key={story.uid} story={story} />
           ))}
         </div>
       </div>

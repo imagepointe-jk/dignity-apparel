@@ -56,3 +56,13 @@ export const buttonStyleResponseSchema = z.object({
     extra_padding: z.boolean().optional().nullable(),
   }),
 });
+
+export type StoryData = {
+  uid: string;
+  cardImage: {
+    src: string;
+    alt: string;
+  };
+  firstName: string;
+  jobDescriptionShort: string;
+};

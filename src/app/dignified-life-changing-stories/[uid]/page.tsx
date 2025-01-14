@@ -1,6 +1,6 @@
 import { StoryPage } from "@/components/StoryPage/StoryPage";
 import { IMAGE_NOT_FOUND_URL } from "@/constants";
-import { getStaffStoryByUID } from "@/fetch/prismic/prismic";
+import { getStaffStories, getStaffStoryByUID } from "@/fetch/prismic/prismic";
 import { PrismicRichText } from "@prismicio/react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -23,6 +23,20 @@ export default async function Page({ params: { uid } }: Props) {
       alt: item.image.alt || "image",
     }));
 
+    const allStories = await getStaffStories();
+    const filteredStories = allStories
+      .map((item) => ({
+        uid: item.uid,
+        firstName: item.data.first_name || "",
+        cardImage: {
+          src: item.data.card_image.url || IMAGE_NOT_FOUND_URL,
+          alt: item.data.card_image.alt || "image",
+        },
+        jobDescriptionShort: item.data.job_description_short || "",
+      }))
+      .filter((item) => item.uid !== uid)
+      .slice(0, 3);
+
     return (
       <StoryPage
         additionalImages={additionaImages}
@@ -35,6 +49,7 @@ export default async function Page({ params: { uid } }: Props) {
         highlightText={highlight_text || undefined}
         videoEmbedCode={video.html || undefined}
         bodyText={<PrismicRichText field={story_text} />}
+        additionalStories={filteredStories}
       />
     );
   } catch (error) {
