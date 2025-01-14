@@ -1,8 +1,8 @@
 import { ProductBrowse } from "@/components/ProductBrowse/ProductBrowse";
-// import { getAttributes } from "@/fetch/woocommerce/attributes";
+import { getAttributes } from "@/fetch/woocommerce/attributes";
 import { getCategories } from "@/fetch/woocommerce/categories";
 import {
-  //   validateAttributesResponse,
+  validateAttributesResponse,
   validateCategoriesResponse,
 } from "@/types/validation/woocommerce/woocommerce";
 import { Metadata } from "next";
@@ -11,16 +11,15 @@ export default async function Page() {
   const categoriesResponse = await getCategories();
   const categoriesJson = await categoriesResponse.json();
   const categoriesParsed = validateCategoriesResponse(categoriesJson);
-  // const attributesResponse = await getAttributes();
-  // const attributesJson = await attributesResponse.json();
-  // const attributesParsed = validateAttributesResponse(attributesJson);
+  const attributesResponse = await getAttributes();
+  const attributesJson = await attributesResponse.json();
+  const attributesParsed = validateAttributesResponse(attributesJson);
 
   return (
     <div className="x-wide-container">
       <ProductBrowse
         categories={categoriesParsed}
-        // attributes={attributesParsed}
-        attributes={[]}
+        attributes={attributesParsed}
       />
     </div>
   );

@@ -5,6 +5,10 @@ import { env } from "@/env";
 export function getAttributes() {
   const headers = new Headers();
   headers.append("Content-Type", "application/json");
+  headers.append(
+    "Authorization",
+    `Basic ${btoa(`${env.WORDPRESS_APPLICATION_USERNAME}:${env.WORDPRESS_APPLICATION_PASSWORD}`)}`
+  );
 
   const requestOptions = {
     method: "GET",

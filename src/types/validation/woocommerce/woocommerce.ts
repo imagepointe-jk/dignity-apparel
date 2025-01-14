@@ -125,6 +125,7 @@ export function validateCategoriesResponse(json: any) {
 }
 
 export function validateAttributesResponse(json: any) {
+  if (!Array.isArray(json)) return [];
   return (json as any[]).map((item) => attributeSchema.parse(item));
 }
 
