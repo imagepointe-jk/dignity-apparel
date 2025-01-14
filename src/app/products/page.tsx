@@ -8,21 +8,26 @@ import {
 import { Metadata } from "next";
 
 export default async function Page() {
-  const categoriesResponse = await getCategories();
-  const categoriesJson = await categoriesResponse.json();
-  const categoriesParsed = validateCategoriesResponse(categoriesJson);
-  const attributesResponse = await getAttributes();
-  const attributesJson = await attributesResponse.json();
-  const attributesParsed = validateAttributesResponse(attributesJson);
+  try {
+    const categoriesResponse = await getCategories();
+    const categoriesJson = await categoriesResponse.json();
+    const categoriesParsed = validateCategoriesResponse(categoriesJson);
+    const attributesResponse = await getAttributes();
+    const attributesJson = await attributesResponse.json();
+    const attributesParsed = validateAttributesResponse(attributesJson);
 
-  return (
-    <div className="x-wide-container">
-      <ProductBrowse
-        categories={categoriesParsed}
-        attributes={attributesParsed}
-      />
-    </div>
-  );
+    return (
+      <div className="x-wide-container">
+        <ProductBrowse
+          categories={categoriesParsed}
+          attributes={attributesParsed}
+        />
+      </div>
+    );
+  } catch (error) {
+    console.error(error);
+    return <div>Error.</div>;
+  }
 }
 
 export async function generateMetadata(): Promise<Metadata> {
