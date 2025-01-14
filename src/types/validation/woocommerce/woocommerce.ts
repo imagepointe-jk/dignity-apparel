@@ -87,6 +87,7 @@ export function validateWooCommerceProductsGraphQLResponse(json: any) {
 }
 
 export function validateWooCommerceProducts(json: any) {
+  if (!Array.isArray(json)) return [];
   return (json as any[]).map((item: any) => productSchema.parse(item));
 }
 
