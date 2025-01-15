@@ -73,27 +73,33 @@ export function Contact({
           USA-made apparel.
         </div>
         <div className={styles["maps-flex"]}>
-          <div className={styles["map-container"]}>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2939.7122730478627!2d-92.3642335!3d42.5401664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87faacb9202b293f%3A0x17ae2a50a51156e6!2s2975%20Airline%20Cir%2C%20Waterloo%2C%20IA%2050703!5e0!3m2!1sen!2sus!4v1736265060900!5m2!1sen!2sus"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen={false}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+          <div className={styles["map-parent-container"]}>
+            <div className={styles["map-label"]}>Dignity Apparel Iowa</div>
+            <div className={styles["map-container"]}>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2939.7122730478627!2d-92.3642335!3d42.5401664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87faacb9202b293f%3A0x17ae2a50a51156e6!2s2975%20Airline%20Cir%2C%20Waterloo%2C%20IA%2050703!5e0!3m2!1sen!2sus!4v1736265060900!5m2!1sen!2sus"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
           </div>
-          <div className={styles["map-container"]}>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6419.405222671859!2d-83.59309610000001!3d36.4405731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x885c8001cc6ef707%3A0xcd04f5ca285565!2s403%20Old%20Knoxville%20Hwy%2C%20New%20Tazewell%2C%20TN%2037825!5e0!3m2!1sen!2sus!4v1736265273264!5m2!1sen!2sus"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen={false}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+          <div className={styles["map-parent-container"]}>
+            <div className={styles["map-label"]}>Dignity Apparel Tennessee</div>
+            <div className={styles["map-container"]}>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6419.405222671859!2d-83.59309610000001!3d36.4405731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x885c8001cc6ef707%3A0xcd04f5ca285565!2s403%20Old%20Knoxville%20Hwy%2C%20New%20Tazewell%2C%20TN%2037825!5e0!3m2!1sen!2sus!4v1736265273264!5m2!1sen!2sus"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
           </div>
         </div>
       </div>
