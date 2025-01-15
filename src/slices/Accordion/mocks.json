@@ -73,6 +73,11 @@
 						]
 					}
 				]
+			},
+			"slice_id": {
+				"__TYPE__": "FieldContent",
+				"value": "flag",
+				"type": "Text"
 			}
 		},
 		"items": []

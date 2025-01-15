@@ -9,11 +9,13 @@ import { bgImage } from "@/utility/misc";
 import { ReactNode } from "react";
 
 type Props = {
+  id?: string | null;
   products: Product[];
   headingNode: ReactNode;
   primaryTextColor: string;
 } & WithTilingBackground;
 export function FeaturedProducts({
+  id,
   headingNode,
   primaryTextColor,
   tilingBackground,
@@ -22,6 +24,7 @@ export function FeaturedProducts({
 }: Props) {
   return (
     <section
+      id={id ? id : undefined}
       className={styles["main"]}
       style={{ ...bgImage(tilingBackground?.src) }}
       {...rest}

@@ -12,6 +12,13 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "slice_id": {
+          "type": "Text",
+          "config": {
+            "label": "Slice ID",
+            "placeholder": ""
+          }
+        },
         "tiling_background": {
           "type": "Image",
           "config": {
@@ -49,8 +56,7 @@
                   "label": "Body",
                   "placeholder": "",
                   "allowTargetBlank": true,
-                  "multi": "paragraph,strong,em",
-                  "labels:": ["body1", "body2", "body3", "body4"]
+                  "multi": "paragraph,strong,em"
                 }
               },
               "button": {
@@ -68,7 +74,9 @@
                 "config": {
                   "label": "Button Style",
                   "select": "document",
-                  "customtypes": ["button_style"]
+                  "customtypes": [
+                    "button_style"
+                  ]
                 }
               }
             }

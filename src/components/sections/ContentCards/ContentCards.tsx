@@ -8,6 +8,7 @@ import { ReactNode } from "react";
 import styles from "@/styles/sections/ContentCards.module.css";
 
 type Props = {
+  id?: string | null;
   heading: ReactNode;
   textColor?: string;
   cardType: "text overlay" | "text below";
@@ -22,6 +23,7 @@ type Props = {
   }[];
 } & WithTilingBackground;
 export function ContentCards({
+  id,
   heading,
   textColor,
   cardType,
@@ -34,6 +36,7 @@ export function ContentCards({
 
   return (
     <section
+      id={id ? id : undefined}
       style={{ color: textColor, ...bgImage(tilingBackground?.src) }}
       {...rest}
     >

@@ -4,6 +4,7 @@ import { bgImage } from "@/utility/misc";
 import { ReactNode } from "react";
 
 type Props = {
+  id?: string | null;
   embedCode?: string;
   headingNode?: ReactNode;
   headingColor?: string;
@@ -11,6 +12,7 @@ type Props = {
   textColor?: string;
 } & WithTilingBackground;
 export function VideoSection({
+  id,
   embedCode,
   headingNode,
   headingColor,
@@ -28,6 +30,7 @@ export function VideoSection({
 
   return (
     <section
+      id={id ? id : undefined}
       style={{ ...bgImage(tilingBackground?.src), color: textColor }}
       {...rest}
     >

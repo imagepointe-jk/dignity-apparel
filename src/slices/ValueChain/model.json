@@ -10,7 +10,17 @@
       "docURL": "...",
       "version": "initial",
       "description": "Default",
-      "imageUrl": ""
+      "imageUrl": "",
+      "primary": {
+        "slice_id": {
+          "type": "Text",
+          "config": {
+            "label": "Slice ID",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }

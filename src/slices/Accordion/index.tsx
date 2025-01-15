@@ -11,10 +11,12 @@ export type AccordionProps = SliceComponentProps<Content.AccordionSlice>;
  * Component for "Accordion" Slices.
  */
 const Accordion = ({ slice }: AccordionProps): JSX.Element => {
-  const { content_color, heading, sections, tiling_background } = slice.primary;
+  const { slice_id, content_color, heading, sections, tiling_background } =
+    slice.primary;
 
   return (
     <AccordionComponent
+      id={slice_id}
       contentColor={content_color === "Normal" ? "normal" : "white"}
       heading={<PrismicRichText field={heading} />}
       sections={sections.map((section) => ({

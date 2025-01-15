@@ -170,6 +170,11 @@
 				"__TYPE__": "FieldContent",
 				"value": "76",
 				"type": "Number"
+			},
+			"slice_id": {
+				"__TYPE__": "FieldContent",
+				"value": "pan",
+				"type": "Text"
 			}
 		},
 		"items": []

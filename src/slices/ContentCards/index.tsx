@@ -15,8 +15,14 @@ export type ContentCardsProps = SliceComponentProps<Content.ContentCardsSlice>;
 const ContentCards = async ({
   slice,
 }: ContentCardsProps): Promise<JSX.Element> => {
-  const { card_type, cards, heading, primary_text_color, tiling_background } =
-    slice.primary;
+  const {
+    slice_id,
+    card_type,
+    cards,
+    heading,
+    primary_text_color,
+    tiling_background,
+  } = slice.primary;
   const textColor = await getBrandColor(primary_text_color);
   const cardsConverted = await Promise.all(
     cards.map(async (card) => {
@@ -39,6 +45,7 @@ const ContentCards = async ({
 
   return (
     <ContentCardsComponent
+      id={slice_id}
       heading={<PrismicRichText field={heading} />}
       textColor={textColor}
       cards={cardsConverted}

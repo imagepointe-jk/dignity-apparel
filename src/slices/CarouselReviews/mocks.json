@@ -71,6 +71,11 @@
 						]
 					}
 				]
+			},
+			"slice_id": {
+				"__TYPE__": "FieldContent",
+				"value": "fifth",
+				"type": "Text"
 			}
 		},
 		"items": []

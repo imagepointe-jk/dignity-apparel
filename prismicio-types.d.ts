@@ -1155,6 +1155,16 @@ export interface AccordionSliceDefaultPrimarySectionsItem {
  */
 export interface AccordionSliceDefaultPrimary {
   /**
+   * Slice ID field in *Accordion → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: accordion.default.primary.slice_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_id: prismic.KeyTextField;
+
+  /**
    * Tiling Background field in *Accordion → Default → Primary*
    *
    * - **Field Type**: Image
@@ -1333,6 +1343,16 @@ export interface ButtonsSliceDefaultPrimaryButtonsItem {
  */
 export interface ButtonsSliceDefaultPrimary {
   /**
+   * Slice ID field in *Buttons → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: buttons.default.primary.slice_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_id: prismic.KeyTextField;
+
+  /**
    * Tiling Background field in *Buttons → Default → Primary*
    *
    * - **Field Type**: Image
@@ -1442,6 +1462,16 @@ export interface CardsSection1SliceDefaultPrimaryCardsItem {
  * Primary content in *CardsSection1 → Default → Primary*
  */
 export interface CardsSection1SliceDefaultPrimary {
+  /**
+   * Slice ID field in *CardsSection1 → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cards_section1.default.primary.slice_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_id: prismic.KeyTextField;
+
   /**
    * Tiling Background field in *CardsSection1 → Default → Primary*
    *
@@ -1555,6 +1585,16 @@ export interface CarouselReviewsSliceDefaultPrimaryReviewsItem {
  */
 export interface CarouselReviewsSliceDefaultPrimary {
   /**
+   * Slice ID field in *CarouselReviews → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel_reviews.default.primary.slice_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_id: prismic.KeyTextField;
+
+  /**
    * Heading field in *CarouselReviews → Default → Primary*
    *
    * - **Field Type**: Rich Text
@@ -1611,6 +1651,16 @@ export type CarouselReviewsSlice = prismic.SharedSlice<
  * Primary content in *CodeBlock → Default → Primary*
  */
 export interface CodeBlockSliceDefaultPrimary {
+  /**
+   * Slice ID field in *CodeBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: code_block.default.primary.slice_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_id: prismic.KeyTextField;
+
   /**
    * Code field in *CodeBlock → Default → Primary*
    *
@@ -1711,6 +1761,16 @@ export interface ContentCardsSliceDefaultPrimaryCardsItem {
  * Primary content in *ContentCards → Default → Primary*
  */
 export interface ContentCardsSliceDefaultPrimary {
+  /**
+   * Slice ID field in *ContentCards → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_cards.default.primary.slice_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_id: prismic.KeyTextField;
+
   /**
    * Tiling Background field in *ContentCards → Default → Primary*
    *
@@ -1813,6 +1873,16 @@ export interface FeaturedProductsSliceDefaultPrimaryProductSlugsItem {
  */
 export interface FeaturedProductsSliceDefaultPrimary {
   /**
+   * Slice ID field in *FeaturedProducts → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_products.default.primary.slice_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_id: prismic.KeyTextField;
+
+  /**
    * Heading field in *FeaturedProducts → Default → Primary*
    *
    * - **Field Type**: Rich Text
@@ -1914,6 +1984,16 @@ export interface HeroSliceDefaultPrimaryButtonsItem {
  * Primary content in *Hero → Default → Primary*
  */
 export interface HeroSliceDefaultPrimary {
+  /**
+   * Slice ID field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.slice_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_id: prismic.KeyTextField;
+
   /**
    * Heading field in *Hero → Default → Primary*
    *
@@ -2084,6 +2164,16 @@ export interface IconCardsSliceDefaultPrimaryCardsItem {
  */
 export interface IconCardsSliceDefaultPrimary {
   /**
+   * Slice ID field in *IconCards → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: icon_cards.default.primary.slice_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_id: prismic.KeyTextField;
+
+  /**
    * Background Image field in *IconCards → Default → Primary*
    *
    * - **Field Type**: Image
@@ -2234,6 +2324,16 @@ export type IconCardsSlice = prismic.SharedSlice<
  */
 export interface SingleReviewSliceDefaultPrimary {
   /**
+   * Slice ID field in *SingleReview → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: single_review.default.primary.slice_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_id: prismic.KeyTextField;
+
+  /**
    * Tiling Background field in *SingleReview → Default → Primary*
    *
    * - **Field Type**: Image
@@ -2354,6 +2454,16 @@ export interface SocialLinksSliceDefaultPrimarySocialLinksItem {
  */
 export interface SocialLinksSliceDefaultPrimary {
   /**
+   * Slice ID field in *SocialLinks → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: social_links.default.primary.slice_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_id: prismic.KeyTextField;
+
+  /**
    * Tiling Background field in *SocialLinks → Default → Primary*
    *
    * - **Field Type**: Image
@@ -2421,6 +2531,16 @@ export type SocialLinksSlice = prismic.SharedSlice<
  * Primary content in *StandardSection1 → Default → Primary*
  */
 export interface StandardSection1SliceDefaultPrimary {
+  /**
+   * Slice ID field in *StandardSection1 → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: standard_section1.default.primary.slice_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_id: prismic.KeyTextField;
+
   /**
    * Tiling Background field in *StandardSection1 → Default → Primary*
    *
@@ -2572,6 +2692,16 @@ export interface StandardSection2SliceDefaultPrimaryButtonLinksItem {
  * Primary content in *StandardSection2 → Default → Primary*
  */
 export interface StandardSection2SliceDefaultPrimary {
+  /**
+   * Slice ID field in *StandardSection2 → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: standard_section2.default.primary.slice_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_id: prismic.KeyTextField;
+
   /**
    * Tiling Background field in *StandardSection2 → Default → Primary*
    *
@@ -2726,6 +2856,16 @@ export interface TabContentSliceDefaultPrimarySectionsItem {
  */
 export interface TabContentSliceDefaultPrimary {
   /**
+   * Slice ID field in *TabContent → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tab_content.default.primary.slice_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_id: prismic.KeyTextField;
+
+  /**
    * Tiling Background field in *TabContent → Default → Primary*
    *
    * - **Field Type**: Image
@@ -2813,6 +2953,16 @@ export type TabContentSlice = prismic.SharedSlice<
  * Primary content in *TextImageCard → Default → Primary*
  */
 export interface TextImageCardSliceDefaultPrimary {
+  /**
+   * Slice ID field in *TextImageCard → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_image_card.default.primary.slice_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_id: prismic.KeyTextField;
+
   /**
    * Tiling Background field in *TextImageCard → Default → Primary*
    *
@@ -2919,6 +3069,16 @@ export type TextImageCardSlice = prismic.SharedSlice<
  */
 export interface TextWithHeadingSliceDefaultPrimary {
   /**
+   * Slice ID field in *TextWithHeading → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_with_heading.default.primary.slice_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_id: prismic.KeyTextField;
+
+  /**
    * Tiling Background field in *TextWithHeading → Default → Primary*
    *
    * - **Field Type**: Image
@@ -3003,6 +3163,16 @@ export type TextWithHeadingSlice = prismic.SharedSlice<
  * Primary content in *ThreeImageSection → Default → Primary*
  */
 export interface ThreeImageSectionSliceDefaultPrimary {
+  /**
+   * Slice ID field in *ThreeImageSection → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: three_image_section.default.primary.slice_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_id: prismic.KeyTextField;
+
   /**
    * Tiling Background field in *ThreeImageSection → Default → Primary*
    *
@@ -3164,6 +3334,16 @@ export interface TwoThirdsImageTextSliceDefaultPrimarySectionsItem {
  */
 export interface TwoThirdsImageTextSliceDefaultPrimary {
   /**
+   * Slice ID field in *TwoThirdsImageText → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_thirds_image_text.default.primary.slice_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_id: prismic.KeyTextField;
+
+  /**
    * Tiling Background field in *TwoThirdsImageText → Default → Primary*
    *
    * - **Field Type**: Image
@@ -3248,6 +3428,21 @@ export type TwoThirdsImageTextSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *ValueChain → Default → Primary*
+ */
+export interface ValueChainSliceDefaultPrimary {
+  /**
+   * Slice ID field in *ValueChain → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: value_chain.default.primary.slice_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_id: prismic.KeyTextField;
+}
+
+/**
  * Default variation for ValueChain Slice
  *
  * - **API ID**: `default`
@@ -3256,7 +3451,7 @@ export type TwoThirdsImageTextSlice = prismic.SharedSlice<
  */
 export type ValueChainSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
+  Simplify<ValueChainSliceDefaultPrimary>,
   never
 >;
 
@@ -3281,6 +3476,16 @@ export type ValueChainSlice = prismic.SharedSlice<
  * Primary content in *Video → Default → Primary*
  */
 export interface VideoSliceDefaultPrimary {
+  /**
+   * Slice ID field in *Video → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video.default.primary.slice_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_id: prismic.KeyTextField;
+
   /**
    * Heading field in *Video → Default → Primary*
    *
@@ -3428,6 +3633,16 @@ export interface VideoCardsSliceDefaultPrimaryCardsItem {
  * Primary content in *VideoCards → Default → Primary*
  */
 export interface VideoCardsSliceDefaultPrimary {
+  /**
+   * Slice ID field in *VideoCards → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_cards.default.primary.slice_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_id: prismic.KeyTextField;
+
   /**
    * Tiling Background field in *VideoCards → Default → Primary*
    *
@@ -3656,6 +3871,7 @@ declare module "@prismicio/client" {
       TwoThirdsImageTextSliceVariation,
       TwoThirdsImageTextSliceDefault,
       ValueChainSlice,
+      ValueChainSliceDefaultPrimary,
       ValueChainSliceVariation,
       ValueChainSliceDefault,
       VideoSlice,

@@ -17,6 +17,7 @@ export type FeaturedProductsProps =
 const FeaturedProducts = async ({
   slice,
 }: FeaturedProductsProps): Promise<JSX.Element> => {
+  const slice_id = slice.primary.slice_id;
   const responses = await Promise.all(
     slice.primary.product_slugs.map((item) =>
       getProductBySlug(item.slug || "").catch(() => {
@@ -42,6 +43,7 @@ const FeaturedProducts = async ({
 
   return (
     <FeaturedProductsComponent
+      id={slice_id}
       headingNode={<PrismicRichText field={slice.primary.heading} />}
       tilingBackground={{ src: slice.primary.tiling_background.url }}
       primaryTextColor={textColor.replace("#", "")}

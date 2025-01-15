@@ -17,6 +17,7 @@ const ThreeImageSection = async ({
   slice,
 }: ThreeImageSectionProps): Promise<JSX.Element> => {
   const {
+    slice_id,
     body,
     heading,
     link,
@@ -33,6 +34,7 @@ const ThreeImageSection = async ({
 
   return (
     <ThreeImageSectionComponent
+      id={slice_id}
       heading={<PrismicRichText field={heading} />}
       subheading={<PrismicRichText field={subheading} />}
       body={<PrismicRichText field={body} />}

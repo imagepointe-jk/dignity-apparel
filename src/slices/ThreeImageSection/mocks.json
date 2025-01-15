@@ -149,6 +149,11 @@
 				"alt": null,
 				"__TYPE__": "ImageContent",
 				"thumbnails": {}
+			},
+			"slice_id": {
+				"__TYPE__": "FieldContent",
+				"value": "least",
+				"type": "Text"
 			}
 		},
 		"items": []

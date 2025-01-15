@@ -7,11 +7,16 @@ import { WithTilingBackground } from "@/types/schema/misc";
 import { bgImage } from "@/utility/misc";
 
 type Props = {
+  id?: string | null;
   buttons: LinkAsButtonData[];
 } & WithTilingBackground;
-export function Buttons({ buttons, tilingBackground, ...rest }: Props) {
+export function Buttons({ id, buttons, tilingBackground, ...rest }: Props) {
   return (
-    <section style={{ ...bgImage(tilingBackground?.src) }} {...rest}>
+    <section
+      id={id ? id : undefined}
+      style={{ ...bgImage(tilingBackground?.src) }}
+      {...rest}
+    >
       <div className={styles["main"]}>
         {buttons.map((button, i) => (
           <LinkAsButton key={i} data={button} />

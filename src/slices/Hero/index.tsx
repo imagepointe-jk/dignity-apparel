@@ -13,6 +13,7 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  */
 const Hero = async ({ slice }: HeroProps): Promise<JSX.Element> => {
   const {
+    slice_id,
     background_image,
     buttons,
     heading,
@@ -36,6 +37,7 @@ const Hero = async ({ slice }: HeroProps): Promise<JSX.Element> => {
 
   return (
     <HeroComponent
+      id={slice_id}
       alignment={
         layout === "Left" ? "left" : layout === "Centered" ? "center" : "right"
       }

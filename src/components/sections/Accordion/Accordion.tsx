@@ -5,6 +5,7 @@ import styles from "@/styles/sections/Accordion.module.css";
 import { ExpandableDiv } from "@/components/global/ExpandableDiv/ExpandableDiv";
 
 type Props = {
+  id?: string | null;
   heading: ReactNode;
   contentColor: "normal" | "white";
   sections: {
@@ -13,6 +14,7 @@ type Props = {
   }[];
 } & WithTilingBackground;
 export function Accordion({
+  id,
   tilingBackground,
   contentColor,
   heading,
@@ -22,7 +24,11 @@ export function Accordion({
   const white = contentColor === "white";
 
   return (
-    <section style={{ ...bgImage(tilingBackground?.src) }} {...rest}>
+    <section
+      id={id ? id : undefined}
+      style={{ ...bgImage(tilingBackground?.src) }}
+      {...rest}
+    >
       <div
         className={`${styles["main"]} ${white ? styles["content-white"] : ""} x-wide-container`}
       >

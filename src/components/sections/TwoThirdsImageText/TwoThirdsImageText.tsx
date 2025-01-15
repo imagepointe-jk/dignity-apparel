@@ -5,6 +5,7 @@ import styles from "@/styles/sections/TwoThirdsImageText.module.css";
 import { CoveredImage } from "@/components/global/CoveredImage/CoveredImage";
 
 type Props = {
+  id?: string | null;
   textColor: "normal" | "white";
   heading: ReactNode;
   image: {
@@ -17,6 +18,7 @@ type Props = {
   }[];
 } & WithTilingBackground;
 export function TwoThirdsImageText({
+  id,
   heading,
   image,
   sections,
@@ -25,7 +27,11 @@ export function TwoThirdsImageText({
   ...rest
 }: Props) {
   return (
-    <section style={{ ...bgImage(tilingBackground?.src) }} {...rest}>
+    <section
+      id={id ? id : undefined}
+      style={{ ...bgImage(tilingBackground?.src) }}
+      {...rest}
+    >
       <div
         className={`${styles["main"]} ${textColor === "white" ? styles["content-white"] : ""}`}
       >

@@ -10,8 +10,10 @@ export type CodeBlockProps = SliceComponentProps<Content.CodeBlockSlice>;
  * Component for "CodeBlock" Slices.
  */
 const CodeBlock = ({ slice }: CodeBlockProps): JSX.Element => {
+  const slice_id = slice.primary.slice_id;
   return (
     <section
+      id={slice_id ? slice_id : undefined}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >

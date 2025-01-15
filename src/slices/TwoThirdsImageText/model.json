@@ -12,6 +12,13 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "slice_id": {
+          "type": "Text",
+          "config": {
+            "label": "Slice ID",
+            "placeholder": ""
+          }
+        },
         "tiling_background": {
           "type": "Image",
           "config": {
@@ -42,7 +49,10 @@
           "config": {
             "label": "Text Color",
             "placeholder": "",
-            "options": ["Normal", "White"],
+            "options": [
+              "Normal",
+              "White"
+            ],
             "default_value": "Normal"
           }
         },

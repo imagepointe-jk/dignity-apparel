@@ -18,6 +18,7 @@ export type IconCardsProps = SliceComponentProps<Content.IconCardsSlice>;
  */
 const IconCards = async ({ slice }: IconCardsProps): Promise<JSX.Element> => {
   const {
+    slice_id,
     background_behavior,
     background_image,
     background_overlay_opacity,
@@ -61,6 +62,7 @@ const IconCards = async ({ slice }: IconCardsProps): Promise<JSX.Element> => {
 
   return (
     <IconCardsComponent
+      id={slice_id}
       bgImage={{
         src: background_image.url || undefined,
         behavior:

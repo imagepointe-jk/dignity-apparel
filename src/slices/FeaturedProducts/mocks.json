@@ -61,6 +61,11 @@
 						}
 					}
 				]
+			},
+			"slice_id": {
+				"__TYPE__": "FieldContent",
+				"value": "raw",
+				"type": "Text"
 			}
 		},
 		"items": []

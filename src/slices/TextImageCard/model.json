@@ -12,6 +12,13 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "slice_id": {
+          "type": "Text",
+          "config": {
+            "label": "Slice ID",
+            "placeholder": ""
+          }
+        },
         "tiling_background": {
           "type": "Image",
           "config": {
@@ -97,7 +104,9 @@
           "config": {
             "label": "Button Style",
             "select": "document",
-            "customtypes": ["button_style"]
+            "customtypes": [
+              "button_style"
+            ]
           }
         },
         "image": {

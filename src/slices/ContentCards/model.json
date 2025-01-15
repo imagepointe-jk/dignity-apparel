@@ -12,6 +12,13 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "slice_id": {
+          "type": "Text",
+          "config": {
+            "label": "Slice ID",
+            "placeholder": ""
+          }
+        },
         "tiling_background": {
           "type": "Image",
           "config": {
@@ -42,7 +49,9 @@
           "config": {
             "label": "Primary Text Color",
             "select": "document",
-            "customtypes": ["brand_color"]
+            "customtypes": [
+              "brand_color"
+            ]
           }
         },
         "card_type": {
@@ -50,7 +59,10 @@
           "config": {
             "label": "Card Type",
             "placeholder": "",
-            "options": ["Text Overlay", "Text Below"],
+            "options": [
+              "Text Overlay",
+              "Text Below"
+            ],
             "default_value": "Text Overlay"
           }
         },
@@ -120,7 +132,9 @@
                 "config": {
                   "label": "Button Style",
                   "select": "document",
-                  "customtypes": ["button_style"]
+                  "customtypes": [
+                    "button_style"
+                  ]
                 }
               },
               "image": {

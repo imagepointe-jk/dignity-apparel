@@ -9,6 +9,7 @@ import { bgImage } from "@/utility/misc";
 import { ReactNode } from "react";
 
 type Props = {
+  id?: string | null;
   headingNode: ReactNode;
   subtextNode?: ReactNode;
   bodyTextNode: ReactNode;
@@ -22,6 +23,7 @@ type Props = {
   buttons: LinkAsButtonData[];
 } & WithTilingBackground;
 export function StandardSection2({
+  id,
   bodyTextNode,
   buttons,
   headingNode,
@@ -41,6 +43,7 @@ export function StandardSection2({
     : undefined;
   return (
     <section
+      id={id ? id : undefined}
       style={{ ...bgImage(tilingBackground?.src), color: textColor }}
       {...rest}
     >

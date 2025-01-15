@@ -4,17 +4,23 @@ import { bgImage } from "@/utility/misc";
 import styles from "@/styles/sections/SocialLinks.module.css";
 
 type Props = {
+  id?: string | null;
   contentColor: "normal" | "white";
   linkUrls: string[];
 } & WithTilingBackground;
 export function SocialLinks({
+  id,
   contentColor,
   linkUrls,
   tilingBackground,
   ...rest
 }: Props) {
   return (
-    <section style={{ ...bgImage(tilingBackground?.src) }} {...rest}>
+    <section
+      id={id ? id : undefined}
+      style={{ ...bgImage(tilingBackground?.src) }}
+      {...rest}
+    >
       <div
         className={`${styles["main"]} ${contentColor === "white" ? styles["white"] : ""} x-wide-container`}
       >

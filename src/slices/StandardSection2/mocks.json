@@ -149,6 +149,11 @@
 					"version": "1.0"
 				},
 				"__TYPE__": "EmbedContent"
+			},
+			"slice_id": {
+				"__TYPE__": "FieldContent",
+				"value": "feel",
+				"type": "Text"
 			}
 		},
 		"items": []

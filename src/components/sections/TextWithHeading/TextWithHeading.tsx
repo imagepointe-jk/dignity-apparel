@@ -4,12 +4,14 @@ import { ReactNode } from "react";
 import styles from "@/styles/sections/TextWithHeading.module.css";
 
 type Props = {
+  id?: string | null;
   heading: ReactNode;
   subheading: ReactNode;
   body: ReactNode;
   textColor?: string;
 } & WithTilingBackground;
 export function TextWithHeading({
+  id,
   body,
   heading,
   subheading,
@@ -19,6 +21,7 @@ export function TextWithHeading({
 }: Props) {
   return (
     <section
+      id={id ? id : undefined}
       style={{ ...bgImage(tilingBackground?.src), color: textColor }}
       {...rest}
     >

@@ -12,7 +12,7 @@ export type ButtonsProps = SliceComponentProps<Content.ButtonsSlice>;
  * Component for "Buttons" Slices.
  */
 const Buttons = async ({ slice }: ButtonsProps): Promise<JSX.Element> => {
-  const { buttons, tiling_background } = slice.primary;
+  const { slice_id, buttons, tiling_background } = slice.primary;
   const convertedButtons = await Promise.all(
     buttons.map((button) =>
       convertButton({ link: button.link, button_style: button.button_style })
@@ -21,6 +21,7 @@ const Buttons = async ({ slice }: ButtonsProps): Promise<JSX.Element> => {
 
   return (
     <ButtonsComponent
+      id={slice_id}
       buttons={convertedButtons}
       tilingBackground={{ src: tiling_background.url }}
       data-slice-type={slice.slice_type}

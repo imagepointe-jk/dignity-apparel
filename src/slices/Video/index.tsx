@@ -12,11 +12,13 @@ export type VideoProps = SliceComponentProps<Content.VideoSlice>;
  * Component for "Video" Slices.
  */
 const Video = async ({ slice }: VideoProps): Promise<JSX.Element> => {
+  const { slice_id } = slice.primary;
   const primaryColor = await getBrandColor(slice.primary.primary_text_color);
   const headingColor = await getBrandColor(slice.primary.heading_color);
 
   return (
     <VideoSection
+      id={slice_id}
       headingNode={<PrismicRichText field={slice.primary.heading} />}
       headingColor={headingColor}
       bodyText={<PrismicRichText field={slice.primary.body_text} />}

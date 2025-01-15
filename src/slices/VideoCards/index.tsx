@@ -13,6 +13,7 @@ export type VideoCardsProps = SliceComponentProps<Content.VideoCardsSlice>;
  */
 const VideoCards = async ({ slice }: VideoCardsProps): Promise<JSX.Element> => {
   const {
+    slice_id,
     card_background_color,
     cards,
     heading,
@@ -38,6 +39,7 @@ const VideoCards = async ({ slice }: VideoCardsProps): Promise<JSX.Element> => {
 
   return (
     <VideoCardsComponent
+      id={slice_id}
       heading={<PrismicRichText field={heading} />}
       textColor={textColor}
       cardBgColor={cardBgColor}

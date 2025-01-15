@@ -15,6 +15,7 @@ export type CardsSection1Props =
 const CardsSection1 = async ({
   slice,
 }: CardsSection1Props): Promise<JSX.Element> => {
+  const slice_id = slice.primary.slice_id;
   const cards = await Promise.all(
     slice.primary.cards.map(async (card) => {
       const button = await convertButton({
@@ -33,6 +34,7 @@ const CardsSection1 = async ({
 
   return (
     <CardsSection1Component
+      id={slice_id}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       tilingBackground={{ src: slice.primary.tiling_background.url }}

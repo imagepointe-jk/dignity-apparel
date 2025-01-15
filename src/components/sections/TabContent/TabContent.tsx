@@ -7,6 +7,7 @@ import styles from "@/styles/sections/TabContent.module.css";
 import { ExpandableDiv } from "@/components/global/ExpandableDiv/ExpandableDiv";
 
 type Props = {
+  id?: string | null;
   tabBgColor?: string;
   heading: ReactNode;
   contentColor: "normal" | "white";
@@ -16,6 +17,7 @@ type Props = {
   }[];
 } & WithTilingBackground;
 export function TabContent({
+  id,
   contentColor,
   heading,
   sections,
@@ -35,7 +37,11 @@ export function TabContent({
   }, []);
 
   return (
-    <section style={{ ...bgImage(tilingBackground?.src) }} {...rest}>
+    <section
+      id={id ? id : undefined}
+      style={{ ...bgImage(tilingBackground?.src) }}
+      {...rest}
+    >
       <div
         className={`${styles["main"]} ${contentColor === "white" ? styles["content-white"] : ""}`}
       >

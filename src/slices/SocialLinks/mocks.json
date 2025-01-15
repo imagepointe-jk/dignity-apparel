@@ -50,6 +50,11 @@
 						]
 					}
 				]
+			},
+			"slice_id": {
+				"__TYPE__": "FieldContent",
+				"value": "those",
+				"type": "Text"
 			}
 		},
 		"items": []

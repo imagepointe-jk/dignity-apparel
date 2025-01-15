@@ -15,12 +15,19 @@ export type TextWithHeadingProps =
 const TextWithHeading = async ({
   slice,
 }: TextWithHeadingProps): Promise<JSX.Element> => {
-  const { body, heading, primary_text_color, subheading, tiling_background } =
-    slice.primary;
+  const {
+    slice_id,
+    body,
+    heading,
+    primary_text_color,
+    subheading,
+    tiling_background,
+  } = slice.primary;
   const textColor = await getBrandColor(primary_text_color);
 
   return (
     <TextWithHeadingComponent
+      id={slice_id}
       heading={<PrismicRichText field={heading} />}
       subheading={<PrismicRichText field={subheading} />}
       body={<PrismicRichText field={body} />}

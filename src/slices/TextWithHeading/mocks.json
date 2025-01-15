@@ -65,6 +65,11 @@
 					"__TYPE__": "DocumentLink",
 					"id": "mock_document_id"
 				}
+			},
+			"slice_id": {
+				"__TYPE__": "FieldContent",
+				"value": "contain",
+				"type": "Text"
 			}
 		},
 		"items": []

@@ -8,6 +8,7 @@ import { ReactNode } from "react";
 import styles from "@/styles/sections/VideoCards.module.css";
 
 type Props = {
+  id?: string | null;
   heading: ReactNode;
   textColor?: string;
   cardBgColor?: string;
@@ -19,6 +20,7 @@ type Props = {
   }[];
 } & WithTilingBackground;
 export function VideoCards({
+  id,
   cards,
   heading,
   cardBgColor,
@@ -29,7 +31,11 @@ export function VideoCards({
   const cardCount = cards.length;
 
   return (
-    <section style={{ ...bgImage(tilingBackground?.src) }} {...rest}>
+    <section
+      id={id ? id : undefined}
+      style={{ ...bgImage(tilingBackground?.src) }}
+      {...rest}
+    >
       <div
         className={`${styles["main"]} ${styles[`cards-${cardCount}`] || ""} x-wide-container`}
         style={{ color: textColor }}

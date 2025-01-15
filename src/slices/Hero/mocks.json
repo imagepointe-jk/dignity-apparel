@@ -103,6 +103,11 @@
 				"__TYPE__": "FieldContent",
 				"value": "89",
 				"type": "Number"
+			},
+			"slice_id": {
+				"__TYPE__": "FieldContent",
+				"value": "dollar",
+				"type": "Text"
 			}
 		},
 		"items": []

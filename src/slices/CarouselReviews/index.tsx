@@ -13,7 +13,7 @@ export type CarouselReviewsProps =
  * Component for "CarouselReviews" Slices.
  */
 const CarouselReviews = ({ slice }: CarouselReviewsProps): JSX.Element => {
-  const { heading, reviews } = slice.primary;
+  const { slice_id, heading, reviews } = slice.primary;
   //prismic doesn't provide a uid per repeatable group item.
   //assume that there won't be two reviews from the same person, and use the index as a fallback.
   const reviewsWithId = reviews.map((review, i) => ({
@@ -23,6 +23,7 @@ const CarouselReviews = ({ slice }: CarouselReviewsProps): JSX.Element => {
 
   return (
     <CarouselReviewsComponent
+      id={slice_id}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       heading={<PrismicRichText field={heading} />}

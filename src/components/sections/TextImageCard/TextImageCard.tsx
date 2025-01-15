@@ -9,6 +9,7 @@ import styles from "@/styles/sections/TextImageCard.module.css";
 import { CoveredImage } from "@/components/global/CoveredImage/CoveredImage";
 
 type Props = {
+  id?: string | null;
   heading: ReactNode;
   subheading?: ReactNode;
   body: ReactNode;
@@ -19,6 +20,7 @@ type Props = {
   };
 } & WithTilingBackground;
 export function TextImageCard({
+  id,
   heading,
   body,
   image,
@@ -28,7 +30,11 @@ export function TextImageCard({
   ...rest
 }: Props) {
   return (
-    <section style={{ ...bgImage(tilingBackground?.src) }} {...rest}>
+    <section
+      id={id ? id : undefined}
+      style={{ ...bgImage(tilingBackground?.src) }}
+      {...rest}
+    >
       <div className={`${styles["main"]} x-wide-container`}>
         <div className={styles["card"]}>
           <div className={styles["content"]}>

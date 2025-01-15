@@ -108,6 +108,11 @@
 					"__TYPE__": "DocumentLink",
 					"id": "mock_document_id"
 				}
+			},
+			"slice_id": {
+				"__TYPE__": "FieldContent",
+				"value": "place",
+				"type": "Text"
 			}
 		},
 		"items": []

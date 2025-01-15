@@ -12,6 +12,13 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "slice_id": {
+          "type": "Text",
+          "config": {
+            "label": "Slice ID",
+            "placeholder": ""
+          }
+        },
         "heading": {
           "type": "Text",
           "config": {
@@ -96,7 +103,10 @@
           "config": {
             "label": "Background Overlay Opacity",
             "placeholder": "",
-            "options": ["50%", "95%"],
+            "options": [
+              "50%",
+              "95%"
+            ],
             "default_value": "50%"
           }
         },
@@ -105,7 +115,11 @@
           "config": {
             "label": "Layout",
             "placeholder": "",
-            "options": ["Centered", "Left", "Right"],
+            "options": [
+              "Centered",
+              "Left",
+              "Right"
+            ],
             "default_value": "Centered"
           }
         },
@@ -137,7 +151,9 @@
                 "config": {
                   "label": "Button Style",
                   "select": "document",
-                  "customtypes": ["button_style"]
+                  "customtypes": [
+                    "button_style"
+                  ]
                 }
               }
             }

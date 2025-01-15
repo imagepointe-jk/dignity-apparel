@@ -86,6 +86,11 @@
 						}
 					}
 				]
+			},
+			"slice_id": {
+				"__TYPE__": "FieldContent",
+				"value": "ready",
+				"type": "Text"
 			}
 		},
 		"items": []

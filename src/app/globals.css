@@ -17,6 +17,10 @@
   --armor-gray-900: #19191a;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   box-sizing: border-box;
 }

@@ -2,7 +2,13 @@
 	{
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
-		"primary": {},
+		"primary": {
+			"slice_id": {
+				"__TYPE__": "FieldContent",
+				"value": "greatly",
+				"type": "Text"
+			}
+		},
 		"items": []
 	}
 ]

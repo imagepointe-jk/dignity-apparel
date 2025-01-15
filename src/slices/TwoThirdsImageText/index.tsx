@@ -15,11 +15,12 @@ export type TwoThirdsImageTextProps =
 const TwoThirdsImageText = ({
   slice,
 }: TwoThirdsImageTextProps): JSX.Element => {
-  const { heading, image, sections, text_color, tiling_background } =
+  const { slice_id, heading, image, sections, text_color, tiling_background } =
     slice.primary;
 
   return (
     <TwoThirdsImageTextComponent
+      id={slice_id}
       heading={<PrismicRichText field={heading} />}
       image={{
         src: image.url || IMAGE_NOT_FOUND_URL,

@@ -13,12 +13,15 @@ import { Growing } from "./Growing";
 import { Knitting } from "./Knitting";
 import { Sewing } from "./Sewing";
 
+type Props = {
+  id?: string | null;
+};
 type Section = "growing" | "knitting" | "dyeing" | "cutting" | "sewing";
-export function ValueChain() {
+export function ValueChain({ id }: Props) {
   const [selected, setSelected] = useState("growing" as Section);
 
   return (
-    <section className={styles["section"]}>
+    <section id={id ? id : undefined} className={styles["section"]}>
       <div className={styles["main"]}>
         <h3 className="h3-italic">USA-Made Garment Production Value Chain</h3>
         <ul className={styles["expandable-list"]}>

@@ -6,6 +6,7 @@ import {
 import styles from "@/styles/Hero/Hero.module.css";
 
 type Props = {
+  id?: string | null;
   heading: string;
   subtextNode: ReactNode;
   body?: ReactNode;
@@ -18,6 +19,7 @@ type Props = {
   heightOverride?: number;
 };
 export function Hero({
+  id,
   bgImageUrl,
   heading,
   subtextNode,
@@ -38,6 +40,7 @@ export function Hero({
 
   return (
     <section
+      id={id ? id : undefined}
       className={styles["section"]}
       style={{
         backgroundImage:

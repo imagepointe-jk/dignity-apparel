@@ -15,6 +15,7 @@ const SingleReview = async ({
   slice,
 }: SingleReviewProps): Promise<JSX.Element> => {
   const {
+    slice_id,
     body,
     company_name,
     heading,
@@ -27,6 +28,7 @@ const SingleReview = async ({
 
   return (
     <SingleReviewComponent
+      id={slice_id}
       heading={<PrismicRichText field={heading} />}
       rating={rating || 0}
       body={<PrismicRichText field={body} />}

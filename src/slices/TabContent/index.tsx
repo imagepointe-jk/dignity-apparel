@@ -13,6 +13,7 @@ export type TabContentProps = SliceComponentProps<Content.TabContentSlice>;
  */
 const TabContent = async ({ slice }: TabContentProps): Promise<JSX.Element> => {
   const {
+    slice_id,
     content_color,
     heading,
     sections,
@@ -27,6 +28,7 @@ const TabContent = async ({ slice }: TabContentProps): Promise<JSX.Element> => {
 
   return (
     <TabContentComponent
+      id={slice_id}
       contentColor={content_color === "Normal" ? "normal" : "white"}
       heading={<PrismicRichText field={heading} />}
       sections={sectionsConverted}

@@ -10,9 +10,10 @@ export type ValueChainProps = SliceComponentProps<Content.ValueChainSlice>;
 /**
  * Component for "ValueChain" Slices.
  */
-const ValueChain = (): JSX.Element => {
+const ValueChain = ({ slice }: ValueChainProps): JSX.Element => {
   //this component is hard-coded and is only available as a slice for potential reuse across Prismic pages.
-  return <ValueChainComponent />;
+  const { slice_id } = slice.primary;
+  return <ValueChainComponent id={slice_id} />;
 };
 
 export default ValueChain;

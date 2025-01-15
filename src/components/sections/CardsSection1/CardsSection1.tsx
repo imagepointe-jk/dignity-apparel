@@ -8,6 +8,7 @@ import { WithTilingBackground } from "@/types/schema/misc";
 import { bgImage } from "@/utility/misc";
 
 type Props = {
+  id?: string | null;
   cards: {
     image: {
       src: string;
@@ -18,9 +19,10 @@ type Props = {
     button: LinkAsButtonData;
   }[];
 } & WithTilingBackground;
-export function CardsSection1({ tilingBackground, cards, ...rest }: Props) {
+export function CardsSection1({ id, tilingBackground, cards, ...rest }: Props) {
   return (
     <section
+      id={id ? id : undefined}
       className={styles["main"]}
       {...rest}
       style={{ ...bgImage(tilingBackground?.src) }}

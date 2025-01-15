@@ -7,6 +7,7 @@ import Link from "next/link";
 import { CardSlider } from "@/components/global/CardSlider/CardSlider";
 
 type Props = {
+  id?: string | null;
   heading: ReactNode;
   reviews: {
     id: string | number;
@@ -20,9 +21,9 @@ type Props = {
     companyName?: string;
   }[];
 };
-export function CarouselReviews({ heading, reviews, ...rest }: Props) {
+export function CarouselReviews({ id, heading, reviews, ...rest }: Props) {
   return (
-    <section {...rest}>
+    <section id={id ? id : undefined} {...rest}>
       <div className={`${styles["main"]} x-wide-container`}>
         {heading}
         <CardSlider

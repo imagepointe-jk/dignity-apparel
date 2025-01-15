@@ -7,6 +7,7 @@ import styles from "@/styles/sections/IconCards.module.css";
 import { bgImage } from "@/utility/misc";
 
 type Props = {
+  id?: string | null;
   bgImage: {
     src?: string;
     behavior: "tile" | "fill" | "parallax";
@@ -32,6 +33,7 @@ type Props = {
   }[];
 };
 export function IconCards({
+  id,
   bgImage: bgImageData,
   cards,
   body,
@@ -57,7 +59,12 @@ export function IconCards({
   };
 
   return (
-    <section className={styles["section"]} style={bgStyle} {...rest}>
+    <section
+      id={id ? id : undefined}
+      className={styles["section"]}
+      style={bgStyle}
+      {...rest}
+    >
       <div
         className={styles["bg-overlay"]}
         style={{

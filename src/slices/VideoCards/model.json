@@ -12,6 +12,13 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "slice_id": {
+          "type": "Text",
+          "config": {
+            "label": "Slice ID",
+            "placeholder": ""
+          }
+        },
         "tiling_background": {
           "type": "Image",
           "config": {
@@ -42,7 +49,9 @@
           "config": {
             "label": "Primary Text Color",
             "select": "document",
-            "customtypes": ["brand_color"]
+            "customtypes": [
+              "brand_color"
+            ]
           }
         },
         "card_background_color": {
@@ -50,7 +59,9 @@
           "config": {
             "label": "Card Background Color",
             "select": "document",
-            "customtypes": ["brand_color"]
+            "customtypes": [
+              "brand_color"
+            ]
           }
         },
         "cards": {
@@ -126,7 +137,9 @@
                 "config": {
                   "label": "Button Style",
                   "select": "document",
-                  "customtypes": ["button_style"]
+                  "customtypes": [
+                    "button_style"
+                  ]
                 }
               }
             }

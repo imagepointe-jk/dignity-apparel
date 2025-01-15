@@ -12,10 +12,12 @@ export type SocialLinksProps = SliceComponentProps<Content.SocialLinksSlice>;
  * Component for "SocialLinks" Slices.
  */
 const SocialLinks = ({ slice }: SocialLinksProps): JSX.Element => {
-  const { content_color, social_links, tiling_background } = slice.primary;
+  const { slice_id, content_color, social_links, tiling_background } =
+    slice.primary;
 
   return (
     <SocialLinksComponent
+      id={slice_id}
       contentColor={content_color === "Normal" ? "normal" : "white"}
       linkUrls={social_links.map((link) => getPrismicLinkUrl(link.link))}
       tilingBackground={{ src: tiling_background.url }}

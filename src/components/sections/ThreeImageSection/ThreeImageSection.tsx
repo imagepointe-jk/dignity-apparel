@@ -9,6 +9,7 @@ import { ReactNode } from "react";
 import styles from "@/styles/sections/ThreeImageSection.module.css";
 
 type Props = {
+  id?: string | null;
   heading: ReactNode;
   subheading?: ReactNode;
   body?: ReactNode;
@@ -28,6 +29,7 @@ type Props = {
   };
 } & WithTilingBackground;
 export function ThreeImageSection({
+  id,
   heading,
   primaryImage,
   secondaryImage1,
@@ -41,6 +43,7 @@ export function ThreeImageSection({
 }: Props) {
   return (
     <section
+      id={id ? id : undefined}
       style={{ color: textColor, ...bgImage(tilingBackground?.src) }}
       {...rest}
     >

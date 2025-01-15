@@ -17,6 +17,7 @@ const TextImageCard = async ({
   slice,
 }: TextImageCardProps): Promise<JSX.Element> => {
   const {
+    slice_id,
     body,
     button,
     button_style,
@@ -29,6 +30,7 @@ const TextImageCard = async ({
 
   return (
     <TextImageCardComponent
+      id={slice_id}
       body={<PrismicRichText field={body} />}
       heading={<PrismicRichText field={heading} />}
       image={{

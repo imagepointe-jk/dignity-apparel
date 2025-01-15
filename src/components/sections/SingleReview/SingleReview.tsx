@@ -6,6 +6,7 @@ import { bgImage } from "@/utility/misc";
 import { QuotationMark } from "@/components/icons/QuotationMark";
 
 type Props = {
+  id?: string | null;
   heading: ReactNode;
   rating: number;
   body: ReactNode;
@@ -14,6 +15,7 @@ type Props = {
   textColor?: string;
 } & WithTilingBackground;
 export function SingleReview({
+  id,
   heading,
   rating,
   body,
@@ -24,7 +26,11 @@ export function SingleReview({
   ...rest
 }: Props) {
   return (
-    <section style={{ ...bgImage(tilingBackground?.src) }} {...rest}>
+    <section
+      id={id ? id : undefined}
+      style={{ ...bgImage(tilingBackground?.src) }}
+      {...rest}
+    >
       <div
         className={`${styles["main"]} x-wide-container`}
         style={{ color: textColor }}

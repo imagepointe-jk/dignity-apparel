@@ -17,6 +17,7 @@ const StandardSection2 = async ({
   slice,
 }: StandardSection2Props): Promise<JSX.Element> => {
   const {
+    slice_id,
     body,
     button_links,
     heading,
@@ -36,6 +37,7 @@ const StandardSection2 = async ({
 
   return (
     <StandardSection2Component
+      id={slice_id}
       headingNode={<PrismicRichText field={heading} />}
       subtextNode={<PrismicRichText field={subtext} />}
       bodyTextNode={<PrismicRichText field={body} />}

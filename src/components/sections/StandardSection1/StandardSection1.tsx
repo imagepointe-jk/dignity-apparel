@@ -9,6 +9,7 @@ import { bgImage } from "@/utility/misc";
 import { CoveredImage } from "@/components/global/CoveredImage/CoveredImage";
 
 type Props = {
+  id?: string | null;
   headingNode: ReactNode;
   subtextNode?: ReactNode;
   bodyTextNode: ReactNode;
@@ -22,6 +23,7 @@ type Props = {
   buttonSecondary?: Omit<LinkAsButtonData, "secondaryColor">;
 } & WithTilingBackground;
 export function StandardSection1({
+  id,
   headingNode,
   subtextNode,
   bodyTextNode,
@@ -34,6 +36,7 @@ export function StandardSection1({
 }: Props) {
   return (
     <section
+      id={id ? id : undefined}
       style={{ ...bgImage(tilingBackground?.src), color: textColor }}
       {...rest}
     >
