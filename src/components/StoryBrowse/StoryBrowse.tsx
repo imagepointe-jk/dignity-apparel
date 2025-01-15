@@ -8,7 +8,7 @@ type Props = {
 export function StoryBrowse({ stories }: Props) {
   return (
     <section className={styles["section"]}>
-      <div className={styles["main"]}>
+      <div className={`${styles["main"]} x-wide-container`}>
         <div className={styles["heading-container"]}>
           <h1>Dignified, Life-Changing Stories</h1>
           <div className="subheader-4">
