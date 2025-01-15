@@ -67,7 +67,7 @@
 }
 
 .contact-form-container {
-  max-width: 560px;
+  flex: 0 0 600px;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -15,7 +15,7 @@ export function Article({ id, body, heading, subheading, ...rest }: Props) {
           <div className={styles["main-heading"]}>{heading}</div>
           {subheading}
         </div>
-        <div>{body}</div>
+        <div className={styles["body-container"]}>{body}</div>
       </div>
     </section>
   );

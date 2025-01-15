@@ -9,7 +9,7 @@
 .main {
   max-width: 960px;
   margin: auto;
-  padding: 50px 10px;
+  padding: 50px 10px 0 10px;
 }
 
 .main-heading {
@@ -27,4 +27,8 @@
 
 .heading-container p {
   margin: 0;
+}
+
+.body-container > p:last-child {
+  margin-bottom: 50px;
 }

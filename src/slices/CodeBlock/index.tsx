@@ -19,7 +19,7 @@ const CodeBlock = ({ slice }: CodeBlockProps): JSX.Element => {
     >
       {slice.primary.code && (
         <div
-          style={{ margin: "30px 0" }}
+          style={{ padding: "10px 10px" }}
           dangerouslySetInnerHTML={{ __html: slice.primary.code }} //A raw code block was requested. It's up to editors to only paste good code.
         ></div>
       )}
