@@ -84,9 +84,6 @@ export function Footer({
               <div>
                 <Link href={""}>Cookies Policy</Link>
               </div>
-              <div>
-                <Link href={""}>Accessibility Statement</Link>
-              </div>
             </div>
           </div>
         </div>
