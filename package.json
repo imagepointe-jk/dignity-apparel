@@ -13,6 +13,7 @@
     "@prismicio/client": "^7.11.0",
     "@prismicio/next": "^1.7.0",
     "@prismicio/react": "^2.9.0",
+    "jwt-decode": "^4.0.0",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
     "mapbox-gl": "^3.9.1",

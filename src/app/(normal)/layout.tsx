@@ -10,39 +10,39 @@ import { getAnnouncementBanner } from "@/fetch/prismic/prismic";
 import { validateAnnouncementBannerResponse } from "@/types/validation/prismic/validation";
 
 const metropolisRegular = localFont({
-  src: "./fonts/Metropolis-Regular.woff",
+  src: "../fonts/Metropolis-Regular.woff",
   variable: "--font-metropolis-regular",
 });
 const metropolisMedium = localFont({
-  src: "./fonts/Metropolis-Medium.woff",
+  src: "../fonts/Metropolis-Medium.woff",
   variable: "--font-metropolis-medium",
 });
 const metropolisMediumItalic = localFont({
-  src: "./fonts/Metropolis-MediumItalic.woff",
+  src: "../fonts/Metropolis-MediumItalic.woff",
   variable: "--font-metropolis-medium-italic",
 });
 const metropolisExtraBold = localFont({
-  src: "./fonts/Metropolis-ExtraBold.woff",
+  src: "../fonts/Metropolis-ExtraBold.woff",
   variable: "--font-metropolis-extra-bold",
 });
 const metropolisBold = localFont({
-  src: "./fonts/Metropolis-Bold.woff",
+  src: "../fonts/Metropolis-Bold.woff",
   variable: "--font-metropolis-bold",
 });
 const metropolisExtraBoldItalic = localFont({
-  src: "./fonts/Metropolis-ExtraBold.woff",
+  src: "../fonts/Metropolis-ExtraBold.woff",
   variable: "--font-metropolis-extra-bold-italic",
 });
 const metropolisBlack = localFont({
-  src: "./fonts/Metropolis-Black.woff",
+  src: "../fonts/Metropolis-Black.woff",
   variable: "--font-metropolis-black",
 });
 const merriweatherRegular = localFont({
-  src: "./fonts/Merriweather-Regular.ttf",
+  src: "../fonts/Merriweather-Regular.ttf",
   variable: "--font-merriweather-regular",
 });
 const merriweatherItalic = localFont({
-  src: "./fonts/Merriweather-Italic.ttf",
+  src: "../fonts/Merriweather-Italic.ttf",
   variable: "--font-merriweather-italic",
 });
 
