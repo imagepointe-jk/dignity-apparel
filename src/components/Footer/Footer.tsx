@@ -73,16 +73,22 @@ export function Footer({
             </div>
             <div className={styles["bottom-row-links"]}>
               <div>
-                <Link href={""}>Privacy Policy</Link>
+                <Link href={`${env.NEXT_PUBLIC_BASE_URL}/privacy-policy`}>
+                  Privacy Policy
+                </Link>
               </div>
               <div>
-                <Link href={""}>Terms & Conditions</Link>
+                <Link href={`${env.NEXT_PUBLIC_BASE_URL}/terms-and-conditions`}>
+                  Terms & Conditions
+                </Link>
               </div>
               <div>
                 <Link href={""}>Site Map</Link>
               </div>
               <div>
-                <Link href={""}>Cookies Policy</Link>
+                <Link href={`${env.NEXT_PUBLIC_BASE_URL}/cookie-policy`}>
+                  Cookies Policy
+                </Link>
               </div>
             </div>
           </div>
