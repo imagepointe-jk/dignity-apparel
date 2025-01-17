@@ -24,7 +24,7 @@ export const loginResponseSchema = z.object({
   errors: errorsSchema,
 });
 
-export const userResponseSchema = z.object({
+export const userDataSchema = z.object({
   data: z
     .object({
       user: z

@@ -1,7 +1,7 @@
 import { getUser } from "@/fetch/wordpress/wordpress";
 import {
   validateUserJwt,
-  validateUserResponse,
+  validateUserData,
 } from "@/types/validation/wpgraphql/wpgraphql";
 import { jwtDecode } from "jwt-decode";
 import { NextResponse } from "next/server";
@@ -27,7 +27,7 @@ export async function checkTokenAgainstUser(
 
   const userResponse = await getUser(token, userGlobalId);
   const userJson = await userResponse.json();
-  const userParsed = validateUserResponse(userJson);
+  const userParsed = validateUserData(userJson);
   const userIdFromDatabase = userParsed.data?.user?.databaseId;
 
   return {

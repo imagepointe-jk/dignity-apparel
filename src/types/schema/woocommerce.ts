@@ -92,6 +92,29 @@ export const pageInfoSchema = z.object({
   endCursor: z.string().nullable(),
 });
 
+const billingOrShippingSchema = z.object({
+  company: z.string().nullable(),
+  address1: z.string().nullable(),
+  address2: z.string().nullable(),
+  city: z.string().nullable(),
+  postcode: z.string().nullable(),
+  country: z.string().nullable(),
+  state: z.string().nullable(),
+  phone: z.string().nullable(),
+  email: z.string().nullable(),
+});
+
+export const customerSchema = z.object({
+  id: z.string(),
+  databaseId: z.number(),
+  username: z.string(),
+  email: z.string(),
+  firstName: z.string(),
+  lastName: z.string(),
+  billing: billingOrShippingSchema,
+  shipping: billingOrShippingSchema,
+});
+
 export type Product = z.infer<typeof productSchema>;
 export type ProductVariation = z.infer<typeof productVariationSchema>;
 export type Category = z.infer<typeof categorySchema>;
@@ -123,3 +146,4 @@ export type ProductQueryParams = {
   first: number | null;
   last: number | null;
 };
+export type Customer = z.infer<typeof customerSchema>;

@@ -3,7 +3,7 @@ import { MiddlewareConfig, NextRequest, NextResponse } from "next/server";
 import { NextURL } from "next/dist/server/web/next-url";
 import { forceLogoutWithResponse } from "./utility/auth";
 import { getUser } from "./fetch/wordpress/wordpress";
-import { validateUserResponse } from "./types/validation/wpgraphql/wpgraphql";
+import { validateUserData } from "./types/validation/wpgraphql/wpgraphql";
 
 export async function middleware(request: NextRequest) {
   const requestedLogout =
@@ -88,7 +88,7 @@ async function verifyToken(cookiesToken: string, cookiesId: string) {
   //a successful request includes a new token valid for another X minutes, allowing the user to stay logged in for longer than the initial token's lifetime.
   const newToken = user.headers.get("x-jwt-auth");
   const json = await user.json();
-  const parsedUserResponse = validateUserResponse(json);
+  const parsedUserResponse = validateUserData(json);
   if (parsedUserResponse.errors !== undefined) {
     const tokenRejected = !!parsedUserResponse.errors.find((error) =>
       error.message.includes("cannot be accessed without authentication")

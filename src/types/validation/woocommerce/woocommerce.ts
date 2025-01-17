@@ -5,6 +5,7 @@ import {
 import {
   attributeSchema,
   Category,
+  customerSchema,
   pageInfoSchema,
   productSchema,
 } from "@/types/schema/woocommerce";
@@ -176,4 +177,8 @@ export function validatePagination(pagination: {
     before: null,
     after: null,
   };
+}
+
+export function validateCustomer(json: any) {
+  return customerSchema.parse(json);
 }
