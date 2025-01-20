@@ -115,6 +115,23 @@ export const customerSchema = z.object({
   shipping: billingOrShippingSchema,
 });
 
+const cartItemSchema = z.object({
+  key: z.string(),
+  product: z.object({
+    id: z.string(),
+    databaseId: z.number(),
+    name: z.string(),
+    slug: z.string(),
+  }),
+  quantity: z.number(),
+});
+
+export const cartSchema = z.object({
+  items: z.array(z.object({})),
+  subtotal: z.string(),
+  subtotalTax: z.string(),
+});
+
 export type Product = z.infer<typeof productSchema>;
 export type ProductVariation = z.infer<typeof productVariationSchema>;
 export type Category = z.infer<typeof categorySchema>;

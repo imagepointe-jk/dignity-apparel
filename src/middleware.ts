@@ -74,7 +74,7 @@ export const config: MiddlewareConfig = {
 };
 
 function isPageProtected(url: NextURL) {
-  const protectedRoutes = ["/my-account", "/cart", "/orders"];
+  const protectedRoutes = ["/my-account"];
   const isProtected = !!protectedRoutes.find((route) =>
     url.pathname.startsWith(route)
   );
