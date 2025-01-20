@@ -30,6 +30,7 @@
   align-items: center;
   border-radius: 5px;
   overflow: hidden;
+  flex: 1;
 }
 
 .card-bg-container {
@@ -120,6 +121,10 @@
 }
 
 @media screen and (max-width: 1280px) {
+  .card {
+    flex: initial;
+  }
+
   .cards-2 .cards-flex,
   .cards-3 .cards-flex {
     flex-direction: column;
