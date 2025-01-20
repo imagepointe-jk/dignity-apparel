@@ -67,7 +67,7 @@
                   "label": "Body",
                   "placeholder": "",
                   "allowTargetBlank": true,
-                  "multi": "paragraph,hyperlink",
+                  "multi": "paragraph,hyperlink,list-item,o-list-item,strong,em",
                   "labels": [
                     "body-1",
                     "body-1-semi-bold",

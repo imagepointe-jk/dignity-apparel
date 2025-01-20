@@ -56,7 +56,7 @@
                   "label": "Body",
                   "placeholder": "",
                   "allowTargetBlank": true,
-                  "multi": "paragraph,strong,em"
+                  "multi": "paragraph,strong,em,list-item,o-list-item,hyperlink"
                 }
               },
               "button": {

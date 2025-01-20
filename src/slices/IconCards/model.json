@@ -114,7 +114,7 @@
             "label": "Body",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph",
+            "multi": "paragraph,list-item,o-list-item,hyperlink,strong,em",
             "labels": [
               "body-1",
               "body-1-semi-bold",
@@ -193,7 +193,7 @@
                   "label": "Detail Text",
                   "placeholder": "",
                   "allowTargetBlank": true,
-                  "multi": "paragraph",
+                  "multi": "paragraph,strong,em,hyperlink",
                   "labels": [
                     "body-1",
                     "body-1-semi-bold",
