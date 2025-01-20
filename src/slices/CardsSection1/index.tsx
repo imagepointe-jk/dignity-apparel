@@ -1,7 +1,7 @@
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { CardsSection1 as CardsSection1Component } from "@/components/sections/CardsSection1/CardsSection1";
-import { convertButton } from "@/utility/prismic";
+import { convertButton, getPrismicLinkUrl } from "@/utility/prismic";
 
 /**
  * Props for `CardsSection1`.
@@ -18,10 +18,12 @@ const CardsSection1 = async ({
   const slice_id = slice.primary.slice_id;
   const cards = await Promise.all(
     slice.primary.cards.map(async (card) => {
-      const button = await convertButton({
-        link: card.button,
-        button_style: card.button_style,
-      });
+      const button = getPrismicLinkUrl(card.button)
+        ? await convertButton({
+            link: card.button,
+            button_style: card.button_style,
+          })
+        : undefined;
 
       return {
         image: { src: card.image.url || "", alt: card.image.alt || "" },

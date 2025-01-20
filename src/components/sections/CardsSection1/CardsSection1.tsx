@@ -16,7 +16,7 @@ type Props = {
     };
     headingNode: ReactNode;
     bodyNode: ReactNode;
-    button: LinkAsButtonData;
+    button?: LinkAsButtonData;
   }[];
 } & WithTilingBackground;
 export function CardsSection1({ id, tilingBackground, cards, ...rest }: Props) {
