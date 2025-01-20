@@ -13,7 +13,7 @@ type Props = {
   heading: ReactNode;
   subheading?: ReactNode;
   body: ReactNode;
-  link: LinkAsButtonData;
+  link?: LinkAsButtonData;
   image: {
     src: string;
     alt: string;
@@ -43,7 +43,7 @@ export function TextImageCard({
               {subheading}
             </div>
             {body}
-            <LinkAsButton data={link} />
+            {link && <LinkAsButton data={link} />}
           </div>
           <CoveredImage
             src={image.src}
