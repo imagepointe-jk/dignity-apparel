@@ -60,8 +60,8 @@ export async function convertButton(button: {
   if (!button) return buttonData;
 
   const styleId = button?.button_style?.id;
-  const href = getPrismicLinkUrl(button.link);
-  const label = button?.link?.text || "Link";
+  buttonData.href = getPrismicLinkUrl(button.link);
+  buttonData.label = button?.link?.text || "Link";
 
   if (!styleId) return buttonData;
 
@@ -77,8 +77,6 @@ export async function convertButton(button: {
     },
   } = validateButtonStyleResponse(response);
 
-  buttonData.href = href;
-  buttonData.label = label;
   buttonData.extraPadding = extra_padding || false;
   buttonData.type =
     type === "Filled" ? "filled" : type === "Outlined" ? "outlined" : undefined;
