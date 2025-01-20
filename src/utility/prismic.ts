@@ -47,12 +47,12 @@ export async function convertButton(button: {
     label: "Link",
     states: {
       hover: {
-        primaryColor: "ffffff",
-        secondaryColor: BRAND_COLOR,
+        primaryColor: "#FF5C33",
+        secondaryColor: "#ffffff",
       },
       normal: {
         primaryColor: BRAND_COLOR,
-        secondaryColor: "ffffff",
+        secondaryColor: "#ffffff",
       },
     },
   };
