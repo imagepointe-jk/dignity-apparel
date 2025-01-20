@@ -10,7 +10,7 @@ type Props = {
   heading: string;
   subtextNode: ReactNode;
   body?: ReactNode;
-  buttonPrimary: LinkAsButtonData;
+  buttonPrimary?: LinkAsButtonData;
   buttonSecondary?: LinkAsButtonData;
   bgImageUrl?: string;
   bgVideoUrl?: string;
@@ -73,7 +73,7 @@ export function Hero({
           </div>
           {body}
           <div className={styles["buttons-container"]}>
-            <LinkAsButton data={buttonPrimary} />
+            {buttonPrimary && <LinkAsButton data={buttonPrimary} />}
             {buttonSecondary && alignment === "center" && (
               <LinkAsButton data={buttonSecondary} />
             )}
