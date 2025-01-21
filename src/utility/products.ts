@@ -82,14 +82,14 @@ const colorSwatches: ColorSwatch[] = [
     name: "heather-charcoal",
     displayName: "Heather Charcoal",
     imageUrl:
-      "https://dawholesale.unionwebstores.com/wp-content/uploads/sites/118/2024/11/heather-charcoal.png",
+      "https://wholesale.dignityapparel.com/wp-content/uploads/sites/118/2024/11/heather-charcoal.png",
     order: 12,
   },
   {
     name: "heather-military-green",
     displayName: "Heather Military Green",
     imageUrl:
-      "https://dawholesale.unionwebstores.com/wp-content/uploads/sites/118/2024/11/heather-military-green.png",
+      "https://wholesale.dignityapparel.com/wp-content/uploads/sites/118/2024/11/heather-military-green.png",
     order: 13,
   },
   {

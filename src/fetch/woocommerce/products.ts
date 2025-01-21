@@ -113,7 +113,7 @@ export async function getProductBySku(sku: string) {
   }
 `;
 
-  return fetch("https://dawholesale.unionwebstores.com/graphql", {
+  return fetch(`${env.WOOCOMMERCE_STORE_URL}graphql`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -136,7 +136,7 @@ export async function getProductBySlug(slug: string) {
 `;
 
   return queryWpGraphQl(() =>
-    fetch("https://dawholesale.unionwebstores.com/graphql", {
+    fetch(`${env.WOOCOMMERCE_STORE_URL}graphql`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -164,7 +164,7 @@ export async function getProducts() {
   }
 `;
 
-  return fetch("https://dawholesale.unionwebstores.com/graphql", {
+  return fetch(`${env.WOOCOMMERCE_STORE_URL}graphql`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -268,7 +268,7 @@ export async function queryProducts(params: ProductQueryParams) {
 `;
 
   return queryWpGraphQl(() =>
-    fetch("https://dawholesale.unionwebstores.com/graphql", {
+    fetch(`${env.WOOCOMMERCE_STORE_URL}graphql`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

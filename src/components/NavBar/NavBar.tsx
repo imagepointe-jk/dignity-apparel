@@ -160,7 +160,7 @@ function NavBarWrapped({
                     <MagnifyingGlass size={28} />
                   </button>
                   <a
-                    href="https://dawholesale.unionwebstores.com/my-account"
+                    href="https://wholesale.dignityapparel.com/my-account"
                     className={styles["my-account-button"]}
                     aria-label="my account"
                   >
