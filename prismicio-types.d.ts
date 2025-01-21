@@ -1025,6 +1025,7 @@ export type StaffStoryDocument<Lang extends string = string> =
   >;
 
 type StandardPageDocumentDataSlicesSlice =
+  | TextColumnsSlice
   | CodeBlockSlice
   | ArticleSlice
   | TextImageCardSlice
@@ -2950,6 +2951,129 @@ export type TabContentSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *TextColumns → Default → Primary → Columns*
+ */
+export interface TextColumnsSliceDefaultPrimaryColumnsItem {
+  /**
+   * Title field in *TextColumns → Default → Primary → Columns*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_columns.default.primary.columns[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Body field in *TextColumns → Default → Primary → Columns*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_columns.default.primary.columns[].body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *TextColumns → Default → Primary*
+ */
+export interface TextColumnsSliceDefaultPrimary {
+  /**
+   * Slice ID field in *TextColumns → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_columns.default.primary.slice_id
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_id: prismic.KeyTextField;
+
+  /**
+   * Tiling Background field in *TextColumns → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_columns.default.primary.tiling_background
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  tiling_background: prismic.ImageField<never>;
+
+  /**
+   * Heading field in *TextColumns → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_columns.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Subheading field in *TextColumns → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_columns.default.primary.subheading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subheading: prismic.RichTextField;
+
+  /**
+   * Text Color field in *TextColumns → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Normal
+   * - **API ID Path**: text_columns.default.primary.text_color
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  text_color: prismic.SelectField<"Normal" | "White", "filled">;
+
+  /**
+   * Columns field in *TextColumns → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_columns.default.primary.columns[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  columns: prismic.GroupField<
+    Simplify<TextColumnsSliceDefaultPrimaryColumnsItem>
+  >;
+}
+
+/**
+ * Default variation for TextColumns Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextColumnsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TextColumnsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TextColumns*
+ */
+type TextColumnsSliceVariation = TextColumnsSliceDefault;
+
+/**
+ * TextColumns Shared Slice
+ *
+ * - **API ID**: `text_columns`
+ * - **Description**: TextColumns
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextColumnsSlice = prismic.SharedSlice<
+  "text_columns",
+  TextColumnsSliceVariation
+>;
+
+/**
  * Primary content in *TextImageCard → Default → Primary*
  */
 export interface TextImageCardSliceDefaultPrimary {
@@ -3853,6 +3977,11 @@ declare module "@prismicio/client" {
       TabContentSliceDefaultPrimary,
       TabContentSliceVariation,
       TabContentSliceDefault,
+      TextColumnsSlice,
+      TextColumnsSliceDefaultPrimaryColumnsItem,
+      TextColumnsSliceDefaultPrimary,
+      TextColumnsSliceVariation,
+      TextColumnsSliceDefault,
       TextImageCardSlice,
       TextImageCardSliceDefaultPrimary,
       TextImageCardSliceVariation,
