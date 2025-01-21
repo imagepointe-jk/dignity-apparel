@@ -1,6 +1,6 @@
 .section {
   background-color: var(--armor-gray-200);
-  padding: 60px 0;
+  padding: 60px 0 100px 0;
 }
 
 .main {

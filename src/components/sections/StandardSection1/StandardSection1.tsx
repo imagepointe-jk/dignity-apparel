@@ -21,6 +21,7 @@ type Props = {
   textColor?: string;
   buttonPrimary?: LinkAsButtonData;
   buttonSecondary?: Omit<LinkAsButtonData, "secondaryColor">;
+  sectionHeight?: number;
 } & WithTilingBackground;
 export function StandardSection1({
   id,
@@ -32,6 +33,7 @@ export function StandardSection1({
   tilingBackground,
   textColor,
   buttonPrimary,
+  sectionHeight,
   ...rest
 }: Props) {
   return (
@@ -42,6 +44,7 @@ export function StandardSection1({
     >
       <div
         className={`${styles["main"]} ${horzReversed ? styles["reversed"] : ""}`}
+        style={{ height: sectionHeight ? `${sectionHeight}px` : undefined }}
       >
         <div>
           <div className={styles["content-container"]}>

@@ -26,6 +26,7 @@
   text-align: center;
   max-width: 500px;
   padding: 0 10px;
+  margin: 100px 0;
 }
 
 .content-container,
@@ -34,20 +35,8 @@
 }
 
 .main .image-container {
-  height: 529px;
+  height: 600px;
 }
-
-/* .image-container {
-  overflow: hidden;
-  height: 529px;
-}
-
-.image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 50%;
-} */
 
 @media screen and (max-width: 1024px) {
   .main {

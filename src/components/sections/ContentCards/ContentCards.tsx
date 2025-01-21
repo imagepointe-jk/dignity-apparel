@@ -43,7 +43,7 @@ export function ContentCards({
       <div
         className={`${styles["main"]} ${styles[`cards-${cardCount}`]} ${textBelow ? styles["card-type-text-below"] : ""} x-wide-container`}
       >
-        {heading}
+        <div className={styles["heading"]}>{heading}</div>
         <div className={styles["cards-flex"]}>
           {cards.map((card, i) => (
             <div key={i} className={styles["card"]}>

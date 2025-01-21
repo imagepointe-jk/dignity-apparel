@@ -30,7 +30,14 @@ export function FeaturedProducts({
       {...rest}
     >
       <div className="x-wide-container">
-        <div style={{ color: `#${primaryTextColor}` }}>{headingNode}</div>
+        <div
+          className={styles["heading"]}
+          style={{
+            color: primaryTextColor ? `#${primaryTextColor}` : undefined,
+          }}
+        >
+          {headingNode}
+        </div>
         <CardSlider
           createCard={(product) => <FeaturedProductCard1 product={product} />}
           dataset={products}

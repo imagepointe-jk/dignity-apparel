@@ -1,6 +1,6 @@
 .main {
   text-align: center;
-  padding: 40px 0;
+  padding: 90px 0 40px 0;
 }
 
 .main h1,
@@ -35,7 +35,7 @@
 
 .body-container {
   margin-bottom: 33px;
-  height: 114px;
+  height: 118px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;

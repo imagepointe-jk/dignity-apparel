@@ -273,6 +273,7 @@
   text-decoration: none;
 }
 
+.mega-menu-dropdown a,
 .mega-menu-dropdown a:visited {
   color: black;
 }
