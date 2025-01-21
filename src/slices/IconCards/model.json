@@ -32,11 +32,7 @@
           "config": {
             "label": "Background Behavior",
             "placeholder": "",
-            "options": [
-              "Tile",
-              "Fill",
-              "Parallax"
-            ],
+            "options": ["Tile", "Fill", "Parallax"],
             "default_value": "Tile"
           }
         },
@@ -52,10 +48,7 @@
           "config": {
             "label": "Primary Text Color",
             "placeholder": "",
-            "options": [
-              "Black",
-              "White"
-            ],
+            "options": ["Black", "White"],
             "default_value": "Black"
           }
         },
@@ -64,9 +57,7 @@
           "config": {
             "label": "Icon Detail Text Color",
             "select": "document",
-            "customtypes": [
-              "brand_color"
-            ]
+            "customtypes": ["brand_color"]
           }
         },
         "heading": {
@@ -76,14 +67,7 @@
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "heading1,heading2,heading3,heading4,heading5,heading6",
-            "labels": [
-              "h1-medium",
-              "h2-medium",
-              "h3-medium-italic",
-              "h3-italic",
-              "h3-bold",
-              "h4-semi-bold"
-            ]
+            "labels": ["metropolis", "merriweather", "display"]
           }
         },
         "subheading": {
@@ -139,9 +123,7 @@
           "config": {
             "label": "Button Style",
             "select": "document",
-            "customtypes": [
-              "button_style"
-            ]
+            "customtypes": ["button_style"]
           }
         },
         "cards": {

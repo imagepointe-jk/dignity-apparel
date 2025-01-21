@@ -122,8 +122,13 @@ h6 {
 }
 
 h1.metropolis,
-h1 .metropolis {
+h1 .metropolis,
+.display {
   font-family: var(--font-metropolis-black);
+}
+
+.display {
+  font-size: 3.75rem;
 }
 
 .button {

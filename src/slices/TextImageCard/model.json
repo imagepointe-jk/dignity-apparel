@@ -34,10 +34,7 @@
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "heading1,heading2,heading3,heading4,heading5,heading6",
-            "labels": [
-              "metropolis",
-              "merriweather"
-            ]
+            "labels": ["metropolis", "merriweather", "display"]
           }
         },
         "subheading": {
@@ -93,9 +90,7 @@
           "config": {
             "label": "Button Style",
             "select": "document",
-            "customtypes": [
-              "button_style"
-            ]
+            "customtypes": ["button_style"]
           }
         },
         "image": {

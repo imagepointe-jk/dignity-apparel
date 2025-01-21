@@ -23,7 +23,9 @@
           "type": "Text",
           "config": {
             "label": "Heading",
-            "placeholder": ""
+            "placeholder": "",
+            "multi": "heading1,heading2,heading3,heading4,heading5,heading6",
+            "labels": ["metropolis", "merriweather", "display"]
           }
         },
         "subtext": {
@@ -84,10 +86,7 @@
           "config": {
             "label": "Background Overlay Opacity",
             "placeholder": "",
-            "options": [
-              "50%",
-              "95%"
-            ],
+            "options": ["50%", "95%"],
             "default_value": "50%"
           }
         },
@@ -96,11 +95,7 @@
           "config": {
             "label": "Layout",
             "placeholder": "",
-            "options": [
-              "Centered",
-              "Left",
-              "Right"
-            ],
+            "options": ["Centered", "Left", "Right"],
             "default_value": "Centered"
           }
         },
@@ -132,9 +127,7 @@
                 "config": {
                   "label": "Button Style",
                   "select": "document",
-                  "customtypes": [
-                    "button_style"
-                  ]
+                  "customtypes": ["button_style"]
                 }
               }
             }

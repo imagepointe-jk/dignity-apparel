@@ -26,10 +26,7 @@
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "heading1,heading2,heading3,heading4,heading5,heading6",
-            "labels": [
-              "metropolis",
-              "merriweather"
-            ]
+            "labels": ["metropolis", "merriweather", "display"]
           }
         },
         "primary_text_color": {
@@ -37,9 +34,7 @@
           "config": {
             "label": "Primary Text Color",
             "select": "document",
-            "customtypes": [
-              "brand_color"
-            ]
+            "customtypes": ["brand_color"]
           }
         },
         "tiling_background": {
