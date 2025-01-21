@@ -33,14 +33,10 @@
             "label": "Heading",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "heading1,heading2,heading3,heading4",
+            "multi": "heading1,heading2,heading3,heading4,heading5,heading6",
             "labels": [
-              "h1-medium",
-              "h2-medium",
-              "h3-medium-italic",
-              "h3-italic",
-              "h3-bold",
-              "h4-semi-bold"
+              "metropolis",
+              "merriweather"
             ]
           }
         },
@@ -57,7 +53,21 @@
             "label": "Body",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item"
+            "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item",
+            "labels": [
+              "metropolis-16",
+              "metropolis-16-underline",
+              "metropolis-19",
+              "metropolis-19-underline",
+              "metropolis-22",
+              "metropolis-22-underline",
+              "merriweather-16",
+              "merriweather-16-underline",
+              "merriweather-19",
+              "merriweather-19-underline",
+              "merriweather-22",
+              "merriweather-22-underline"
+            ]
           }
         },
         "reviewer_name": {

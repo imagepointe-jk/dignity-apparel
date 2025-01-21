@@ -25,7 +25,11 @@
             "label": "Heading",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "heading1,heading2,heading3,heading4"
+            "multi": "heading1,heading2,heading3,heading4,heading5,heading6",
+            "labels": [
+              "metropolis",
+              "merriweather"
+            ]
           }
         },
         "reviews": {
@@ -47,7 +51,21 @@
                   "label": "Body",
                   "placeholder": "",
                   "allowTargetBlank": true,
-                  "multi": "paragraph,strong,em,o-list-item,list-item,hyperlink"
+                  "multi": "paragraph,strong,em,o-list-item,list-item,hyperlink",
+                  "labels": [
+                    "metropolis-16",
+                    "metropolis-16-underline",
+                    "metropolis-19",
+                    "metropolis-19-underline",
+                    "metropolis-22",
+                    "metropolis-22-underline",
+                    "merriweather-16",
+                    "merriweather-16-underline",
+                    "merriweather-19",
+                    "merriweather-19-underline",
+                    "merriweather-22",
+                    "merriweather-22-underline"
+                  ]
                 }
               },
               "read_more_link": {
