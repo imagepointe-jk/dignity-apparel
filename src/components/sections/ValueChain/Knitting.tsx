@@ -14,7 +14,7 @@ export function Knitting() {
           >
             Knitted in Tennessee
           </div>
-          <div className="subheader-2">
+          <div className="merriweather-19">
             100% union-knit fabric & fleece made from US-sourced yarn in our
             Dignity Apparel Tennessee mill.
           </div>

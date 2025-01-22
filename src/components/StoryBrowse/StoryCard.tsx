@@ -25,10 +25,10 @@ export function StoryCard({ story }: Props) {
         </div>
       </CoveredImage>
       <div className={styles["card-content-container"]}>
-        <div className={`${styles["staff-name"]} subheader-1-medium`}>
+        <div className={`${styles["staff-name"]} metropolis-32`}>
           {story.firstName}
         </div>
-        <div className={`${styles["job-description"]} body-2`}>
+        <div className={`${styles["job-description"]} merriweather-19`}>
           {story.jobDescriptionShort}
         </div>
       </div>

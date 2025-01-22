@@ -31,7 +31,7 @@ export function MegaMenuMobile({ data, closeFn, specialLink }: Props) {
                 navItem.featured.length === 0 && (
                   <Link
                     href={navItem.href || ""}
-                    className="subheader-1-regular"
+                    className="metropolis-24"
                     onClick={closeFn}
                   >
                     {navItem.label}
@@ -39,7 +39,7 @@ export function MegaMenuMobile({ data, closeFn, specialLink }: Props) {
                 )}
               {(navItem.sections.length > 0 || navItem.featured.length > 0) && (
                 <button
-                  className="subheader-1-regular"
+                  className="metropolis-24"
                   aria-expanded={expandedIndex === i}
                   aria-controls={`${navItem.label}-submenu`}
                 >

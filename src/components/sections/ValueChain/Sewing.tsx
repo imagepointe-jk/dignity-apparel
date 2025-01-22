@@ -20,7 +20,7 @@ export function Sewing() {
           <div className={styles["content-subheading"]}>
             Sewn in Iowa & Tennessee
           </div>
-          <div className="subheader-2">
+          <div className="merriweather-19">
             100% union-sewn garments at Dignity Apparel factories in Iowa &
             Tennessee.
           </div>

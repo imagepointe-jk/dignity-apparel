@@ -68,7 +68,7 @@ export function Hero({
         ></div>
         <div className={styles["content"]}>
           <div>
-            <h1 className="h1-black">{heading}</h1>
+            <h1>{heading}</h1>
             <div className={styles["subtext-container"]}>{subtextNode}</div>
           </div>
           {body}

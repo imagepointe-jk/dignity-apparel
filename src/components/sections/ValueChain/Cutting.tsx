@@ -20,7 +20,7 @@ export function Cutting() {
           <div className={styles["content-subheading"]}>
             Cut in Iowa & Tennessee
           </div>
-          <div className="subheader-2">
+          <div className="merriweather-19">
             Union-made fabric cut into panels by specialized union workers at
             Dignity Apparel factories.
           </div>

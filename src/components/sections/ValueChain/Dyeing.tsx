@@ -16,7 +16,7 @@ export function Dyeing() {
         >
           Dyed in Various US Dye Houses
         </div>
-        <div className={`${styles["dyed-body-container"]} subheader-2`}>
+        <div className={`${styles["dyed-body-container"]} merriweather-19`}>
           Union-made fabric & fleece sent to US factories to be dyed.
         </div>
       </div>

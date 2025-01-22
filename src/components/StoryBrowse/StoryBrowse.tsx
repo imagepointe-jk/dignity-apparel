@@ -11,7 +11,7 @@ export function StoryBrowse({ stories }: Props) {
       <div className={`${styles["main"]} x-wide-container`}>
         <div className={styles["heading-container"]}>
           <h1>Dignified, Life-Changing Stories</h1>
-          <div className="subheader-4">
+          <div className="merriweather-19">
             Select a story below to read more about the hardworking Americans
             who make Dignity Apparel garments.
           </div>

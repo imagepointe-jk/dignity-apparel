@@ -23,7 +23,9 @@ export function ValueChain({ id }: Props) {
   return (
     <section id={id ? id : undefined} className={styles["section"]}>
       <div className={styles["main"]}>
-        <h3 className="h3-italic">USA-Made Garment Production Value Chain</h3>
+        <h2 className="merriweather">
+          USA-Made Garment Production Value Chain
+        </h2>
         <ul className={styles["expandable-list"]}>
           <li className={selected === "growing" ? styles["selected"] : ""}>
             <button

@@ -134,6 +134,7 @@
 .recommended-heading {
   text-align: center;
   margin: 0 0 20px 0;
+  font-family: var(--font-metropolis-extra-bold);
 }
 
 .recommended-content {

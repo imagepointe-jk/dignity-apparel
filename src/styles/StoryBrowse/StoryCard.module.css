@@ -58,6 +58,11 @@
 
 .staff-name {
   color: var(--blaze-orange-500);
+  font-weight: bold;
+}
+
+.job-description {
+  font-weight: bold;
 }
 
 .hover-line {

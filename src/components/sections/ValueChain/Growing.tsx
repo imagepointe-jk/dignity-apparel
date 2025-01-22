@@ -20,7 +20,7 @@ export function Growing() {
           <div className={styles["content-subheading"]}>
             Grown in the Carolinas
           </div>
-          <div className="subheader-2">
+          <div className="merriweather-19">
             Our garments are made with 100% US-sourced cotton
           </div>
         </div>

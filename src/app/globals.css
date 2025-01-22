@@ -131,6 +131,10 @@ h1 .metropolis,
   font-size: 3.75rem;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 .button {
   font-family: var(--font-metropolis-extra-bold);
   font-size: 1rem;

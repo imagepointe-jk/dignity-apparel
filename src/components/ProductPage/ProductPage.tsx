@@ -79,9 +79,9 @@ function ProductPageWrapped({ product }: Props) {
         </div>
         <div className={styles["info-container"]}>
           <div>
-            <h1 className="subheader-1-medium">{product.name}</h1>
+            <h1 className="metropolis-24">{product.name}</h1>
             <div
-              className="body-1"
+              className="metropolis-16"
               dangerouslySetInnerHTML={{
                 __html: product.shortDescriptionSanitized,
               }}
@@ -91,8 +91,8 @@ function ProductPageWrapped({ product }: Props) {
             className={`${styles["info-subcontainer"]} ${styles["swatches-container"]}`}
           >
             <div>
-              <span className="body-3-semi-bold">Color: </span>
-              <span className={`${styles["swatch-color-text"]} body-1`}>
+              <span className="bold">Color: </span>
+              <span className={`${styles["swatch-color-text"]} metropolis-16`}>
                 {viewedSwatch?.displayName || "UNKNOWN COLOR"}
               </span>
             </div>
@@ -121,8 +121,8 @@ function ProductPageWrapped({ product }: Props) {
           </div>
           {isSizedProduct(product) && (
             <div className={styles["info-subcontainer"]}>
-              <div className="body-3-semi-bold">Sizes</div>
-              <div className="body-1">
+              <div className="bold">Sizes</div>
+              <div className="metropolis-16">
                 {`Available In Sizes ${smallestSize.toLocaleUpperCase()} to ${largestSize.toLocaleUpperCase()}`}
               </div>
             </div>
@@ -157,7 +157,7 @@ function ProductPageWrapped({ product }: Props) {
               labelClassName={styles["expandable-label"]}
               content={
                 <div
-                  className="body-1"
+                  className="metropolis-16"
                   dangerouslySetInnerHTML={{
                     __html: product.descriptionSanitized,
                   }}
@@ -168,7 +168,7 @@ function ProductPageWrapped({ product }: Props) {
               label="Material"
               labelClassName={styles["expandable-label"]}
               content={
-                <div className="body-1">
+                <div className="metropolis-16">
                   {product.additionalProductInformation.materialDescription}
                 </div>
               }
@@ -178,7 +178,7 @@ function ProductPageWrapped({ product }: Props) {
               labelClassName={styles["expandable-label"]}
               content={
                 <div
-                  className="body-1"
+                  className="metropolis-16"
                   dangerouslySetInnerHTML={{
                     __html:
                       product.additionalProductInformation

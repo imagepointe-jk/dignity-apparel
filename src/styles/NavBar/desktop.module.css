@@ -455,16 +455,16 @@
   }
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 480px) {
   .main {
     padding: 0;
   }
 
   .da-logo-main {
-    height: 35px;
+    height: 30px;
   }
 
   .da-logo-text {
-    height: 28px;
+    height: 24px;
   }
 }

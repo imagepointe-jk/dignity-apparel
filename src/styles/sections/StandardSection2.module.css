@@ -101,6 +101,10 @@
     flex-direction: column-reverse;
   }
 
+  .main-flex {
+    padding: 0;
+  }
+
   .main {
     text-align: center;
   }
