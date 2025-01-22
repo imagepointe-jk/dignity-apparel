@@ -26,6 +26,7 @@ const StandardSection2 = async ({
     video,
     primary_text_color,
     subtext,
+    image_behavior,
     tiling_background,
   } = slice.primary;
   const convertedButtons = await Promise.all(
@@ -46,6 +47,13 @@ const StandardSection2 = async ({
       videoEmbedCode={video.html || ""}
       horzReversed={image_location === "Left"}
       textColor={textColor}
+      imageBehavior={
+        image_behavior === "Contain"
+          ? "contain"
+          : image_behavior === "Cover"
+            ? "cover"
+            : "full-size"
+      }
       tilingBackground={{ src: tiling_background.url }}
     />
   );

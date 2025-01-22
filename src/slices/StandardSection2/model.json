@@ -34,7 +34,11 @@
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "heading1,heading2,heading3,heading4,heading5,heading6",
-            "labels": ["metropolis", "merriweather", "display"]
+            "labels": [
+              "metropolis",
+              "merriweather",
+              "display"
+            ]
           }
         },
         "subtext": {
@@ -80,7 +84,9 @@
           "config": {
             "label": "Primary Text Color",
             "select": "document",
-            "customtypes": ["brand_color"]
+            "customtypes": [
+              "brand_color"
+            ]
           }
         },
         "button_links": {
@@ -104,7 +110,9 @@
                 "config": {
                   "label": "Style",
                   "select": "document",
-                  "customtypes": ["button_style"]
+                  "customtypes": [
+                    "button_style"
+                  ]
                 }
               }
             }
@@ -123,8 +131,24 @@
           "config": {
             "label": "Image Location",
             "placeholder": "",
-            "options": ["Right", "Left"],
+            "options": [
+              "Right",
+              "Left"
+            ],
             "default_value": "Right"
+          }
+        },
+        "image_behavior": {
+          "type": "Select",
+          "config": {
+            "label": "Image Behavior",
+            "placeholder": "",
+            "options": [
+              "Cover",
+              "Contain",
+              "Full Size"
+            ],
+            "default_value": "Cover"
           }
         },
         "video": {

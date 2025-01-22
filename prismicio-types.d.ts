@@ -1025,6 +1025,7 @@ export type StaffStoryDocument<Lang extends string = string> =
   >;
 
 type StandardPageDocumentDataSlicesSlice =
+  | TestingSliceSlice
   | TextColumnsSlice
   | CodeBlockSlice
   | ArticleSlice
@@ -2787,6 +2788,20 @@ export interface StandardSection2SliceDefaultPrimary {
   image_location: prismic.SelectField<"Right" | "Left", "filled">;
 
   /**
+   * Image Behavior field in *StandardSection2 → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Cover
+   * - **API ID Path**: standard_section2.default.primary.image_behavior
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  image_behavior: prismic.SelectField<
+    "Cover" | "Contain" | "Full Size",
+    "filled"
+  >;
+
+  /**
    * Video field in *StandardSection2 → Default → Primary*
    *
    * - **Field Type**: Embed
@@ -2948,6 +2963,51 @@ type TabContentSliceVariation = TabContentSliceDefault;
 export type TabContentSlice = prismic.SharedSlice<
   "tab_content",
   TabContentSliceVariation
+>;
+
+/**
+ * Primary content in *TestingSlice → Default → Primary*
+ */
+export interface TestingSliceSliceDefaultPrimary {
+  /**
+   * Image field in *TestingSlice → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testing_slice.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<"Tablet" | "Mobile">;
+}
+
+/**
+ * Default variation for TestingSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TestingSliceSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TestingSliceSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TestingSlice*
+ */
+type TestingSliceSliceVariation = TestingSliceSliceDefault;
+
+/**
+ * TestingSlice Shared Slice
+ *
+ * - **API ID**: `testing_slice`
+ * - **Description**: TestingSlice
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TestingSliceSlice = prismic.SharedSlice<
+  "testing_slice",
+  TestingSliceSliceVariation
 >;
 
 /**
@@ -3977,6 +4037,10 @@ declare module "@prismicio/client" {
       TabContentSliceDefaultPrimary,
       TabContentSliceVariation,
       TabContentSliceDefault,
+      TestingSliceSlice,
+      TestingSliceSliceDefaultPrimary,
+      TestingSliceSliceVariation,
+      TestingSliceSliceDefault,
       TextColumnsSlice,
       TextColumnsSliceDefaultPrimaryColumnsItem,
       TextColumnsSliceDefaultPrimary,

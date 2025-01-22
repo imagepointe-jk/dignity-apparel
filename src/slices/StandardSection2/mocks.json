@@ -154,6 +154,11 @@
 				"__TYPE__": "FieldContent",
 				"value": "feel",
 				"type": "Text"
+			},
+			"image_behavior": {
+				"__TYPE__": "FieldContent",
+				"value": "Cover",
+				"type": "Select"
 			}
 		},
 		"items": []

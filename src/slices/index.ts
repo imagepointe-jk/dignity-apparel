@@ -18,6 +18,7 @@ export const components = {
   standard_section1: dynamic(() => import("./StandardSection1")),
   standard_section2: dynamic(() => import("./StandardSection2")),
   tab_content: dynamic(() => import("./TabContent")),
+  testing_slice: dynamic(() => import("./TestingSlice")),
   text_columns: dynamic(() => import("./TextColumns")),
   text_image_card: dynamic(() => import("./TextImageCard")),
   text_with_heading: dynamic(() => import("./TextWithHeading")),

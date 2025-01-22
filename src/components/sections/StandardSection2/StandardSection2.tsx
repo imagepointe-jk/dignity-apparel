@@ -1,4 +1,4 @@
-import { CoveredImage } from "@/components/global/CoveredImage/CoveredImage";
+import { FlexibleImage } from "@/components/global/FlexibleImage/FlexibleImage";
 import {
   LinkAsButton,
   LinkAsButtonData,
@@ -20,6 +20,7 @@ type Props = {
   videoEmbedCode?: string;
   horzReversed?: boolean;
   textColor?: string;
+  imageBehavior: "cover" | "contain" | "full-size";
   buttons: LinkAsButtonData[];
 } & WithTilingBackground;
 export function StandardSection2({
@@ -32,6 +33,7 @@ export function StandardSection2({
   horzReversed,
   subtextNode,
   textColor,
+  imageBehavior,
   tilingBackground,
   ...rest
 }: Props) {
@@ -73,10 +75,10 @@ export function StandardSection2({
           </div>
           <div className={styles["image-or-video-parent"]}>
             {!adjustedEmbedCode && (
-              <CoveredImage
+              <FlexibleImage
                 src={img.src}
-                alt={img.alt || "image"}
-                containerClassName={styles["image-container"]}
+                alt={img.alt}
+                behavior={imageBehavior}
               />
             )}
             {adjustedEmbedCode && (
