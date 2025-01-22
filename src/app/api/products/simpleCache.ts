@@ -19,10 +19,15 @@ export async function getCachedProducts(
   const now = Date.now();
   const millisecondsSinceLastFetch =
     lft !== null ? now - lft : Number.MAX_SAFE_INTEGER;
+  console.log(
+    `${millisecondsSinceLastFetch} ms elapsed since last retrieval; the cache time is ${env.SIMPLE_CACHE_TIME}`
+  );
   if (millisecondsSinceLastFetch < env.SIMPLE_CACHE_TIME && !forceUpdateCache) {
+    console.log("returning cache");
     return sc;
   }
 
+  console.log("getting fresh data");
   const response = await queryProducts({
     before: null,
     after: null,
@@ -36,6 +41,7 @@ export async function getCachedProducts(
     fit: null,
     search: null,
   });
+  console.log("data received");
   const json = await response.json();
   const parsed = validateWooCommerceProductsGraphQLResponse(json);
 

@@ -19,6 +19,7 @@ export async function GET(request: NextRequest) {
     : null;
 
   try {
+    console.log("queryCachedProducts");
     const products = await queryCachedProducts({
       search,
       category,
