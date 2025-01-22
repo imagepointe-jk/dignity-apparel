@@ -20,6 +20,7 @@ export async function GET(request: NextRequest) {
 
   try {
     console.log("queryCachedProducts");
+    const startTime = Date.now();
     const products = await queryCachedProducts({
       search,
       category,
@@ -39,6 +40,8 @@ export async function GET(request: NextRequest) {
         status: NOT_FOUND,
       });
 
+    const endTime = Date.now();
+    console.log(`queryCachedProducts took ${endTime - startTime}`);
     return Response.json(products, easyCorsInit);
   } catch (error) {
     console.error(error);
