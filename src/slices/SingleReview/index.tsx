@@ -3,6 +3,8 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { SingleReview as SingleReviewComponent } from "@/components/sections/SingleReview/SingleReview";
 import { getBrandColor } from "@/utility/prismic";
 
+import type { JSX } from "react";
+
 /**
  * Props for `SingleReview`.
  */

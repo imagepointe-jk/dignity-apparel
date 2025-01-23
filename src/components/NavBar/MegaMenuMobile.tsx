@@ -2,7 +2,7 @@ import stylesDesktop from "@/styles/NavBar/desktop.module.css";
 import styles from "@/styles/NavBar/mobile.module.css";
 import { MegaMenu, MegaMenuSection } from "@/types/schema/navbar";
 import Link from "next/link";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 
 type Props = {
   data: MegaMenu;
@@ -55,8 +55,7 @@ export function MegaMenuMobile({ data, closeFn, specialLink }: Props) {
               <ul
                 className={styles["nav-item-sections-container"]}
                 id={`${navItem.label}-submenu`}
-                //@ts-expect-error inert does not have proper typing in React yet
-                inert={expandedIndex !== i ? "true" : undefined}
+                inert={expandedIndex !== i ? true : undefined}
               >
                 <Sections sections={navItem.sections} closeFn={closeFn} />
 
@@ -97,7 +96,7 @@ function Sections({ sections, closeFn }: SectionsProps) {
   const [expandedIndex, setExpandedIndex] = useState(null as number | null);
 
   return sections.map((section, i) => (
-    <>
+    <Fragment key={section.title || i}>
       {!section.title &&
         section.links.map((link) => (
           <li key={link.label}>
@@ -125,8 +124,7 @@ function Sections({ sections, closeFn }: SectionsProps) {
           <ul
             className={styles["nav-subitem-links-container"]}
             id={`${section.title}-submenu`}
-            //@ts-expect-error inert does not have proper typing in React yet
-            inert={expandedIndex !== i ? "true" : undefined}
+            inert={expandedIndex !== i ? true : undefined}
           >
             {section.links.map((link) => (
               <li key={link.label}>
@@ -142,6 +140,6 @@ function Sections({ sections, closeFn }: SectionsProps) {
           </ul>
         </li>
       )}
-    </>
+    </Fragment>
   ));
 }

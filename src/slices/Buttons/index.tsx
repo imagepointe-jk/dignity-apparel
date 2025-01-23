@@ -3,6 +3,8 @@ import { SliceComponentProps } from "@prismicio/react";
 import { Buttons as ButtonsComponent } from "@/components/sections/Buttons/Buttons";
 import { convertButton } from "@/utility/prismic";
 
+import type { JSX } from "react";
+
 /**
  * Props for `Buttons`.
  */

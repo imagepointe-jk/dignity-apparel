@@ -4,6 +4,8 @@ import { TextImageCard as TextImageCardComponent } from "@/components/sections/T
 import { convertButton, getPrismicLinkUrl } from "@/utility/prismic";
 import { IMAGE_NOT_FOUND_URL } from "@/constants";
 
+import type { JSX } from "react";
+
 /**
  * Props for `TextImageCard`.
  */

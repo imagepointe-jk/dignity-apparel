@@ -5,8 +5,14 @@ import { PrismicRichText } from "@prismicio/react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-type Props = { params: { uid: string } };
-export default async function Page({ params: { uid } }: Props) {
+type Props = { params: Promise<{ uid: string }> };
+export default async function Page(props: Props) {
+  const params = await props.params;
+
+  const {
+    uid
+  } = params;
+
   try {
     const story = await getStaffStoryByUID(uid);
     const {
@@ -58,9 +64,13 @@ export default async function Page({ params: { uid } }: Props) {
   }
 }
 
-export async function generateMetadata({
-  params: { uid },
-}: Props): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    uid
+  } = params;
+
   try {
     const story = await getStaffStoryByUID(uid);
 

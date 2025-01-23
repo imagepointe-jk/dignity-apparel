@@ -3,6 +3,8 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { TwoThirdsImageText as TwoThirdsImageTextComponent } from "@/components/sections/TwoThirdsImageText/TwoThirdsImageText";
 import { IMAGE_NOT_FOUND_URL } from "@/constants";
 
+import type { JSX } from "react";
+
 /**
  * Props for `TwoThirdsImageText`.
  */

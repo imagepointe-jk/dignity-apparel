@@ -4,8 +4,14 @@ import { validateWooCommerceSingleProductResponse } from "@/types/validation/woo
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-type Props = { params: { slug: string } };
-export default async function Page({ params: { slug } }: Props) {
+type Props = { params: Promise<{ slug: string }> };
+export default async function Page(props: Props) {
+  const params = await props.params;
+
+  const {
+    slug
+  } = params;
+
   try {
     const productResponse = await getProductBySlug(slug);
     const json = await productResponse.json();
@@ -22,9 +28,13 @@ export default async function Page({ params: { slug } }: Props) {
   }
 }
 
-export async function generateMetadata({
-  params: { slug },
-}: Props): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    slug
+  } = params;
+
   try {
     const productResponse = await getProductBySlug(slug);
     const json = await productResponse.json();

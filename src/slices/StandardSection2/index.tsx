@@ -4,6 +4,8 @@ import { StandardSection2 as StandardSection2Component } from "@/components/sect
 import { IMAGE_NOT_FOUND_URL } from "@/constants";
 import { convertButton, getBrandColor } from "@/utility/prismic";
 
+import type { JSX } from "react";
+
 /**
  * Props for `StandardSection2`.
  */

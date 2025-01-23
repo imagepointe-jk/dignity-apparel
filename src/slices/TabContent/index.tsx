@@ -3,6 +3,8 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { TabContent as TabContentComponent } from "@/components/sections/TabContent/TabContent";
 import { getBrandColor } from "@/utility/prismic";
 
+import type { JSX } from "react";
+
 /**
  * Props for `TabContent`.
  */

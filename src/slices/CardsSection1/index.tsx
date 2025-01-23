@@ -3,6 +3,8 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { CardsSection1 as CardsSection1Component } from "@/components/sections/CardsSection1/CardsSection1";
 import { convertButton, getPrismicLinkUrl } from "@/utility/prismic";
 
+import type { JSX } from "react";
+
 /**
  * Props for `CardsSection1`.
  */

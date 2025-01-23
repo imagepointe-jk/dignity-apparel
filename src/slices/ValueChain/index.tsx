@@ -2,6 +2,8 @@ import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { ValueChain as ValueChainComponent } from "@/components/sections/ValueChain/ValueChain";
 
+import type { JSX } from "react";
+
 /**
  * Props for `ValueChain`.
  */

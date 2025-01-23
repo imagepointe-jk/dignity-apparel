@@ -2,6 +2,8 @@ import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { Accordion as AccordionComponent } from "@/components/sections/Accordion/Accordion";
 
+import type { JSX } from "react";
+
 /**
  * Props for `Accordion`.
  */

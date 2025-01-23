@@ -2,6 +2,8 @@ import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { TextColumns as TextColumnsComponent } from "@/components/sections/TextColumns/TextColumns";
 
+import type { JSX } from "react";
+
 /**
  * Props for `TextColumns`.
  */

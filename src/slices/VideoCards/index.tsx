@@ -3,6 +3,8 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { VideoCards as VideoCardsComponent } from "@/components/sections/VideoCards/VideoCards";
 import { convertButton, getBrandColor } from "@/utility/prismic";
 
+import type { JSX } from "react";
+
 /**
  * Props for `VideoCards`.
  */

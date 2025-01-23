@@ -8,6 +8,8 @@ import {
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 
+import type { JSX } from "react";
+
 /**
  * Props for `StandardSection1`.
  */
