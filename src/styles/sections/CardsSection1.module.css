@@ -15,17 +15,13 @@
   text-align: center;
 }
 
-.card img {
+.card-img {
   width: 100%;
 }
 
 .card h2 {
   margin: 0;
   text-transform: uppercase;
-}
-
-.card .image-container {
-  width: 100%;
 }
 
 .card a {
