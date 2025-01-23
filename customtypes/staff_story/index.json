@@ -32,7 +32,7 @@
           "label": "Story Text",
           "placeholder": "",
           "allowTargetBlank": true,
-          "multi": "paragraph,strong,hyperlink,em",
+          "multi": "paragraph,strong,em,hyperlink",
           "labels": [
             "body-1",
             "body-1-semi-bold",

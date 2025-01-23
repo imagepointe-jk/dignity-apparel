@@ -62,7 +62,7 @@
                   "label": "Body",
                   "placeholder": "",
                   "allowTargetBlank": true,
-                  "multi": "paragraph,strong,em,list-item,o-list-item,hyperlink",
+                  "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item,image",
                   "labels": [
                     "metropolis-16",
                     "metropolis-16-underline",
