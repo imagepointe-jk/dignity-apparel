@@ -9,6 +9,8 @@ import { env } from "@/env";
 import { queryProducts } from "@/fetch/woocommerce/products";
 import { Product, ProductQueryParams } from "@/types/schema/woocommerce";
 import { validateWooCommerceProductsGraphQLResponse } from "@/types/validation/woocommerce/woocommerce";
+import path from "path";
+import fs from "fs";
 
 let sc: Product[] = []; //simpleCache; should only be accessed from queryCachedProducts
 let lft: number | null = null; //lastFetchedTime; should only be accessed from queryCachedProducts
@@ -16,6 +18,25 @@ let lft: number | null = null; //lastFetchedTime; should only be accessed from q
 export async function getCachedProducts(
   forceUpdateCache?: boolean
 ): Promise<Product[]> {
+  //?This TEMPORARY method reads from a JSON snapshot of product data obtained on 1/23/25.
+  //?This was done to patch over the currently broken caching system as quickly as possible before launch day.
+  //?This should be replaced ASAP with a real caching solution.
+  if (1 + 1 > 1) {
+    const filePath = path.join(
+      process.cwd(),
+      "src",
+      "app",
+      "api",
+      "products",
+      "TEMP_PRODUCTS.json"
+    ); // Adjust the path as needed
+    const fileData = fs.readFileSync(filePath, "utf8");
+    const jsonData = JSON.parse(fileData);
+    const parsed = validateWooCommerceProductsGraphQLResponse(jsonData);
+    return parsed.products;
+  }
+
+  //?The following code is currently ALWAYS skipped due to the above patch.
   const now = Date.now();
   const millisecondsSinceLastFetch =
     lft !== null ? now - lft : Number.MAX_SAFE_INTEGER;
@@ -43,6 +64,15 @@ export async function getCachedProducts(
   });
   console.log("data received");
   const json = await response.json();
+  const filePath = path.join(
+    process.cwd(),
+    "src",
+    "app",
+    "api",
+    "products",
+    "RECEIVED_PRODUCTS.json"
+  );
+  fs.writeFileSync(filePath, JSON.stringify(json), "utf-8");
   const parsed = validateWooCommerceProductsGraphQLResponse(json);
 
   sc = parsed.products;
