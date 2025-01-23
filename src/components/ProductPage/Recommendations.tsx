@@ -63,6 +63,9 @@ export function Recommendations({ categorySlug, excludeSkus }: Props) {
                 slidingParentClassName={
                   styles["recommendations-sliding-parent"]
                 }
+                cardContainerClassName={
+                  styles["recommendations-card-container"]
+                }
               />
             )}
           </>

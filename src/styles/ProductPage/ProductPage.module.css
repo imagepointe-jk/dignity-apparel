@@ -153,6 +153,10 @@
   display: none;
 }
 
+.recommended-container .recommendations-card-container {
+  width: 285px;
+}
+
 @media screen and (max-width: 1100px) {
   .main h1 {
     display: none;
