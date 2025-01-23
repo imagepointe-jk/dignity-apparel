@@ -10,9 +10,9 @@
     "slicemachine": "start-slicemachine"
   },
   "dependencies": {
-    "@prismicio/client": "^7.11.0",
-    "@prismicio/next": "^1.7.0",
-    "@prismicio/react": "^2.9.0",
+    "@prismicio/client": "^7.15.1",
+    "@prismicio/next": "^1.7.1",
+    "@prismicio/react": "^2.9.1",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
     "mapbox-gl": "^3.9.1",
@@ -23,7 +23,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@slicemachine/adapter-next": "^0.3.53",
+    "@slicemachine/adapter-next": "^0.3.65",
     "@types/lodash.debounce": "^4.0.9",
     "@types/lodash.throttle": "^4.1.9",
     "@types/node": "^20",
