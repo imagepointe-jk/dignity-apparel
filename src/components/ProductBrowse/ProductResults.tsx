@@ -102,7 +102,7 @@ export function ProductResultsWrapped({ childrenUnderTitle }: Props) {
 
   return (
     <div className={styles["main"]}>
-      <h1 className={styles["heading"]}>USA MADE APPAREL</h1>
+      <h1 className={styles["heading"]}>USA-MADE APPAREL</h1>
       {childrenUnderTitle}
       <div className={styles["cards-container"]}>
         {status === "idle" &&
