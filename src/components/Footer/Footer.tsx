@@ -20,7 +20,7 @@ export function Footer({
     <footer className={styles["main"]}>
       <div className={styles["top-banner"]}>
         <Flag />
-        <h3 className={styles["footer-main-heading"]}>MADE IN THE USA</h3>
+        <h3 className={styles["footer-main-heading"]}>UNION-MADE IN THE USA</h3>
       </div>
       <div className="x-wide-container">
         <div className={styles["main-row"]}>

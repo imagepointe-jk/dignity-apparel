@@ -16,6 +16,7 @@ import { ContainedImage } from "../global/ContainedImage/ContainedImage";
 import { FlagDA } from "../icons/FlagDA";
 import { ExpandableDiv } from "../global/ExpandableDiv/ExpandableDiv";
 import { Recommendations } from "./Recommendations";
+import { env } from "@/envClient";
 
 type Props = {
   product: Product;
@@ -144,10 +145,14 @@ function ProductPageWrapped({ product }: Props) {
               <FlagDA size={35} />
             </div>
             <div>
-              <div className={styles["usa-heading"]}>MADE IN THE USA</div>
+              <div className={styles["usa-heading"]}>UNION-MADE IN THE USA</div>
               <p className={styles["usa-body"]}>
                 Born, Built, and Sewn in the USA.
-                <Link href={""}>Learn More</Link>
+                <Link
+                  href={`${env.NEXT_PUBLIC_BASE_URL}/usa-responsible-clothing-manufacturing`}
+                >
+                  Learn More
+                </Link>
               </p>
             </div>
           </div>

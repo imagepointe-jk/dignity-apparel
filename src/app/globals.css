@@ -191,3 +191,10 @@ h1 .metropolis,
     margin: auto;
   }
 }
+
+@media screen and (max-width: 768px) {
+  h1,
+  .display {
+    font-size: 2.5rem;
+  }
+}

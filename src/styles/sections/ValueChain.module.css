@@ -158,6 +158,10 @@ li.selected .expand-button {
   max-width: 453px;
 }
 
+.growing-body-container {
+  max-width: 520px;
+}
+
 .iowa-tennessee-container {
   display: flex;
   gap: 20px;

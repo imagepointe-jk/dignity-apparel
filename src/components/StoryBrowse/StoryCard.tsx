@@ -21,7 +21,7 @@ export function StoryCard({ story }: Props) {
         containerClassName={styles["card-img-container"]}
       >
         <div className={styles["image-overlay"]}>
-          <div className={styles["image-hover-text"]}>WHY DIGNITY APPAREL</div>
+          <div className={styles["image-hover-text"]}>View Story</div>
         </div>
       </CoveredImage>
       <div className={styles["card-content-container"]}>
