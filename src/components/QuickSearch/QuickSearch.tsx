@@ -120,7 +120,8 @@ export function QuickSearch({ toggleDialog }: Props) {
           <>
             {status === "idle" && gotNoResults && (
               <div className={styles["search-result-message"]}>
-                No results found. Start browsing our catalog below.
+                No results found. Please try another term or view products
+                below.
               </div>
             )}
             {status === "idle" && (
@@ -148,7 +149,7 @@ export function QuickSearch({ toggleDialog }: Props) {
         )}
         {!search && (
           <div className={styles["search-result-message"]}>
-            Start typing to search products
+            Start typing to find products
           </div>
         )}
       </div>
