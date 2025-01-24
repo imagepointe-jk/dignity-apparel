@@ -6,7 +6,7 @@ import { WithTilingBackground } from "@/types/schema/misc";
 import { bgImage } from "@/utility/misc";
 import { ReactNode } from "react";
 import styles from "@/styles/sections/TextImageCard.module.css";
-import { CoveredImage } from "@/components/global/CoveredImage/CoveredImage";
+import { FlexibleImage } from "@/components/global/FlexibleImage/FlexibleImage";
 
 type Props = {
   id?: string | null;
@@ -45,10 +45,11 @@ export function TextImageCard({
             {body}
             {link && <LinkAsButton data={link} />}
           </div>
-          <CoveredImage
+          <FlexibleImage
             src={image.src}
             alt={image.alt}
             containerClassName={styles["image-container"]}
+            behavior="cover"
           />
         </div>
       </div>

@@ -2,7 +2,7 @@ import { WithTilingBackground } from "@/types/schema/misc";
 import { bgImage } from "@/utility/misc";
 import { ReactNode } from "react";
 import styles from "@/styles/sections/TwoThirdsImageText.module.css";
-import { CoveredImage } from "@/components/global/CoveredImage/CoveredImage";
+import { FlexibleImage } from "@/components/global/FlexibleImage/FlexibleImage";
 
 type Props = {
   id?: string | null;
@@ -37,10 +37,11 @@ export function TwoThirdsImageText({
       >
         <div className={styles["heading-container"]}>{heading}</div>
         <div className={styles["content-flex"]}>
-          <CoveredImage
+          <FlexibleImage
             src={image.src}
             alt={image.alt}
             containerClassName={styles["image-container"]}
+            behavior="cover"
           />
           <div className={styles["text-sections-container"]}>
             {sections.map((section, i) => (

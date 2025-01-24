@@ -1,8 +1,8 @@
 import { env } from "@/envClient";
 import styles from "@/styles/StoryBrowse/StoryCard.module.css";
-import { CoveredImage } from "../global/CoveredImage/CoveredImage";
 import { StoryData } from "@/types/schema/prismic";
 import Link from "next/link";
+import { FlexibleImage } from "../global/FlexibleImage/FlexibleImage";
 
 type Props = {
   story: StoryData;
@@ -14,16 +14,17 @@ export function StoryCard({ story }: Props) {
       href={`${env.NEXT_PUBLIC_BASE_URL}/dignified-life-changing-stories/${story.uid}`}
       className={styles["card"]}
     >
-      <CoveredImage
+      <FlexibleImage
         src={story.cardImage.src}
         alt={story.firstName}
-        className={styles["card-img"]}
+        imageClassName={styles["card-img"]}
         containerClassName={styles["card-img-container"]}
+        behavior="cover"
       >
         <div className={styles["image-overlay"]}>
           <div className={styles["image-hover-text"]}>View Story</div>
         </div>
-      </CoveredImage>
+      </FlexibleImage>
       <div className={styles["card-content-container"]}>
         <div className={`${styles["staff-name"]} metropolis-32`}>
           {story.firstName}

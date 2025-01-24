@@ -25,13 +25,13 @@
   justify-content: space-between;
 }
 
-.primary-image-container {
+.main div.primary-image-container {
   width: 350px;
   height: 450px;
   border-radius: 5px;
 }
 
-.secondary-image-single-container {
+.main div.secondary-image-single-container {
   width: 350px;
   height: 215px;
   border-radius: 5px;
@@ -67,7 +67,7 @@
     width: 100%;
   }
 
-  .primary-image-container {
+  .main div.primary-image-container {
     width: 100%;
   }
 }

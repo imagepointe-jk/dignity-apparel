@@ -1,10 +1,9 @@
-// import { IMAGE_NOT_FOUND_URL } from "@/constants";
 import styles from "@/styles/StoryPage/StoryPage.module.css";
 import { ReactNode } from "react";
-import { CoveredImage } from "../global/CoveredImage/CoveredImage";
 import { QuotationMark } from "../icons/QuotationMark";
 import { StoryData } from "@/types/schema/prismic";
 import { StoryCard } from "../StoryBrowse/StoryCard";
+import { FlexibleImage } from "../global/FlexibleImage/FlexibleImage";
 
 type ImageData = {
   src: string;
@@ -48,10 +47,11 @@ export function StoryPage({
         >
           <div className={styles["main-flex"]}>
             {!adjustedCode && (
-              <CoveredImage
+              <FlexibleImage
                 src={image.src}
                 alt={firstName || "staff headshot"}
                 containerClassName={`${styles["featured-img-container"]} ${styles["desktop-only"]}`}
+                behavior="cover"
               />
             )}
             <div className={styles["content-container"]}>
@@ -66,10 +66,11 @@ export function StoryPage({
                 ></div>
               )}
               {!adjustedCode && (
-                <CoveredImage
+                <FlexibleImage
                   src={image.src}
                   alt={firstName || "staff headshot"}
                   containerClassName={`${styles["featured-img-container"]} ${styles["tablet"]}`}
+                  behavior="cover"
                 />
               )}
               <div className={styles["body-text"]}>{bodyText}</div>

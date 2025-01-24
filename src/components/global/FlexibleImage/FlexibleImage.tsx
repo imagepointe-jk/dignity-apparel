@@ -1,23 +1,28 @@
 import styles from "@/styles/global/FlexibleImage.module.css";
-//Eventually this should take the place of both CoveredImage and ContainedImage.
+import { ReactNode } from "react";
 
 type Props = {
   src?: string | null;
   alt?: string | null;
   containerClassName?: string;
+  imageClassName?: string;
   behavior?: "cover" | "contain" | "full-size";
+  children?: ReactNode;
 };
 export function FlexibleImage({
   src,
   alt,
   containerClassName,
+  imageClassName,
   behavior,
+  children,
 }: Props) {
   return (
     <div
       className={`${styles["main"]} ${containerClassName || ""} ${behavior ? styles[behavior] : ""}`}
     >
-      <img src={src || ""} alt={alt || "image"} />
+      <img src={src || ""} alt={alt || "image"} className={imageClassName} />
+      {children}
     </div>
   );
 }

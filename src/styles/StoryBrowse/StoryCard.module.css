@@ -11,7 +11,7 @@
   color: black;
 }
 
-.card .card-img-container {
+.card div.card-img-container {
   width: 380px;
   height: 380px;
   position: relative;
@@ -80,7 +80,7 @@
 }
 
 @media screen and (max-width: 480px) {
-  .card .card-img-container {
+  .card div.card-img-container {
     width: 310px;
     height: 310px;
   }

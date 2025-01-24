@@ -35,7 +35,7 @@
   justify-content: center;
 }
 
-.main .featured-img-container {
+.main div.featured-img-container {
   flex: 0 0 494px;
   height: 637px;
 }
@@ -150,7 +150,7 @@
     display: block;
   }
 
-  .main .featured-img-container {
+  .main div.featured-img-container {
     width: 494px;
     flex: 0 0 637px;
     margin: 20px 0;
@@ -188,7 +188,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .main .featured-img-container {
+  .main div.featured-img-container {
     width: 305px;
     flex: 0 0 429px;
     margin: 20px 0;

@@ -1,12 +1,12 @@
 import { Product } from "@/types/schema/woocommerce";
 import styles from "@/styles/QuickSearch/SearchResult.module.css";
-import { ContainedImage } from "../../global/ContainedImage/ContainedImage";
 import {
   deduplicateColorVariations,
   getVariationColorDisplayName,
 } from "@/utility/products";
 import Link from "next/link";
 import { productUrl } from "@/utility/url";
+import { FlexibleImage } from "@/components/global/FlexibleImage/FlexibleImage";
 
 type Props = {
   product: Product;
@@ -25,10 +25,11 @@ export function VariableProductGroup({ product }: Props) {
             className={styles["main"]}
             href={productUrl(product, variation.id)}
           >
-            <ContainedImage
+            <FlexibleImage
               src={variation.imageUrl}
               alt={product.name}
               containerClassName={styles["image-container"]}
+              behavior="contain"
             />
             <div className={styles["info-container"]}>
               <div>{product.sku}</div>

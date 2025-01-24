@@ -29,7 +29,7 @@
   margin-top: 30px;
 }
 
-.main .image-container {
+.main div.image-container {
   flex: 0 0 420px;
   height: 728px;
   border-radius: 5px;
@@ -55,7 +55,7 @@
     padding-right: 30px;
   }
 
-  .main .image-container {
+  .main div.image-container {
     display: none;
   }
 

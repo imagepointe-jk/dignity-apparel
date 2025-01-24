@@ -6,7 +6,7 @@ import {
 } from "../../global/LinkAsButton/LinkAsButton";
 import { WithTilingBackground } from "@/types/schema/misc";
 import { bgImage } from "@/utility/misc";
-import { CoveredImage } from "@/components/global/CoveredImage/CoveredImage";
+import { FlexibleImage } from "@/components/global/FlexibleImage/FlexibleImage";
 
 type Props = {
   id?: string | null;
@@ -56,10 +56,11 @@ export function StandardSection1({
             {buttonPrimary && <LinkAsButton data={buttonPrimary} />}
           </div>
         </div>
-        <CoveredImage
+        <FlexibleImage
           src={img.src}
           alt={img.alt || "image"}
           containerClassName={styles["image-container"]}
+          behavior="cover"
         />
       </div>
     </section>

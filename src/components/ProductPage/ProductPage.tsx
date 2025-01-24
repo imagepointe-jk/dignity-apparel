@@ -12,11 +12,11 @@ import { Suspense, useEffect, useState } from "react";
 import styles from "@/styles/ProductPage/ProductPage.module.css";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { ContainedImage } from "../global/ContainedImage/ContainedImage";
 import { FlagDA } from "../icons/FlagDA";
 import { ExpandableDiv } from "../global/ExpandableDiv/ExpandableDiv";
 import { Recommendations } from "./Recommendations";
 import { env } from "@/envClient";
+import { FlexibleImage } from "../global/FlexibleImage/FlexibleImage";
 
 type Props = {
   product: Product;
@@ -65,16 +65,18 @@ function ProductPageWrapped({ product }: Props) {
       <div className={`${styles["main"]} x-wide-container`}>
         <div className={styles["mobile-heading"]}>{product.name}</div>
         <div className={styles["images-container"]}>
-          <ContainedImage
+          <FlexibleImage
             src={image1Url}
             alt={product.name}
             containerClassName={styles["product-img-container"]}
+            behavior={"contain"}
           />
           {image2Url !== image1Url && (
-            <ContainedImage
+            <FlexibleImage
               src={image2Url}
               alt={product.name}
               containerClassName={styles["product-img-container"]}
+              behavior={"contain"}
             />
           )}
         </div>
