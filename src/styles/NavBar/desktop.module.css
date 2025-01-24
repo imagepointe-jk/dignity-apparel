@@ -429,7 +429,8 @@
 }
 
 .button:hover,
-.my-account-button:hover {
+.my-account-button:hover,
+.cart-button:hover {
   color: #777777;
 }
 
