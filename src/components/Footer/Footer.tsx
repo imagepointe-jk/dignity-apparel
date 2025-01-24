@@ -81,7 +81,9 @@ export function Footer({
                 </Link>
               </div>
               <div>
-                <Link href={""}>Site Map</Link>
+                <Link href={`${env.NEXT_PUBLIC_BASE_URL}/site-map`}>
+                  Site Map
+                </Link>
               </div>
               <div>
                 <Link href={`${env.NEXT_PUBLIC_BASE_URL}/cookie-policy`}>

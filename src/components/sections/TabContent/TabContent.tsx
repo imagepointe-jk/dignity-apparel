@@ -2,7 +2,7 @@
 
 import { WithTilingBackground } from "@/types/schema/misc";
 import { bgImage } from "@/utility/misc";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useState } from "react";
 import styles from "@/styles/sections/TabContent.module.css";
 import { ExpandableDiv } from "@/components/global/ExpandableDiv/ExpandableDiv";
 

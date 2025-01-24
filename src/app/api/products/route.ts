@@ -58,6 +58,6 @@ async function trackQuery(search: string | null) {
     const response = await trackSearchString(search);
     if (!response.ok) throw new Error();
   } catch (error) {
-    console.error("Failed to track a search string.");
+    console.error(`Failed to track a search string. ${error}`);
   }
 }
