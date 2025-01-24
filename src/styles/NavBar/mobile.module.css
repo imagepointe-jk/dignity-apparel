@@ -148,6 +148,25 @@
   padding: 10px 0 2px 9px;
 }
 
+.buttons-top-right {
+  position: absolute;
+  top: 21px;
+  right: 25px;
+  display: flex;
+  gap: 20px;
+}
+
+.buttons-top-right a,
+.buttons-top-right a:visited {
+  color: black;
+}
+
+.search-button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
 @media screen and (max-width: 1024px) {
   .hamburger-button {
     display: block;

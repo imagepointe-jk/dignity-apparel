@@ -3,6 +3,9 @@ import styles from "@/styles/NavBar/mobile.module.css";
 import { MegaMenu, MegaMenuSection } from "@/types/schema/navbar";
 import Link from "next/link";
 import { Fragment, useState } from "react";
+import { Cart } from "../icons/Cart";
+import { MagnifyingGlass } from "../icons/MagnifyingGlass";
+import { Person } from "../icons/Person";
 
 type Props = {
   data: MegaMenu;
@@ -11,12 +14,41 @@ type Props = {
     text: string;
     href: string;
   };
+  toggleSearchDialog: () => void;
 };
-export function MegaMenuMobile({ data, closeFn, specialLink }: Props) {
+export function MegaMenuMobile({
+  data,
+  closeFn,
+  specialLink,
+  toggleSearchDialog,
+}: Props) {
   const [expandedIndex, setExpandedIndex] = useState(null as number | null);
 
   return (
     <nav className={styles["nav-main-container"]} id="nav-mobile">
+      <div className={styles["buttons-top-right"]}>
+        <a
+          href="https://wholesale.dignityapparel.com/cart"
+          className={styles["cart-button"]}
+          aria-label="cart"
+        >
+          <Cart size={28} />
+        </a>
+        <button
+          className={styles["search-button"]}
+          onClick={toggleSearchDialog}
+          aria-label="Search"
+        >
+          <MagnifyingGlass size={28} />
+        </button>
+        <a
+          href="https://wholesale.dignityapparel.com/my-account"
+          className={styles["my-account-button"]}
+          aria-label="my account"
+        >
+          <Person size={28} />
+        </a>
+      </div>
       <ul className={styles["nav-items-container"]}>
         {/* Map through each nav item */}
 

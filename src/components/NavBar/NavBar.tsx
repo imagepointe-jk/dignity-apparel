@@ -20,6 +20,7 @@ import Dialog from "../global/Dialog/Dialog";
 import { QuickSearch } from "../QuickSearch/QuickSearch";
 import { env } from "@/envClient";
 import { Person } from "../icons/Person";
+import { Cart } from "../icons/Cart";
 
 const topOfPageThreshold = 200; //when the value of window.scrollY is less than this, we consider that to be the "top of the page"
 type Props = {
@@ -152,6 +153,13 @@ function NavBarWrapped({
                   specialLink={specialLink}
                 />
                 <div className={styles["far-right-buttons"]}>
+                  <a
+                    href="https://wholesale.dignityapparel.com/cart"
+                    className={styles["cart-button"]}
+                    aria-label="cart"
+                  >
+                    <Cart size={28} />
+                  </a>
                   <button
                     className={styles["button"]}
                     onClick={toggleSearchDialog}
@@ -192,6 +200,7 @@ function NavBarWrapped({
           data={megaMenu}
           closeFn={() => setMobileMenuExpanded(false)}
           specialLink={specialLink}
+          toggleSearchDialog={toggleSearchDialog}
         />
       </Dialog>
     </>

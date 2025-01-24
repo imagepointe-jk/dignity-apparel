@@ -422,7 +422,9 @@
 }
 
 .my-account-button,
-.my-account-button:visited {
+.my-account-button:visited,
+.cart-button,
+.cart-button:visited {
   color: black;
 }
 
@@ -452,6 +454,10 @@
 
   .buttons-container-right {
     gap: 10px;
+  }
+
+  .cart-button {
+    display: none;
   }
 }
 
