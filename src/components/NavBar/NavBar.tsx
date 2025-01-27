@@ -18,9 +18,9 @@ import { MegaMenu } from "@/types/schema/navbar";
 import { MagnifyingGlass } from "../icons/MagnifyingGlass";
 import Dialog from "../global/Dialog/Dialog";
 import { QuickSearch } from "../QuickSearch/QuickSearch";
-import { env } from "@/envClient";
 import { Person } from "../icons/Person";
 import { Cart } from "../icons/Cart";
+import Link from "next/link";
 
 const topOfPageThreshold = 200; //when the value of window.scrollY is less than this, we consider that to be the "top of the page"
 type Props = {
@@ -133,17 +133,14 @@ function NavBarWrapped({
               >
                 ☰
               </button>
-              <a
-                href={env.NEXT_PUBLIC_BASE_URL}
-                className={styles["da-home-link"]}
-              >
+              <Link href="/" className={styles["da-home-link"]}>
                 <img
                   src={logo}
                   alt="Dignity Apparel Home"
                   className={styles["da-logo-main"]}
                 />
                 <img src={text} className={styles["da-logo-text"]} />
-              </a>
+              </Link>
               <div className={styles["buttons-container-right"]}>
                 <MegaMenuDesktop
                   data={megaMenu}

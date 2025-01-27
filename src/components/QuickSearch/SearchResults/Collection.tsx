@@ -1,6 +1,5 @@
 import { FlexibleImage } from "@/components/global/FlexibleImage/FlexibleImage";
 import { IMAGE_NOT_FOUND_URL } from "@/constants";
-import { env } from "@/envClient";
 import { queryProducts } from "@/fetch/client/products";
 import styles from "@/styles/QuickSearch/SearchResult.module.css";
 import { Product } from "@/types/schema/woocommerce";
@@ -46,7 +45,7 @@ export function Collection({ category }: Props) {
 
   return (
     <Link
-      href={`${env.NEXT_PUBLIC_BASE_URL}/products?category=${category.slug}`}
+      href={`/products?category=${category.slug}`}
       className={styles["collection-card"]}
     >
       <FlexibleImage

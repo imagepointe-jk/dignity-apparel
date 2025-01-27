@@ -16,7 +16,6 @@ import { useSearchParams } from "next/navigation";
 import { FlagDA } from "../icons/FlagDA";
 import { ExpandableDiv } from "../global/ExpandableDiv/ExpandableDiv";
 import { Recommendations } from "./Recommendations";
-import { env } from "@/envClient";
 import { FlexibleImage } from "../global/FlexibleImage/FlexibleImage";
 
 type Props = {
@@ -138,7 +137,7 @@ function ProductPageWrapped({ product }: Props) {
             <a
               href={
                 product.additionalProductSettings.linkURLOverride || isMTO
-                  ? `${env.NEXT_PUBLIC_BASE_URL}/quote`
+                  ? "/quote"
                   : product.link
               }
               className={styles["purchase-link"]}
@@ -156,9 +155,7 @@ function ProductPageWrapped({ product }: Props) {
               <div className={styles["usa-heading"]}>UNION-MADE IN THE USA</div>
               <p className={styles["usa-body"]}>
                 Born, Built, and Sewn in the USA.
-                <Link
-                  href={`${env.NEXT_PUBLIC_BASE_URL}/usa-responsible-clothing-manufacturing`}
-                >
+                <Link href={`/usa-responsible-clothing-manufacturing`}>
                   Learn More
                 </Link>
               </p>

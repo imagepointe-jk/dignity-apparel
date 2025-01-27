@@ -1,4 +1,3 @@
-import { env } from "@/envClient";
 import styles from "@/styles/StoryBrowse/StoryCard.module.css";
 import { StoryData } from "@/types/schema/prismic";
 import Link from "next/link";
@@ -11,7 +10,7 @@ export function StoryCard({ story }: Props) {
   return (
     <Link
       key={story.uid}
-      href={`${env.NEXT_PUBLIC_BASE_URL}/dignified-life-changing-stories/${story.uid}`}
+      href={`/dignified-life-changing-stories/${story.uid}`}
       className={styles["card"]}
     >
       <FlexibleImage

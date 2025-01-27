@@ -1,5 +1,3 @@
-import { env } from "@/envClient";
-
 export async function queryProducts(params: {
   search: string | null;
   category: string | null;
@@ -36,5 +34,5 @@ export async function queryProducts(params: {
     }
   if (params.fit) searchParams.append("fit", params.fit);
 
-  return fetch(`${env.NEXT_PUBLIC_BASE_URL}/api/products/?${searchParams}`);
+  return fetch(`${window.location.origin}/api/products/?${searchParams}`);
 }
