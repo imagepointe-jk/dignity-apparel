@@ -16,6 +16,7 @@ type Props = {
   img: {
     src: string;
     alt?: string | null | undefined;
+    caption?: string;
   };
   videoEmbedCode?: string;
   horzReversed?: boolean;
@@ -75,11 +76,18 @@ export function StandardSection2({
           </div>
           <div className={styles["image-or-video-parent"]}>
             {!adjustedEmbedCode && (
-              <FlexibleImage
-                src={img.src}
-                alt={img.alt}
-                behavior={imageBehavior}
-              />
+              <figure>
+                <FlexibleImage
+                  src={img.src}
+                  alt={img.alt}
+                  behavior={imageBehavior}
+                />
+                {img.caption && (
+                  <figcaption style={{ textAlign: "center" }}>
+                    {img.caption}
+                  </figcaption>
+                )}
+              </figure>
             )}
             {adjustedEmbedCode && (
               <div

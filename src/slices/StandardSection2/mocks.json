@@ -159,6 +159,11 @@
 				"__TYPE__": "FieldContent",
 				"value": "Cover",
 				"type": "Select"
+			},
+			"image_caption": {
+				"__TYPE__": "FieldContent",
+				"value": "bar",
+				"type": "Text"
 			}
 		},
 		"items": []

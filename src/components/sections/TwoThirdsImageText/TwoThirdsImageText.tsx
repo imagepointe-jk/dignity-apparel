@@ -11,6 +11,7 @@ type Props = {
   image: {
     src: string;
     alt: string;
+    caption?: string;
   };
   sections: {
     title: ReactNode;
@@ -37,12 +38,19 @@ export function TwoThirdsImageText({
       >
         <div className={styles["heading-container"]}>{heading}</div>
         <div className={styles["content-flex"]}>
-          <FlexibleImage
-            src={image.src}
-            alt={image.alt}
-            containerClassName={styles["image-container"]}
-            behavior="cover"
-          />
+          <figure className={styles["image-figure"]}>
+            <FlexibleImage
+              src={image.src}
+              alt={image.alt}
+              containerClassName={styles["image-container"]}
+              behavior="cover"
+            />
+            {image.caption && (
+              <figcaption style={{ textAlign: "center" }}>
+                {image.caption}
+              </figcaption>
+            )}
+          </figure>
           <div className={styles["text-sections-container"]}>
             {sections.map((section, i) => (
               <div key={i}>

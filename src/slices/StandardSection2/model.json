@@ -126,6 +126,13 @@
             "thumbnails": []
           }
         },
+        "image_caption": {
+          "type": "Text",
+          "config": {
+            "label": "Image Caption",
+            "placeholder": ""
+          }
+        },
         "image_location": {
           "type": "Select",
           "config": {

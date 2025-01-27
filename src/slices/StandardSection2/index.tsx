@@ -25,6 +25,7 @@ const StandardSection2 = async ({
     heading,
     image,
     image_location,
+    image_caption,
     video,
     primary_text_color,
     subtext,
@@ -45,7 +46,11 @@ const StandardSection2 = async ({
       subtextNode={<PrismicRichText field={subtext} />}
       bodyTextNode={<PrismicRichText field={body} />}
       buttons={convertedButtons}
-      img={{ src: image.url || IMAGE_NOT_FOUND_URL, alt: image.alt }}
+      img={{
+        src: image.url || IMAGE_NOT_FOUND_URL,
+        alt: image.alt,
+        caption: image_caption || undefined,
+      }}
       videoEmbedCode={video.html || ""}
       horzReversed={image_location === "Left"}
       textColor={textColor}

@@ -34,7 +34,11 @@
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "heading1,heading2,heading3,heading4,heading5,heading6",
-            "labels": ["metropolis", "merriweather", "display"]
+            "labels": [
+              "metropolis",
+              "merriweather",
+              "display"
+            ]
           }
         },
         "text_color": {
@@ -42,7 +46,10 @@
           "config": {
             "label": "Text Color",
             "placeholder": "",
-            "options": ["Normal", "White"],
+            "options": [
+              "Normal",
+              "White"
+            ],
             "default_value": "Normal"
           }
         },
@@ -52,6 +59,13 @@
             "label": "Image",
             "constraint": {},
             "thumbnails": []
+          }
+        },
+        "image_caption": {
+          "type": "Text",
+          "config": {
+            "label": "Image Caption",
+            "placeholder": ""
           }
         },
         "sections": {

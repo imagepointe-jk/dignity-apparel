@@ -107,6 +107,11 @@
 				"__TYPE__": "FieldContent",
 				"value": "nearly",
 				"type": "Text"
+			},
+			"image_caption": {
+				"__TYPE__": "FieldContent",
+				"value": "jar",
+				"type": "Text"
 			}
 		},
 		"items": []
