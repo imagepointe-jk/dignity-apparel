@@ -1,7 +1,7 @@
 import { Product } from "@/types/schema/woocommerce";
 
 export function productUrl(product: Product, variationId?: number) {
-  return `${window.location.origin}/products/${product.slug}${variationId !== undefined ? `?variationId=${variationId}` : ""}`;
+  return `/products/${product.slug}${variationId !== undefined ? `?variationId=${variationId}` : ""}`;
 }
 
 export function searchParamsArray(
