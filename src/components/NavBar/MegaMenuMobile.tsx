@@ -152,7 +152,7 @@ function Sections({ sections, closeFn }: SectionsProps) {
             onClick={() => setExpandedIndex(i)}
           >
             {section.title}
-            <img src="da-tri.png" alt="n/a" aria-hidden={true} />
+            <img src="/da-tri.png" alt="n/a" aria-hidden={true} />
           </button>
           <ul
             className={styles["nav-subitem-links-container"]}
