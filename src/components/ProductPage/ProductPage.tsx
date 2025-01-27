@@ -5,6 +5,7 @@ import { Product } from "@/types/schema/woocommerce";
 import {
   abbreviateSize,
   getColorStockAmounts,
+  getGlobalAttributeTerms,
   getSwatchesWithImages,
   isSizedProduct,
 } from "@/utility/products";
@@ -49,6 +50,9 @@ function ProductPageWrapped({ product }: Props) {
   const largestSize = sizeStocks[sizeStocks.length - 1]?.size || "UNKNOWN SIZE";
   const image1Url = product.imageUrl;
   const image2Url = viewedSwatch?.productImageUrl || IMAGE_NOT_FOUND_URL;
+  const isMTO = getGlobalAttributeTerms(product, "pa_availability").includes(
+    "made-to-order"
+  );
 
   function onClickSwatch(clickedVariationId: number) {
     setViewedVariationId(clickedVariationId);
@@ -131,16 +135,18 @@ function ProductPageWrapped({ product }: Props) {
             </div>
           )}
           <div>
-            <Link
+            <a
               href={
-                product.additionalProductSettings.linkURLOverride ||
-                product.link
+                product.additionalProductSettings.linkURLOverride || isMTO
+                  ? `${env.NEXT_PUBLIC_BASE_URL}/quote`
+                  : product.link
               }
               className={styles["purchase-link"]}
             >
-              {product.additionalProductSettings.linkTextOverride ||
-                "Login to Purchase"}
-            </Link>
+              {product.additionalProductSettings.linkTextOverride || isMTO
+                ? "Get a Quote"
+                : "Login to Purchase"}
+            </a>
           </div>
           <div className={styles["usa-container"]}>
             <div>

@@ -321,3 +321,14 @@ export function isSizedProduct(product: Product) {
     variation.attributes.find((attr) => attr.name === "pa_size")
   );
 }
+
+export function getGlobalAttributeTerms(
+  product: Product,
+  attributeName: string
+) {
+  return (
+    product.globalAttributes
+      .find((attr) => attr.name === attributeName)
+      ?.terms.map((term) => term.slug) || []
+  );
+}
