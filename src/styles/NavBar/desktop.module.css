@@ -273,6 +273,7 @@
   text-decoration: none;
 }
 
+.mega-menu-dropdown a,
 .mega-menu-dropdown a:visited {
   color: black;
 }
@@ -421,12 +422,15 @@
 }
 
 .my-account-button,
-.my-account-button:visited {
+.my-account-button:visited,
+.cart-button,
+.cart-button:visited {
   color: black;
 }
 
 .button:hover,
-.my-account-button:hover {
+.my-account-button:hover,
+.cart-button:hover {
   color: #777777;
 }
 
@@ -452,18 +456,22 @@
   .buttons-container-right {
     gap: 10px;
   }
+
+  .cart-button {
+    display: none;
+  }
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 480px) {
   .main {
     padding: 0;
   }
 
   .da-logo-main {
-    height: 35px;
+    height: 30px;
   }
 
   .da-logo-text {
-    height: 28px;
+    height: 24px;
   }
 }

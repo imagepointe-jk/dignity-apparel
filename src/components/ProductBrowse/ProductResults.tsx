@@ -1,5 +1,4 @@
 import { DEFAULT_PRODUCTS_PAGE_SIZE } from "@/constants";
-import { env } from "@/envClient";
 import { queryProducts } from "@/fetch/client/products";
 import styles from "@/styles/ProductBrowse/ProductResults.module.css";
 import { PageInfo, Product } from "@/types/schema/woocommerce";
@@ -49,7 +48,7 @@ export function ProductResultsWrapped({ childrenUnderTitle }: Props) {
       if (pageInfo.startCursor) newParams.set("before", pageInfo.startCursor);
     }
 
-    return `${env.NEXT_PUBLIC_BASE_URL}/products?${newParams}`;
+    return `/products?${newParams}`;
   }
 
   const nextUrl = createPageButtonUrl("next");
@@ -102,7 +101,7 @@ export function ProductResultsWrapped({ childrenUnderTitle }: Props) {
 
   return (
     <div className={styles["main"]}>
-      <h1 className={styles["heading"]}>USA MADE APPAREL</h1>
+      <h1 className={styles["heading"]}>USA-MADE APPAREL</h1>
       {childrenUnderTitle}
       <div className={styles["cards-container"]}>
         {status === "idle" &&

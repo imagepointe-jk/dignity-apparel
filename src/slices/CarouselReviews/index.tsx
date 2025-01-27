@@ -3,6 +3,8 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { CarouselReviews as CarouselReviewsComponent } from "@/components/sections/CarouselReviews/CarouselReviews";
 import { getPrismicLinkUrl } from "@/utility/prismic";
 
+import type { JSX } from "react";
+
 /**
  * Props for `CarouselReviews`.
  */

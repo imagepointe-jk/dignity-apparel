@@ -1,8 +1,14 @@
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { ContentCards as ContentCardsComponent } from "@/components/sections/ContentCards/ContentCards";
-import { convertButton, getBrandColor } from "@/utility/prismic";
+import {
+  convertButton,
+  getBrandColor,
+  getPrismicLinkUrl,
+} from "@/utility/prismic";
 import { IMAGE_NOT_FOUND_URL } from "@/constants";
+
+import type { JSX } from "react";
 
 /**
  * Props for `ContentCards`.
@@ -26,10 +32,12 @@ const ContentCards = async ({
   const textColor = await getBrandColor(primary_text_color);
   const cardsConverted = await Promise.all(
     cards.map(async (card) => {
-      const button = await convertButton({
-        link: card.link,
-        button_style: card.button_style,
-      });
+      const button = getPrismicLinkUrl(card.link)
+        ? await convertButton({
+            link: card.link,
+            button_style: card.button_style,
+          })
+        : undefined;
 
       return {
         heading: <PrismicRichText field={card.heading} />,

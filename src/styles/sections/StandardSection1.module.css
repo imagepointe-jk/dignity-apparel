@@ -26,28 +26,18 @@
   text-align: center;
   max-width: 500px;
   padding: 0 10px;
+  margin: 100px 0;
 }
 
 .content-container,
-.image-container {
+.main .image-container {
   flex: 0 0 50%;
 }
 
-.main .image-container {
-  height: 529px;
+.main div.image-container {
+  height: 750px;
+  border-radius: 0;
 }
-
-/* .image-container {
-  overflow: hidden;
-  height: 529px;
-}
-
-.image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 50%;
-} */
 
 @media screen and (max-width: 1024px) {
   .main {
@@ -59,9 +49,10 @@
   .content-container {
     padding: 30px 10px 30px 10px;
     max-width: initial;
+    margin-top: 70px;
   }
 
-  .main .image-container {
+  .main div.image-container {
     flex: initial;
     width: 100%;
     height: 350px;

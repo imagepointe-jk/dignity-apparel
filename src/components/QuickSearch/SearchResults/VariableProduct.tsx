@@ -4,7 +4,6 @@ import { getSwatchesWithImages } from "@/utility/products";
 import { useState } from "react";
 import { IMAGE_NOT_FOUND_URL } from "@/constants";
 import Link from "next/link";
-import { env } from "@/envClient";
 
 type Props = {
   product: Product;
@@ -52,9 +51,7 @@ export function VariableProduct({ product }: Props) {
         </div>
         <div>{viewedSwatch?.name || "UNKNOWN COLOR"}</div>
         <div>
-          <Link href={`${env.NEXT_PUBLIC_BASE_URL}/products/${product.slug}`}>
-            View Product &gt;
-          </Link>
+          <Link href={`/products/${product.slug}`}>View Product &gt;</Link>
         </div>
       </div>
     </div>

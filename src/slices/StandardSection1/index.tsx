@@ -1,8 +1,14 @@
 import { StandardSection1 as StandardSection1Component } from "@/components/sections/StandardSection1/StandardSection1";
 import { IMAGE_NOT_FOUND_URL } from "@/constants";
-import { convertButton, getBrandColor } from "@/utility/prismic";
+import {
+  convertButton,
+  getBrandColor,
+  getPrismicLinkUrl,
+} from "@/utility/prismic";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+
+import type { JSX } from "react";
 
 /**
  * Props for `StandardSection1`.
@@ -28,10 +34,12 @@ const StandardSection1 = async ({
     tiling_background,
     primary_text_color,
   } = slice.primary;
-  const convertedButton = await convertButton({
-    button_style,
-    link: button_link,
-  });
+  const convertedButton = getPrismicLinkUrl(button_link)
+    ? await convertButton({
+        button_style,
+        link: button_link,
+      })
+    : undefined;
   const textColor = await getBrandColor(primary_text_color);
 
   return (

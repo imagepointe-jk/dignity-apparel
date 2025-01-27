@@ -5,6 +5,7 @@ import { Product } from "@/types/schema/woocommerce";
 import {
   abbreviateSize,
   getColorStockAmounts,
+  getGlobalAttributeTerms,
   getSwatchesWithImages,
   isSizedProduct,
 } from "@/utility/products";
@@ -12,10 +13,10 @@ import { Suspense, useEffect, useState } from "react";
 import styles from "@/styles/ProductPage/ProductPage.module.css";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { ContainedImage } from "../global/ContainedImage/ContainedImage";
 import { FlagDA } from "../icons/FlagDA";
 import { ExpandableDiv } from "../global/ExpandableDiv/ExpandableDiv";
 import { Recommendations } from "./Recommendations";
+import { FlexibleImage } from "../global/FlexibleImage/FlexibleImage";
 
 type Props = {
   product: Product;
@@ -48,6 +49,9 @@ function ProductPageWrapped({ product }: Props) {
   const largestSize = sizeStocks[sizeStocks.length - 1]?.size || "UNKNOWN SIZE";
   const image1Url = product.imageUrl;
   const image2Url = viewedSwatch?.productImageUrl || IMAGE_NOT_FOUND_URL;
+  const isMTO = getGlobalAttributeTerms(product, "pa_availability").includes(
+    "made-to-order"
+  );
 
   function onClickSwatch(clickedVariationId: number) {
     setViewedVariationId(clickedVariationId);
@@ -64,24 +68,26 @@ function ProductPageWrapped({ product }: Props) {
       <div className={`${styles["main"]} x-wide-container`}>
         <div className={styles["mobile-heading"]}>{product.name}</div>
         <div className={styles["images-container"]}>
-          <ContainedImage
+          <FlexibleImage
             src={image1Url}
             alt={product.name}
             containerClassName={styles["product-img-container"]}
+            behavior={"contain"}
           />
           {image2Url !== image1Url && (
-            <ContainedImage
+            <FlexibleImage
               src={image2Url}
               alt={product.name}
               containerClassName={styles["product-img-container"]}
+              behavior={"contain"}
             />
           )}
         </div>
         <div className={styles["info-container"]}>
           <div>
-            <h1 className="subheader-1-medium">{product.name}</h1>
+            <h1 className="metropolis-24">{product.name}</h1>
             <div
-              className="body-1"
+              className="metropolis-16"
               dangerouslySetInnerHTML={{
                 __html: product.shortDescriptionSanitized,
               }}
@@ -91,8 +97,8 @@ function ProductPageWrapped({ product }: Props) {
             className={`${styles["info-subcontainer"]} ${styles["swatches-container"]}`}
           >
             <div>
-              <span className="body-3-semi-bold">Color: </span>
-              <span className={`${styles["swatch-color-text"]} body-1`}>
+              <span className="bold">Color: </span>
+              <span className={`${styles["swatch-color-text"]} metropolis-16`}>
                 {viewedSwatch?.displayName || "UNKNOWN COLOR"}
               </span>
             </div>
@@ -121,33 +127,37 @@ function ProductPageWrapped({ product }: Props) {
           </div>
           {isSizedProduct(product) && (
             <div className={styles["info-subcontainer"]}>
-              <div className="body-3-semi-bold">Sizes</div>
-              <div className="body-1">
+              <div className="bold">Sizes</div>
+              <div className="metropolis-16">
                 {`Available In Sizes ${smallestSize.toLocaleUpperCase()} to ${largestSize.toLocaleUpperCase()}`}
               </div>
             </div>
           )}
           <div>
-            <Link
+            <a
               href={
-                product.additionalProductSettings.linkURLOverride ||
-                product.link
+                product.additionalProductSettings.linkURLOverride || isMTO
+                  ? "/quote"
+                  : product.link
               }
               className={styles["purchase-link"]}
             >
-              {product.additionalProductSettings.linkTextOverride ||
-                "Login to Purchase"}
-            </Link>
+              {product.additionalProductSettings.linkTextOverride || isMTO
+                ? "Get a Quote"
+                : "Login to Purchase"}
+            </a>
           </div>
           <div className={styles["usa-container"]}>
             <div>
               <FlagDA size={35} />
             </div>
             <div>
-              <div className={styles["usa-heading"]}>MADE IN THE USA</div>
+              <div className={styles["usa-heading"]}>UNION-MADE IN THE USA</div>
               <p className={styles["usa-body"]}>
                 Born, Built, and Sewn in the USA.
-                <Link href={""}>Learn More</Link>
+                <Link href={`/usa-responsible-clothing-manufacturing`}>
+                  Learn More
+                </Link>
               </p>
             </div>
           </div>
@@ -157,7 +167,7 @@ function ProductPageWrapped({ product }: Props) {
               labelClassName={styles["expandable-label"]}
               content={
                 <div
-                  className="body-1"
+                  className="metropolis-16"
                   dangerouslySetInnerHTML={{
                     __html: product.descriptionSanitized,
                   }}
@@ -168,7 +178,7 @@ function ProductPageWrapped({ product }: Props) {
               label="Material"
               labelClassName={styles["expandable-label"]}
               content={
-                <div className="body-1">
+                <div className="metropolis-16">
                   {product.additionalProductInformation.materialDescription}
                 </div>
               }
@@ -178,7 +188,7 @@ function ProductPageWrapped({ product }: Props) {
               labelClassName={styles["expandable-label"]}
               content={
                 <div
-                  className="body-1"
+                  className="metropolis-16"
                   dangerouslySetInnerHTML={{
                     __html:
                       product.additionalProductInformation

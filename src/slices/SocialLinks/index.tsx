@@ -3,6 +3,8 @@ import { SliceComponentProps } from "@prismicio/react";
 import { SocialLinks as SocialLinksComponent } from "@/components/sections/SocialLinks/SocialLinks";
 import { getPrismicLinkUrl } from "@/utility/prismic";
 
+import type { JSX } from "react";
+
 /**
  * Props for `SocialLinks`.
  */

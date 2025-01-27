@@ -15,7 +15,7 @@
   background-color: var(--armor-gray-100);
 }
 
-.main .image-container {
+a.main .image-container {
   height: 136px;
   width: 100px;
 }
@@ -73,12 +73,12 @@
   text-decoration: underline;
 }
 
-.collection-card .image-container,
+.collection-card div.image-container,
 .collection-card .info-container {
   width: 180px;
 }
 
-.collection-card .image-container {
+.collection-card div.image-container {
   height: 270px;
 }
 

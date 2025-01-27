@@ -1,8 +1,10 @@
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { TextImageCard as TextImageCardComponent } from "@/components/sections/TextImageCard/TextImageCard";
-import { convertButton } from "@/utility/prismic";
+import { convertButton, getPrismicLinkUrl } from "@/utility/prismic";
 import { IMAGE_NOT_FOUND_URL } from "@/constants";
+
+import type { JSX } from "react";
 
 /**
  * Props for `TextImageCard`.
@@ -26,7 +28,9 @@ const TextImageCard = async ({
     subheading,
     tiling_background,
   } = slice.primary;
-  const convertedButton = await convertButton({ link: button, button_style });
+  const convertedButton = getPrismicLinkUrl(button)
+    ? await convertButton({ link: button, button_style })
+    : undefined;
 
   return (
     <TextImageCardComponent

@@ -41,195 +41,98 @@ main {
   font-size: 1rem;
 }
 
-.display-1,
-.display-1-medium {
-  font-size: 3.75rem;
-}
-
-.display-1 {
-  font-family: var(--font-metropolis-black);
-  letter-spacing: 0.175rem;
-}
-
-.display-1-medium {
-  font-family: var(--font-metropolis-medium);
-}
-
-h1,
-.h1-medium {
-  font-size: 3.75rem;
-}
-
 h1 {
+  font-size: 3.75rem;
   font-family: var(--font-metropolis-black);
-  letter-spacing: 0.175rem;
-}
-
-.h1-medium {
-  font-family: var(--font-metropolis-medium);
-  font-weight: normal;
-}
-
-h2,
-.h2-medium {
-  font-size: 3rem;
-  line-height: 1.1;
 }
 
 h2 {
-  font-family: var(--font-metropolis-extra-bold);
-  font-weight: normal;
-}
-
-.h2-medium {
-  font-family: var(--font-metropolis-medium);
-  font-weight: normal;
-  letter-spacing: 0.175rem;
+  font-size: 3rem;
 }
 
 h3,
-.h3-medium,
-.h3-medium-italic,
-.h3-italic,
-.h3-bold {
+h4,
+h5,
+h6 {
   font-size: 2.5rem;
-  font-weight: normal;
-  line-height: 1.2;
 }
 
-h3 {
+.metropolis,
+.metropolis-16,
+.metropolis-16-underline,
+.metropolis-19,
+.metropolis-19-underline,
+.metropolis-22,
+.metropolis-22-underline,
+.metropolis-24,
+.metropolis-32 {
+  font-family: var(--font-metropolis-regular);
+}
+
+.merriweather,
+.merriweather-16,
+.merriweather-16-underline,
+.merriweather-19,
+.merriweather-19-underline,
+.merriweather-22,
+.merriweather-22-underline,
+.merriweather-24,
+.merriweather-32 {
   font-family: var(--font-merriweather-regular);
 }
 
-.h3-medium-italic {
-  font-family: var(--font-metropolis-medium-italic);
-  letter-spacing: 0.125rem;
+.metropolis-16,
+.metropolis-16-underline,
+.merriweather-16,
+.merriweather-16-underline {
+  font-size: 1rem;
 }
 
-.h3-italic {
-  font-family: var(--font-merriweather-italic);
+.metropolis-19,
+.metropolis-19-underline,
+.merriweather-19,
+.merriweather-19-underline {
+  font-size: 1.188rem;
 }
 
-.h3-bold {
-  font-family: var(--font-metropolis-bold);
-  letter-spacing: 0.125rem;
+.metropolis-22,
+.metropolis-22-underline,
+.merriweather-22,
+.merriweather-22-underline {
+  font-size: 1.375rem;
 }
 
-h4,
-.h4-semi-bold {
+.metropolis-24,
+.merriweather-24 {
+  font-size: 1.5rem;
+}
+
+.metropolis-32,
+.merriweather-32 {
   font-size: 2rem;
 }
 
-h4 {
-  font-family: var(--font-metropolis-regular);
-  font-weight: normal;
-}
-
-.h4-semi-bold {
-  font-family: var(--font-metropolis-regular);
-  letter-spacing: 0.125rem;
-  font-weight: bold;
-}
-
-.subheader-1-regular,
-.subheader-1-medium,
-.subheader-1-semi-bold {
-  font-size: 1.5rem;
-  line-height: 1.2;
-}
-
-.subheader-1-semi-bold {
-  font-family: var(--font-metropolis-extra-bold);
-  line-height: 1.2;
-}
-
-.subheader-1-medium {
-  font-family: var(--font-metropolis-regular);
-  font-weight: bold;
-}
-
-.subheader-1-regular {
-  font-family: var(--font-metropolis-regular);
-  font-weight: normal;
-}
-
-.subheader-2 {
-  font-family: var(--font-merriweather-regular);
-  font-size: 1.5rem;
-}
-
-.subheader-3 {
-  font-family: var(--font-metropolis-regular);
-  font-size: 1.25rem;
-}
-
-.subheader-4 {
-  font-family: var(--font-merriweather-regular);
-  font-size: 1.25rem;
-}
-
-.body-1,
-.body-1-semi-bold,
-.body-1-underline {
-  font-family: var(--font-metropolis-regular);
-  font-size: 1rem;
-  line-height: 1.4;
-}
-
-.body-1-semi-bold {
-  font-weight: bold;
-}
-
-.body-1-underline {
+.metropolis-16-underline,
+.metropolis-19-underline,
+.metropolis-22-underline,
+.merriweather-16-underline,
+.merriweather-19-underline,
+.merriweather-22-underline {
   text-decoration: underline;
 }
 
-.body-2,
-.body-2-bold,
-.body-2-underline {
-  font-family: var(--font-merriweather-regular);
-  font-size: 1rem;
-  line-height: 1.4;
+h1.metropolis,
+h1 .metropolis,
+.display {
+  font-family: var(--font-metropolis-black);
 }
 
-.body-2-bold {
+.display {
+  font-size: 3.75rem;
+}
+
+.bold {
   font-weight: bold;
-}
-
-.body-2-underline {
-  text-decoration: underline;
-}
-
-.body-3,
-.body-3-semi-bold,
-.body-3-underline {
-  font-family: var(--font-metropolis-regular);
-  font-size: 0.875rem;
-  line-height: 1.4;
-}
-
-.body-3-semi-bold {
-  font-weight: bold;
-}
-
-.body-3-underline {
-  text-decoration: underline;
-}
-
-.body-4,
-.body-4-bold,
-.body-4-underline {
-  font-family: var(--font-merriweather-regular);
-  font-size: 0.875rem;
-  line-height: 1.4;
-}
-
-.body-4-bold {
-  font-weight: bold;
-}
-
-.body-4-underline {
-  text-decoration: underline;
 }
 
 .button {
@@ -286,5 +189,12 @@ h4 {
   .x-wide-container {
     width: 1280px;
     margin: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  h1,
+  .display {
+    font-size: 2.5rem;
   }
 }

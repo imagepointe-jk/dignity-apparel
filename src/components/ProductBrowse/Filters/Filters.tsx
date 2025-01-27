@@ -7,6 +7,7 @@ import { Suspense, useEffect, useState } from "react";
 import { ExpandableDiv } from "../../global/ExpandableDiv/ExpandableDiv";
 import { FilterGroup } from "./FilterGroup";
 import { Search } from "./Search";
+import { filterOrder, filtersToInclude } from "./filterSettings";
 
 export type FilterItemType = {
   id: number;
@@ -55,13 +56,26 @@ export function FiltersWrapped({ categories, attributes, mode }: FilterProps) {
         slug: cat.slug,
       })),
   };
-  const filterGroups: FilterGroupType[] = [categoriesAsFilterGroup].concat(
-    attributes
-      .filter(
-        (item) => !["size", "color"].includes(item.attribute.attribute_name)
-      )
-      .map((attr) => attributeToFilterGroup(attr))
-  );
+  const filterGroups: FilterGroupType[] = [categoriesAsFilterGroup]
+    .concat(
+      attributes
+        .filter(
+          (item) => !["size", "color"].includes(item.attribute.attribute_name)
+        )
+        .map((attr) => attributeToFilterGroup(attr))
+    )
+    .filter(
+      (item) =>
+        !!filtersToInclude.find(
+          (includeItem) => includeItem.name === item.name && includeItem.include
+        )
+    );
+  filterGroups.sort((a, b) => {
+    const aOrder = filterOrder.find((item) => item.name === a.name)?.order || 0;
+    const bOrder = filterOrder.find((item) => item.name === b.name)?.order || 0;
+    return aOrder - bOrder;
+  });
+
   const searchParamsArr = searchParamsArray(searchParamsToUse.toString());
 
   //for each of the search params (some of which have multiple values), cross-reference with the filterGroups to build "clear button" data
@@ -181,7 +195,6 @@ export function FiltersWrapped({ categories, attributes, mode }: FilterProps) {
           mainClassName={styles["expandable-main"]}
           labelClassName={styles["expandable-label"]}
           contentClassName={styles["expandable-content"]}
-          startExpanded={true}
         />
       ))}
     </div>

@@ -61,10 +61,6 @@
   transition: 0.2s;
 }
 
-.accordion-item.expanded .accordion-item-body-container {
-  /* height: 220px; */
-}
-
 .accordion-item-bottom-row {
   display: flex;
   justify-content: flex-end;

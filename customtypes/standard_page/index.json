@@ -17,6 +17,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "testing_slice": {
+              "type": "SharedSlice"
+            },
+            "text_columns": {
+              "type": "SharedSlice"
+            },
             "code_block": {
               "type": "SharedSlice"
             },

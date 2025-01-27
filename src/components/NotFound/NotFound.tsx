@@ -13,12 +13,12 @@ export function NotFound({ data }: Props) {
   return (
     <section>
       <div className={styles["main"]}>
-        <h2 className={styles["heading-404"]}>404</h2>
+        <h1 className={styles["heading-404"]}>404</h1>
         <div className={styles["info-container"]}>
-          <div className="subheader-2">
+          <div className="merriweather-24">
             oops...looks like that doesn&apos;t exist
           </div>
-          <div className="body-2">
+          <div className="merriweather-16">
             We couldn&apos;t find the content you&apos;re looking for on our
             website. Use the links below to navigate to another page.
           </div>

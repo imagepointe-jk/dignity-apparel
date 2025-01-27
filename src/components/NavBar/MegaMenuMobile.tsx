@@ -2,7 +2,10 @@ import stylesDesktop from "@/styles/NavBar/desktop.module.css";
 import styles from "@/styles/NavBar/mobile.module.css";
 import { MegaMenu, MegaMenuSection } from "@/types/schema/navbar";
 import Link from "next/link";
-import { useState } from "react";
+import { Fragment, useState } from "react";
+import { Cart } from "../icons/Cart";
+import { MagnifyingGlass } from "../icons/MagnifyingGlass";
+import { Person } from "../icons/Person";
 
 type Props = {
   data: MegaMenu;
@@ -11,12 +14,41 @@ type Props = {
     text: string;
     href: string;
   };
+  toggleSearchDialog: () => void;
 };
-export function MegaMenuMobile({ data, closeFn, specialLink }: Props) {
+export function MegaMenuMobile({
+  data,
+  closeFn,
+  specialLink,
+  toggleSearchDialog,
+}: Props) {
   const [expandedIndex, setExpandedIndex] = useState(null as number | null);
 
   return (
     <nav className={styles["nav-main-container"]} id="nav-mobile">
+      <div className={styles["buttons-top-right"]}>
+        <a
+          href="https://wholesale.dignityapparel.com/cart"
+          className={styles["cart-button"]}
+          aria-label="cart"
+        >
+          <Cart size={28} />
+        </a>
+        <button
+          className={styles["search-button"]}
+          onClick={toggleSearchDialog}
+          aria-label="Search"
+        >
+          <MagnifyingGlass size={28} />
+        </button>
+        <a
+          href="https://wholesale.dignityapparel.com/my-account"
+          className={styles["my-account-button"]}
+          aria-label="my account"
+        >
+          <Person size={28} />
+        </a>
+      </div>
       <ul className={styles["nav-items-container"]}>
         {/* Map through each nav item */}
 
@@ -31,7 +63,7 @@ export function MegaMenuMobile({ data, closeFn, specialLink }: Props) {
                 navItem.featured.length === 0 && (
                   <Link
                     href={navItem.href || ""}
-                    className="subheader-1-regular"
+                    className="metropolis-24"
                     onClick={closeFn}
                   >
                     {navItem.label}
@@ -39,7 +71,7 @@ export function MegaMenuMobile({ data, closeFn, specialLink }: Props) {
                 )}
               {(navItem.sections.length > 0 || navItem.featured.length > 0) && (
                 <button
-                  className="subheader-1-regular"
+                  className="metropolis-24"
                   aria-expanded={expandedIndex === i}
                   aria-controls={`${navItem.label}-submenu`}
                 >
@@ -55,8 +87,7 @@ export function MegaMenuMobile({ data, closeFn, specialLink }: Props) {
               <ul
                 className={styles["nav-item-sections-container"]}
                 id={`${navItem.label}-submenu`}
-                //@ts-expect-error inert does not have proper typing in React yet
-                inert={expandedIndex !== i ? "true" : undefined}
+                inert={expandedIndex !== i ? true : undefined}
               >
                 <Sections sections={navItem.sections} closeFn={closeFn} />
 
@@ -97,7 +128,7 @@ function Sections({ sections, closeFn }: SectionsProps) {
   const [expandedIndex, setExpandedIndex] = useState(null as number | null);
 
   return sections.map((section, i) => (
-    <>
+    <Fragment key={section.title || i}>
       {!section.title &&
         section.links.map((link) => (
           <li key={link.label}>
@@ -121,12 +152,12 @@ function Sections({ sections, closeFn }: SectionsProps) {
             onClick={() => setExpandedIndex(i)}
           >
             {section.title}
+            <img src="/da-tri.png" alt="n/a" aria-hidden={true} />
           </button>
           <ul
             className={styles["nav-subitem-links-container"]}
             id={`${section.title}-submenu`}
-            //@ts-expect-error inert does not have proper typing in React yet
-            inert={expandedIndex !== i ? "true" : undefined}
+            inert={expandedIndex !== i ? true : undefined}
           >
             {section.links.map((link) => (
               <li key={link.label}>
@@ -142,6 +173,6 @@ function Sections({ sections, closeFn }: SectionsProps) {
           </ul>
         </li>
       )}
-    </>
+    </Fragment>
   ));
 }

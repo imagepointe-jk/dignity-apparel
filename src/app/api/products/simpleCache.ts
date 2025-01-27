@@ -9,18 +9,26 @@ import { env } from "@/env";
 import { queryProducts } from "@/fetch/woocommerce/products";
 import { Product, ProductQueryParams } from "@/types/schema/woocommerce";
 import { validateWooCommerceProductsGraphQLResponse } from "@/types/validation/woocommerce/woocommerce";
+import { createClient } from "redis";
 
-let sc: Product[] = []; //simpleCache; should only be accessed from queryCachedProducts
-let lft: number | null = null; //lastFetchedTime; should only be accessed from queryCachedProducts
+const redis = await createClient({
+  url: env.REDIS_URL,
+})
+  .on("error", (err) => console.error(`Redis Error: ${err}`))
+  .connect();
+const cacheKey = "dignity-apparel-products-cache";
 
 export async function getCachedProducts(
   forceUpdateCache?: boolean
 ): Promise<Product[]> {
-  const now = Date.now();
-  const millisecondsSinceLastFetch =
-    lft !== null ? now - lft : Number.MAX_SAFE_INTEGER;
-  if (millisecondsSinceLastFetch < env.SIMPLE_CACHE_TIME && !forceUpdateCache) {
-    return sc;
+  if (!forceUpdateCache) {
+    const cachedProductsJson = await redis.get(cacheKey);
+    if (cachedProductsJson) {
+      const parsed = validateWooCommerceProductsGraphQLResponse(
+        JSON.parse(cachedProductsJson)
+      );
+      return parsed.products;
+    }
   }
 
   const response = await queryProducts({
@@ -38,10 +46,11 @@ export async function getCachedProducts(
   });
   const json = await response.json();
   const parsed = validateWooCommerceProductsGraphQLResponse(json);
-
-  sc = parsed.products;
-  lft = now;
-  console.log("Product cache updated.");
+  await redis.setEx(
+    cacheKey,
+    env.SIMPLE_CACHE_TIME / 1000,
+    JSON.stringify(json)
+  );
 
   return parsed.products;
 }

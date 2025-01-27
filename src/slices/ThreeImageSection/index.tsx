@@ -1,8 +1,14 @@
 import { ThreeImageSection as ThreeImageSectionComponent } from "@/components/sections/ThreeImageSection/ThreeImageSection";
 import { IMAGE_NOT_FOUND_URL } from "@/constants";
-import { convertButton, getBrandColor } from "@/utility/prismic";
+import {
+  convertButton,
+  getBrandColor,
+  getPrismicLinkUrl,
+} from "@/utility/prismic";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+
+import type { JSX } from "react";
 
 /**
  * Props for `ThreeImageSection`.
@@ -29,7 +35,9 @@ const ThreeImageSection = async ({
     subheading,
     tiling_background,
   } = slice.primary;
-  const button = await convertButton({ link, button_style: link_button_style });
+  const button = getPrismicLinkUrl(link)
+    ? await convertButton({ link, button_style: link_button_style })
+    : undefined;
   const textColor = await getBrandColor(primary_text_color);
 
   return (

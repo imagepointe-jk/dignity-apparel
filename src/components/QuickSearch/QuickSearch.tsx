@@ -15,7 +15,7 @@ type Props = {
 };
 export function QuickSearch({ toggleDialog }: Props) {
   const [search, setSearch] = useState("");
-  const [hasSearched, setHasSearched] = useState(false); //whether the user has made any searches yet
+  const [gotNoResults, setGotNoResults] = useState(false); //whether the user got 0 results from their most recent search
   const [viewType, setViewType] = useState(
     "products" as "products" | "collections"
   );
@@ -35,12 +35,6 @@ export function QuickSearch({ toggleDialog }: Props) {
   }
 
   async function doSearch(search: string) {
-    if (!search) {
-      setResults([]);
-      setStatus("idle");
-      return;
-    }
-
     try {
       const response = await queryProducts({
         search,
@@ -52,7 +46,24 @@ export function QuickSearch({ toggleDialog }: Props) {
       });
       const json = await response.json();
       const parsed = validateWooCommerceProducts(json);
-      setResults(parsed);
+      if (parsed.length > 0) {
+        setResults(parsed);
+        setStatus("idle");
+        return;
+      }
+
+      const newResponse = await queryProducts({
+        search: null,
+        category: null,
+        before: null,
+        after: null,
+        first: 25,
+        last: null,
+      });
+      const newJson = await newResponse.json();
+      const newParsed = validateWooCommerceProducts(newJson);
+      setGotNoResults(true);
+      setResults(newParsed);
       setStatus("idle");
     } catch (error) {
       setResults([]);
@@ -62,8 +73,8 @@ export function QuickSearch({ toggleDialog }: Props) {
   }
 
   useEffect(() => {
-    if (search) setHasSearched(true);
     setStatus("loading");
+    setGotNoResults(false);
     debouncedOnSearchInput(search);
   }, [search]);
 
@@ -105,8 +116,14 @@ export function QuickSearch({ toggleDialog }: Props) {
         aria-live="polite"
         aria-atomic="true"
       >
-        {hasSearched && (
+        {search && (
           <>
+            {status === "idle" && gotNoResults && (
+              <div className={styles["search-result-message"]}>
+                No results found. Please try another term or view products
+                below.
+              </div>
+            )}
             {status === "idle" && (
               <ul>
                 {viewType === "products" &&
@@ -121,7 +138,6 @@ export function QuickSearch({ toggleDialog }: Props) {
                   ))}
               </ul>
             )}
-            {status === "idle" && results?.length === 0 && <>No results.</>}
             {status === "error" && <>Something went wrong.</>}
             {status === "loading" && (
               <LoadingIndicator
@@ -130,6 +146,11 @@ export function QuickSearch({ toggleDialog }: Props) {
               />
             )}
           </>
+        )}
+        {!search && (
+          <div className={styles["search-result-message"]}>
+            Start typing to find products
+          </div>
         )}
       </div>
     </>

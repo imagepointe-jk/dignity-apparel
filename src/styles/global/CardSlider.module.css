@@ -29,6 +29,7 @@
 
 .card {
   position: absolute;
+  top: 0;
 }
 
 .arrow-button {

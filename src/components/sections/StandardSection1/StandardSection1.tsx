@@ -6,7 +6,7 @@ import {
 } from "../../global/LinkAsButton/LinkAsButton";
 import { WithTilingBackground } from "@/types/schema/misc";
 import { bgImage } from "@/utility/misc";
-import { CoveredImage } from "@/components/global/CoveredImage/CoveredImage";
+import { FlexibleImage } from "@/components/global/FlexibleImage/FlexibleImage";
 
 type Props = {
   id?: string | null;
@@ -21,6 +21,7 @@ type Props = {
   textColor?: string;
   buttonPrimary?: LinkAsButtonData;
   buttonSecondary?: Omit<LinkAsButtonData, "secondaryColor">;
+  sectionHeight?: number;
 } & WithTilingBackground;
 export function StandardSection1({
   id,
@@ -32,6 +33,7 @@ export function StandardSection1({
   tilingBackground,
   textColor,
   buttonPrimary,
+  sectionHeight,
   ...rest
 }: Props) {
   return (
@@ -42,6 +44,7 @@ export function StandardSection1({
     >
       <div
         className={`${styles["main"]} ${horzReversed ? styles["reversed"] : ""}`}
+        style={{ height: sectionHeight ? `${sectionHeight}px` : undefined }}
       >
         <div>
           <div className={styles["content-container"]}>
@@ -53,10 +56,11 @@ export function StandardSection1({
             {buttonPrimary && <LinkAsButton data={buttonPrimary} />}
           </div>
         </div>
-        <CoveredImage
+        <FlexibleImage
           src={img.src}
           alt={img.alt || "image"}
           containerClassName={styles["image-container"]}
+          behavior="cover"
         />
       </div>
     </section>

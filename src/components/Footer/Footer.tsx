@@ -2,7 +2,6 @@ import { FooterSection, Footer as FooterType } from "@/types/schema/footer";
 import styles from "@/styles/Footer/Footer.module.css";
 import Link from "next/link";
 import { Flag } from "../icons/Flag";
-import { env } from "@/envClient";
 import { SocialMediaLink } from "../global/SocialMediaLink/SocialMediaLink";
 import { SubscriptionForm } from "./SubscriptionForm";
 import { IUPAT_DC81_L246_Bug } from "../icons/organizations/IUPAT_DC81_L246_Bug";
@@ -11,7 +10,7 @@ import { IUPAT_DC81_L247_Bug } from "../icons/organizations/IUPAT_DC81_L247_Bug"
 type Props = {
   data: FooterType;
 };
-export function Footer({
+export async function Footer({
   data: { iconLinks, sections, homeLinkImageUrl },
 }: Props) {
   const currentYear = new Date().getFullYear();
@@ -20,15 +19,13 @@ export function Footer({
     <footer className={styles["main"]}>
       <div className={styles["top-banner"]}>
         <Flag />
-        <h3 className={`${styles["footer-main-heading"]} h3-bold`}>
-          MADE IN THE USA
-        </h3>
+        <h3 className={styles["footer-main-heading"]}>UNION-MADE IN THE USA</h3>
       </div>
       <div className="x-wide-container">
         <div className={styles["main-row"]}>
           <div>
             <div className={styles["home-link-container"]}>
-              <Link href={env.NEXT_PUBLIC_BASE_URL}>
+              <Link href="/">
                 <img src={homeLinkImageUrl} alt="Dignity Apparel Home" />
               </Link>
               <div className={styles["mission-statement"]}>
@@ -73,22 +70,16 @@ export function Footer({
             </div>
             <div className={styles["bottom-row-links"]}>
               <div>
-                <Link href={`${env.NEXT_PUBLIC_BASE_URL}/privacy-policy`}>
-                  Privacy Policy
-                </Link>
+                <Link href={"/privacy-policy"}>Privacy Policy</Link>
               </div>
               <div>
-                <Link href={`${env.NEXT_PUBLIC_BASE_URL}/terms-and-conditions`}>
-                  Terms & Conditions
-                </Link>
+                <Link href={"/terms-and-conditions"}>Terms & Conditions</Link>
               </div>
               <div>
-                <Link href={""}>Site Map</Link>
+                <Link href={"/site-map"}>Site Map</Link>
               </div>
               <div>
-                <Link href={`${env.NEXT_PUBLIC_BASE_URL}/cookie-policy`}>
-                  Cookies Policy
-                </Link>
+                <Link href={"/cookie-policy"}>Cookies Policy</Link>
               </div>
             </div>
           </div>

@@ -41,9 +41,7 @@ export function SingleReview({
             stars={rating}
             containerClassName={styles["stars-container"]}
           />
-          <div
-            className={`${styles["body-text-container"]} subheader-1-regular`}
-          >
+          <div className={`${styles["body-text-container"]} metropolis-24`}>
             {body}
             <QuotationMark
               size={80}
@@ -56,9 +54,9 @@ export function SingleReview({
           </div>
         </div>
         <div className={styles["names-container"]}>
-          <div className="body-3-semi-bold">{reviewerName}</div>
+          <div className="metropolis-19 bold">{reviewerName}</div>
           {companyName && (
-            <div className={`${styles["company-name"]} body-3`}>
+            <div className={`${styles["company-name"]} metropolis-19`}>
               {companyName}
             </div>
           )}

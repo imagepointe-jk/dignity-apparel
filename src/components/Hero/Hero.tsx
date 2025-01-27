@@ -10,7 +10,7 @@ type Props = {
   heading: string;
   subtextNode: ReactNode;
   body?: ReactNode;
-  buttonPrimary: LinkAsButtonData;
+  buttonPrimary?: LinkAsButtonData;
   buttonSecondary?: LinkAsButtonData;
   bgImageUrl?: string;
   bgVideoUrl?: string;
@@ -68,12 +68,12 @@ export function Hero({
         ></div>
         <div className={styles["content"]}>
           <div>
-            <h1 className="h1-black">{heading}</h1>
+            <h1>{heading}</h1>
             <div className={styles["subtext-container"]}>{subtextNode}</div>
           </div>
           {body}
           <div className={styles["buttons-container"]}>
-            <LinkAsButton data={buttonPrimary} />
+            {buttonPrimary && <LinkAsButton data={buttonPrimary} />}
             {buttonSecondary && alignment === "center" && (
               <LinkAsButton data={buttonSecondary} />
             )}

@@ -1,10 +1,15 @@
 .main {
   text-align: center;
+  padding: 70px 0;
 }
 
-.main h2 {
-  margin: 0;
-  padding-top: 30px;
+.heading h1,
+.heading h2,
+.heading h3,
+.heading h4,
+.heading h5,
+.heading h6 {
+  margin-top: 0;
 }
 
 .cards-container {

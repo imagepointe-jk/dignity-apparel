@@ -5,6 +5,8 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { FeaturedProducts as FeaturedProductsComponent } from "@/components/sections/FeaturedProducts/FeaturedProducts";
 import { getBrandColor } from "@/utility/prismic";
 
+import type { JSX } from "react";
+
 /**
  * Props for `FeaturedProducts`.
  */

@@ -1,4 +1,3 @@
-import { CoveredImage } from "@/components/global/CoveredImage/CoveredImage";
 import {
   LinkAsButton,
   LinkAsButtonData,
@@ -7,6 +6,7 @@ import { WithTilingBackground } from "@/types/schema/misc";
 import { bgImage } from "@/utility/misc";
 import { ReactNode } from "react";
 import styles from "@/styles/sections/ThreeImageSection.module.css";
+import { FlexibleImage } from "@/components/global/FlexibleImage/FlexibleImage";
 
 type Props = {
   id?: string | null;
@@ -49,21 +49,24 @@ export function ThreeImageSection({
     >
       <div className={`${styles["main"]} x-wide-container`}>
         <div className={styles["images-container"]}>
-          <CoveredImage
-            containerClassName={styles["primary-image-container"]}
+          <FlexibleImage
             src={primaryImage.src}
             alt={primaryImage.alt}
+            containerClassName={styles["primary-image-container"]}
+            behavior="cover"
           />
           <div className={styles["secondary-images-container"]}>
-            <CoveredImage
-              containerClassName={styles["secondary-image-single-container"]}
+            <FlexibleImage
               src={secondaryImage1.src}
               alt={secondaryImage1.alt}
-            />
-            <CoveredImage
               containerClassName={styles["secondary-image-single-container"]}
+              behavior="cover"
+            />
+            <FlexibleImage
               src={secondaryImage2.src}
               alt={secondaryImage2.alt}
+              containerClassName={styles["secondary-image-single-container"]}
+              behavior="cover"
             />
           </div>
         </div>

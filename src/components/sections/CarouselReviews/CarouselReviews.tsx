@@ -35,7 +35,7 @@ export function CarouselReviews({ id, heading, reviews, ...rest }: Props) {
                 stars={review.rating}
                 containerClassName={styles["stars"]}
               />
-              <div className="body-1">
+              <div className="metropolis-16">
                 <div className={styles["body-container"]}>{review.body}</div>
 
                 {review.link && (
@@ -50,10 +50,10 @@ export function CarouselReviews({ id, heading, reviews, ...rest }: Props) {
               {(review.companyName || review.fullName) && (
                 <div>
                   {review.fullName && (
-                    <div className="body-1-semi-bold">{review.fullName}</div>
+                    <div className="metropolis-16 bold">{review.fullName}</div>
                   )}
                   {review.companyName && (
-                    <div className={`${styles["company-name"]} body-3`}>
+                    <div className={`${styles["company-name"]} metropolis-16`}>
                       {review.companyName}
                     </div>
                   )}

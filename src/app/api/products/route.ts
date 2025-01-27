@@ -3,6 +3,7 @@ import { message } from "@/utility/misc";
 import { INTERNAL_SERVER_ERROR, NOT_FOUND } from "@/utility/statusCodes";
 import { NextRequest } from "next/server";
 import { queryCachedProducts } from "./simpleCache";
+import { trackSearchString } from "@/fetch/tracking/search";
 
 const emptyResults: any[] = [];
 
@@ -17,6 +18,8 @@ export async function GET(request: NextRequest) {
   const fit = ["mens", "womens"].includes(`${searchParams.get("fit")}`)
     ? searchParams.get("fit")
     : null;
+
+  trackQuery(search);
 
   try {
     const products = await queryCachedProducts({
@@ -45,5 +48,16 @@ export async function GET(request: NextRequest) {
       ...easyCorsInit,
       status: INTERNAL_SERVER_ERROR,
     });
+  }
+}
+
+async function trackQuery(search: string | null) {
+  if (!search) return;
+
+  try {
+    const response = await trackSearchString(search);
+    if (!response.ok) throw new Error();
+  } catch (error) {
+    console.error(`Failed to track a search string. ${error}`);
   }
 }

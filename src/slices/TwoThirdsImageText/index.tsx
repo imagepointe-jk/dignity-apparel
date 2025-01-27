@@ -3,6 +3,8 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { TwoThirdsImageText as TwoThirdsImageTextComponent } from "@/components/sections/TwoThirdsImageText/TwoThirdsImageText";
 import { IMAGE_NOT_FOUND_URL } from "@/constants";
 
+import type { JSX } from "react";
+
 /**
  * Props for `TwoThirdsImageText`.
  */
@@ -15,8 +17,15 @@ export type TwoThirdsImageTextProps =
 const TwoThirdsImageText = ({
   slice,
 }: TwoThirdsImageTextProps): JSX.Element => {
-  const { slice_id, heading, image, sections, text_color, tiling_background } =
-    slice.primary;
+  const {
+    slice_id,
+    heading,
+    image,
+    image_caption,
+    sections,
+    text_color,
+    tiling_background,
+  } = slice.primary;
 
   return (
     <TwoThirdsImageTextComponent
@@ -25,6 +34,7 @@ const TwoThirdsImageText = ({
       image={{
         src: image.url || IMAGE_NOT_FOUND_URL,
         alt: image.alt || "image",
+        caption: image_caption || undefined,
       }}
       textColor={text_color === "Normal" ? "normal" : "white"}
       tilingBackground={{ src: tiling_background.url }}

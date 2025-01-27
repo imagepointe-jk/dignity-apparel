@@ -3,6 +3,8 @@ import { convertButton } from "@/utility/prismic";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 
+import type { JSX } from "react";
+
 /**
  * Props for `Hero`.
  */
@@ -24,14 +26,16 @@ const Hero = async ({ slice }: HeroProps): Promise<JSX.Element> => {
     background_overlay_opacity,
     section_height,
   } = slice.primary;
-  const buttonPrimary = await convertButton({
-    button_style: buttons[0]?.button_style,
-    link: buttons[0]?.link,
-  });
+  const buttonPrimary = buttons[0]
+    ? await convertButton({
+        button_style: buttons[0].button_style,
+        link: buttons[0].link,
+      })
+    : undefined;
   const buttonSecondary = buttons[1]
     ? await convertButton({
-        button_style: buttons[1]?.button_style,
-        link: buttons[1]?.link,
+        button_style: buttons[1].button_style,
+        link: buttons[1].link,
       })
     : undefined;
 

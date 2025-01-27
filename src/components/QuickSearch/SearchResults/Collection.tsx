@@ -1,6 +1,5 @@
-import { ContainedImage } from "@/components/global/ContainedImage/ContainedImage";
+import { FlexibleImage } from "@/components/global/FlexibleImage/FlexibleImage";
 import { IMAGE_NOT_FOUND_URL } from "@/constants";
-import { env } from "@/envClient";
 import { queryProducts } from "@/fetch/client/products";
 import styles from "@/styles/QuickSearch/SearchResult.module.css";
 import { Product } from "@/types/schema/woocommerce";
@@ -46,13 +45,14 @@ export function Collection({ category }: Props) {
 
   return (
     <Link
-      href={`${env.NEXT_PUBLIC_BASE_URL}/products?category=${category.slug}`}
+      href={`/products?category=${category.slug}`}
       className={styles["collection-card"]}
     >
-      <ContainedImage
+      <FlexibleImage
         src={firstProductImageUrl}
         alt={category.name}
         containerClassName={styles["image-container"]}
+        behavior="contain"
       />
       <div className={styles["info-container"]}>
         <div>{category.name}</div>

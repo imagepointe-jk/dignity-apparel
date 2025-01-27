@@ -2,7 +2,7 @@
 
 import { WithTilingBackground } from "@/types/schema/misc";
 import { bgImage } from "@/utility/misc";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useState } from "react";
 import styles from "@/styles/sections/TabContent.module.css";
 import { ExpandableDiv } from "@/components/global/ExpandableDiv/ExpandableDiv";
 
@@ -25,16 +25,8 @@ export function TabContent({
   tilingBackground,
   ...rest
 }: Props) {
-  const [viewedIndex, setViewedIndex] = useState(-1);
+  const [viewedIndex, setViewedIndex] = useState(0);
   const viewedSection = sections[viewedIndex];
-
-  useEffect(() => {
-    //this is a hack to allow the ExpandableDiv to appear to start expanded. Currently it relies on its state changing from "false" to "true" for the expansion to happen, and this can only happen once its ref is non-null.
-    //a better solution is needed when more time is available.
-    setTimeout(() => {
-      setViewedIndex(0);
-    }, 500);
-  }, []);
 
   return (
     <section

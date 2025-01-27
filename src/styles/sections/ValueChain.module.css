@@ -1,6 +1,6 @@
 .section {
   background-color: var(--armor-gray-200);
-  padding: 60px 0;
+  padding: 60px 0 100px 0;
 }
 
 .main {
@@ -12,7 +12,7 @@
   display: block;
 }
 
-.main h3 {
+.main h2 {
   text-align: center;
 }
 
@@ -156,6 +156,10 @@ li.selected .expand-button {
 
 .dyed-body-container {
   max-width: 453px;
+}
+
+.growing-body-container {
+  max-width: 520px;
 }
 
 .iowa-tennessee-container {

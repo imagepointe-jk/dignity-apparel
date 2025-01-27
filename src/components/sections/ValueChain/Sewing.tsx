@@ -10,7 +10,10 @@ export function Sewing() {
   return (
     <div className={styles["expanded-content"]}>
       <div className={styles["divided-content"]}>
-        <div className={styles["content-subsection"]}>
+        <div
+          className={styles["content-subsection"]}
+          style={{ justifyContent: "initial", paddingTop: "39px" }}
+        >
           <div
             className={`${styles["iowa-tennessee-container"]} ${styles["orange"]}`}
           >
@@ -20,7 +23,7 @@ export function Sewing() {
           <div className={styles["content-subheading"]}>
             Sewn in Iowa & Tennessee
           </div>
-          <div className="subheader-2">
+          <div className="merriweather-19">
             100% union-sewn garments at Dignity Apparel factories in Iowa &
             Tennessee.
           </div>

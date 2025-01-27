@@ -16,7 +16,7 @@ type Props = {
     };
     headingNode: ReactNode;
     bodyNode: ReactNode;
-    button: LinkAsButtonData;
+    button?: LinkAsButtonData;
   }[];
 } & WithTilingBackground;
 export function CardsSection1({ id, tilingBackground, cards, ...rest }: Props) {
@@ -29,7 +29,11 @@ export function CardsSection1({ id, tilingBackground, cards, ...rest }: Props) {
     >
       {cards.map((card, i) => (
         <div key={i} className={styles["card"]}>
-          <img src={card.image.src} alt={card.image.alt} />
+          <img
+            src={card.image.src}
+            alt={card.image.alt}
+            className={styles["card-img"]}
+          />
           {card.headingNode}
           <div>{card.bodyNode}</div>
           {card.button && (

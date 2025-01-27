@@ -164,20 +164,24 @@ export function CardSlider<T extends HasId>({
           ))}
         </div>
       </div>
-      <button
-        className={`${styles["arrow-button"]} ${styles["arrow-icon-left"]} ${!canMoveLeft ? styles["disabled"] : ""}`}
-        onClick={() => onClickArrowThrottled("left")}
-        aria-label="scroll gallery left"
-      >
-        <Arrow3 size={18} />
-      </button>
-      <button
-        className={`${styles["arrow-button"]} ${styles["arrow-icon-right"]} ${!canMoveRight ? styles["disabled"] : ""}`}
-        onClick={() => onClickArrowThrottled("right")}
-        aria-label="scroll gallery right"
-      >
-        <Arrow3 size={18} />
-      </button>
+      {canMoveLeft && (
+        <button
+          className={`${styles["arrow-button"]} ${styles["arrow-icon-left"]} ${!canMoveLeft ? styles["disabled"] : ""}`}
+          onClick={() => onClickArrowThrottled("left")}
+          aria-label="scroll gallery left"
+        >
+          <Arrow3 size={18} />
+        </button>
+      )}
+      {canMoveRight && (
+        <button
+          className={`${styles["arrow-button"]} ${styles["arrow-icon-right"]} ${!canMoveRight ? styles["disabled"] : ""}`}
+          onClick={() => onClickArrowThrottled("right")}
+          aria-label="scroll gallery right"
+        >
+          <Arrow3 size={18} />
+        </button>
+      )}
     </div>
   );
 }

@@ -1,0 +1,102 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Brush"
+						}
+					}
+				]
+			},
+			"subheading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Tempor exercitation aute reprehenderit exercitation velit in ullamco nulla in voluptate aliqua proident culpa nostrud. Qui Lorem laboris adipisicing exercitation nisi sit voluptate ad dolor. Aliquip nostrud nulla aliquip nostrud exercitation laboris quis consequat cillum pariatur mollit cillum."
+						}
+					}
+				]
+			},
+			"slice_id": {
+				"__TYPE__": "FieldContent",
+				"value": "doctor",
+				"type": "Text"
+			},
+			"tiling_background": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
+					"width": 5616,
+					"height": 3744
+				},
+				"url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
+				"width": 5616,
+				"height": 3744,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"columns": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Eu labore anim est labore reprehenderit exercitation ipsum adipisicing elit consectetur minim aliquip sit et ex."
+											}
+										}
+									]
+								}
+							],
+							[
+								"body",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Voluptate consequat commodo commodo. Enim labore cupidatat sit."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			},
+			"text_color": {
+				"__TYPE__": "FieldContent",
+				"value": "Normal",
+				"type": "Select"
+			}
+		},
+		"items": []
+	}
+]

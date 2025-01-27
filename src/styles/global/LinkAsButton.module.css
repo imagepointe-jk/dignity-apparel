@@ -1,25 +1,11 @@
-/* .main {
-  display: inline-block;
-  padding: 15px;
-  border-radius: 5px;
-  background-color: blue;
-  color: white;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-.minor {
-  background: none;
-  outline: 3px solid white;
-} */
-
 .main {
   display: inline-block;
   padding: 15px;
   border-radius: 5px;
   text-decoration: none;
   transition: 0.2s;
-  font-weight: bold;
+  font-size: 20px;
+  font-family: var(--font-metropolis-extra-bold);
 }
 
 .extra-padding {

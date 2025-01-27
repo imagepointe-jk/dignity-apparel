@@ -1,10 +1,9 @@
-// import { IMAGE_NOT_FOUND_URL } from "@/constants";
 import styles from "@/styles/StoryPage/StoryPage.module.css";
 import { ReactNode } from "react";
-import { CoveredImage } from "../global/CoveredImage/CoveredImage";
 import { QuotationMark } from "../icons/QuotationMark";
 import { StoryData } from "@/types/schema/prismic";
 import { StoryCard } from "../StoryBrowse/StoryCard";
+import { FlexibleImage } from "../global/FlexibleImage/FlexibleImage";
 
 type ImageData = {
   src: string;
@@ -48,17 +47,16 @@ export function StoryPage({
         >
           <div className={styles["main-flex"]}>
             {!adjustedCode && (
-              <CoveredImage
+              <FlexibleImage
                 src={image.src}
                 alt={firstName || "staff headshot"}
                 containerClassName={`${styles["featured-img-container"]} ${styles["desktop-only"]}`}
+                behavior="cover"
               />
             )}
             <div className={styles["content-container"]}>
               <h1>{firstName}</h1>
-              <div
-                className={`${styles["job-description"]} subheader-1-semi-bold`}
-              >
+              <div className={`${styles["job-description"]} metropolis-24`}>
                 {jobDescriptionShort}
               </div>
               {adjustedCode && (
@@ -68,19 +66,20 @@ export function StoryPage({
                 ></div>
               )}
               {!adjustedCode && (
-                <CoveredImage
+                <FlexibleImage
                   src={image.src}
                   alt={firstName || "staff headshot"}
                   containerClassName={`${styles["featured-img-container"]} ${styles["tablet"]}`}
+                  behavior="cover"
                 />
               )}
-              <div className={`${styles["body-text"]} body-2`}>{bodyText}</div>
+              <div className={styles["body-text"]}>{bodyText}</div>
             </div>
           </div>
 
           {highlightText && (
             <div
-              className={`${styles["highlight-text-container"]} subheader-1-semi-bold`}
+              className={`${styles["highlight-text-container"]} metropolis-24`}
             >
               {highlightText}
               <QuotationMark
@@ -93,31 +92,6 @@ export function StoryPage({
               />
             </div>
           )}
-
-          {/* <div className={styles["additional-images-flex"]}>
-          <div className={styles["additional-images-column"]}>
-            <CoveredImage
-              containerClassName={styles["additional-image-horz"]}
-              src={additionalImage1?.src || IMAGE_NOT_FOUND_URL}
-              alt={additionalImage1?.alt || "image"}
-            />
-            <CoveredImage
-              containerClassName={styles["additional-image-horz"]}
-              src={additionalImage2?.src || IMAGE_NOT_FOUND_URL}
-              alt={additionalImage2?.alt || "image"}
-            />
-            <CoveredImage
-              containerClassName={`${styles["additional-image-horz"]} ${styles["tablet"]}`}
-              src={additionalImage3?.src || IMAGE_NOT_FOUND_URL}
-              alt={additionalImage3?.alt || "image"}
-            />
-          </div>
-          <CoveredImage
-            containerClassName={`${styles["additional-image-vert"]} ${styles["desktop-only"]}`}
-            src={additionalImage3?.src || IMAGE_NOT_FOUND_URL}
-            alt={additionalImage3?.alt || "image"}
-          />
-        </div> */}
         </div>
       </section>
       <section className={styles["more-stories"]}>

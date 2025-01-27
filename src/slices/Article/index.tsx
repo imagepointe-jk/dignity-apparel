@@ -2,6 +2,8 @@ import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { Article as ArticleComponent } from "@/components/sections/Article/Article";
 
+import type { JSX } from "react";
+
 /**
  * Props for `Article`.
  */

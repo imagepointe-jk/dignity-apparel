@@ -23,7 +23,9 @@
           "type": "Text",
           "config": {
             "label": "Heading",
-            "placeholder": ""
+            "placeholder": "",
+            "multi": "heading1,heading2,heading3,heading4,heading5,heading6",
+            "labels": ["metropolis", "merriweather", "display"]
           }
         },
         "subtext": {
@@ -32,31 +34,12 @@
             "label": "Subtext",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph,heading2,heading3,heading4",
+            "multi": "paragraph,heading2,heading3,heading4,heading5,heading6",
             "labels": [
-              "h2-medium",
-              "h3-medium-italic",
-              "h3-italic",
-              "h3-bold",
-              "h4-semi-bold",
-              "subheader-1-regular",
-              "subheader-1-medium",
-              "subheader-1-semi-bold",
-              "subheader-2",
-              "subheader-3",
-              "subheader-4",
-              "body-1",
-              "body-1-semi-bold",
-              "body-1-underline",
-              "body-2",
-              "body-2-bold",
-              "body-2-underline",
-              "body-3",
-              "body-3-semi-bold",
-              "body-3-underline",
-              "body-4",
-              "body-4-bold",
-              "body-4-underline"
+              "metropolis-24",
+              "metropolis-32",
+              "merriweather-24",
+              "merriweather-32"
             ]
           }
         },
@@ -66,20 +49,20 @@
             "label": "Body",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph",
+            "multi": "paragraph,strong,em,hyperlink,o-list-item,list-item",
             "labels": [
-              "body-1",
-              "body-1-semi-bold",
-              "body-1-underline",
-              "body-2",
-              "body-2-bold",
-              "body-2-underline",
-              "body-3",
-              "body-3-semi-bold",
-              "body-3-underline",
-              "body-4",
-              "body-4-bold",
-              "body-4-underline"
+              "metropolis-16",
+              "metropolis-16-underline",
+              "metropolis-19",
+              "metropolis-19-underline",
+              "metropolis-22",
+              "metropolis-22-underline",
+              "merriweather-16",
+              "merriweather-16-underline",
+              "merriweather-19",
+              "merriweather-19-underline",
+              "merriweather-22",
+              "merriweather-22-underline"
             ]
           }
         },
@@ -103,10 +86,7 @@
           "config": {
             "label": "Background Overlay Opacity",
             "placeholder": "",
-            "options": [
-              "50%",
-              "95%"
-            ],
+            "options": ["50%", "95%"],
             "default_value": "50%"
           }
         },
@@ -115,11 +95,7 @@
           "config": {
             "label": "Layout",
             "placeholder": "",
-            "options": [
-              "Centered",
-              "Left",
-              "Right"
-            ],
+            "options": ["Centered", "Left", "Right"],
             "default_value": "Centered"
           }
         },
@@ -151,9 +127,7 @@
                 "config": {
                   "label": "Button Style",
                   "select": "document",
-                  "customtypes": [
-                    "button_style"
-                  ]
+                  "customtypes": ["button_style"]
                 }
               }
             }

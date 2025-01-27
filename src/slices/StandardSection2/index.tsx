@@ -4,6 +4,8 @@ import { StandardSection2 as StandardSection2Component } from "@/components/sect
 import { IMAGE_NOT_FOUND_URL } from "@/constants";
 import { convertButton, getBrandColor } from "@/utility/prismic";
 
+import type { JSX } from "react";
+
 /**
  * Props for `StandardSection2`.
  */
@@ -23,9 +25,11 @@ const StandardSection2 = async ({
     heading,
     image,
     image_location,
+    image_caption,
     video,
     primary_text_color,
     subtext,
+    image_behavior,
     tiling_background,
   } = slice.primary;
   const convertedButtons = await Promise.all(
@@ -42,10 +46,21 @@ const StandardSection2 = async ({
       subtextNode={<PrismicRichText field={subtext} />}
       bodyTextNode={<PrismicRichText field={body} />}
       buttons={convertedButtons}
-      img={{ src: image.url || IMAGE_NOT_FOUND_URL, alt: image.alt }}
+      img={{
+        src: image.url || IMAGE_NOT_FOUND_URL,
+        alt: image.alt,
+        caption: image_caption || undefined,
+      }}
       videoEmbedCode={video.html || ""}
       horzReversed={image_location === "Left"}
       textColor={textColor}
+      imageBehavior={
+        image_behavior === "Contain"
+          ? "contain"
+          : image_behavior === "Cover"
+            ? "cover"
+            : "full-size"
+      }
       tilingBackground={{ src: tiling_background.url }}
     />
   );

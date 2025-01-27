@@ -25,7 +25,7 @@ export function getCategories() {
     }
 `;
   return queryWpGraphQl(() =>
-    fetch("https://dawholesale.unionwebstores.com/graphql", {
+    fetch(`${env.WOOCOMMERCE_STORE_URL}graphql`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
