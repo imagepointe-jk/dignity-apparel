@@ -266,7 +266,8 @@
   }
 
   .tablet-view-sections {
-    max-width: 425px;
+    max-width: 470px;
+    justify-content: initial;
   }
 }
 
