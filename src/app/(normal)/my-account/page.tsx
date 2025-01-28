@@ -7,7 +7,7 @@ import { ZodError } from "zod";
 import { inspect } from "util";
 
 export default async function Page() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const token = `${cookieStore.get("wp_jwt_auth")?.value}`;
 
   try {

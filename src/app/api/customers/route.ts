@@ -10,7 +10,7 @@ import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const cookiesToken = cookieStore.get("wp_jwt_auth")?.value;
   const cookiesId = cookieStore.get("wp_user_id")?.value;
 

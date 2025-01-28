@@ -1,6 +1,5 @@
 "use client";
 
-import { env } from "@/envClient";
 import { useRouter, useSearchParams } from "next/navigation";
 import { FormEvent, useState } from "react";
 
@@ -19,7 +18,7 @@ export default function Page() {
     setError(null);
 
     try {
-      const response = await fetch(`${env.NEXT_PUBLIC_BASE_URL}/api/login`, {
+      const response = await fetch(`${window.location.origin}/api/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

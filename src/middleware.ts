@@ -16,7 +16,7 @@ export async function middleware(request: NextRequest) {
     return response;
   }
 
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const cookiesToken = cookieStore.get("wp_jwt_auth")?.value;
   const cookiesId = cookieStore.get("wp_user_id")?.value;
 
