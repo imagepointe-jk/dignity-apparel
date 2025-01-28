@@ -16,13 +16,12 @@ const redis = await createClient({
 })
   .on("error", (err) => console.error(`Redis Error: ${err}`))
   .connect();
-const cacheKey = "dignity-apparel-products-cache";
 
 export async function getCachedProducts(
   forceUpdateCache?: boolean
 ): Promise<Product[]> {
   if (!forceUpdateCache) {
-    const cachedProductsJson = await redis.get(cacheKey);
+    const cachedProductsJson = await redis.get(env.REDIS_CACHE_KEY);
     if (cachedProductsJson) {
       const parsed = validateWooCommerceProductsGraphQLResponse(
         JSON.parse(cachedProductsJson)
@@ -47,7 +46,7 @@ export async function getCachedProducts(
   const json = await response.json();
   const parsed = validateWooCommerceProductsGraphQLResponse(json);
   await redis.setEx(
-    cacheKey,
+    env.REDIS_CACHE_KEY,
     env.SIMPLE_CACHE_TIME / 1000,
     JSON.stringify(json)
   );
