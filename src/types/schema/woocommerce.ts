@@ -20,6 +20,7 @@ export const productSchema = z.object({
   slug: z.string(),
   link: z.string(),
   imageUrl: z.string(),
+  menuOrder: z.number(),
   descriptionSanitized: z.string(),
   shortDescriptionSanitized: z.string(),
   sizeUpcharges: z.object({

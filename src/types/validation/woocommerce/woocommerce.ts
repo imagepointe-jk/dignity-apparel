@@ -18,6 +18,7 @@ function pullProductData(productJson: any) {
     sku: productJson.sku,
     slug: productJson.slug,
     link: productJson.link,
+    menuOrder: productJson.menuOrder,
     imageUrl: productJson.image?.sourceUrl || "",
     descriptionSanitized: sanitizeHtml(productJson.description || ""),
     shortDescriptionSanitized: sanitizeHtml(productJson.shortDescription || ""),

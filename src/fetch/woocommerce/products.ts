@@ -18,6 +18,7 @@ function buildProductFields(params?: {
     name
     sku
     slug
+    menuOrder
     image {
       sourceUrl
     }
