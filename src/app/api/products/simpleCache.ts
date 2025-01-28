@@ -97,6 +97,8 @@ export async function queryCachedProducts(
     );
   });
 
+  filtered.sort((a, b) => a.menuOrder - b.menuOrder);
+
   return filtered;
 }
 
