@@ -31,6 +31,7 @@ export function ValueChain({ id }: Props) {
     const perSectionHeight = growingRect.height; //assume that every unexpanded button is the same height
     const extraScroll = -80;
 
+    //derive the target scroll Y from the height per unexpanded section and the section's position in the sequence
     let targetAbsoluteY = growingRectAbsoluteY;
     if (selected === "knitting") targetAbsoluteY += perSectionHeight * 1;
     if (selected === "dyeing") targetAbsoluteY += perSectionHeight * 2;
