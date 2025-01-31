@@ -51,7 +51,6 @@
   overflow: hidden;
 }
 
-/* From https://gist.github.com/tyidnet/4564bb5db8c1a612d3b5c44820277a4b */
 .video-container iframe {
   box-sizing: border-box;
   aspect-ratio: 16 / 9;
