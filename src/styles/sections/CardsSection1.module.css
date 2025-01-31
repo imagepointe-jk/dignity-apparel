@@ -37,3 +37,7 @@
 .card a {
   text-transform: uppercase;
 }
+
+.body-container {
+  padding: 0 20px;
+}

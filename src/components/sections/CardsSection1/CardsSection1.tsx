@@ -35,7 +35,7 @@ export function CardsSection1({ id, tilingBackground, cards, ...rest }: Props) {
             className={styles["card-img"]}
           />
           {card.headingNode}
-          <div>{card.bodyNode}</div>
+          <div className={styles["body-container"]}>{card.bodyNode}</div>
           {card.button && (
             <div>
               <LinkAsButton data={card.button} />

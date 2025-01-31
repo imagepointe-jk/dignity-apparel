@@ -6,7 +6,7 @@ import { Growing as GrowingIcon } from "@/components/icons/production/Growing";
 import { Knitting as KnittingIcon } from "@/components/icons/production/Knitting";
 import { Sewing as SewingIcon } from "@/components/icons/production/Sewing";
 import styles from "@/styles/sections/ValueChain.module.css";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Cutting } from "./Cutting";
 import { Dyeing } from "./Dyeing";
 import { Growing } from "./Growing";
@@ -19,9 +19,34 @@ type Props = {
 type Section = "growing" | "knitting" | "dyeing" | "cutting" | "sewing";
 export function ValueChain({ id }: Props) {
   const [selected, setSelected] = useState("growing" as Section);
+  const sectionRef = useRef(null as HTMLDivElement | null);
+  const growingRef = useRef(null as HTMLButtonElement | null);
+
+  useEffect(() => {
+    const doScrolling = window.innerWidth <= 1280;
+    if (!doScrolling || !growingRef.current || !sectionRef.current) return;
+
+    const growingRect = growingRef.current.getBoundingClientRect();
+    const growingRectAbsoluteY = growingRect.top + window.scrollY;
+    const perSectionHeight = growingRect.height; //assume that every unexpanded button is the same height
+    const extraScroll = -80;
+
+    //derive the target scroll Y from the height per unexpanded section and the section's position in the sequence
+    let targetAbsoluteY = growingRectAbsoluteY;
+    if (selected === "knitting") targetAbsoluteY += perSectionHeight * 1;
+    if (selected === "dyeing") targetAbsoluteY += perSectionHeight * 2;
+    if (selected === "cutting") targetAbsoluteY += perSectionHeight * 3;
+    if (selected === "sewing") targetAbsoluteY += perSectionHeight * 4;
+
+    window.scrollTo(0, targetAbsoluteY + extraScroll);
+  }, [selected]);
 
   return (
-    <section id={id ? id : undefined} className={styles["section"]}>
+    <section
+      id={id ? id : undefined}
+      className={styles["section"]}
+      ref={sectionRef}
+    >
       <div className={styles["main"]}>
         <h2 className="merriweather">
           USA-Made Garment Production Value Chain
@@ -31,6 +56,7 @@ export function ValueChain({ id }: Props) {
             <button
               className={styles["expand-button"]}
               onClick={() => setSelected("growing")}
+              ref={growingRef}
             >
               <GrowingIcon size={70} /> Growing
             </button>

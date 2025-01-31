@@ -9,6 +9,7 @@ export const env = {
   DEVELOPER_PASSWORD: process.env.DEVELOPER_PASSWORD!,
   REDIS_URL: process.env.REDIS_URL!,
   DATA_MANAGEMENT_URL: process.env.DATA_MANAGEMENT_URL!,
+  REDIS_CACHE_KEY: process.env.REDIS_CACHE_KEY!,
 };
 
 for (const [key, value] of Object.entries(env)) {

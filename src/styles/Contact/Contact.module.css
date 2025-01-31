@@ -94,7 +94,7 @@
 }
 
 .map-label {
-  font-weight: bold;
+  font-family: var(--font-metropolis-extra-bold);
   margin: 10px 0;
 }
 

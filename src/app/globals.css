@@ -1,0 +1,210 @@
+:root {
+  --blaze-orange-100: #ffad99;
+  --blaze-orange-200: #ff8566;
+  --blaze-orange-300: #ff5c33;
+  --blaze-orange-500: #ff3301;
+  --blaze-orange-600: #cc2900;
+  --blaze-orange-900: #991f00;
+  --armor-gray-50: #f2f2f2;
+  --armor-gray-100: #e5e5e6;
+  --armor-gray-200: #cacbcc;
+  --armor-gray-300: #b0b1b3;
+  --armor-gray-400: #959799;
+  --armor-gray-500: #7b7d80;
+  --armor-gray-600: #626466;
+  --armor-gray-700: #4a4b4d;
+  --armor-gray-800: #313233;
+  --armor-gray-900: #19191a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  margin-top: 75px;
+  font-family: var(--font-metropolis-regular);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+body.with-announcement-banner {
+  margin-top: 105px;
+}
+
+main {
+  font-size: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: 3.75rem;
+  font-family: var(--font-metropolis-black);
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: 2.5rem;
+}
+
+.metropolis,
+.metropolis-16,
+.metropolis-16-underline,
+.metropolis-19,
+.metropolis-19-underline,
+.metropolis-22,
+.metropolis-22-underline,
+.metropolis-24,
+.metropolis-32 {
+  font-family: var(--font-metropolis-regular);
+}
+
+.merriweather,
+.merriweather-16,
+.merriweather-16-underline,
+.merriweather-19,
+.merriweather-19-underline,
+.merriweather-22,
+.merriweather-22-underline,
+.merriweather-24,
+.merriweather-32 {
+  font-family: var(--font-merriweather-regular);
+}
+
+.metropolis-16,
+.metropolis-16-underline,
+.merriweather-16,
+.merriweather-16-underline {
+  font-size: 1rem;
+}
+
+.metropolis-19,
+.metropolis-19-underline,
+.merriweather-19,
+.merriweather-19-underline {
+  font-size: 1.188rem;
+}
+
+.metropolis-22,
+.metropolis-22-underline,
+.merriweather-22,
+.merriweather-22-underline {
+  font-size: 1.375rem;
+}
+
+.metropolis-24,
+.merriweather-24 {
+  font-size: 1.5rem;
+}
+
+.metropolis-32,
+.merriweather-32 {
+  font-size: 2rem;
+}
+
+.metropolis-16-underline,
+.metropolis-19-underline,
+.metropolis-22-underline,
+.merriweather-16-underline,
+.merriweather-19-underline,
+.merriweather-22-underline {
+  text-decoration: underline;
+}
+
+h1.metropolis,
+h1 .metropolis,
+.display {
+  font-family: var(--font-metropolis-black);
+}
+
+.display {
+  font-size: 3.75rem;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.button {
+  font-family: var(--font-metropolis-extra-bold);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.skip-to-main {
+  z-index: -10000;
+  position: fixed;
+  background-color: var(--blaze-orange-500);
+  padding: 10px;
+  top: 0;
+  left: 0;
+  color: white;
+  pointer-events: none;
+}
+
+.skip-to-main:focus,
+.skip-to-main:active {
+  z-index: 10000;
+}
+
+.x-wide-container {
+  width: 100%;
+}
+
+.link-with-arrow {
+  position: relative;
+}
+
+.link-with-arrow::after {
+  content: "▴" / ""; /* Hide from screen readers */
+  scale: 200% 138%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  translate: 90% 8px;
+  rotate: 90deg;
+  line-height: 0;
+  display: block;
+  transition: 0.2s;
+  text-decoration: none;
+  opacity: 0;
+}
+
+.link-with-arrow:hover::after {
+  translate: 124% 8px;
+  opacity: 1;
+}
+
+@media screen and (min-width: 1280px) {
+  .x-wide-container {
+    width: 1280px;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  h1,
+  h2,
+  .display {
+    font-size: 2.5rem;
+  }
+}

@@ -125,7 +125,15 @@ type SectionsProps = {
   closeFn: () => void;
 };
 function Sections({ sections, closeFn }: SectionsProps) {
-  const [expandedIndex, setExpandedIndex] = useState(null as number | null);
+  const [expandedIndices, setExpandedIndices] = useState([] as number[]);
+
+  function toggleExpandedIndex(index: number) {
+    if (expandedIndices.includes(index)) {
+      setExpandedIndices(
+        expandedIndices.filter((existingIndex) => existingIndex !== index)
+      );
+    } else setExpandedIndices([...expandedIndices, index]);
+  }
 
   return sections.map((section, i) => (
     <Fragment key={section.title || i}>
@@ -143,13 +151,13 @@ function Sections({ sections, closeFn }: SectionsProps) {
         ))}
       {section.title && (
         <li
-          className={`${styles["nav-subitem"]} ${expandedIndex === i ? styles["expanded"] : ""}`}
+          className={`${styles["nav-subitem"]} ${expandedIndices.includes(i) ? styles["expanded"] : ""}`}
         >
           <button
             className={styles["nav-subitem-label"]}
-            aria-expanded={expandedIndex === i}
+            aria-expanded={expandedIndices.includes(i)}
             aria-controls={`${section.title}-submenu`}
-            onClick={() => setExpandedIndex(i)}
+            onClick={() => toggleExpandedIndex(i)}
           >
             {section.title}
             <img src="/da-tri.png" alt="n/a" aria-hidden={true} />
@@ -157,7 +165,7 @@ function Sections({ sections, closeFn }: SectionsProps) {
           <ul
             className={styles["nav-subitem-links-container"]}
             id={`${section.title}-submenu`}
-            inert={expandedIndex !== i ? true : undefined}
+            inert={~expandedIndices.includes(i) ? true : undefined}
           >
             {section.links.map((link) => (
               <li key={link.label}>
