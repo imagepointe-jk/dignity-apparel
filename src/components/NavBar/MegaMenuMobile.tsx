@@ -165,7 +165,7 @@ function Sections({ sections, closeFn }: SectionsProps) {
           <ul
             className={styles["nav-subitem-links-container"]}
             id={`${section.title}-submenu`}
-            inert={~expandedIndices.includes(i) ? true : undefined}
+            inert={!expandedIndices.includes(i) ? true : undefined}
           >
             {section.links.map((link) => (
               <li key={link.label}>
