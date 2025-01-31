@@ -190,7 +190,8 @@ li.selected .expand-button {
 
 @media screen and (max-width: 768px) {
   li.selected .expanded-content {
-    height: 750px;
+    height: auto;
+    height: calc-size(auto, size);
   }
 
   .divided-content {

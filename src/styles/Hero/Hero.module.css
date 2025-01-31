@@ -54,14 +54,14 @@
 /* From https://gist.github.com/tyidnet/4564bb5db8c1a612d3b5c44820277a4b */
 .video-container iframe {
   box-sizing: border-box;
-  width: 177.77777778vh; /* Derived from 16/9 */
-  height: 56.25vw; /* Derived from 9/16 */
+  aspect-ratio: 16 / 9;
   min-width: 100%;
   min-height: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  border: none;
 }
 
 .dark-overlay {
