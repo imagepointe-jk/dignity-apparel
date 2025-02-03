@@ -1,14 +1,14 @@
 import { z } from "zod";
 
+const productAttributeSchema = z.object({
+  name: z.string(),
+  value: z.string(),
+});
+
 const productVariationSchema = z.object({
   id: z.number(),
   name: z.string(),
-  attributes: z.array(
-    z.object({
-      name: z.string(),
-      value: z.string(),
-    })
-  ),
+  attributes: z.array(productAttributeSchema),
   imageUrl: z.string(),
   stockQuantity: z.number().nullable(),
 });
@@ -116,7 +116,7 @@ export const customerSchema = z.object({
   shipping: billingOrShippingSchema,
 });
 
-const cartItemSchema = z.object({
+export const cartItemSchema = z.object({
   key: z.string(),
   product: z.object({
     id: z.string(),
@@ -125,10 +125,26 @@ const cartItemSchema = z.object({
     slug: z.string(),
   }),
   quantity: z.number(),
+  subtotal: z.string(),
+  variation: z.object({
+    id: z.string(),
+    databaseId: z.number(),
+    stockQuantity: z.number(),
+    price: z.string(),
+    attributes: z.array(productAttributeSchema),
+    image: z
+      .object({
+        guid: z.string(),
+      })
+      .optional()
+      .nullable(),
+    lowStockAmount: z.number(),
+    weight: z.string(),
+  }),
 });
 
 export const cartSchema = z.object({
-  items: z.array(z.object({})),
+  items: z.array(cartItemSchema),
   subtotal: z.string(),
   subtotalTax: z.string(),
 });
@@ -165,3 +181,5 @@ export type ProductQueryParams = {
   last: number | null;
 };
 export type Customer = z.infer<typeof customerSchema>;
+export type Cart = z.infer<typeof cartSchema>;
+export type CartItem = z.infer<typeof cartItemSchema>;

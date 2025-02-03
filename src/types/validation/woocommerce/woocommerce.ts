@@ -4,6 +4,7 @@ import {
 } from "@/constants";
 import {
   attributeSchema,
+  cartSchema,
   Category,
   customerSchema,
   pageInfoSchema,
@@ -182,4 +183,33 @@ export function validatePagination(pagination: {
 
 export function validateCustomer(json: any) {
   return customerSchema.parse(json);
+}
+
+export function validateCart(json: any) {
+  const nodes = json.data?.cart?.contents?.nodes;
+
+  return cartSchema.parse({
+    items: Array.isArray(nodes)
+      ? nodes.map((node) => {
+          return {
+            key: node.key,
+            product: node.product.node,
+            quantity: node.quantity || 0,
+            subtotal: node.subtotal,
+            variation: {
+              id: node.variation.node.id,
+              databaseId: node.variation.node.databaseId,
+              stockQuantity: node.variation.node.stockQuantity || 0,
+              price: node.variation.node.price || "0",
+              image: node.variation.node.image,
+              lowStockAmount: node.variation.node.lowStockAmount || 0,
+              weight: node.variation.weight || "0",
+              attributes: node.variation.attributes,
+            },
+          };
+        })
+      : [],
+    subtotal: json.data.cart.subtotal,
+    subtotalTax: json.data.cart.subtotalTax,
+  });
 }

@@ -118,6 +118,41 @@ const colorSwatches: ColorSwatch[] = [
   },
 ];
 
+const sizes = [
+  {
+    slug: "small",
+    displayName: "Small",
+  },
+  {
+    slug: "medium",
+    displayName: "Medium",
+  },
+  {
+    slug: "large",
+    displayName: "Large",
+  },
+  {
+    slug: "xl",
+    displayName: "XL",
+  },
+  {
+    slug: "2xl",
+    displayName: "2XL",
+  },
+  {
+    slug: "3xl",
+    displayName: "3XL",
+  },
+  {
+    slug: "4xl",
+    displayName: "4XL",
+  },
+  {
+    slug: "5xl",
+    displayName: "5XL",
+  },
+];
+
 export function getSwatchesWithImages(product: Product) {
   const withImages: {
     variationId: number;
@@ -331,4 +366,12 @@ export function getGlobalAttributeTerms(
       .find((attr) => attr.name === attributeName)
       ?.terms.map((term) => term.slug) || []
   );
+}
+
+export function getColorDisplayName(colorSlug: string) {
+  return colorSwatches.find((swatch) => swatch.name === colorSlug)?.displayName;
+}
+
+export function getSizeDisplayName(sizeSlug: string) {
+  return sizes.find((size) => size.slug === sizeSlug)?.displayName;
 }

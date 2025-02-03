@@ -1,0 +1,16 @@
+.main {
+  background-color: lightgray;
+  padding: 20px;
+  display: flex;
+  gap: 50px;
+}
+
+.main div.img-container {
+  width: 100px;
+  height: 100px;
+}
+
+.quantity-field {
+  width: 70px;
+  padding: 10px;
+}
