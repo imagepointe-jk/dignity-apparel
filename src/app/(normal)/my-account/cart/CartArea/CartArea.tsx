@@ -1,19 +1,104 @@
 "use client";
 
-import { Cart } from "@/types/schema/woocommerce";
+import { Cart, CartQuantityUpdate } from "@/types/schema/woocommerce";
 import { CartRow } from "./CartRow";
 import styles from "@/styles/CartArea/CartArea.module.css";
+import { updateCart } from "@/fetch/client/cart";
+import { useImmer } from "use-immer";
+import { clamp } from "@/utility/misc";
+import { useState } from "react";
+import { LoadingIndicator } from "@/components/global/LoadingIndicator/LoadingIndicator";
 
 type Props = {
   cart: Cart;
 };
 export function CartArea({ cart }: Props) {
+  const [pendingUpdate, setPendingUpdate] = useImmer({
+    items: [],
+  } as CartQuantityUpdate);
+  const [cartState, setCartState] = useImmer(cart);
+  const [status, setStatus] = useState(
+    "idle" as "idle" | "loading" | "error" | "success"
+  );
+
+  const anyUpdates = pendingUpdate.items.length > 0;
+  const allowUpdate = anyUpdates && status !== "loading";
+
+  async function clickUpdateCart() {
+    if (!allowUpdate) return;
+
+    setStatus("loading");
+    try {
+      const response = await updateCart({
+        items: pendingUpdate.items,
+      });
+      if (!response.ok)
+        throw new Error(`Update cart response ${response.status}`);
+
+      const json = await response.json();
+      setCartState((draft) => {
+        draft.subtotal = json.newSubtotal;
+      });
+
+      setPendingUpdate((draft) => {
+        draft.items = [];
+      });
+      setStatus("success");
+    } catch (error) {
+      console.error(error);
+      setStatus("error");
+    }
+  }
+
+  function onChangeItemQuantity(itemKey: string, newQuantity: number) {
+    if (status === "loading") return;
+
+    const cleanedQuantity = Math.floor(
+      clamp(newQuantity, 1, Number.MAX_SAFE_INTEGER)
+    );
+
+    setPendingUpdate((draft) => {
+      const existingItem = draft.items.find((item) => item.key === itemKey);
+      if (existingItem) {
+        existingItem.quantity = cleanedQuantity;
+      } else {
+        draft.items.push({ key: itemKey, quantity: cleanedQuantity });
+      }
+    });
+
+    setCartState((draft) => {
+      const existingItem = draft.items.find((item) => item.key === itemKey);
+      if (existingItem) {
+        const newSubtotal =
+          +existingItem.variation.price.replace("$", "") * cleanedQuantity;
+        existingItem.subtotal = `$${newSubtotal.toFixed(2)}`;
+        existingItem.quantity = cleanedQuantity;
+      }
+    });
+  }
+
   return (
     <div className={styles["main"]}>
-      {cart.items.map((item) => (
-        <CartRow key={item.key} item={item} />
+      {cartState.items.map((item) => (
+        <CartRow
+          key={item.key}
+          item={item}
+          onChangeItemQuantity={onChangeItemQuantity}
+        />
       ))}
-      <div>Subtotal: {cart.subtotal}</div>
+      <div>Subtotal: {cartState.subtotal}</div>
+      <div>
+        <button disabled={!allowUpdate} onClick={clickUpdateCart}>
+          Update Cart
+        </button>
+        {status === "error" && <div>Error updating cart.</div>}
+        {status === "success" && <div>Cart updated successfully.</div>}
+      </div>
+      {status === "loading" && (
+        <div className={styles["loading-overlay"]}>
+          <LoadingIndicator />
+        </div>
+      )}
     </div>
   );
 }

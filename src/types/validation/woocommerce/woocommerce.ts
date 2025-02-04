@@ -4,6 +4,7 @@ import {
 } from "@/constants";
 import {
   attributeSchema,
+  cartQuantityUpdateSchema,
   cartSchema,
   Category,
   customerSchema,
@@ -212,4 +213,8 @@ export function validateCart(json: any) {
     subtotal: json.data.cart.subtotal,
     subtotalTax: json.data.cart.subtotalTax,
   });
+}
+
+export function validateCartQuantityUpdate(json: any) {
+  return cartQuantityUpdateSchema.parse(json);
 }

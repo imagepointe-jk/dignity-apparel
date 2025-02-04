@@ -1,4 +1,5 @@
 import { env } from "@/env";
+import { CartQuantityUpdate } from "@/types/schema/woocommerce";
 
 export function getCart(token: string) {
   return fetch(`${env.WOOCOMMERCE_STORE_URL}graphql`, {
@@ -49,6 +50,40 @@ export function getCart(token: string) {
             }
         }
         `,
+    }),
+  });
+}
+
+export function updateCartQuantities(
+  token: string,
+  updateData: CartQuantityUpdate
+) {
+  return fetch(`${env.WOOCOMMERCE_STORE_URL}graphql`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      query: `
+                mutation UpdateCart {
+                    updateItemQuantities (
+                        input: {
+                            items: [${updateData.items.map((item) => `{key: "${item.key}", quantity: ${item.quantity}}`).join()}]
+                        }
+                    ) {
+                        cart {
+                            contents {
+                                nodes {
+                                    key
+                                    quantity
+                                }
+                            }
+                            subtotal
+                        }    
+                    }
+                }
+            `,
     }),
   });
 }

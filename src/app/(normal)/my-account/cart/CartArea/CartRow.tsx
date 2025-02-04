@@ -6,8 +6,9 @@ import { getColorDisplayName, getSizeDisplayName } from "@/utility/products";
 
 type Props = {
   item: CartItem;
+  onChangeItemQuantity: (itemKey: string, newQuantity: number) => void;
 };
-export function CartRow({ item }: Props) {
+export function CartRow({ item, onChangeItemQuantity }: Props) {
   const color = getColorDisplayName(
     item.variation.attributes.find((attr) => attr.name === "pa_color")?.value ||
       ""
@@ -38,7 +39,14 @@ export function CartRow({ item }: Props) {
           name={`${item.key}-quantity`}
           id={`${item.key}-quantity`}
           className={styles["quantity-field"]}
-          defaultValue={item.quantity}
+          value={item.quantity}
+          min={1}
+          onChange={(e) =>
+            onChangeItemQuantity(
+              item.key,
+              +e.target.value.replace(/[^\d]/g, "")
+            )
+          }
         />
       </div>
       <div>Subtotal: {item.subtotal}</div>

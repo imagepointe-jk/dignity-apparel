@@ -149,6 +149,15 @@ export const cartSchema = z.object({
   subtotalTax: z.string(),
 });
 
+const cartQuantityUpdateItemSchema = z.object({
+  key: z.string(),
+  quantity: z.number(),
+});
+
+export const cartQuantityUpdateSchema = z.object({
+  items: z.array(cartQuantityUpdateItemSchema),
+});
+
 export type Product = z.infer<typeof productSchema>;
 export type ProductVariation = z.infer<typeof productVariationSchema>;
 export type Category = z.infer<typeof categorySchema>;
@@ -183,3 +192,4 @@ export type ProductQueryParams = {
 export type Customer = z.infer<typeof customerSchema>;
 export type Cart = z.infer<typeof cartSchema>;
 export type CartItem = z.infer<typeof cartItemSchema>;
+export type CartQuantityUpdate = z.infer<typeof cartQuantityUpdateSchema>;
