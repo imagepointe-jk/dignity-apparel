@@ -19,12 +19,21 @@ type Props = {
 type Section = "growing" | "knitting" | "dyeing" | "cutting" | "sewing";
 export function ValueChain({ id }: Props) {
   const [selected, setSelected] = useState("growing" as Section);
+  const [initialized, setInitialized] = useState(false);
   const sectionRef = useRef(null as HTMLDivElement | null);
   const growingRef = useRef(null as HTMLButtonElement | null);
 
   useEffect(() => {
+    console.log("run");
     const doScrolling = window.innerWidth <= 1280;
     if (!doScrolling || !growingRef.current || !sectionRef.current) return;
+
+    if (!initialized) {
+      setInitialized(true);
+      console.log("set initialized");
+      return;
+    } //prevents forced initial scroll on page load
+    console.log("continuing");
 
     const growingRect = growingRef.current.getBoundingClientRect();
     const growingRectAbsoluteY = growingRect.top + window.scrollY;
@@ -39,7 +48,7 @@ export function ValueChain({ id }: Props) {
     if (selected === "sewing") targetAbsoluteY += perSectionHeight * 4;
 
     window.scrollTo(0, targetAbsoluteY + extraScroll);
-  }, [selected]);
+  }, [selected, initialized]);
 
   return (
     <section
