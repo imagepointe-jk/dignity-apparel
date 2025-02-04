@@ -6,7 +6,7 @@ import { Growing as GrowingIcon } from "@/components/icons/production/Growing";
 import { Knitting as KnittingIcon } from "@/components/icons/production/Knitting";
 import { Sewing as SewingIcon } from "@/components/icons/production/Sewing";
 import styles from "@/styles/sections/ValueChain.module.css";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Cutting } from "./Cutting";
 import { Dyeing } from "./Dyeing";
 import { Growing } from "./Growing";
@@ -19,21 +19,14 @@ type Props = {
 type Section = "growing" | "knitting" | "dyeing" | "cutting" | "sewing";
 export function ValueChain({ id }: Props) {
   const [selected, setSelected] = useState("growing" as Section);
-  const [initialized, setInitialized] = useState(false);
   const sectionRef = useRef(null as HTMLDivElement | null);
   const growingRef = useRef(null as HTMLButtonElement | null);
 
-  useEffect(() => {
-    console.log("run");
+  function onClickSection(section: Section) {
+    setSelected(section);
+
     const doScrolling = window.innerWidth <= 1280;
     if (!doScrolling || !growingRef.current || !sectionRef.current) return;
-
-    if (!initialized) {
-      setInitialized(true);
-      console.log("set initialized");
-      return;
-    } //prevents forced initial scroll on page load
-    console.log("continuing");
 
     const growingRect = growingRef.current.getBoundingClientRect();
     const growingRectAbsoluteY = growingRect.top + window.scrollY;
@@ -42,13 +35,13 @@ export function ValueChain({ id }: Props) {
 
     //derive the target scroll Y from the height per unexpanded section and the section's position in the sequence
     let targetAbsoluteY = growingRectAbsoluteY;
-    if (selected === "knitting") targetAbsoluteY += perSectionHeight * 1;
-    if (selected === "dyeing") targetAbsoluteY += perSectionHeight * 2;
-    if (selected === "cutting") targetAbsoluteY += perSectionHeight * 3;
-    if (selected === "sewing") targetAbsoluteY += perSectionHeight * 4;
+    if (section === "knitting") targetAbsoluteY += perSectionHeight * 1;
+    if (section === "dyeing") targetAbsoluteY += perSectionHeight * 2;
+    if (section === "cutting") targetAbsoluteY += perSectionHeight * 3;
+    if (section === "sewing") targetAbsoluteY += perSectionHeight * 4;
 
     window.scrollTo(0, targetAbsoluteY + extraScroll);
-  }, [selected, initialized]);
+  }
 
   return (
     <section
@@ -64,7 +57,7 @@ export function ValueChain({ id }: Props) {
           <li className={selected === "growing" ? styles["selected"] : ""}>
             <button
               className={styles["expand-button"]}
-              onClick={() => setSelected("growing")}
+              onClick={() => onClickSection("growing")}
               ref={growingRef}
             >
               <GrowingIcon size={70} /> Growing
@@ -74,7 +67,7 @@ export function ValueChain({ id }: Props) {
           <li className={selected === "knitting" ? styles["selected"] : ""}>
             <button
               className={styles["expand-button"]}
-              onClick={() => setSelected("knitting")}
+              onClick={() => onClickSection("knitting")}
             >
               <KnittingIcon size={70} /> Knitting
             </button>
@@ -83,7 +76,7 @@ export function ValueChain({ id }: Props) {
           <li className={selected === "dyeing" ? styles["selected"] : ""}>
             <button
               className={styles["expand-button"]}
-              onClick={() => setSelected("dyeing")}
+              onClick={() => onClickSection("dyeing")}
             >
               <DyeingIcon size={70} /> Dyeing
             </button>
@@ -92,7 +85,7 @@ export function ValueChain({ id }: Props) {
           <li className={selected === "cutting" ? styles["selected"] : ""}>
             <button
               className={styles["expand-button"]}
-              onClick={() => setSelected("cutting")}
+              onClick={() => onClickSection("cutting")}
             >
               <CuttingIcon size={70} /> Cutting
             </button>
@@ -101,7 +94,7 @@ export function ValueChain({ id }: Props) {
           <li className={selected === "sewing" ? styles["selected"] : ""}>
             <button
               className={styles["expand-button"]}
-              onClick={() => setSelected("sewing")}
+              onClick={() => onClickSection("sewing")}
             >
               <SewingIcon size={70} /> Sewing
             </button>
