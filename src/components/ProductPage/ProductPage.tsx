@@ -17,6 +17,7 @@ import { FlagDA } from "../icons/FlagDA";
 import { ExpandableDiv } from "../global/ExpandableDiv/ExpandableDiv";
 import { Recommendations } from "./Recommendations";
 import { FlexibleImage } from "../global/FlexibleImage/FlexibleImage";
+import { AddToCartArea } from "./AddToCartArea";
 
 type Props = {
   product: Product;
@@ -133,20 +134,7 @@ function ProductPageWrapped({ product }: Props) {
               </div>
             </div>
           )}
-          <div>
-            <a
-              href={
-                product.additionalProductSettings.linkURLOverride || isMTO
-                  ? "/quote"
-                  : product.link
-              }
-              className={styles["purchase-link"]}
-            >
-              {product.additionalProductSettings.linkTextOverride || isMTO
-                ? "Get a Quote"
-                : "Login to Purchase"}
-            </a>
-          </div>
+          <AddToCartArea product={product} />
           <div className={styles["usa-container"]}>
             <div>
               <FlagDA size={35} />
