@@ -3,6 +3,7 @@
   padding: 20px;
   display: flex;
   gap: 50px;
+  align-items: center;
 }
 
 .main div.img-container {
@@ -13,4 +14,8 @@
 .quantity-field {
   width: 70px;
   padding: 10px;
+}
+
+.delete-button {
+  padding: 5px;
 }

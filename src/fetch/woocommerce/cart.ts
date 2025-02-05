@@ -87,3 +87,30 @@ export function updateCartQuantities(
     }),
   });
 }
+
+export function removeFromCart(token: string, key: string) {
+  return fetch(`${env.WOOCOMMERCE_STORE_URL}graphql`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      query: `
+                mutation RemoveFromCart {
+                    removeItemsFromCart (
+                        input: {
+                            keys: [
+                                "${key}"
+                            ]
+                        }
+                    ) {
+                        cartItems {
+                            key
+                        }    
+                    }
+                }
+            `,
+    }),
+  });
+}

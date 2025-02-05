@@ -3,11 +3,12 @@
 import { Cart, CartQuantityUpdate } from "@/types/schema/woocommerce";
 import { CartRow } from "./CartRow";
 import styles from "@/styles/CartArea/CartArea.module.css";
-import { updateCart } from "@/fetch/client/cart";
+import { removeFromCart, updateCart } from "@/fetch/client/cart";
 import { useImmer } from "use-immer";
 import { clamp } from "@/utility/misc";
 import { useState } from "react";
 import { LoadingIndicator } from "@/components/global/LoadingIndicator/LoadingIndicator";
+import { getColorDisplayName, getSizeDisplayName } from "@/utility/products";
 
 type Props = {
   cart: Cart;
@@ -77,6 +78,41 @@ export function CartArea({ cart }: Props) {
     });
   }
 
+  async function clickDeleteItem(itemKey: string) {
+    const targetItem = cart.items.find((item) => item.key === itemKey);
+    if (!targetItem) return;
+
+    const name = targetItem.product.name;
+    const color = getColorDisplayName(
+      targetItem.variation.attributes.find((attr) => attr.name === "pa_color")
+        ?.value || ""
+    );
+    const size = getSizeDisplayName(
+      targetItem.variation.attributes.find((attr) => attr.name === "pa_size")
+        ?.value || ""
+    );
+
+    if (!window.confirm(`Remove "${name} (${color}, ${size})" from cart?`))
+      return;
+
+    setStatus("loading");
+    try {
+      await removeFromCart(itemKey);
+
+      setPendingUpdate((draft) => {
+        draft.items = draft.items.filter((item) => item.key !== itemKey); //if there was a pending update for the item that just got removed, get rid of it
+      });
+      setCartState((draft) => {
+        draft.items = draft.items.filter((item) => item.key !== itemKey); //remove item from state
+      }); //TODO: Ensure that other aspects of cart state (e.g. subtotal) also update after removal
+
+      setStatus("idle");
+    } catch (error) {
+      console.error(error);
+      setStatus("error");
+    }
+  }
+
   return (
     <div className={styles["main"]}>
       {cartState.items.map((item) => (
@@ -84,6 +120,7 @@ export function CartArea({ cart }: Props) {
           key={item.key}
           item={item}
           onChangeItemQuantity={onChangeItemQuantity}
+          onClickDelete={clickDeleteItem}
         />
       ))}
       <div>Subtotal: {cartState.subtotal}</div>

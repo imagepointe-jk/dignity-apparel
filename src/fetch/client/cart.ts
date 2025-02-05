@@ -9,3 +9,12 @@ export function updateCart(cartUpdate: CartQuantityUpdate) {
     body: JSON.stringify(cartUpdate),
   });
 }
+
+export function removeFromCart(key: string) {
+  return fetch(`${window.location.origin}/api/cart/${key}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}

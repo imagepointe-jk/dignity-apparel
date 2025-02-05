@@ -3,12 +3,14 @@ import styles from "@/styles/CartArea/CartRow.module.css";
 import { FlexibleImage } from "@/components/global/FlexibleImage/FlexibleImage";
 import { IMAGE_NOT_FOUND_URL } from "@/constants";
 import { getColorDisplayName, getSizeDisplayName } from "@/utility/products";
+import { XMark } from "@/components/icons/XMark";
 
 type Props = {
   item: CartItem;
   onChangeItemQuantity: (itemKey: string, newQuantity: number) => void;
+  onClickDelete: (itemKey: string) => void;
 };
-export function CartRow({ item, onChangeItemQuantity }: Props) {
+export function CartRow({ item, onChangeItemQuantity, onClickDelete }: Props) {
   const color = getColorDisplayName(
     item.variation.attributes.find((attr) => attr.name === "pa_color")?.value ||
       ""
@@ -21,6 +23,12 @@ export function CartRow({ item, onChangeItemQuantity }: Props) {
 
   return (
     <div className={styles["main"]}>
+      <button
+        className={styles["delete-button"]}
+        onClick={() => onClickDelete(item.key)}
+      >
+        <XMark size={15} />
+      </button>
       <FlexibleImage
         src={item.variation.image?.guid || IMAGE_NOT_FOUND_URL}
         behavior="contain"
