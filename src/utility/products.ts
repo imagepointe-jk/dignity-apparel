@@ -268,7 +268,7 @@ export function getRepresentedCategories(products: Product[]) {
   return categories;
 }
 
-function sortBySize<T>(items: T[], getItemSize: (item: T) => string) {
+export function sortBySize<T>(items: T[], getItemSize: (item: T) => string) {
   function getSizeValue(size: string) {
     switch (size) {
       case "small":
@@ -374,4 +374,20 @@ export function getColorDisplayName(colorSlug: string) {
 
 export function getSizeDisplayName(sizeSlug: string) {
   return sizes.find((size) => size.slug === sizeSlug)?.displayName;
+}
+
+//returns an array of all unique values found for the given attribute name across all of a product's variations.
+export function getUniqueAttributeValuesAcrossVariations(
+  product: Product,
+  attributeName: string
+) {
+  const uniqueValues = new Set<string>();
+  for (const variation of product.variations) {
+    const attribute = variation.attributes.find(
+      (attr) => attr.name === attributeName
+    );
+    if (attribute) uniqueValues.add(attribute.value);
+  }
+
+  return Array.from(uniqueValues);
 }

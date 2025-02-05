@@ -1,10 +1,17 @@
 import { Product } from "@/types/schema/woocommerce";
 import { useEffect, useState } from "react";
 import { LoadingIndicator } from "../global/LoadingIndicator/LoadingIndicator";
-import { getGlobalAttributeTerms } from "@/utility/products";
+import {
+  getColorDisplayName,
+  getGlobalAttributeTerms,
+  getSizeDisplayName,
+  getUniqueAttributeValuesAcrossVariations,
+  sortBySize,
+} from "@/utility/products";
 import styles from "@/styles/ProductPage/ProductPage.module.css";
 import Link from "next/link";
 import { getCurrentCustomer } from "@/fetch/client/customers";
+import { VariableProductCartForm } from "./VariableProductCartForm/VariableProductCartForm";
 
 type Props = {
   product: Product;
@@ -70,5 +77,30 @@ export function AddToCartArea({ product }: Props) {
   }
 
   //if we get here, the user is logged in, so show the interface for adding things to cart
-  return <div>Add to cart area</div>;
+  const sizeValuesRaw = getUniqueAttributeValuesAcrossVariations(
+    product,
+    "pa_size"
+  );
+  sortBySize(sizeValuesRaw, (val) => val);
+  const sizeValues = sizeValuesRaw.map(
+    (size) => getSizeDisplayName(size) || size
+  );
+
+  const colorValues = getUniqueAttributeValuesAcrossVariations(
+    product,
+    "pa_color"
+  ).map((val) => getColorDisplayName(val) || val);
+  //   sortBySize(sizeValues, (item => item));
+  return (
+    <VariableProductCartForm
+      product={product}
+      wooCommerceAttributes={{
+        xAxis: {
+          name: "pa_size",
+          values: sizeValues,
+        },
+        yAxis: { name: "pa_color", values: colorValues },
+      }}
+    />
+  );
 }
