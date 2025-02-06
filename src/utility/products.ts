@@ -224,11 +224,18 @@ export function getVariationColorDisplayName(variation: ProductVariation) {
   return match?.displayName || "UNKNOWN COLOR";
 }
 
-function getVariationSize(variation: ProductVariation) {
+export function getVariationSize(variation: ProductVariation) {
   return (
     variation.attributes.find((att) => att.name === "pa_size")?.value ||
     "UNKNOWN SIZE"
   );
+}
+
+export function getVariationAttributeValue(
+  variation: ProductVariation,
+  attributeName: string
+) {
+  return variation.attributes.find((att) => att.name === attributeName)?.value;
 }
 
 export function deduplicateColorVariations(product: Product) {

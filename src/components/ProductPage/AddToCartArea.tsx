@@ -77,29 +77,34 @@ export function AddToCartArea({ product }: Props) {
   }
 
   //if we get here, the user is logged in, so show the interface for adding things to cart
-  const sizeValuesRaw = getUniqueAttributeValuesAcrossVariations(
+  const sizeValues = getUniqueAttributeValuesAcrossVariations(
     product,
     "pa_size"
   );
-  sortBySize(sizeValuesRaw, (val) => val);
-  const sizeValues = sizeValuesRaw.map(
-    (size) => getSizeDisplayName(size) || size
-  );
+  sortBySize(sizeValues, (val) => val);
 
   const colorValues = getUniqueAttributeValuesAcrossVariations(
     product,
     "pa_color"
-  ).map((val) => getColorDisplayName(val) || val);
-  //   sortBySize(sizeValues, (item => item));
+  );
   return (
     <VariableProductCartForm
       product={product}
       wooCommerceAttributes={{
         xAxis: {
           name: "pa_size",
-          values: sizeValues,
+          values: sizeValues.map((val) => ({
+            slug: val,
+            displayName: getSizeDisplayName(val) || val,
+          })),
         },
-        yAxis: { name: "pa_color", values: colorValues },
+        yAxis: {
+          name: "pa_color",
+          values: colorValues.map((val) => ({
+            slug: val,
+            displayName: getColorDisplayName(val) || val,
+          })),
+        },
       }}
     />
   );

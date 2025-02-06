@@ -92,6 +92,7 @@ function buildProductFields(params?: {
               sourceUrl
             }
             stockQuantity
+            price
             attributes {
               nodes {
                 name
