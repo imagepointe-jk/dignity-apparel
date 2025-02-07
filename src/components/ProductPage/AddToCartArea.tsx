@@ -1,5 +1,5 @@
 import { Product } from "@/types/schema/woocommerce";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { LoadingIndicator } from "../global/LoadingIndicator/LoadingIndicator";
 import {
   getColorDisplayName,
@@ -12,6 +12,7 @@ import styles from "@/styles/ProductPage/ProductPage.module.css";
 import Link from "next/link";
 import { getCurrentCustomer } from "@/fetch/client/customers";
 import { VariableProductCartForm } from "./VariableProductCartForm/VariableProductCartForm";
+import Dialog from "../global/Dialog/Dialog";
 
 type Props = {
   product: Product;
@@ -20,6 +21,7 @@ export function AddToCartArea({ product }: Props) {
   const [loggedInStatus, setLoggedInStatus] = useState(
     "checking" as "checking" | "yes" | "no"
   );
+  const addToCartDialogRef = useRef(null as HTMLDialogElement | null);
   const isMTO = getGlobalAttributeTerms(product, "pa_availability").includes(
     "made-to-order"
   );
@@ -36,6 +38,15 @@ export function AddToCartArea({ product }: Props) {
     } catch (error) {
       console.error(error);
       setLoggedInStatus("no");
+    }
+  }
+  function toggleAddToCartDialog() {
+    if (!addToCartDialogRef.current) return;
+
+    if (addToCartDialogRef.current.hasAttribute("open")) {
+      addToCartDialogRef.current.close();
+    } else {
+      addToCartDialogRef.current.showModal();
     }
   }
 
@@ -88,24 +99,40 @@ export function AddToCartArea({ product }: Props) {
     "pa_color"
   );
   return (
-    <VariableProductCartForm
-      product={product}
-      wooCommerceAttributes={{
-        xAxis: {
-          name: "pa_size",
-          values: sizeValues.map((val) => ({
-            slug: val,
-            displayName: getSizeDisplayName(val) || val,
-          })),
-        },
-        yAxis: {
-          name: "pa_color",
-          values: colorValues.map((val) => ({
-            slug: val,
-            displayName: getColorDisplayName(val) || val,
-          })),
-        },
-      }}
-    />
+    <>
+      <div>
+        <button
+          onClick={toggleAddToCartDialog}
+          className={styles["add-to-cart-dialog-button"]}
+        >
+          View Prices and Purchase
+        </button>
+      </div>
+      <Dialog
+        ref={addToCartDialogRef}
+        toggleDialog={toggleAddToCartDialog}
+        className={styles["add-to-cart-dialog"]}
+      >
+        <VariableProductCartForm
+          product={product}
+          wooCommerceAttributes={{
+            xAxis: {
+              name: "pa_size",
+              values: sizeValues.map((val) => ({
+                slug: val,
+                displayName: getSizeDisplayName(val) || val,
+              })),
+            },
+            yAxis: {
+              name: "pa_color",
+              values: colorValues.map((val) => ({
+                slug: val,
+                displayName: getColorDisplayName(val) || val,
+              })),
+            },
+          }}
+        />
+      </Dialog>
+    </>
   );
 }

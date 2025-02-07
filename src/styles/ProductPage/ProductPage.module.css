@@ -80,7 +80,8 @@
   outline-color: black;
 }
 
-.purchase-link {
+.purchase-link,
+.add-to-cart-dialog-button {
   background-color: var(--blaze-orange-500);
   color: white;
   font-weight: bold;
@@ -90,8 +91,16 @@
   display: inline-block;
 }
 
-.purchase-link:focus-visible {
+.purchase-link:focus-visible,
+.add-to-cart-dialog-button:focus-visible {
   outline-offset: 2px;
+}
+
+.add-to-cart-dialog-button {
+  font-size: 1rem;
+  border: none;
+  display: inline;
+  cursor: pointer;
 }
 
 .usa-container {
@@ -155,6 +164,10 @@
 
 .recommended-container .recommendations-card-container {
   width: 285px;
+}
+
+.add-to-cart-dialog {
+  max-width: 1000px;
 }
 
 @media screen and (max-width: 1100px) {
