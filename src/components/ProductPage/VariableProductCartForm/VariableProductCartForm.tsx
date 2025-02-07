@@ -4,6 +4,7 @@ import { ProductVariationCell } from "./ProductVariationCell";
 import { getVariationAttributeValue } from "@/utility/products";
 import { clamp } from "@/utility/misc";
 import { useImmer } from "use-immer";
+import { useState } from "react";
 
 type Props = {
   product: Product;
@@ -33,6 +34,9 @@ export function VariableProductCartForm({
   wooCommerceAttributes,
 }: Props) {
   const [cellStates, setCellStates] = useImmer([] as CellState[]);
+  const [highlightedVariation, setHighlightedVariation] = useState(
+    null as ProductVariation | null
+  );
 
   function onChangeCell(variation: ProductVariation, inputValue: string) {
     const onlyDigits = inputValue.replace(/[^\d]/g, "");
@@ -58,6 +62,12 @@ export function VariableProductCartForm({
     const priceAsNumber = +item.variation.price.replace("$", "");
     return isNaN(priceAsNumber) ? accum : accum + priceAsNumber * item.quantity;
   }, 0);
+  const highlightedXAxisValue = highlightedVariation?.attributes.find(
+    (attr) => attr.name === wooCommerceAttributes.xAxis.name
+  )?.value;
+  const highlightedYAxisValue = highlightedVariation?.attributes.find(
+    (attr) => attr.name === wooCommerceAttributes.yAxis.name
+  )?.value;
 
   return (
     <div className={styles["main"]}>
@@ -66,14 +76,31 @@ export function VariableProductCartForm({
           <tr>
             <td></td>
             {wooCommerceAttributes.xAxis.values.map((val) => (
-              <td key={val.slug}>{val.displayName}</td>
+              <td
+                key={val.slug}
+                className={
+                  highlightedXAxisValue === val.slug
+                    ? styles["highlighted-cell"]
+                    : undefined
+                }
+              >
+                {val.displayName}
+              </td>
             ))}
           </tr>
         </thead>
         <tbody>
-          {wooCommerceAttributes.yAxis.values.map((yAxisVal, i) => (
-            <tr key={i}>
-              <td>{yAxisVal.displayName}</td>
+          {wooCommerceAttributes.yAxis.values.map((yAxisVal) => (
+            <tr key={yAxisVal.slug}>
+              <td
+                className={
+                  highlightedYAxisValue === yAxisVal.slug
+                    ? styles["highlighted-cell"]
+                    : undefined
+                }
+              >
+                {yAxisVal.displayName}
+              </td>
               {wooCommerceAttributes.xAxis.values.map((xAxisVal) => {
                 const variation = product.variations.find((variation) => {
                   const xAxisAttributeValue = getVariationAttributeValue(
@@ -100,6 +127,9 @@ export function VariableProductCartForm({
                         variation={variation}
                         quantity={state?.quantity || 0}
                         onChange={onChangeCell}
+                        onMouseEnter={(variation) =>
+                          setHighlightedVariation(variation)
+                        }
                       />
                     )}
                   </td>
