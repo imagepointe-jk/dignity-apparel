@@ -30,28 +30,40 @@ export async function getCachedProducts(
     }
   }
 
-  const response = await queryProducts({
-    before: null,
-    after: null,
-    first: 999,
-    last: null,
-    availability: null,
-    category: null,
-    fabricType: [],
-    fabricWeight: [],
-    features: [],
-    fit: null,
-    search: null,
-  });
-  const json = await response.json();
-  const parsed = validateWooCommerceProductsGraphQLResponse(json);
-  await redis.setEx(
-    env.REDIS_CACHE_KEY,
-    env.SIMPLE_CACHE_TIME / 1000,
-    JSON.stringify(json)
-  );
+  console.log("Refreshing product cache...");
+  const startTime = Date.now();
+  try {
+    const response = await queryProducts({
+      before: null,
+      after: null,
+      first: 999,
+      last: null,
+      availability: null,
+      category: null,
+      fabricType: [],
+      fabricWeight: [],
+      features: [],
+      fit: null,
+      search: null,
+    });
+    console.log(
+      `Data fetched from WooCommerce in ${Date.now() - startTime}ms.`
+    );
+    const json = await response.json();
+    const parsed = validateWooCommerceProductsGraphQLResponse(json);
+    await redis.setEx(
+      env.REDIS_CACHE_KEY,
+      env.SIMPLE_CACHE_TIME / 1000,
+      JSON.stringify(json)
+    );
 
-  return parsed.products;
+    return parsed.products;
+  } catch (error) {
+    console.error(
+      `Attempt to update product cache FAILED after ${Date.now() - startTime}ms: ${error}`
+    );
+    return [];
+  }
 }
 
 export async function queryCachedProducts(
