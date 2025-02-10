@@ -18,3 +18,17 @@ export function removeFromCart(key: string) {
     },
   });
 }
+
+export function addToCart(
+  productId: number,
+  variationId: number,
+  quantity: number
+) {
+  return fetch(`${window.location.origin}/api/cart/add`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ productId, variationId, quantity }),
+  });
+}

@@ -114,3 +114,36 @@ export function removeFromCart(token: string, key: string) {
     }),
   });
 }
+
+export function addToCart(
+  token: string,
+  productId: number,
+  variationId: number,
+  quantity: number
+) {
+  return fetch(`${env.WOOCOMMERCE_STORE_URL}graphql`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      query: `
+            mutation AddToCart {
+                addToCart (
+                    input: {
+                        productId: ${productId},
+                        variationId: ${variationId},
+                        quantity: ${quantity}
+                    }
+                ) {
+                    cartItem {
+                        key
+                        quantity
+                    }    
+                }
+            }
+        `,
+    }),
+  });
+}

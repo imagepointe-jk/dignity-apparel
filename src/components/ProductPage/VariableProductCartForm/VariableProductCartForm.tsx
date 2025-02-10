@@ -5,6 +5,8 @@ import { getVariationAttributeValue } from "@/utility/products";
 import { clamp } from "@/utility/misc";
 import { useImmer } from "use-immer";
 import { useState } from "react";
+import { addToCart } from "@/fetch/client/cart";
+import { useRouter } from "next/navigation";
 
 type Props = {
   product: Product;
@@ -34,6 +36,8 @@ export function VariableProductCartForm({
   wooCommerceAttributes,
 }: Props) {
   const [cellStates, setCellStates] = useImmer([] as CellState[]);
+  const [status, setStatus] = useState("idle" as "idle" | "loading" | "error");
+  const router = useRouter();
   const [highlightedVariation, setHighlightedVariation] = useState(
     null as ProductVariation | null
   );
@@ -54,6 +58,29 @@ export function VariableProductCartForm({
     });
   }
 
+  async function clickAddToCart() {
+    if (nonEmptyCellStates.length === 0) return;
+
+    setStatus("loading");
+    try {
+      const testItem = nonEmptyCellStates[0]!;
+      const response = await addToCart(
+        product.id,
+        testItem.variation.id,
+        testItem.quantity
+      );
+      if (!response.ok)
+        throw new Error(`Add to cart response ${response.status}`);
+
+      router.push(`${window.location.origin}/my-account/cart`);
+    } catch (error) {
+      setStatus("error");
+      console.error(error);
+    }
+  }
+
+  const nonEmptyCellStates = cellStates.filter((state) => state.quantity > 0);
+  const allowAddToCart = nonEmptyCellStates.length > 0;
   const totalItems = cellStates.reduce(
     (accum, item) => accum + item.quantity,
     0
@@ -141,6 +168,15 @@ export function VariableProductCartForm({
       </table>
       <div>{totalItems} total items</div>
       <div>${totalPrice.toFixed(2)} total</div>
+      <div>
+        {status === "idle" && (
+          <button disabled={!allowAddToCart} onClick={clickAddToCart}>
+            Add to Cart
+          </button>
+        )}
+        {status === "loading" && <>Adding item(s) to cart...</>}
+        {status === "error" && <>Error adding to cart.</>}
+      </div>
     </div>
   );
 }
