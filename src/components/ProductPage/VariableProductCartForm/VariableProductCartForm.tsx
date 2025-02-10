@@ -7,6 +7,7 @@ import { useImmer } from "use-immer";
 import { useState } from "react";
 import { addToCart } from "@/fetch/client/cart";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 type Props = {
   product: Product;
@@ -36,7 +37,9 @@ export function VariableProductCartForm({
   wooCommerceAttributes,
 }: Props) {
   const [cellStates, setCellStates] = useImmer([] as CellState[]);
-  const [status, setStatus] = useState("idle" as "idle" | "loading" | "error");
+  const [status, setStatus] = useState(
+    "idle" as "idle" | "loading" | "error" | "partial error"
+  );
   const router = useRouter();
   const [highlightedVariation, setHighlightedVariation] = useState(
     null as ProductVariation | null
@@ -63,18 +66,31 @@ export function VariableProductCartForm({
 
     setStatus("loading");
     try {
-      const testItem = nonEmptyCellStates[0]!;
-      const response = await addToCart(
-        product.id,
-        testItem.variation.id,
-        testItem.quantity
+      const results = await Promise.allSettled(
+        nonEmptyCellStates.map(async (state) => {
+          const response = await addToCart(
+            product.id,
+            state.variation.id,
+            state.quantity
+          );
+          if (!response.ok)
+            throw new Error(`Failed to add variation ${state.variation.name}`);
+          return response;
+        })
       );
-      if (!response.ok)
-        throw new Error(`Add to cart response ${response.status}`);
-
-      router.push(`${window.location.origin}/my-account/cart`);
+      const failures = results.filter((result) => result.status === "rejected");
+      if (failures.length === nonEmptyCellStates.length) {
+        setStatus("error");
+        console.error("No variations were successfully added");
+      } else if (failures.length > 0) {
+        setStatus("partial error");
+        console.error(
+          `Failed to add ${failures.length} of ${nonEmptyCellStates.length} variations`
+        );
+      } else {
+        router.push(`${window.location.origin}/my-account/cart`);
+      }
     } catch (error) {
-      setStatus("error");
       console.error(error);
     }
   }
@@ -176,6 +192,13 @@ export function VariableProductCartForm({
         )}
         {status === "loading" && <>Adding item(s) to cart...</>}
         {status === "error" && <>Error adding to cart.</>}
+        {status === "partial error" && (
+          <>
+            Some items could not be added. Please{" "}
+            <Link href="/my-account/cart">review your cart</Link> carefully
+            before checkout.
+          </>
+        )}
       </div>
     </div>
   );

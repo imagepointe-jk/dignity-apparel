@@ -97,7 +97,7 @@ export function CartArea({ cart }: Props) {
 
     setStatus("loading");
     try {
-      await removeFromCart(itemKey);
+      await removeFromCart(itemKey); //TODO: Throw error if the response is not 200
 
       setPendingUpdate((draft) => {
         draft.items = draft.items.filter((item) => item.key !== itemKey); //if there was a pending update for the item that just got removed, get rid of it
