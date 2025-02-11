@@ -78,9 +78,6 @@ export function VariableProductCartForm({
           total: variationCount,
           complete: i,
         });
-        // setLoadingMessage(
-        //   `Adding ${variationCount} product variation(s) to cart...(${i + 1} of ${variationCount})`
-        // );
         const response = await addToCart(
           product.id,
           state.variation.id,
@@ -90,30 +87,6 @@ export function VariableProductCartForm({
           throw new Error(`Failed to add variation ${state.variation.name}`);
       }
       router.push(`${window.location.origin}/my-account/cart`);
-      // const results = await Promise.allSettled(
-      //   nonEmptyCellStates.map(async (state) => {
-      //     const response = await addToCart(
-      //       product.id,
-      //       state.variation.id,
-      //       state.quantity
-      //     );
-      //     if (!response.ok)
-      //       throw new Error(`Failed to add variation ${state.variation.name}`);
-      //     return response;
-      //   })
-      // );
-      // const failures = results.filter((result) => result.status === "rejected");
-      // if (failures.length === nonEmptyCellStates.length) {
-      //   setStatus("error");
-      //   console.error("No variations were successfully added");
-      // } else if (failures.length > 0) {
-      //   setStatus("partial error");
-      //   console.error(
-      //     `Failed to add ${failures.length} of ${nonEmptyCellStates.length} variations`
-      //   );
-      // } else {
-      //   router.push(`${window.location.origin}/my-account/cart`);
-      // }
     } catch (error) {
       setStatus("error");
       console.error(error);
