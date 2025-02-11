@@ -108,6 +108,9 @@ export function removeFromCart(token: string, key: string) {
                         cartItems {
                             key
                         }    
+                        cart {
+                            subtotal
+                        }
                     }
                 }
             `,

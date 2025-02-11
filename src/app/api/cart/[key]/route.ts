@@ -24,7 +24,9 @@ export async function DELETE(
         httpStatus: INTERNAL_SERVER_ERROR,
       });
 
-    return NextResponse.json(json);
+    return NextResponse.json({
+      newSubtotal: json.data.removeItemsFromCart.cart.subtotal,
+    });
   } catch (error) {
     return basicApiErrorHandling(error);
   }
