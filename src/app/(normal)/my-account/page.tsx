@@ -5,6 +5,7 @@ import { getCustomer } from "@/fetch/woocommerce/customers";
 import { validateCustomer } from "@/types/validation/woocommerce/woocommerce";
 import { ZodError } from "zod";
 import { inspect } from "util";
+import { Metadata } from "next";
 
 export default async function Page() {
   const cookieStore = await cookies();
@@ -34,4 +35,10 @@ export default async function Page() {
 
     redirect("/login");
   }
+}
+
+export function generateMetadata(): Metadata {
+  return {
+    title: "My Account - Dignity Apparel",
+  };
 }

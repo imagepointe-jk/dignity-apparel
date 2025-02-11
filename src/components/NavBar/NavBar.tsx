@@ -150,13 +150,13 @@ function NavBarWrapped({
                   specialLink={specialLink}
                 />
                 <div className={styles["far-right-buttons"]}>
-                  <a
-                    href="https://wholesale.dignityapparel.com/cart"
+                  <Link
+                    href="/my-account/cart"
                     className={styles["cart-button"]}
                     aria-label="cart"
                   >
                     <Cart size={28} />
-                  </a>
+                  </Link>
                   <button
                     className={styles["button"]}
                     onClick={toggleSearchDialog}
@@ -164,13 +164,13 @@ function NavBarWrapped({
                   >
                     <MagnifyingGlass size={28} />
                   </button>
-                  <a
-                    href="https://wholesale.dignityapparel.com/my-account"
+                  <Link
+                    href="/my-account"
                     className={styles["my-account-button"]}
                     aria-label="my account"
                   >
                     <Person size={28} />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </nav>

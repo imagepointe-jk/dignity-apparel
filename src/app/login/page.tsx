@@ -1,72 +1,17 @@
-"use client";
-
-import { useRouter, useSearchParams } from "next/navigation";
-import { FormEvent, useState } from "react";
+import { Metadata } from "next";
+import { LoginForm } from "./LoginForm";
 
 export default function Page() {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null as string | null);
-  const router = useRouter();
-  const searchParams = useSearchParams();
-
-  async function onSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
-    const form = e.target as HTMLFormElement;
-    const formData = new FormData(form);
-    setLoading(true);
-    setError(null);
-
-    try {
-      const response = await fetch(`${window.location.origin}/api/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: formData.get("username"),
-          password: formData.get("password"),
-        }),
-      });
-      const json = await response.json();
-      if (!response.ok)
-        throw new Error(
-          `Response ${response.status}: ${json.message || "Unknown error"}`
-        );
-      if (!json.id) throw new Error("Invalid id received from API");
-
-      const redirectTo = searchParams.get("redirect_to");
-      if (redirectTo) router.push(decodeURIComponent(redirectTo));
-      else router.push("/my-account");
-    } catch (error) {
-      console.error(error);
-      setError("Login failed.");
-      setLoading(false);
-    }
-  }
-
   return (
     <>
       <h1>Log In</h1>
-      <form onSubmit={onSubmit}>
-        <div>
-          <label htmlFor="username">
-            Username
-            <input type="text" name="username" id="username" />
-          </label>
-        </div>
-        <div>
-          <label htmlFor="password">
-            Password
-            <input type="password" name="password" id="password" />
-          </label>
-        </div>
-        <div>
-          <button type="submit">Submit</button>
-        </div>
-      </form>
-      {loading && <div>Logging in...</div>}
-      {error && <div style={{ color: "red" }}>{error}</div>}
+      <LoginForm />
     </>
   );
+}
+
+export function generateMetadata(): Metadata {
+  return {
+    title: "Log In - Dignity Apparel",
+  };
 }

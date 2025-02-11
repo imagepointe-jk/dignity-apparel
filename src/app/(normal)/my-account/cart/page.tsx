@@ -2,6 +2,7 @@ import { getCart } from "@/fetch/woocommerce/cart";
 import { validateCart } from "@/types/validation/woocommerce/woocommerce";
 import { cookies } from "next/headers";
 import { CartArea } from "./CartArea/CartArea";
+import { Metadata } from "next";
 
 export default async function Page() {
   const cookieStore = await cookies();
@@ -25,4 +26,10 @@ export default async function Page() {
     console.error(error);
     return <div>Something went wrong.</div>;
   }
+}
+
+export function generateMetadata(): Metadata {
+  return {
+    title: "Cart - Dignity Apparel",
+  };
 }
