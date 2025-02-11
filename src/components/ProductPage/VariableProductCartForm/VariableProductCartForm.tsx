@@ -8,6 +8,7 @@ import { useState } from "react";
 import { addToCart } from "@/fetch/client/cart";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { LoadingBar } from "@/components/global/LoadingBar/LoadingBar";
 
 type Props = {
   product: Product;
@@ -40,6 +41,7 @@ export function VariableProductCartForm({
   const [status, setStatus] = useState(
     "idle" as "idle" | "loading" | "error" | "partial error"
   );
+  const [loadingStatus, setLoadingStatus] = useState({ total: 0, complete: 0 });
   const router = useRouter();
   const [highlightedVariation, setHighlightedVariation] = useState(
     null as ProductVariation | null
@@ -66,31 +68,54 @@ export function VariableProductCartForm({
 
     setStatus("loading");
     try {
-      const results = await Promise.allSettled(
-        nonEmptyCellStates.map(async (state) => {
-          const response = await addToCart(
-            product.id,
-            state.variation.id,
-            state.quantity
-          );
-          if (!response.ok)
-            throw new Error(`Failed to add variation ${state.variation.name}`);
-          return response;
-        })
-      );
-      const failures = results.filter((result) => result.status === "rejected");
-      if (failures.length === nonEmptyCellStates.length) {
-        setStatus("error");
-        console.error("No variations were successfully added");
-      } else if (failures.length > 0) {
-        setStatus("partial error");
-        console.error(
-          `Failed to add ${failures.length} of ${nonEmptyCellStates.length} variations`
+      const variationCount = nonEmptyCellStates.length;
+      //? WooGraphQL doesn't appear to handle concurrent addToCart mutations correctly. using the slow way until a better way is found.
+      for (let i = 0; i < variationCount; i++) {
+        const state = nonEmptyCellStates[i];
+        if (!state) continue;
+
+        setLoadingStatus({
+          total: variationCount,
+          complete: i,
+        });
+        // setLoadingMessage(
+        //   `Adding ${variationCount} product variation(s) to cart...(${i + 1} of ${variationCount})`
+        // );
+        const response = await addToCart(
+          product.id,
+          state.variation.id,
+          state.quantity
         );
-      } else {
-        router.push(`${window.location.origin}/my-account/cart`);
+        if (!response.ok)
+          throw new Error(`Failed to add variation ${state.variation.name}`);
       }
+      router.push(`${window.location.origin}/my-account/cart`);
+      // const results = await Promise.allSettled(
+      //   nonEmptyCellStates.map(async (state) => {
+      //     const response = await addToCart(
+      //       product.id,
+      //       state.variation.id,
+      //       state.quantity
+      //     );
+      //     if (!response.ok)
+      //       throw new Error(`Failed to add variation ${state.variation.name}`);
+      //     return response;
+      //   })
+      // );
+      // const failures = results.filter((result) => result.status === "rejected");
+      // if (failures.length === nonEmptyCellStates.length) {
+      //   setStatus("error");
+      //   console.error("No variations were successfully added");
+      // } else if (failures.length > 0) {
+      //   setStatus("partial error");
+      //   console.error(
+      //     `Failed to add ${failures.length} of ${nonEmptyCellStates.length} variations`
+      //   );
+      // } else {
+      //   router.push(`${window.location.origin}/my-account/cart`);
+      // }
     } catch (error) {
+      setStatus("error");
       console.error(error);
     }
   }
@@ -190,13 +215,20 @@ export function VariableProductCartForm({
             Add to Cart
           </button>
         )}
-        {status === "loading" && <>Adding item(s) to cart...</>}
-        {status === "error" && <>Error adding to cart.</>}
-        {status === "partial error" && (
+        {status === "loading" && (
+          <>
+            Adding {loadingStatus.total} product variations to cart...(
+            {loadingStatus.complete + 1} out of {loadingStatus.total})
+            <LoadingBar
+              progress={loadingStatus.complete / loadingStatus.total}
+            />
+          </>
+        )}
+        {status === "error" && (
           <>
             Some items could not be added. Please{" "}
-            <Link href="/my-account/cart">review your cart</Link> carefully
-            before checkout.
+            <Link href="/my-account/cart">review your cart</Link> carefully and
+            try again as needed.
           </>
         )}
       </div>
