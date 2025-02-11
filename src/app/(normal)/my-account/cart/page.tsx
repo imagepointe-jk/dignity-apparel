@@ -18,7 +18,6 @@ export default async function Page() {
 
     return (
       <>
-        <h1>Cart</h1>
         <CartArea cart={cartParsed} />
       </>
     );

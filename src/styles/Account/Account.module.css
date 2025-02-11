@@ -1,0 +1,40 @@
+.main {
+  margin-top: 160px;
+}
+
+.main h1 {
+  text-align: center;
+}
+
+.main nav ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  gap: 50px;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.main nav a,
+.main nav a:visited {
+  color: black;
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: 10px;
+}
+
+.main nav a.nav-current {
+  color: white;
+  background-color: black;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 480px) {
+  .main nav ul {
+    gap: 20px;
+  }
+
+  .main nav a {
+    font-size: 1rem;
+  }
+}

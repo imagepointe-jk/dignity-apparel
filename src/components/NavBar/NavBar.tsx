@@ -165,7 +165,7 @@ function NavBarWrapped({
                     <MagnifyingGlass size={28} />
                   </button>
                   <Link
-                    href="/my-account"
+                    href="/my-account/details"
                     className={styles["my-account-button"]}
                     aria-label="my account"
                   >

@@ -1,5 +1,5 @@
 import { CartItem } from "@/types/schema/woocommerce";
-import styles from "@/styles/CartArea/CartRow.module.css";
+import styles from "@/styles/Account/CartArea/CartRow.module.css";
 import { FlexibleImage } from "@/components/global/FlexibleImage/FlexibleImage";
 import { IMAGE_NOT_FOUND_URL } from "@/constants";
 import { getColorDisplayName, getSizeDisplayName } from "@/utility/products";

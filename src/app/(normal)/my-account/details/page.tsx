@@ -18,7 +18,6 @@ export default async function Page() {
 
     return (
       <>
-        <h1>My Account</h1>
         <EditForm customer={customerParsed} />
       </>
     );

@@ -2,7 +2,7 @@
 
 import { Cart, CartQuantityUpdate } from "@/types/schema/woocommerce";
 import { CartRow } from "./CartRow";
-import styles from "@/styles/CartArea/CartArea.module.css";
+import styles from "@/styles/Account/CartArea/CartArea.module.css";
 import { removeFromCart, updateCart } from "@/fetch/client/cart";
 import { useImmer } from "use-immer";
 import { clamp } from "@/utility/misc";
