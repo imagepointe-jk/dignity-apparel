@@ -3,6 +3,8 @@ import { validateCart } from "@/types/validation/woocommerce/woocommerce";
 import { cookies } from "next/headers";
 import { CartArea } from "./CartArea/CartArea";
 import { Metadata } from "next";
+import Link from "next/link";
+import { env } from "@/env";
 
 export default async function Page() {
   const cookieStore = await cookies();
@@ -19,6 +21,7 @@ export default async function Page() {
     return (
       <>
         <CartArea cart={cartParsed} />
+        <Link href={`${env.WOOCOMMERCE_STORE_URL}/checkout`}>Checkout</Link>
       </>
     );
   } catch (error) {

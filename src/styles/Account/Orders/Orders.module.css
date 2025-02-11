@@ -1,0 +1,35 @@
+.main {
+  max-width: 800px;
+  margin: auto;
+}
+
+.order {
+  background-color: lightgray;
+  padding: 50px;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+.order-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.expand-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.order.expanded .expand-button .arrow {
+  rotate: 90deg;
+}
+
+.order-content {
+  height: 0;
+  overflow: hidden;
+}
+
+.order.expanded .order-content {
+  height: auto;
+}

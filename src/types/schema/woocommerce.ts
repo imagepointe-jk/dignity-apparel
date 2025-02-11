@@ -159,6 +159,35 @@ export const cartQuantityUpdateSchema = z.object({
   items: z.array(cartQuantityUpdateItemSchema),
 });
 
+const pastOrderLineItemSchema = z.object({
+  id: z.string(),
+  databaseId: z.number(),
+  product: z.object({
+    id: z.string(),
+    databaseId: z.number(),
+    name: z.string(),
+    slug: z.string(),
+    sku: z.string(),
+  }),
+  variation: z.object({
+    id: z.string(),
+    databaseId: z.number(),
+    name: z.string(),
+  }),
+  quantity: z.number(),
+  subtotal: z.string(),
+});
+
+export const pastOrderSchema = z.object({
+  id: z.string(),
+  databaseId: z.number(),
+  customer: z.object({
+    firstName: z.string(),
+    lastName: z.string(),
+  }),
+  lineItems: z.array(pastOrderLineItemSchema),
+});
+
 export type Product = z.infer<typeof productSchema>;
 export type ProductVariation = z.infer<typeof productVariationSchema>;
 export type Category = z.infer<typeof categorySchema>;
@@ -194,3 +223,4 @@ export type Customer = z.infer<typeof customerSchema>;
 export type Cart = z.infer<typeof cartSchema>;
 export type CartItem = z.infer<typeof cartItemSchema>;
 export type CartQuantityUpdate = z.infer<typeof cartQuantityUpdateSchema>;
+export type PastOrder = z.infer<typeof pastOrderSchema>;
