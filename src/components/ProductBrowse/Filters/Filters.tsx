@@ -139,6 +139,8 @@ export function FiltersWrapped({ categories, attributes, mode }: FilterProps) {
     //"clear filters" button will appear when this returns more than 0
     const filteredParams = new URLSearchParams(searchParamsToUse);
     filteredParams.delete("search");
+    filteredParams.delete("page-size");
+    filteredParams.delete("page-number");
     return filteredParams.size;
   }
 
