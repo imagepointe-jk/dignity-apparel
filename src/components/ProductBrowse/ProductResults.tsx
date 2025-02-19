@@ -59,6 +59,7 @@ export function ProductResultsWrapped({ childrenUnderTitle }: Props) {
 
   async function getResults() {
     setStatus("loading");
+    setTotalProducts(0);
     try {
       const {
         search,
