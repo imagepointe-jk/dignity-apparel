@@ -3,12 +3,17 @@
 //2. Allows for filtering/sorting that might not be possible with WPGraphQL
 //It's not scalable, but it was implemented when we only had 20-30 products and had no plans to significantly increase that any time soon.
 //Hopefully once we need a more scalable solution we will have already moved away from WooCommerce.
-//! It does not currently support pagination.
 
+import { DEFAULT_PRODUCTS_PAGE_SIZE } from "@/constants";
 import { env } from "@/env";
 import { queryProducts } from "@/fetch/woocommerce/products";
-import { Product, ProductQueryParams } from "@/types/schema/woocommerce";
+import {
+  Product,
+  ProductQueryAdditionalParams,
+  ProductQueryParams,
+} from "@/types/schema/woocommerce";
 import { validateWooCommerceProductsGraphQLResponse } from "@/types/validation/woocommerce/woocommerce";
+import { getArrayPage } from "@/utility/misc";
 import { createClient } from "redis";
 
 const redis = await createClient({
@@ -67,8 +72,8 @@ export async function getCachedProducts(
 }
 
 export async function queryCachedProducts(
-  params: ProductQueryParams
-): Promise<Product[]> {
+  params: ProductQueryParams & ProductQueryAdditionalParams
+): Promise<{ products: Product[]; pageInfo: { totalProducts: number } }> {
   const products = await getCachedProducts();
   const {
     availability,
@@ -78,6 +83,8 @@ export async function queryCachedProducts(
     features,
     fit,
     search,
+    pageNumber,
+    pageSize,
   } = params;
 
   const filtered = products.filter((product) => {
@@ -111,7 +118,18 @@ export async function queryCachedProducts(
 
   filtered.sort((a, b) => a.menuOrder - b.menuOrder);
 
-  return filtered;
+  const page = getArrayPage(
+    filtered,
+    pageNumber || 1,
+    pageSize || DEFAULT_PRODUCTS_PAGE_SIZE
+  );
+
+  return {
+    products: page,
+    pageInfo: {
+      totalProducts: filtered.length,
+    },
+  };
 }
 
 function checkAvailability(product: Product, availability: string | null) {

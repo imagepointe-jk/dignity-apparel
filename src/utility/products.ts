@@ -287,6 +287,8 @@ export function validateBrowseSearchParams(
   const fabricWeight = getAll("fabric-weight");
   const features = getAll("feature");
   const fit = get("fit");
+  const pageNumber = get("page-number");
+  const pageSize = get("page-size");
 
   return {
     search,
@@ -305,6 +307,8 @@ export function validateBrowseSearchParams(
     "fabric-weight": fabricWeight,
     features,
     fit: fit === "mens" ? "mens" : fit === "womens" ? "womens" : "unisex",
+    pageNumber: pageNumber ? +pageNumber : null,
+    pageSize: pageSize ? +pageSize : null,
   };
 }
 
