@@ -7,7 +7,7 @@ import { FeaturedProductCard2 } from "../global/FeaturedProductCards/FeaturedPro
 import { CardSlider } from "../global/CardSlider/CardSlider";
 import { LoadingIndicator } from "../global/LoadingIndicator/LoadingIndicator";
 
-const defaultCount = 4;
+const defaultCount = 5;
 type Props = {
   categorySlug: string;
   excludeSkus?: string[];
@@ -21,15 +21,22 @@ export function Recommendations({ categorySlug, excludeSkus }: Props) {
   async function fetchData() {
     try {
       const response = await queryProducts({
-        first: defaultCount, //! this doesn't work currently with our simple cache, which doesn't support pagination yet
+        first: defaultCount,
         after: null,
         before: null,
         category: categorySlug,
         last: null,
         search: null,
+        pageNumber: 1,
+        pageSize: defaultCount,
+        availability: null,
+        fabricType: [],
+        fabricWeight: [],
+        features: [],
+        fit: null,
       });
       const json = await response.json();
-      const parsed = validateWooCommerceProducts(json);
+      const parsed = validateWooCommerceProducts(json.products);
       const productsToSet = !excludeSkus
         ? parsed.slice(0, defaultCount)
         : parsed

@@ -30,9 +30,16 @@ export function Collection({ category }: Props) {
         before: null,
         last: null,
         search: null,
+        availability: null,
+        fabricType: [],
+        fabricWeight: [],
+        features: [],
+        fit: null,
+        pageNumber: 1,
+        pageSize: 1000,
       });
       const json = await response.json();
-      const parsed = validateWooCommerceProducts(json);
+      const parsed = validateWooCommerceProducts(json.products);
       setTotalInCategory(parsed.length);
     } catch (error) {
       console.error(error);
