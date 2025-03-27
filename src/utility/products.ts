@@ -116,6 +116,18 @@ const colorSwatches: ColorSwatch[] = [
     hexCode: "000000",
     order: 17,
   },
+  {
+    name: "stone-blue",
+    displayName: "Stone Blue",
+    hexCode: "3e404f",
+    order: 18,
+  },
+  {
+    name: "ash",
+    displayName: "Ash",
+    hexCode: "b6b7bb",
+    order: 19,
+  },
 ];
 
 export function getSwatchesWithImages(product: Product) {
