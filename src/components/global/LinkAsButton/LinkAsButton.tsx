@@ -22,9 +22,11 @@ export type LinkAsButtonData = {
 };
 type Props = {
   data: LinkAsButtonData;
+  className?: string;
 };
 export function LinkAsButton({
   data: { href, label, extraPadding, states, type },
+  className,
 }: Props) {
   const [hovered, setHovered] = useState(false);
 
@@ -60,7 +62,7 @@ export function LinkAsButton({
   return (
     <Link
       href={href}
-      className={`${styles["main"]} ${extraPadding ? styles["extra-padding"] : ""}`}
+      className={`${styles["main"]} ${extraPadding ? styles["extra-padding"] : ""} ${className || ""}`}
       style={{
         color: `${chooseTextColor()}`,
         backgroundColor: `${chooseBackgroundColor()}`,
