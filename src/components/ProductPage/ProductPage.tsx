@@ -144,7 +144,7 @@ function ProductPageWrapped({ product }: Props) {
             >
               {product.additionalProductSettings.linkTextOverride || isMTO
                 ? "Get a Quote"
-                : "Login to Purchase"}
+                : "Purchase"}
             </a>
           </div>
           <div className={styles["usa-container"]}>
