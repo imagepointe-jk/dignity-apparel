@@ -99,12 +99,6 @@ const colorSwatches: ColorSwatch[] = [
     order: 14,
   },
   {
-    name: "storm",
-    displayName: "Storm",
-    hexCode: "6265AA",
-    order: 15,
-  },
-  {
     name: "carbon",
     displayName: "Carbon",
     hexCode: "a3a3a3",
@@ -115,6 +109,12 @@ const colorSwatches: ColorSwatch[] = [
     displayName: "Onyx",
     hexCode: "000000",
     order: 17,
+  },
+  {
+    name: "storm",
+    displayName: "Storm",
+    hexCode: "6265AA",
+    order: 999,
   },
 ];
 
@@ -301,8 +301,8 @@ export function validateBrowseSearchParams(
       availability === "made-to-order"
         ? "made-to-order"
         : availability === "in-stock"
-          ? "in-stock"
-          : null,
+        ? "in-stock"
+        : null,
     "fabric-type": fabricType,
     "fabric-weight": fabricWeight,
     features,
