@@ -99,12 +99,6 @@ const colorSwatches: ColorSwatch[] = [
     order: 14,
   },
   {
-    name: "storm",
-    displayName: "Storm",
-    hexCode: "6265AA",
-    order: 15,
-  },
-  {
     name: "carbon",
     displayName: "Carbon",
     hexCode: "a3a3a3",
@@ -127,6 +121,12 @@ const colorSwatches: ColorSwatch[] = [
     displayName: "Ash",
     hexCode: "b6b7bb",
     order: 19,
+  },
+  {
+    name: "storm",
+    displayName: "Storm",
+    hexCode: "6265AA",
+    order: 999,
   },
 ];
 
