@@ -1,6 +1,5 @@
 import { ProductPage } from "@/components/ProductPage/ProductPage";
-import { getProductBySlug } from "@/fetch/woocommerce/products";
-import { validateWooCommerceSingleProductResponse } from "@/types/validation/woocommerce/woocommerce";
+import { getProductBySlug } from "@/get/products";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -8,18 +7,15 @@ type Props = { params: Promise<{ slug: string }> };
 export default async function Page(props: Props) {
   const params = await props.params;
 
-  const {
-    slug
-  } = params;
+  const { slug } = params;
 
   try {
-    const productResponse = await getProductBySlug(slug);
-    const json = await productResponse.json();
-    const parsed = validateWooCommerceSingleProductResponse(json.data.product);
+    const product = await getProductBySlug(slug);
+    if (!product) throw new Error(`Product with slug ${slug} not found.`);
 
     return (
       <div>
-        <ProductPage product={parsed} />
+        <ProductPage product={product} />
       </div>
     );
   } catch (error) {
@@ -31,17 +27,14 @@ export default async function Page(props: Props) {
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params;
 
-  const {
-    slug
-  } = params;
+  const { slug } = params;
 
   try {
-    const productResponse = await getProductBySlug(slug);
-    const json = await productResponse.json();
-    const parsed = validateWooCommerceSingleProductResponse(json.data.product);
+    const product = await getProductBySlug(slug);
+    if (!product) throw new Error(`Product with slug ${slug} not found.`);
 
     return {
-      title: `${parsed.name} - Dignity Apparel`,
+      title: `${product.name} - Dignity Apparel`,
     };
   } catch (error) {
     console.error(error);

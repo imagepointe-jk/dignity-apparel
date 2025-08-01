@@ -1,7 +1,8 @@
 import { env } from "@/env";
 import { queryWpGraphQl } from "./wpgraphql";
 
-export function getCategories() {
+//this should ONLY be called through a "get" function that also caches the result
+export function fetchCategories() {
   const query = `
     query GetCategories {
         productCategories {

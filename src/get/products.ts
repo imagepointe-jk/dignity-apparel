@@ -14,13 +14,7 @@ import {
 } from "@/types/schema/woocommerce";
 import { validateWooCommerceProductsGraphQLResponse } from "@/types/validation/woocommerce/woocommerce";
 import { getArrayPage } from "@/utility/misc";
-import { createClient } from "redis";
-
-const redis = await createClient({
-  url: env.REDIS_URL,
-})
-  .on("error", (err) => console.error(`Redis Error: ${err}`))
-  .connect();
+import { redis } from "./redis";
 
 export async function getCachedProducts(
   forceUpdateCache?: boolean
@@ -130,6 +124,12 @@ export async function queryCachedProducts(
       totalProducts: filtered.length,
     },
   };
+}
+
+export async function getProductBySlug(slug: string) {
+  const products = await getCachedProducts();
+  const match = products.find((product) => product.slug === slug);
+  return match;
 }
 
 function checkAvailability(product: Product, availability: string | null) {

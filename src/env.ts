@@ -10,6 +10,8 @@ export const env = {
   REDIS_URL: process.env.REDIS_URL!,
   DATA_MANAGEMENT_URL: process.env.DATA_MANAGEMENT_URL!,
   REDIS_CACHE_KEY: process.env.REDIS_CACHE_KEY!,
+  REDIS_ATTRIBUTES_CACHE_KEY: process.env.REDIS_ATTRIBUTES_CACHE_KEY!,
+  REDIS_CATEGORIES_CACHE_KEY: process.env.REDIS_CATEGORIES_CACHE_KEY!,
 };
 
 for (const [key, value] of Object.entries(env)) {

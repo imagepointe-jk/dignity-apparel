@@ -2,8 +2,8 @@ import { easyCorsInit } from "@/constants";
 import { message } from "@/utility/misc";
 import { INTERNAL_SERVER_ERROR, NOT_FOUND } from "@/utility/statusCodes";
 import { NextRequest } from "next/server";
-import { queryCachedProducts } from "./simpleCache";
 import { trackSearchString } from "@/fetch/tracking/search";
+import { queryCachedProducts } from "@/get/products";
 
 const emptyResults: any[] = [];
 
