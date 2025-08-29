@@ -55,7 +55,6 @@ function buildProductFields(params?: {
               }
           }
       } 
-    }
     ${conditionalStr(
       params?.sizeCharges !== false,
       `sizeCharges {
@@ -78,6 +77,7 @@ function buildProductFields(params?: {
         linkUrlOverride
       }`
     )}
+    }
     description
     shortDescription
     ${conditionalStr(
@@ -106,78 +106,7 @@ function buildProductFields(params?: {
 `;
 }
 
-export async function getProductBySku(sku: string) {
-  const query = `
-  query GetProductBySku($sku: ID!) {
-    product(id: $sku, idType: SKU) {
-      ${buildProductFields()}
-    }
-  }
-`;
-
-  return fetch(`${env.WOOCOMMERCE_STORE_URL}graphql`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Basic ${btoa(`${env.WORDPRESS_APPLICATION_USERNAME}:${env.WORDPRESS_APPLICATION_PASSWORD}`)}`,
-    },
-    body: JSON.stringify({
-      query,
-      variables: { sku },
-    }),
-  });
-}
-
-export async function getProductBySlug(slug: string) {
-  const query = `
-  query GetProductBySku($slug: ID!) {
-    product(id: $slug, idType: SLUG) {
-      ${buildProductFields()}
-    }
-  }
-`;
-
-  return queryWpGraphQl(() =>
-    fetch(`${env.WOOCOMMERCE_STORE_URL}graphql`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Basic ${btoa(`${env.WORDPRESS_APPLICATION_USERNAME}:${env.WORDPRESS_APPLICATION_PASSWORD}`)}`,
-      },
-      body: JSON.stringify({
-        query,
-        variables: { slug },
-      }),
-      next: {
-        revalidate: 60,
-      },
-    })
-  );
-}
-
-export async function getProducts() {
-  const query = `
-  query GetProducts {
-    products {
-      nodes {
-        ${buildProductFields()}
-      }
-    }
-  }
-`;
-
-  return fetch(`${env.WOOCOMMERCE_STORE_URL}graphql`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Basic ${btoa(`${env.WORDPRESS_APPLICATION_USERNAME}:${env.WORDPRESS_APPLICATION_PASSWORD}`)}`,
-    },
-    body: JSON.stringify({
-      query,
-    }),
-  });
-}
-
+//this should ONLY be called through a "get" function that also caches the result
 export async function queryProducts(params: ProductQueryParams) {
   const {
     category,
@@ -263,7 +192,7 @@ export async function queryProducts(params: ProductQueryParams) {
         endCursor
       }
         nodes {
-          ${buildProductFields({ sizeCharges: false, additionalInfo: false, additionalSettings: false })}
+          ${buildProductFields()}
         }
     }
   }

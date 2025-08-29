@@ -99,12 +99,6 @@ const colorSwatches: ColorSwatch[] = [
     order: 14,
   },
   {
-    name: "storm",
-    displayName: "Storm",
-    hexCode: "6265AA",
-    order: 15,
-  },
-  {
     name: "carbon",
     displayName: "Carbon",
     hexCode: "a3a3a3",
@@ -115,6 +109,24 @@ const colorSwatches: ColorSwatch[] = [
     displayName: "Onyx",
     hexCode: "000000",
     order: 17,
+  },
+  {
+    name: "stone-blue",
+    displayName: "Stone Blue",
+    hexCode: "3e404f",
+    order: 18,
+  },
+  {
+    name: "ash",
+    displayName: "Ash",
+    hexCode: "b6b7bb",
+    order: 19,
+  },
+  {
+    name: "storm",
+    displayName: "Storm",
+    hexCode: "6265AA",
+    order: 999,
   },
 ];
 
@@ -329,6 +341,8 @@ export function validateBrowseSearchParams(
   const fabricWeight = getAll("fabric-weight");
   const features = getAll("feature");
   const fit = get("fit");
+  const pageNumber = get("page-number");
+  const pageSize = get("page-size");
 
   return {
     search,
@@ -347,6 +361,8 @@ export function validateBrowseSearchParams(
     "fabric-weight": fabricWeight,
     features,
     fit: fit === "mens" ? "mens" : fit === "womens" ? "womens" : "unisex",
+    pageNumber: pageNumber ? +pageNumber : null,
+    pageSize: pageSize ? +pageSize : null,
   };
 }
 

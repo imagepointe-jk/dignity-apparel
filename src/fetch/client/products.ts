@@ -1,16 +1,11 @@
-export async function queryProducts(params: {
-  search: string | null;
-  category: string | null;
-  availability?: string | null;
-  fabricType?: string[];
-  fabricWeight?: string[];
-  features?: string[];
-  fit?: string | null;
-  before: string | null;
-  after: string | null;
-  first: number | null;
-  last: number | null;
-}) {
+import {
+  ProductQueryAdditionalParams,
+  ProductQueryParams,
+} from "@/types/schema/woocommerce";
+
+export async function queryProducts(
+  params: ProductQueryParams & ProductQueryAdditionalParams
+) {
   const searchParams = new URLSearchParams();
   if (params.search) searchParams.append("search", params.search);
   if (params.category) searchParams.append("category", params.category);
@@ -33,6 +28,9 @@ export async function queryProducts(params: {
       searchParams.append("feature", el);
     }
   if (params.fit) searchParams.append("fit", params.fit);
+  if (params.pageNumber)
+    searchParams.append("page-number", `${params.pageNumber}`);
+  if (params.pageSize) searchParams.append("page-size", `${params.pageSize}`);
 
   return fetch(`${window.location.origin}/api/products/?${searchParams}`);
 }

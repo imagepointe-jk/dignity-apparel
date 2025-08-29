@@ -48,6 +48,7 @@ export function FilterItem({
     const parentNameToUse = parentName === "features" ? "feature" : parentName;
     const value = validatedParams[key];
     const newParams = new URLSearchParams(searchParamsToUse);
+    newParams.delete("page-number");
 
     //if this filter item corresponds to a param that can have multiple values, handle adding/removing from the values
     if (type === "checkbox") {

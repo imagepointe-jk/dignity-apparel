@@ -46,6 +46,7 @@ export function TopBanner({
               },
             },
           }}
+          className={styles["link"]}
         />
       )}
     </div>

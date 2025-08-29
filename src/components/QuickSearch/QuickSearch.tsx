@@ -43,9 +43,16 @@ export function QuickSearch({ toggleDialog }: Props) {
         after: null,
         first: 25,
         last: null,
+        availability: null,
+        fabricType: [],
+        fabricWeight: [],
+        features: [],
+        fit: null,
+        pageNumber: 1,
+        pageSize: 25,
       });
       const json = await response.json();
-      const parsed = validateWooCommerceProducts(json);
+      const parsed = validateWooCommerceProducts(json.products);
       if (parsed.length > 0) {
         setResults(parsed);
         setStatus("idle");
@@ -59,9 +66,16 @@ export function QuickSearch({ toggleDialog }: Props) {
         after: null,
         first: 25,
         last: null,
+        availability: null,
+        fabricType: [],
+        fabricWeight: [],
+        features: [],
+        fit: null,
+        pageNumber: 1,
+        pageSize: 25,
       });
       const newJson = await newResponse.json();
-      const newParsed = validateWooCommerceProducts(newJson);
+      const newParsed = validateWooCommerceProducts(newJson.products);
       setGotNoResults(true);
       setResults(newParsed);
       setStatus("idle");

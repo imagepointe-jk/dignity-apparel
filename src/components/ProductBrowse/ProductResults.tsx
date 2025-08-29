@@ -1,7 +1,6 @@
-import { DEFAULT_PRODUCTS_PAGE_SIZE } from "@/constants";
 import { queryProducts } from "@/fetch/client/products";
 import styles from "@/styles/ProductBrowse/ProductResults.module.css";
-import { PageInfo, Product } from "@/types/schema/woocommerce";
+import { Product } from "@/types/schema/woocommerce";
 import { validateWooCommerceProducts } from "@/types/validation/woocommerce/woocommerce";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -9,6 +8,8 @@ import { ReactNode, Suspense, useEffect, useState } from "react";
 import { FeaturedProductCard2 } from "../global/FeaturedProductCards/FeaturedProductCard2";
 import { validateBrowseSearchParams } from "@/utility/products";
 import { LoadingIndicator } from "../global/LoadingIndicator/LoadingIndicator";
+import { DEFAULT_PRODUCTS_PAGE_SIZE } from "@/constants";
+import { Arrow } from "../icons/Arrow";
 
 export function ProductResults({ childrenUnderTitle }: Props) {
   return (
@@ -23,29 +24,31 @@ type Props = {
 };
 export function ProductResultsWrapped({ childrenUnderTitle }: Props) {
   const [results, setResults] = useState([] as Product[]);
-  const [pageInfo] = useState(null as PageInfo | null); //currently unused
+  const [totalProducts, setTotalProducts] = useState(null as number | null);
   const [status, setStatus] = useState(
     "loading" as "idle" | "loading" | "error"
   );
   const searchParams = useSearchParams();
 
   function createPageButtonUrl(type: "next" | "previous") {
+    if (!totalProducts) return null;
+
     const newParams = new URLSearchParams(searchParams);
 
-    newParams.delete("before");
-    newParams.delete("after");
-    newParams.delete("first");
-    newParams.delete("last");
+    const pageSizeParam = `${newParams.get("page-size")}`;
+    const pageNumberParam = `${newParams.get("page-number")}`;
+    const pageSize = isNaN(+pageSizeParam)
+      ? DEFAULT_PRODUCTS_PAGE_SIZE
+      : +pageSizeParam;
+    const pageNumber = isNaN(+pageNumberParam) ? 1 : +pageNumberParam;
 
     if (type === "next") {
-      if (!pageInfo?.hasNextPage) return null;
-      newParams.set("first", `${DEFAULT_PRODUCTS_PAGE_SIZE}`);
-      if (pageInfo.endCursor) newParams.set("after", pageInfo.endCursor);
+      if (totalProducts <= pageNumber * pageSize) return null;
+      newParams.set("page-number", `${pageNumber + 1}`);
     }
     if (type === "previous") {
-      if (!pageInfo?.hasPreviousPage) return null;
-      newParams.set("last", `${DEFAULT_PRODUCTS_PAGE_SIZE}`);
-      if (pageInfo.startCursor) newParams.set("before", pageInfo.startCursor);
+      if (pageNumber < 2) return null;
+      newParams.set("page-number", `${pageNumber - 1}`);
     }
 
     return `/products?${newParams}`;
@@ -56,6 +59,7 @@ export function ProductResultsWrapped({ childrenUnderTitle }: Props) {
 
   async function getResults() {
     setStatus("loading");
+    setTotalProducts(0);
     try {
       const {
         search,
@@ -69,6 +73,8 @@ export function ProductResultsWrapped({ childrenUnderTitle }: Props) {
         after,
         first,
         last,
+        pageNumber,
+        pageSize,
       } = validateBrowseSearchParams(searchParams);
 
       const response = await queryProducts({
@@ -83,9 +89,13 @@ export function ProductResultsWrapped({ childrenUnderTitle }: Props) {
         after,
         first,
         last,
+        pageNumber,
+        pageSize,
       });
       const json = await response.json();
-      const parsed = validateWooCommerceProducts(json);
+      const parsed = validateWooCommerceProducts(json.products);
+      const totalProducts = +json.pageInfo?.totalProducts;
+      if (!isNaN(totalProducts)) setTotalProducts(totalProducts);
 
       setResults(parsed);
       setStatus("idle");
@@ -124,9 +134,17 @@ export function ProductResultsWrapped({ childrenUnderTitle }: Props) {
         {status === "error" && <>Something went wrong.</>}
       </div>
       {(prevUrl || nextUrl) && (
-        <div>
-          {prevUrl && <Link href={prevUrl}>&lt; Previous</Link>}
-          {nextUrl && <Link href={nextUrl}>Next &gt;</Link>}
+        <div className={styles["page-buttons-container"]}>
+          {prevUrl && (
+            <Link href={prevUrl} className={styles["page-button"]}>
+              <Arrow size={15} style={{ rotate: "180deg" }} /> Previous
+            </Link>
+          )}
+          {nextUrl && (
+            <Link href={nextUrl} className={styles["page-button"]}>
+              Next <Arrow size={15} />
+            </Link>
+          )}
         </div>
       )}
     </div>

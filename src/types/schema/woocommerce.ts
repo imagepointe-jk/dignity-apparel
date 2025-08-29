@@ -205,6 +205,8 @@ export type ProductBrowseURLParams = {
   ["fabric-type"]: string[];
   ["fabric-weight"]: string[];
   availability: "made-to-order" | "in-stock" | null;
+  pageNumber: number | null;
+  pageSize: number | null;
 };
 export type ProductQueryParams = {
   search: string | null;
@@ -218,6 +220,10 @@ export type ProductQueryParams = {
   after: string | null;
   first: number | null;
   last: number | null;
+};
+export type ProductQueryAdditionalParams = {
+  pageNumber: number | null;
+  pageSize: number | null;
 };
 export type Customer = z.infer<typeof customerSchema>;
 export type Cart = z.infer<typeof cartSchema>;

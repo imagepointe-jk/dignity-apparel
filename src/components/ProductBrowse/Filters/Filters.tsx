@@ -80,7 +80,9 @@ export function FiltersWrapped({ categories, attributes, mode }: FilterProps) {
 
   //for each of the search params (some of which have multiple values), cross-reference with the filterGroups to build "clear button" data
   const clearFilterButtons = searchParamsArr
-    .filter((param) => param.key !== "search")
+    .filter(
+      (param) => !["search", "page-size", "page-number"].includes(param.key)
+    )
     .map((param) => {
       const nameToMatch = param.key === "feature" ? "features" : param.key;
       const matchingFilterGroup = filterGroups.find(
@@ -137,6 +139,8 @@ export function FiltersWrapped({ categories, attributes, mode }: FilterProps) {
     //"clear filters" button will appear when this returns more than 0
     const filteredParams = new URLSearchParams(searchParamsToUse);
     filteredParams.delete("search");
+    filteredParams.delete("page-size");
+    filteredParams.delete("page-number");
     return filteredParams.size;
   }
 

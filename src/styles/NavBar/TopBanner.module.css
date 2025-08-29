@@ -11,8 +11,15 @@
 
 .main p {
   margin: 0;
+  font-family: var(--font-metropolis-bold);
+  font-size: 16px;
 }
 
 .main a {
   padding: 10px 15px;
+}
+
+.main .link {
+  font-size: 16px;
+  padding: 6px 10px;
 }

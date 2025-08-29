@@ -1,7 +1,7 @@
 import { easyCorsInit } from "@/constants";
 import { NextRequest } from "next/server";
-import { getCachedProducts } from "../simpleCache";
 import { env } from "@/env";
+import { getCachedProducts } from "@/get/products";
 
 export async function POST(request: NextRequest) {
   const webhookResource = request.headers.get("x-wc-webhook-resource");

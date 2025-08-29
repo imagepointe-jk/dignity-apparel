@@ -3,6 +3,7 @@ import { message } from "./misc";
 import { NextResponse } from "next/server";
 import { INTERNAL_SERVER_ERROR, NOT_AUTHENTICATED } from "./statusCodes";
 import { cookies } from "next/headers";
+import { NextRequest } from "next/server";
 
 export function basicApiErrorHandling(error: unknown) {
   if (error instanceof AppError) {
@@ -29,4 +30,13 @@ export async function getTokenOrThrow() {
     });
 
   return token;
+}
+
+export function getDevPassword(request: NextRequest) {
+  const authorization = request.headers.get("Authorization");
+  const split = authorization?.split(" ");
+  const givenPassword = split ? split[1] : undefined;
+  const decoded = givenPassword ? atob(givenPassword) : undefined;
+  const decodedSplit = decoded?.split(":");
+  return decodedSplit ? decodedSplit[1] : undefined;
 }

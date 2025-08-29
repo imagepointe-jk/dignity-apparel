@@ -1,11 +1,10 @@
-import { getProductBySlug } from "@/fetch/woocommerce/products";
-import { validateWooCommerceSingleProductResponse } from "@/types/validation/woocommerce/woocommerce";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { FeaturedProducts as FeaturedProductsComponent } from "@/components/sections/FeaturedProducts/FeaturedProducts";
 import { getBrandColor } from "@/utility/prismic";
 
 import type { JSX } from "react";
+import { getCachedProducts } from "@/get/products";
 
 /**
  * Props for `FeaturedProducts`.
@@ -20,27 +19,10 @@ const FeaturedProducts = async ({
   slice,
 }: FeaturedProductsProps): Promise<JSX.Element> => {
   const slice_id = slice.primary.slice_id;
-  const responses = await Promise.all(
-    slice.primary.product_slugs.map((item) =>
-      getProductBySlug(item.slug || "").catch(() => {
-        console.error(`Error fetching product with slug ${item.slug}`);
-        return null;
-      })
-    )
-  );
-  const jsons = await Promise.all(
-    responses.map((response) => (response === null ? null : response.json()))
-  );
-  const parsed = jsons.map((json) => {
-    try {
-      return validateWooCommerceSingleProductResponse(json.data.product);
-    } catch (error) {
-      if (error) {
-      } //we don't need the error
-      return null;
-    }
-  });
-  const nonNullParsed = parsed.filter((item) => item !== null);
+  const products = await getCachedProducts();
+  const filtered = slice.primary.product_slugs
+    .map((item) => products.find((product) => product.slug === item.slug))
+    .filter((product) => product !== undefined);
   const textColor = await getBrandColor(slice.primary.primary_text_color);
 
   return (
@@ -49,7 +31,7 @@ const FeaturedProducts = async ({
       headingNode={<PrismicRichText field={slice.primary.heading} />}
       tilingBackground={{ src: slice.primary.tiling_background.url }}
       primaryTextColor={textColor.replace("#", "")}
-      products={nonNullParsed}
+      products={filtered}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     />

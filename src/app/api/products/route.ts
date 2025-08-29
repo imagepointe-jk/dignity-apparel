@@ -2,8 +2,8 @@ import { easyCorsInit } from "@/constants";
 import { message } from "@/utility/misc";
 import { INTERNAL_SERVER_ERROR, NOT_FOUND } from "@/utility/statusCodes";
 import { NextRequest } from "next/server";
-import { queryCachedProducts } from "./simpleCache";
 import { trackSearchString } from "@/fetch/tracking/search";
+import { queryCachedProducts } from "@/get/products";
 
 const emptyResults: any[] = [];
 
@@ -18,11 +18,13 @@ export async function GET(request: NextRequest) {
   const fit = ["mens", "womens"].includes(`${searchParams.get("fit")}`)
     ? searchParams.get("fit")
     : null;
+  const pageNumber = searchParams.get("page-number");
+  const pageSize = searchParams.get("page-size");
 
   trackQuery(search);
 
   try {
-    const products = await queryCachedProducts({
+    const { products, pageInfo } = await queryCachedProducts({
       search,
       category,
       availability,
@@ -34,6 +36,8 @@ export async function GET(request: NextRequest) {
       after: null,
       first: null,
       last: null,
+      pageNumber: pageNumber ? +pageNumber : null,
+      pageSize: pageSize ? +pageSize : null,
     });
     if (products.length === 0)
       return Response.json(emptyResults, {
@@ -41,7 +45,7 @@ export async function GET(request: NextRequest) {
         status: NOT_FOUND,
       });
 
-    return Response.json(products, easyCorsInit);
+    return Response.json({ products, pageInfo }, easyCorsInit);
   } catch (error) {
     console.error(error);
     return Response.json(message("Server error."), {
