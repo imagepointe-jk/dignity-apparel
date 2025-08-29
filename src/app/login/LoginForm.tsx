@@ -1,5 +1,6 @@
 "use client";
 
+import { login } from "@/fetch/client/customers";
 import { useRouter, useSearchParams } from "next/navigation";
 import { FormEvent, useState } from "react";
 
@@ -18,16 +19,10 @@ export function LoginForm() {
     setError(null);
 
     try {
-      const response = await fetch(`${window.location.origin}/api/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: formData.get("username"),
-          password: formData.get("password"),
-        }),
-      });
+      const response = await login(
+        `${formData.get("username")}`,
+        `${formData.get("password")}`
+      );
       const json = await response.json();
       if (!response.ok)
         throw new Error(
@@ -37,7 +32,7 @@ export function LoginForm() {
 
       const redirectTo = searchParams.get("redirect_to");
       if (redirectTo) router.push(decodeURIComponent(redirectTo));
-      else router.push("/my-account");
+      else router.push("/my-account/details");
     } catch (error) {
       console.error(error);
       setError("Login failed.");

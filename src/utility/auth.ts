@@ -1,3 +1,5 @@
+import { getCustomer } from "@/fetch/woocommerce/customers";
+import { cookies } from "next/headers";
 import { getUser } from "@/fetch/wordpress/wordpress";
 import {
   validateUserJwt,
@@ -5,6 +7,7 @@ import {
 } from "@/types/validation/wpgraphql/wpgraphql";
 import { jwtDecode } from "jwt-decode";
 import { NextResponse } from "next/server";
+import { validateCustomer } from "@/types/validation/woocommerce/woocommerce";
 
 export function forceLogoutWithResponse(response: NextResponse) {
   response.cookies.set("wp_jwt_auth", "n/a", {
@@ -36,4 +39,13 @@ export async function checkTokenAgainstUser(
     match:
       userIdFromDatabase !== undefined && userIdFromDatabase === idFromToken,
   };
+}
+
+export async function getLoggedInCustomer() {
+  const cookieStore = await cookies();
+  const token = `${cookieStore.get("wp_jwt_auth")?.value}`;
+  const customerResponse = await getCustomer(token);
+  const customerJson = await customerResponse.json();
+  const customerParsed = validateCustomer(customerJson.data.customer);
+  return customerParsed;
 }

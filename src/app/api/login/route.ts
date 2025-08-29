@@ -2,6 +2,8 @@ import { env } from "@/env";
 import { validateLoginResponse } from "@/types/validation/wpgraphql/wpgraphql";
 import { NextRequest, NextResponse } from "next/server";
 
+//This route does not guard against brute force attacks. However, it's worth noting that default WP doesn't guard against this either.
+//WP admins typically get a plugin or some kind of server setting to deal with this instead.
 export async function POST(request: NextRequest) {
   const body = await request.json();
 

@@ -10,3 +10,16 @@ export function updateCustomer(customer: Customer) {
 export function getCurrentCustomer() {
   return fetch(`${window.location.origin}/api/customers/whoami`);
 }
+
+export function login(username: string, password: string) {
+  return fetch(`${window.location.origin}/api/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username,
+      password,
+    }),
+  });
+}
