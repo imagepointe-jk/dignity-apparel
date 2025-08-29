@@ -5,7 +5,7 @@ import { Product } from "@/types/schema/woocommerce";
 import {
   abbreviateSize,
   getColorStockAmounts,
-  getGlobalAttributeTerms,
+  // getGlobalAttributeTerms,
   getSwatchesWithImages,
   isSizedProduct,
 } from "@/utility/products";
@@ -50,9 +50,9 @@ function ProductPageWrapped({ product }: Props) {
   const largestSize = sizeStocks[sizeStocks.length - 1]?.size || "UNKNOWN SIZE";
   const image1Url = product.imageUrl;
   const image2Url = viewedSwatch?.productImageUrl || IMAGE_NOT_FOUND_URL;
-  const isMTO = getGlobalAttributeTerms(product, "pa_availability").includes(
-    "made-to-order"
-  );
+  // const isMTO = getGlobalAttributeTerms(product, "pa_availability").includes(
+  //   "made-to-order"
+  // );
 
   function onClickSwatch(clickedVariationId: number) {
     setViewedVariationId(clickedVariationId);
