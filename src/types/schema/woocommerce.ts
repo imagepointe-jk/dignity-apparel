@@ -111,8 +111,8 @@ export const customerSchema = z.object({
   databaseId: z.number(),
   username: z.string(),
   email: z.string(),
-  firstName: z.string(),
-  lastName: z.string(),
+  firstName: z.string().nullable(),
+  lastName: z.string().nullable(),
   billing: billingOrShippingSchema,
   shipping: billingOrShippingSchema,
 });
