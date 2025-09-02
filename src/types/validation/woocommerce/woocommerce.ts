@@ -260,6 +260,10 @@ export function validateOrders(json: any) {
                 name: item.product.node.name,
                 slug: item.product.node.slug,
                 sku: item.product.node.sku,
+                image: {
+                  id: item.product.node.image.id,
+                  sourceUrl: item.product.node.image.sourceUrl,
+                },
               },
               quantity: item.quantity,
               variation: {
@@ -267,6 +271,10 @@ export function validateOrders(json: any) {
                 databaseId: item.variation.node.databaseId,
                 name: item.variation.node.name,
                 sku: item.variation.node.sku,
+                image: {
+                  id: item.variation.node.image.id,
+                  sourceUrl: item.variation.node.image.sourceUrl,
+                },
               },
               subtotal: item.subtotal,
             })

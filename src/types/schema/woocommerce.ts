@@ -168,12 +168,20 @@ export const orderLineItemSchema = z.object({
     name: z.string(),
     slug: z.string(),
     sku: z.string(),
+    image: z.object({
+      id: z.string(),
+      sourceUrl: z.string(),
+    }),
   }),
   variation: z.object({
     id: z.string(),
     databaseId: z.number(),
     name: z.string(),
     sku: z.string(),
+    image: z.object({
+      id: z.string(),
+      sourceUrl: z.string(),
+    }),
   }),
   quantity: z.number(),
   subtotal: z.string(),

@@ -29,13 +29,17 @@ export function OrderRow({ order }: Props) {
       <div className={styles["order-content"]}>
         <div>Customer Information</div>
         <ul>
-          <li>First Name: {order.customer.firstName}</li>
+          <li> First Name: {order.customer.firstName}</li>
           <li>Last Name: {order.customer.lastName}</li>
         </ul>
         <div>Line Items</div>
         <ul>
           {order.lineItems.map((item) => (
             <li key={item.id}>
+              <img
+                src={item.variation.image.sourceUrl}
+                style={{ width: "100px", height: "100px" }}
+              />
               {item.variation.name} x{item.quantity} - $
               {(+item.subtotal).toFixed(2)}
             </li>
