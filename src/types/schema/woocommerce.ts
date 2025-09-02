@@ -159,7 +159,7 @@ export const cartQuantityUpdateSchema = z.object({
   items: z.array(cartQuantityUpdateItemSchema),
 });
 
-const pastOrderLineItemSchema = z.object({
+export const orderLineItemSchema = z.object({
   id: z.string(),
   databaseId: z.number(),
   product: z.object({
@@ -173,19 +173,36 @@ const pastOrderLineItemSchema = z.object({
     id: z.string(),
     databaseId: z.number(),
     name: z.string(),
+    sku: z.string(),
   }),
   quantity: z.number(),
   subtotal: z.string(),
 });
 
-export const pastOrderSchema = z.object({
+export const orderShippingLineSchema = z.object({
   id: z.string(),
   databaseId: z.number(),
+  methodTitle: z.string(),
+  // total: z.string(),
+  // totalTax: z.string(), these are nullable and i can't tell their exact format when they're not null without placing actual paid orders
+});
+
+export const orderSchema = z.object({
+  id: z.string(),
+  databaseId: z.number(),
+  date: z.date(),
   customer: z.object({
     firstName: z.string(),
     lastName: z.string(),
   }),
-  lineItems: z.array(pastOrderLineItemSchema),
+  lineItems: z.array(orderLineItemSchema),
+  subtotal: z.string(),
+  shippingLines: z.array(orderShippingLineSchema),
+  shippingTotal: z.string(),
+  shippingTax: z.string(),
+  totalTax: z.string(),
+  total: z.string(),
+  discountTotal: z.string(),
 });
 
 export type Product = z.infer<typeof productSchema>;
@@ -229,4 +246,4 @@ export type Customer = z.infer<typeof customerSchema>;
 export type Cart = z.infer<typeof cartSchema>;
 export type CartItem = z.infer<typeof cartItemSchema>;
 export type CartQuantityUpdate = z.infer<typeof cartQuantityUpdateSchema>;
-export type PastOrder = z.infer<typeof pastOrderSchema>;
+export type Order = z.infer<typeof orderSchema>;

@@ -9,7 +9,10 @@ import {
   Category,
   customerSchema,
   pageInfoSchema,
+  orderLineItemSchema,
+  orderSchema,
   productSchema,
+  orderShippingLineSchema,
 } from "@/types/schema/woocommerce";
 import { clamp } from "@/utility/misc";
 import sanitizeHtml from "sanitize-html";
@@ -213,6 +216,63 @@ export function validateCart(json: any) {
       : [],
     subtotal: json.data.cart.subtotal,
     subtotalTax: json.data.cart.subtotalTax,
+  });
+}
+
+export function validateOrders(json: any) {
+  const nodes = json.data?.orders?.nodes;
+  if (!Array.isArray(nodes)) return [];
+
+  return nodes.map((node) => {
+    const lineItems = node.lineItems?.nodes;
+    const shippingLines = node.shippingLines?.nodes;
+    return orderSchema.parse({
+      id: node.id,
+      databaseId: node.databaseId,
+      date: new Date(node.date),
+      customer: {
+        firstName: node.customer.firstName,
+        lastName: node.customer.lastName,
+      },
+      subtotal: node.subtotal,
+      shippingTotal: node.shippingTotal,
+      shippingTax: node.shippingTax,
+      totalTax: node.totalTax,
+      total: node.total,
+      discountTotal: node.discountTotal,
+      shippingLines: Array.isArray(shippingLines)
+        ? shippingLines.map((line) =>
+            orderShippingLineSchema.parse({
+              id: line.id,
+              databaseId: line.databaseId,
+              methodTitle: line.methodTitle,
+            })
+          )
+        : [],
+      lineItems: Array.isArray(lineItems)
+        ? lineItems.map((item) =>
+            orderLineItemSchema.parse({
+              id: item.id,
+              databaseId: item.databaseId,
+              product: {
+                id: item.product.node.id,
+                databaseId: item.product.node.databaseId,
+                name: item.product.node.name,
+                slug: item.product.node.slug,
+                sku: item.product.node.sku,
+              },
+              quantity: item.quantity,
+              variation: {
+                id: item.variation.node.id,
+                databaseId: item.variation.node.databaseId,
+                name: item.variation.node.name,
+                sku: item.variation.node.sku,
+              },
+              subtotal: item.subtotal,
+            })
+          )
+        : [],
+    });
   });
 }
 

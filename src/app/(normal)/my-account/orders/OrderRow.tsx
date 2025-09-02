@@ -1,12 +1,12 @@
 "use client";
 
-import { PastOrder } from "@/types/schema/woocommerce";
+import { Order } from "@/types/schema/woocommerce";
 import styles from "@/styles/Account/Orders/Orders.module.css";
 import { Arrow } from "@/components/icons/Arrow";
 import { useState } from "react";
 
 type Props = {
-  order: PastOrder;
+  order: Order;
 };
 export function OrderRow({ order }: Props) {
   const [expanded, setExpanded] = useState(false);
@@ -18,7 +18,7 @@ export function OrderRow({ order }: Props) {
     >
       <div className={styles["order-top"]}>
         <div>Order #{order.databaseId}</div>
-        <div>Jan 1, 1970</div>
+        <div>{order.date.toDateString()}</div>
         <button
           className={styles["expand-button"]}
           onClick={() => setExpanded(!expanded)}
@@ -36,10 +36,19 @@ export function OrderRow({ order }: Props) {
         <ul>
           {order.lineItems.map((item) => (
             <li key={item.id}>
-              {item.variation.name} x{item.quantity} - {item.subtotal}
+              {item.variation.name} x{item.quantity} - $
+              {(+item.subtotal).toFixed(2)}
             </li>
           ))}
         </ul>
+        <div>Subtotal: {order.subtotal}</div>
+        <div>
+          Shipping:{" "}
+          {order.shippingLines[0]?.methodTitle || "(shipping method not found)"}
+        </div>
+        <div>Shipping Total: {order.shippingTotal}</div>
+        <div>Discount: -{order.discountTotal}</div>
+        <div>Total: {order.total}</div>
       </div>
     </div>
   );
