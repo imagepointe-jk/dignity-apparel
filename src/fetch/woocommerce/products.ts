@@ -88,6 +88,7 @@ function buildProductFields(params?: {
             id
             databaseId
             name
+            status
             image {
               sourceUrl
             }

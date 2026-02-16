@@ -29,7 +29,7 @@ function pullProductData(productJson: any) {
     },
     additionalProductInformation: {
       careInformationSanitized: sanitizeHtml(
-        productJson.additionalProductInformation?.careInformation || ""
+        productJson.additionalProductInformation?.careInformation || "",
       ),
       materialDescription:
         productJson.additionalProductInformation?.materialDescription,
@@ -61,6 +61,7 @@ function pullProductData(productJson: any) {
         return {
           id: item.databaseId,
           name: item.name,
+          status: item.status,
           imageUrl: item.image?.sourceUrl || "",
           attributes: item.attributes.nodes,
           stockQuantity: item.stockQuantity,
@@ -70,7 +71,11 @@ function pullProductData(productJson: any) {
 }
 
 export function validateWooCommerceSingleProductResponse(productJson: any) {
-  return productSchema.parse(pullProductData(productJson));
+  const data = pullProductData(productJson);
+  data.variations = data.variations.filter((v: any) => v.status === "publish"); //always exclude disabled variations
+  const parsed = productSchema.parse(data);
+
+  return parsed;
 }
 
 export function validateWooCommerceProductsGraphQLResponse(json: any) {
@@ -116,7 +121,7 @@ export function validateCategoriesResponse(json: any) {
           id: child.databaseId,
           name: child.name,
           slug: child.slug,
-        })
+        }),
       ),
     };
     categories.push(category);

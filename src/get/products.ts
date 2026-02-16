@@ -17,13 +17,13 @@ import { getArrayPage } from "@/utility/misc";
 import { redis } from "./redis";
 
 export async function getCachedProducts(
-  forceUpdateCache?: boolean
+  forceUpdateCache?: boolean,
 ): Promise<Product[]> {
   if (!forceUpdateCache) {
     const cachedProductsJson = await redis.get(env.REDIS_CACHE_KEY);
     if (cachedProductsJson) {
       const parsed = validateWooCommerceProductsGraphQLResponse(
-        JSON.parse(cachedProductsJson)
+        JSON.parse(cachedProductsJson),
       );
       return parsed.products;
     }
@@ -46,27 +46,27 @@ export async function getCachedProducts(
       search: null,
     });
     console.log(
-      `Data fetched from WooCommerce in ${Date.now() - startTime}ms.`
+      `Data fetched from WooCommerce in ${Date.now() - startTime}ms.`,
     );
     const json = await response.json();
     const parsed = validateWooCommerceProductsGraphQLResponse(json);
     await redis.setEx(
       env.REDIS_CACHE_KEY,
       env.SIMPLE_CACHE_TIME / 1000,
-      JSON.stringify(json)
+      JSON.stringify(json),
     );
 
     return parsed.products;
   } catch (error) {
     console.error(
-      `Attempt to update product cache FAILED after ${Date.now() - startTime}ms: ${error}`
+      `Attempt to update product cache FAILED after ${Date.now() - startTime}ms: ${error}`,
     );
     return [];
   }
 }
 
 export async function queryCachedProducts(
-  params: ProductQueryParams & ProductQueryAdditionalParams
+  params: ProductQueryParams & ProductQueryAdditionalParams,
 ): Promise<{ products: Product[]; pageInfo: { totalProducts: number } }> {
   const products = await getCachedProducts();
   const {
@@ -88,12 +88,12 @@ export async function queryCachedProducts(
     const fabricTypeCheck = checkAttribute(
       product,
       fabricType,
-      "pa_fabric-type"
+      "pa_fabric-type",
     );
     const fabricWeightCheck = checkAttribute(
       product,
       fabricWeight,
-      "pa_fabric-weight"
+      "pa_fabric-weight",
     );
     const featuresCheck = checkAttribute(product, features, "pa_features");
     const fitCheck = checkAttribute(product, fit ? [fit] : [], "pa_fit");
@@ -115,7 +115,7 @@ export async function queryCachedProducts(
   const page = getArrayPage(
     filtered,
     pageNumber || 1,
-    pageSize || DEFAULT_PRODUCTS_PAGE_SIZE
+    pageSize || DEFAULT_PRODUCTS_PAGE_SIZE,
   );
 
   return {
@@ -148,13 +148,13 @@ function checkAttribute(
   product: Product,
   allowedStrings: string[],
   attributeName: string,
-  compareFn?: (termSlug: string) => boolean
+  compareFn?: (termSlug: string) => boolean,
 ) {
   return (
     allowedStrings.length === 0 ||
     !!allowedStrings.find((str) => {
       const relevantAttr = product.globalAttributes.find(
-        (attr) => attr.name === attributeName
+        (attr) => attr.name === attributeName,
       );
       if (!relevantAttr) return false;
       return !!relevantAttr.terms.find((term) => {
@@ -186,13 +186,13 @@ function checkTextSearch(product: Product, search: string | null) {
       return true;
     if (
       !!product.categories.find((cat) =>
-        cat.name.toLocaleLowerCase().includes(term)
+        cat.name.toLocaleLowerCase().includes(term),
       )
     )
       return true;
     if (
       !!product.tags.find((tag) =>
-        tag.name.toLocaleLowerCase().includes(term.toLocaleLowerCase())
+        tag.name.toLocaleLowerCase().includes(term.toLocaleLowerCase()),
       )
     )
       return true;
