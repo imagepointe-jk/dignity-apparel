@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
     const decodedSplit = decoded?.split(":");
     if (decodedSplit && decodedSplit[1] === env.DEVELOPER_PASSWORD) {
       getCachedProducts(true);
-    }
+    } else console.error("Invalid credentials.");
   }
 
   //Always send a 200 response back to WooCommerce; the webhook seems to break otherwise
