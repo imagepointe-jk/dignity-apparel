@@ -12,6 +12,7 @@ export const env = {
   REDIS_CACHE_KEY: process.env.REDIS_CACHE_KEY!,
   REDIS_ATTRIBUTES_CACHE_KEY: process.env.REDIS_ATTRIBUTES_CACHE_KEY!,
   REDIS_CATEGORIES_CACHE_KEY: process.env.REDIS_CATEGORIES_CACHE_KEY!,
+  GOOGLE_TAG_MANAGER_ID: process.env.GOOGLE_TAG_MANAGER_ID!,
 };
 
 for (const [key, value] of Object.entries(env)) {

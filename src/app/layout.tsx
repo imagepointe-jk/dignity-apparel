@@ -8,6 +8,8 @@ import FooterPrismic from "@/components/Footer/FooterPrismic";
 import { PrismicPreview } from "@prismicio/next";
 import { getAnnouncementBanner } from "@/fetch/prismic/prismic";
 import { validateAnnouncementBannerResponse } from "@/types/validation/prismic/validation";
+import { GoogleTagManager } from "@next/third-parties/google";
+import { env } from "@/env";
 
 const metropolisRegular = localFont({
   src: "./fonts/Metropolis-Regular.woff",
@@ -78,11 +80,12 @@ export default async function RootLayout({
   ].join(" ");
   const announcementBannerResponse = await getAnnouncementBanner();
   const parsedAnnouncementBanner = validateAnnouncementBannerResponse(
-    announcementBannerResponse
+    announcementBannerResponse,
   );
 
   return (
     <html lang="en">
+      <GoogleTagManager gtmId={env.GOOGLE_TAG_MANAGER_ID} />
       <body
         className={`${fontClassNames} ${parsedAnnouncementBanner.showBanner ? "with-announcement-banner" : ""}`}
       >
