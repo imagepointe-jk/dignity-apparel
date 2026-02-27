@@ -17,6 +17,6 @@ export const env = {
 
 for (const [key, value] of Object.entries(env)) {
   if (value === undefined) {
-    throw new Error(`Missing envioronment variable "${key}"!`);
+    throw new Error(`Missing environment variable "${key}"!`);
   }
 }
