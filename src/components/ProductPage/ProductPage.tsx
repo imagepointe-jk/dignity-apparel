@@ -31,7 +31,7 @@ export function ProductPage({ product }: Props) {
 
 function ProductPageWrapped({ product }: Props) {
   const [viewedVariationId, setViewedVariationId] = useState(
-    null as number | null
+    null as number | null,
   );
   const viewedVariationIdToUse =
     viewedVariationId === null
@@ -39,7 +39,7 @@ function ProductPageWrapped({ product }: Props) {
       : viewedVariationId;
   const swatchesWithImages = getSwatchesWithImages(product);
   const viewedSwatch = swatchesWithImages.find(
-    (swatch) => swatch.variationId === viewedVariationIdToUse
+    (swatch) => swatch.variationId === viewedVariationIdToUse,
   );
   const searchParams = useSearchParams();
   const sizeStocks = getColorStockAmounts(product, viewedSwatch?.name || "");
@@ -50,7 +50,7 @@ function ProductPageWrapped({ product }: Props) {
   const image1Url = product.imageUrl;
   const image2Url = viewedSwatch?.productImageUrl || IMAGE_NOT_FOUND_URL;
   const isMTO = getGlobalAttributeTerms(product, "pa_availability").includes(
-    "made-to-order"
+    "made-to-order",
   );
 
   function onClickSwatch(clickedVariationId: number) {
@@ -74,7 +74,7 @@ function ProductPageWrapped({ product }: Props) {
             containerClassName={styles["product-img-container"]}
             behavior={"contain"}
           />
-          {image2Url !== image1Url && (
+          {image2Url !== image1Url && image2Url !== IMAGE_NOT_FOUND_URL && (
             <FlexibleImage
               src={image2Url}
               alt={product.name}
@@ -96,12 +96,17 @@ function ProductPageWrapped({ product }: Props) {
           <div
             className={`${styles["info-subcontainer"]} ${styles["swatches-container"]}`}
           >
-            <div>
-              <span className="bold">Color: </span>
-              <span className={`${styles["swatch-color-text"]} metropolis-16`}>
-                {viewedSwatch?.displayName || "UNKNOWN COLOR"}
-              </span>
-            </div>
+            {viewedSwatch && (
+              <div>
+                <span className="bold">Color: </span>
+
+                <span
+                  className={`${styles["swatch-color-text"]} metropolis-16`}
+                >
+                  {viewedSwatch.displayName}
+                </span>
+              </div>
+            )}
             <div>
               <ul className={styles["swatches"]}>
                 {swatchesWithImages.map((item) => (
