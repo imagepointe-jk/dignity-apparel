@@ -52,6 +52,9 @@ function ProductPageWrapped({ product }: Props) {
   const isMTO = getGlobalAttributeTerms(product, "pa_availability").includes(
     "made-to-order",
   );
+  const hidePurchaseButton =
+    product.additionalProductSettings.linkTextOverride ===
+    "{{HIDE_PURCHASE_BUTTON}}";
 
   function onClickSwatch(clickedVariationId: number) {
     setViewedVariationId(clickedVariationId);
@@ -138,20 +141,22 @@ function ProductPageWrapped({ product }: Props) {
               </div>
             </div>
           )}
-          <div>
-            <a
-              href={
-                product.additionalProductSettings.linkURLOverride || isMTO
-                  ? "/quote"
-                  : product.link
-              }
-              className={styles["purchase-link"]}
-            >
-              {product.additionalProductSettings.linkTextOverride || isMTO
-                ? "Get a Quote"
-                : "Purchase"}
-            </a>
-          </div>
+          {!hidePurchaseButton && (
+            <div>
+              <a
+                href={
+                  product.additionalProductSettings.linkURLOverride || isMTO
+                    ? "/quote"
+                    : product.link
+                }
+                className={styles["purchase-link"]}
+              >
+                {product.additionalProductSettings.linkTextOverride || isMTO
+                  ? "Get a Quote"
+                  : "Purchase"}
+              </a>
+            </div>
+          )}
           <div className={styles["usa-container"]}>
             <div>
               <FlagDA size={35} />
